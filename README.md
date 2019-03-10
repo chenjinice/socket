@@ -1,12 +1,8 @@
 
 socket + protobuf 
 
-<<<<<<< HEAD
-ccc:wq
-=======
 
 
+solved
 
 
-mmmmmmmmm
->>>>>>> first/master
