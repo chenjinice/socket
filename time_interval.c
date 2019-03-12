@@ -4,11 +4,17 @@
 
 int check_interval(struct timeval *tv,int ms)
 {
+	if((tv->tv_sec == 0) && (tv->tv_usec == 0)){
+		gettimeofday(tv,NULL);
+		return 0;
+	}
 	struct timeval now={0};
 	gettimeofday(&now,NULL);
 	long interval = (now.tv_sec-tv->tv_sec)*1000000 + (now.tv_usec-tv->tv_usec);
 	interval /= 1000;
 
+//	printf("%d,now : %ld:%ld\n",sizeof(long),now.tv_sec,now.tv_usec);
+//	printf("interval ========== %ld\n",interval);
 	if(interval >= ms){
 		printf("interval ========== %ld\n",interval);
 		gettimeofday(tv,NULL);

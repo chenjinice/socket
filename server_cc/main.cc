@@ -22,7 +22,7 @@ int main(int argc ,char **argv)
 			p->set_y(281265890);	           // 纬度
 		}
 		s.send_data(v);
-		usleep(300000);
+		usleep(10000);
 
 		// 发送 障碍物
 		Obstacles o;
@@ -36,7 +36,7 @@ int main(int argc ,char **argv)
 			po->set_y(i*333333);        // 纬度
 		}
 		s.send_data(o);
-		sleep(1);
+		usleep(10000);
 
 
 		// 发送可行驶区域
@@ -51,7 +51,7 @@ int main(int argc ,char **argv)
 		pa->set_x2(2000000);           // 第二个点经度
 		pa->set_y2(2222222);         // 第二个点纬度
 		s.send_data(a);
-		sleep(1);
+		usleep(10000);
 
 	}
 
