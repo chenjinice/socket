@@ -10,7 +10,7 @@
 void   obstacle__init
                      (Obstacle         *message)
 {
-  static const Obstacle init_value = OBSTACLE__INIT;
+  static Obstacle init_value = OBSTACLE__INIT;
   *message = init_value;
 }
 size_t obstacle__get_packed_size
@@ -47,15 +47,13 @@ void   obstacle__free_unpacked
                      (Obstacle *message,
                       ProtobufCAllocator *allocator)
 {
-  if(!message)
-    return;
   assert(message->base.descriptor == &obstacle__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
 void   obu_msg__init
                      (ObuMsg         *message)
 {
-  static const ObuMsg init_value = OBU_MSG__INIT;
+  static ObuMsg init_value = OBU_MSG__INIT;
   *message = init_value;
 }
 size_t obu_msg__get_packed_size
@@ -92,8 +90,6 @@ void   obu_msg__free_unpacked
                      (ObuMsg *message,
                       ProtobufCAllocator *allocator)
 {
-  if(!message)
-    return;
   assert(message->base.descriptor == &obu_msg__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
