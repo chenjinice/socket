@@ -1,0 +1,32 @@
+
+// 传给 apollo的数据：头 + ObuMsg + 校验和
+// 1.头 ：4字节 ， 0x60,0x61,0x62,0x63
+// 2.ObuMsg :长度视其内容而定
+// 3.校验和: 1个字节 ,为前面所有字节的校验和
+
+
+syntax = "proto2";
+
+
+// 障碍物类型
+enum TYPE{
+	HUMAN 	    = 1;	// 人
+	VEHICLE	    = 2;	// 车
+	OTHER		= 3;	// 其他障碍
+}
+
+// 单个障碍
+message Obstacle {  
+	required int32 id = 1;			// 预留
+	required TYPE  type = 2;		// 障碍物类型
+	required int32 lng = 3;			// 实际经度 * 10的七次方
+	required int32 lat = 4;			// 实际纬度 * 10的七次方
+} 
+
+// 要传给Apollo的
+message ObuMsg {
+	required uint32	count = 1; 		// 一个累加的数
+	repeated Obstacle obs = 2;		// 障碍的数组
+} 
+
+
