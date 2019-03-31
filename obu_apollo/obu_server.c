@@ -11,24 +11,19 @@
 #include "obu_server.h"
 
 
-
 #define SOCK_INVALID	-1
 #define SOCK_MAX_CONNECT 5
 #define FD_SIZE          sizeof(int)
-
+#define HEADER_SIZE      4
+static uint8_t g_header[4] = {0x61,0x62,0x63,0x64};
 
 typedef struct _myarray{
     int cfd[SOCK_MAX_CONNECT];
     int length;
-    int (*add)(struct _myarray *array, int fd);
-    void (*close)(struct _myarray *array,int fd);
-    void (*close_all)(struct _myarray *array);
-    void (*print)(struct _myarray *array);
 }myarray;
 
 
 static pthread_mutex_t m_mutex;
-static pthread_mutex_t m_send_mutex;
 static uint16_t m_port = 9999;
 static myarray  m_array;
 static int      m_fd   = SOCK_INVALID;
@@ -36,10 +31,9 @@ static int      m_loop = 1;
 
 
 // myarray function  ==== >>
-static int my_add(myarray *array,int fd)
+static int add_client(myarray *array,int fd)
 {
     int ret = -1;
-    pthread_mutex_lock(&m_mutex);
     if(array->length < SOCK_MAX_CONNECT){
         array->cfd[array->length] = fd;
         array->length++;
@@ -47,38 +41,35 @@ static int my_add(myarray *array,int fd)
     }else {
         ret = -1;
     }
-    pthread_mutex_unlock(&m_mutex);
     return ret;
 }
 
-static void my_close(myarray *array,int fd)
+static void close_client(myarray *array,int fd)
 {
     int i;
-    pthread_mutex_lock(&m_mutex);
     int length = array->length;
     for(i=length-1;i>=0;i--){
         if(array->cfd[i] != fd)continue;
-        shutdown((array->cfd[i]),SHUT_RDWR);
-        memset(array->cfd+i,0,FD_SIZE);
-        memmove(array->cfd+i,array->cfd+i+1,length-i-1);
+        close(array->cfd[i]);
+        array->cfd[i] = 0;
+        memmove(array->cfd+i,array->cfd+i+1,(SOCK_MAX_CONNECT-i-1)*FD_SIZE);
+        array->cfd[SOCK_MAX_CONNECT-1] = 0;
         array->length--;
     }
-    pthread_mutex_unlock(&m_mutex);
 }
 
-static void my_close_all(myarray *array)
+static void close_all_client(myarray *array)
 {
-    pthread_mutex_lock(&m_mutex);
     int i;
     for(i=0;i<array->length;i++){
+//        close(array->cfd[i]);
         shutdown((array->cfd[i]),SHUT_RDWR);
     }
     memset(array->cfd,0,FD_SIZE*SOCK_MAX_CONNECT);
     array->length = 0;
-    pthread_mutex_unlock(&m_mutex);
 }
 
-static void my_print(myarray *array)
+static void print_client(myarray *array)
 {
     int i;
     int length = array->length;
@@ -93,10 +84,6 @@ static void my_print(myarray *array)
 static void init_array(myarray *array)
 {
     memset(array,0,sizeof(myarray));
-    array->add= my_add;
-    array->close = my_close;
-    array->close_all = my_close_all;
-    array->print = my_print;
 }
 
 // my array function << ==========
@@ -121,6 +108,7 @@ static void socket_init()
     socklen_t length = sizeof(struct sockaddr);
 
     m_fd = socket(AF_INET,SOCK_STREAM,0);
+//    printf("m_fd === %d\n",m_fd);
     if(m_fd <= 0){
         printf("obu_server : create socket error\n");
         return;
@@ -154,13 +142,19 @@ static void socket_init()
             break;
         }
 
-        if(m_array.add(&m_array,client_fd) != 0){
+        pthread_mutex_lock(&m_mutex);
+        if(add_client(&m_array,client_fd) != 0){
             close(client_fd);
         }
-        m_array.print(&m_array);
+        pthread_mutex_unlock(&m_mutex);
+
+        print_client(&m_array);
     }
 
-    m_array.close_all(&m_array);
+    pthread_mutex_lock(&m_mutex);
+    close_all_client(&m_array);
+    pthread_mutex_unlock(&m_mutex);
+
     server_close();
     return;
 
@@ -182,9 +176,7 @@ void obu_server_start(uint16_t port)
     {
         m_port = port;
         init_array(&m_array);
-        m_array.print(&m_array);
         pthread_mutex_init(&m_mutex,NULL);
-        pthread_mutex_init(&m_send_mutex,NULL);
 
         pthread_t thread;
         pthread_create(&thread,NULL,socket_thread,NULL);
@@ -200,29 +192,40 @@ void obu_server_stop()
         m_fd = SOCK_INVALID;
     }
     pthread_mutex_destroy(&m_mutex);
-    pthread_mutex_destroy(&m_send_mutex);
 }
 
-void obu_server_send()
+void obu_server_send(uint8_t *data,int len)
 {
     if(m_fd == SOCK_INVALID){
-//        printf("obu_server : server_fd = %d\n",m_fd);
+        return;
+    }
+    if(len > MSG_BUFFER_SIZE){
         return;
     }
 
-    char *p = "hello world\n";
     int ret,i;
+    int send_size = 0;
+    uint8_t sum = 0 ;
+    uint8_t buffer[MSG_BUFFER_SIZE+100] = {0};
+    memcpy(buffer,g_header,HEADER_SIZE);
+    memcpy(buffer+HEADER_SIZE,data,len);
+    for (i=0;i<HEADER_SIZE+len;i++) {
+        sum+=buffer[i];
+    }
+    buffer[len+HEADER_SIZE] = sum;
+    send_size = len+HEADER_SIZE+1;
 
-    pthread_mutex_lock(&m_send_mutex);
+    pthread_mutex_lock(&m_mutex);
     int length = m_array.length;
     for(i=length-1;i>=0;i--){
-        ret = send(m_array.cfd[i],p,strlen(p),0);
+        ret = send(m_array.cfd[i],buffer,send_size,0);
         printf("send ret[%d][%d] = %d\n",i,m_array.cfd[i],ret);
-        if( (ret <= 0) || (ret > strlen(p)) ){
-            m_array.close(&m_array,m_array.cfd[i]);
+        if( (ret <= 0) || (ret > send_size) ){
+            close_client(&m_array,m_array.cfd[i]);
         }
     }
-    pthread_mutex_unlock(&m_send_mutex);
+    print_client(&m_array);
+    pthread_mutex_unlock(&m_mutex);
 
 }
 
