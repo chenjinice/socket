@@ -13,7 +13,7 @@ int main(int argc ,char **argv)
 		Crowd v;
 		Pedestrian *p;
 		v.set_id(PEDESTRIAN_D);
-		for(int i=0;i<1;i++){
+		for(int i=0;i<4;i++){
 			p = v.add_pedestrian();
 			p->set_object_id(i);
 			p->set_object_type(HUMAN); // 类型:人,车,摩托车
@@ -21,7 +21,9 @@ int main(int argc ,char **argv)
 			p->set_x(1128990180);             // 经度
 			p->set_y(281265890);	           // 纬度
 		}
-		s.send_data(v);
+		if(v.pedestrian_size() > 0){	
+			s.send_data(v);
+		}
 		usleep(100000);
 
 		// 发送 障碍物

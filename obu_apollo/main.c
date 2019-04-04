@@ -19,6 +19,7 @@ int main()
     signal(SIGPIPE,SIG_IGN);
     obu_server_start(9999);
 
+    int count = 0;
     while (flag) {
 
         int num = 3,i;
@@ -34,14 +35,14 @@ int main()
         }
         msg.obs = obs;
         msg.n_obs = num;
-        msg.count = 123;
+        msg.count = count++;
 
         int len = obu_msg__get_packed_size(&msg);
         uint8_t data[MSG_BUFFER_SIZE] = {0};
         if(len <= sizeof(data)){
             obu_msg__pack(&msg,data);
             obu_server_send(data,len);
-        }
+       }
 
         for(i=0;i<num;i++){
             free(obs[i]);
@@ -55,3 +56,10 @@ int main()
 
     return 0;
 }
+
+
+
+
+
+
+
