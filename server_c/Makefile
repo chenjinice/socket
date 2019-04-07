@@ -19,5 +19,8 @@ $(PROTO_SRC):obu_apollo.proto
 
 clean:
 	-rm a.out
+	-rm obu_apollo.pb-c.c
+	-rm obu_apollo.pb-c.h
+
 
 .PHONY: clean
