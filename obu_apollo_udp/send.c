@@ -13,11 +13,16 @@ void fun(int arg){
     printf("integer === %d\n",arg);
 }
 
-int main()
+int main(int argc,char *argv[])
 {
+    char *device = NULL;
+    if(argc > 1){
+        device = argv[1];
+    }
+
     signal(SIGINT,fun);
     signal(SIGPIPE,SIG_IGN);
-    obu_apollo_start(9999);
+    obu_apollo_start(device,9999);
 
     int count = 0;
     while (flag) {
@@ -42,7 +47,7 @@ int main()
         if(len <= sizeof(data)){
             obu_msg__pack(&msg,data);
             obu_apollo_send(data,len);
-       }
+        }
 
         for(i=0;i<num;i++){
             free(obs[i]);
