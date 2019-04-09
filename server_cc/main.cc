@@ -13,18 +13,16 @@ int main(int argc ,char **argv)
 		Crowd v;
 		Pedestrian *p;
 		v.set_id(PEDESTRIAN_D);
-		for(int i=0;i<4;i++){
+		for(int i=0;i<3;i++){
 			p = v.add_pedestrian();
 			p->set_object_id(i);
 			p->set_object_type(HUMAN); // 类型:人,车,摩托车
 			p->set_camera(1);          // 哪个相机 :1,2,3,4
 			p->set_x(1128990180);             // 经度
 			p->set_y(281265890);	           // 纬度
-		}
-		if(v.pedestrian_size() > 0){	
-			s.send_data(v);
-		}
-		usleep(100000);
+		}	
+		s.send_data(v);
+		usleep(1000);
 
 		// 发送 障碍物
 		Obstacles o;
@@ -38,7 +36,7 @@ int main(int argc ,char **argv)
 			po->set_y(i*333333);        // 纬度
 		}
 		s.send_data(o);
-		usleep(100000);
+		usleep(1000);
 
 
 		// 发送可行驶区域
@@ -52,8 +50,9 @@ int main(int argc ,char **argv)
 		pa->set_y1(1111111);         // 第二个点纬度
 		pa->set_x2(2000000);           // 第二个点经度
 		pa->set_y2(2222222);         // 第二个点纬度
+		
 		s.send_data(a);
-		usleep(100000);
+		usleep(1000);
 
 	}
 	return 0;

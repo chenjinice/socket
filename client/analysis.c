@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <sys/time.h>
 #include "analysis.h"
 #include "vision.pb-c.h"
 
@@ -62,7 +63,7 @@ void analysis(uint8_t *buffer,int len)
 	ID	id =  -1;
 	Base *base = base__unpack(NULL,len,buffer);
 	if(base == NULL){
-		printf("vclient : base unpack failed \n");
+		printf("vclient : base unpack failed,len = %d \n",len);
 		return;
 	}
 	id = base->id;

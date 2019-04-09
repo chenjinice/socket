@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <list>
+#include <sys/time.h>
 #include <boost/thread/mutex.hpp>
 #include "vision.pb.h"
 
@@ -42,6 +43,7 @@ private:
 	void 	add_client(int fd);
 	void 	remove_client(int fd);
 	void	closeall_client();
+	int	check_interval(struct timeval *tv,int ms);
 
 };
 

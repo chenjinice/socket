@@ -58,6 +58,7 @@ static void *socket_thread_fun(void *arg)
 		if(ret != 0){
 			printf("vclient : %s:%d  connect failed\n",m_ip,m_port);
 		}else{
+			printf("vclient : succeed to connet  %s:%d\n",m_ip,m_port);
 			socket_read();
 		}
 		sleep(5);

@@ -33,6 +33,7 @@ Vserver::~Vserver()
 
 void Vserver::start()
 {
+	GOOGLE_PROTOBUF_VERIFY_VERSION;
 	// socket服务端为阻塞模式 ，需要创建线程
 	boost::thread t(&Vserver::server_init, this);
 	t.detach();
@@ -45,6 +46,7 @@ void Vserver::stop()
 		shutdown(m_fd,SHUT_RDWR);
 		m_fd = SOCK_INVALID;
 	}
+	google::protobuf::ShutdownProtobufLibrary();
 }
 
 void Vserver::server_init()
@@ -71,7 +73,7 @@ void Vserver::server_init()
 	server_addr.sin_addr.s_addr = htonl(INADDR_ANY);
 
 	if(bind(m_fd, (struct sockaddr *)&server_addr, sizeof(server_addr)) == -1){
-		printf("vserver : bind socket error\n");
+		perror("vserver : bind socket error");
 		this->server_close();
 		return ;
 	}
@@ -83,7 +85,7 @@ void Vserver::server_init()
 		if(m_fd == SOCK_INVALID)break;
 		int client_fd = accept(m_fd,(struct sockaddr *)&client_addr, &length);
 		if(client_fd == -1){
-			printf("vserver : accept error , client_fd === -1\n");
+			perror("vserver : accept error , client_fd === -1");
 			break;
 		}
 		printf("vserver : client(c_fd=%d) connect ,online = %d\n",client_fd,(int)(m_list.size()+1));
@@ -196,10 +198,14 @@ void Vserver::closeall_client()
 	m_mutex.unlock();
 }
 
-
+// 发送行人
 void Vserver::send_data(Crowd &msg)
 {
-	GOOGLE_PROTOBUF_VERIFY_VERSION;
+	static struct timeval s_tv={0};
+
+	if(msg.pedestrian_size() == 0)return;
+	// 限制一下发送频率
+	if(check_interval(&s_tv,200))return;
 
 	int len = 0;
 	uint8_t buffer[SOCK_BUFFER_SIZE];
@@ -210,9 +216,14 @@ void Vserver::send_data(Crowd &msg)
 	this->server_send(buffer,len);
 }
 
+//发送障碍物
 void Vserver::send_data(Obstacles &msg)
-{
-	GOOGLE_PROTOBUF_VERIFY_VERSION;
+{                                 
+	static struct timeval s_tv={0};
+
+	if(msg.obstacle_size() == 0)return;
+	// 限制一下发送频率
+	if(check_interval(&s_tv,1000))return;
 
 	int len = 0;
 	uint8_t buffer[SOCK_BUFFER_SIZE];
@@ -223,9 +234,14 @@ void Vserver::send_data(Obstacles &msg)
 	this->server_send(buffer,len);
 }
 
+//发送可行驶区域
 void Vserver::send_data(AvailableAreas &msg)
 {
-	GOOGLE_PROTOBUF_VERIFY_VERSION;
+	static struct timeval s_tv={0};
+
+	if(msg.area_size() == 0)return;
+	// 限制一下发送频率
+	if(check_interval(&s_tv,1000))return;
 
 	int len = 0;
 	uint8_t buffer[SOCK_BUFFER_SIZE];
@@ -235,5 +251,35 @@ void Vserver::send_data(AvailableAreas &msg)
 
 	this->server_send(buffer,len);
 }
+
+
+/*
+ * 检查与当前时间差是否超过某个值
+ *  @param   tv : 需要与当前时间做比较的时间
+ *           ms : 时间差是否超过ms（毫秒）
+ *  @return	 -1 : 时间差小于 ms
+ *  		  0 : 时间差大于等于 ms
+*/
+int Vserver::check_interval(struct timeval *tv,int ms)
+{
+	if((tv->tv_sec == 0) && (tv->tv_usec == 0)){
+		gettimeofday(tv,NULL);
+		return 0;
+	}
+	struct timeval now={0};
+	gettimeofday(&now,NULL);
+	int64_t interval = ((int64_t)now.tv_sec - (int64_t)tv->tv_sec)*1000000 + (now.tv_usec-tv->tv_usec);
+
+//	printf("%d,now : %ld:%ld\n",sizeof(interval),now.tv_sec,now.tv_usec);
+	if(interval >= ms*1000){
+//		printf("interval ========== %lld\n",interval);
+		gettimeofday(tv,NULL);
+		return 0;
+	}
+	else{
+		return -1;
+	}
+}
+
 
 
