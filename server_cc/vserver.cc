@@ -205,7 +205,7 @@ void Vserver::send_data(Crowd &msg)
 
 	if(msg.pedestrian_size() == 0)return;
 	// 限制一下发送频率
-	if(check_interval(&s_tv,200))return;
+	if(check_interval(&s_tv,100))return;
 
 	int len = 0;
 	uint8_t buffer[SOCK_BUFFER_SIZE];
