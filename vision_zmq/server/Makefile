@@ -4,7 +4,7 @@ SRC += main.cc
 SRC += vserver.cc
 SRC += vision.pb.cc
 
-LIB += -lprotobuf
+LIB += -lprotobuf -lzmq -lpthread
 
 LIB_DIR += -L/usr/local/lib
 

@@ -49,7 +49,7 @@ struct TableStruct_vision_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::google::protobuf::internal::ParseTable schema[12]
+  static const ::google::protobuf::internal::ParseTable schema[11]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
@@ -57,6 +57,9 @@ struct TableStruct_vision_2eproto {
 };
 void AddDescriptors_vision_2eproto();
 namespace vision {
+class AbnormalCar;
+class AbnormalCarDefaultTypeInternal;
+extern AbnormalCarDefaultTypeInternal _AbnormalCar_default_instance_;
 class AvailableArea;
 class AvailableAreaDefaultTypeInternal;
 extern AvailableAreaDefaultTypeInternal _AvailableArea_default_instance_;
@@ -69,12 +72,9 @@ extern BaseDefaultTypeInternal _Base_default_instance_;
 class Crowd;
 class CrowdDefaultTypeInternal;
 extern CrowdDefaultTypeInternal _Crowd_default_instance_;
-class IllegalCarWarn2;
-class IllegalCarWarn2DefaultTypeInternal;
-extern IllegalCarWarn2DefaultTypeInternal _IllegalCarWarn2_default_instance_;
-class IllegalCarWarns2;
-class IllegalCarWarns2DefaultTypeInternal;
-extern IllegalCarWarns2DefaultTypeInternal _IllegalCarWarns2_default_instance_;
+class IllegalCarWarn;
+class IllegalCarWarnDefaultTypeInternal;
+extern IllegalCarWarnDefaultTypeInternal _IllegalCarWarn_default_instance_;
 class Obstacle;
 class ObstacleDefaultTypeInternal;
 extern ObstacleDefaultTypeInternal _Obstacle_default_instance_;
@@ -84,30 +84,26 @@ extern ObstaclesDefaultTypeInternal _Obstacles_default_instance_;
 class Pedestrian;
 class PedestrianDefaultTypeInternal;
 extern PedestrianDefaultTypeInternal _Pedestrian_default_instance_;
-class Seeing;
-class SeeingDefaultTypeInternal;
-extern SeeingDefaultTypeInternal _Seeing_default_instance_;
 class SmokeWarn;
 class SmokeWarnDefaultTypeInternal;
 extern SmokeWarnDefaultTypeInternal _SmokeWarn_default_instance_;
-class ThrowingObj;
-class ThrowingObjDefaultTypeInternal;
-extern ThrowingObjDefaultTypeInternal _ThrowingObj_default_instance_;
+class Visibility;
+class VisibilityDefaultTypeInternal;
+extern VisibilityDefaultTypeInternal _Visibility_default_instance_;
 }  // namespace vision
 namespace google {
 namespace protobuf {
+template<> ::vision::AbnormalCar* Arena::CreateMaybeMessage<::vision::AbnormalCar>(Arena*);
 template<> ::vision::AvailableArea* Arena::CreateMaybeMessage<::vision::AvailableArea>(Arena*);
 template<> ::vision::AvailableAreas* Arena::CreateMaybeMessage<::vision::AvailableAreas>(Arena*);
 template<> ::vision::Base* Arena::CreateMaybeMessage<::vision::Base>(Arena*);
 template<> ::vision::Crowd* Arena::CreateMaybeMessage<::vision::Crowd>(Arena*);
-template<> ::vision::IllegalCarWarn2* Arena::CreateMaybeMessage<::vision::IllegalCarWarn2>(Arena*);
-template<> ::vision::IllegalCarWarns2* Arena::CreateMaybeMessage<::vision::IllegalCarWarns2>(Arena*);
+template<> ::vision::IllegalCarWarn* Arena::CreateMaybeMessage<::vision::IllegalCarWarn>(Arena*);
 template<> ::vision::Obstacle* Arena::CreateMaybeMessage<::vision::Obstacle>(Arena*);
 template<> ::vision::Obstacles* Arena::CreateMaybeMessage<::vision::Obstacles>(Arena*);
 template<> ::vision::Pedestrian* Arena::CreateMaybeMessage<::vision::Pedestrian>(Arena*);
-template<> ::vision::Seeing* Arena::CreateMaybeMessage<::vision::Seeing>(Arena*);
 template<> ::vision::SmokeWarn* Arena::CreateMaybeMessage<::vision::SmokeWarn>(Arena*);
-template<> ::vision::ThrowingObj* Arena::CreateMaybeMessage<::vision::ThrowingObj>(Arena*);
+template<> ::vision::Visibility* Arena::CreateMaybeMessage<::vision::Visibility>(Arena*);
 }  // namespace protobuf
 }  // namespace google
 namespace vision {
@@ -118,9 +114,9 @@ enum ID {
   ILLEGAL_V1 = 2,
   CAMERA_CAL = 3,
   ROCKFALL_D = 4,
-  SEEING_D = 5,
+  VISIBILITY = 5,
   AVAILABLE_AREA = 6,
-  OBSTACLE_D = 7,
+  ABNORMAL_CAR = 7,
   ILLEGAL_V2 = 8,
   TRAFFIC_STATUS = 9,
   BACKWARD_DRIVING = 10,
@@ -523,6 +519,165 @@ class Obstacle final :
 };
 // -------------------------------------------------------------------
 
+class AbnormalCar final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:vision.AbnormalCar) */ {
+ public:
+  AbnormalCar();
+  virtual ~AbnormalCar();
+
+  AbnormalCar(const AbnormalCar& from);
+
+  inline AbnormalCar& operator=(const AbnormalCar& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  AbnormalCar(AbnormalCar&& from) noexcept
+    : AbnormalCar() {
+    *this = ::std::move(from);
+  }
+
+  inline AbnormalCar& operator=(AbnormalCar&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const AbnormalCar& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const AbnormalCar* internal_default_instance() {
+    return reinterpret_cast<const AbnormalCar*>(
+               &_AbnormalCar_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  void Swap(AbnormalCar* other);
+  friend void swap(AbnormalCar& a, AbnormalCar& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline AbnormalCar* New() const final {
+    return CreateMaybeMessage<AbnormalCar>(nullptr);
+  }
+
+  AbnormalCar* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<AbnormalCar>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const AbnormalCar& from);
+  void MergeFrom(const AbnormalCar& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(AbnormalCar* other);
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::google::protobuf::StringPiece FullMessageName() {
+    return "vision.AbnormalCar";
+  }
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 object_id = 1;
+  bool has_object_id() const;
+  void clear_object_id();
+  static const int kObjectIdFieldNumber = 1;
+  ::google::protobuf::int32 object_id() const;
+  void set_object_id(::google::protobuf::int32 value);
+
+  // required int32 x = 2;
+  bool has_x() const;
+  void clear_x();
+  static const int kXFieldNumber = 2;
+  ::google::protobuf::int32 x() const;
+  void set_x(::google::protobuf::int32 value);
+
+  // required int32 y = 3;
+  bool has_y() const;
+  void clear_y();
+  static const int kYFieldNumber = 3;
+  ::google::protobuf::int32 y() const;
+  void set_y(::google::protobuf::int32 value);
+
+  // optional int32 lane_id = 4;
+  bool has_lane_id() const;
+  void clear_lane_id();
+  static const int kLaneIdFieldNumber = 4;
+  ::google::protobuf::int32 lane_id() const;
+  void set_lane_id(::google::protobuf::int32 value);
+
+  // optional int32 camera = 5;
+  bool has_camera() const;
+  void clear_camera();
+  static const int kCameraFieldNumber = 5;
+  ::google::protobuf::int32 camera() const;
+  void set_camera(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:vision.AbnormalCar)
+ private:
+  class HasBitSetters;
+
+  // helper for ByteSizeLong()
+  size_t RequiredFieldsByteSizeFallback() const;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::HasBits<1> _has_bits_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  ::google::protobuf::int32 object_id_;
+  ::google::protobuf::int32 x_;
+  ::google::protobuf::int32 y_;
+  ::google::protobuf::int32 lane_id_;
+  ::google::protobuf::int32 camera_;
+  friend struct ::TableStruct_vision_2eproto;
+};
+// -------------------------------------------------------------------
+
 class AvailableArea final :
     public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:vision.AvailableArea) */ {
  public:
@@ -568,7 +723,7 @@ class AvailableArea final :
                &_AvailableArea_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    3;
 
   void Swap(AvailableArea* other);
   friend void swap(AvailableArea& a, AvailableArea& b) {
@@ -734,165 +889,6 @@ class AvailableArea final :
   ::google::protobuf::int32 y3_;
   ::google::protobuf::int32 x4_;
   ::google::protobuf::int32 y4_;
-  friend struct ::TableStruct_vision_2eproto;
-};
-// -------------------------------------------------------------------
-
-class IllegalCarWarn2 final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:vision.IllegalCarWarn2) */ {
- public:
-  IllegalCarWarn2();
-  virtual ~IllegalCarWarn2();
-
-  IllegalCarWarn2(const IllegalCarWarn2& from);
-
-  inline IllegalCarWarn2& operator=(const IllegalCarWarn2& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  IllegalCarWarn2(IllegalCarWarn2&& from) noexcept
-    : IllegalCarWarn2() {
-    *this = ::std::move(from);
-  }
-
-  inline IllegalCarWarn2& operator=(IllegalCarWarn2&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor() {
-    return default_instance().GetDescriptor();
-  }
-  static const IllegalCarWarn2& default_instance();
-
-  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const IllegalCarWarn2* internal_default_instance() {
-    return reinterpret_cast<const IllegalCarWarn2*>(
-               &_IllegalCarWarn2_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    3;
-
-  void Swap(IllegalCarWarn2* other);
-  friend void swap(IllegalCarWarn2& a, IllegalCarWarn2& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline IllegalCarWarn2* New() const final {
-    return CreateMaybeMessage<IllegalCarWarn2>(nullptr);
-  }
-
-  IllegalCarWarn2* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<IllegalCarWarn2>(arena);
-  }
-  void CopyFrom(const ::google::protobuf::Message& from) final;
-  void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const IllegalCarWarn2& from);
-  void MergeFrom(const IllegalCarWarn2& from);
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
-  #else
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) final;
-  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const final;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      ::google::protobuf::uint8* target) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  inline void SharedCtor();
-  inline void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(IllegalCarWarn2* other);
-  friend class ::google::protobuf::internal::AnyMetadata;
-  static ::google::protobuf::StringPiece FullMessageName() {
-    return "vision.IllegalCarWarn2";
-  }
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return nullptr;
-  }
-  inline void* MaybeArenaPtr() const {
-    return nullptr;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // required int32 object_id = 1;
-  bool has_object_id() const;
-  void clear_object_id();
-  static const int kObjectIdFieldNumber = 1;
-  ::google::protobuf::int32 object_id() const;
-  void set_object_id(::google::protobuf::int32 value);
-
-  // required int32 x = 2;
-  bool has_x() const;
-  void clear_x();
-  static const int kXFieldNumber = 2;
-  ::google::protobuf::int32 x() const;
-  void set_x(::google::protobuf::int32 value);
-
-  // required int32 y = 3;
-  bool has_y() const;
-  void clear_y();
-  static const int kYFieldNumber = 3;
-  ::google::protobuf::int32 y() const;
-  void set_y(::google::protobuf::int32 value);
-
-  // required int32 camera = 4;
-  bool has_camera() const;
-  void clear_camera();
-  static const int kCameraFieldNumber = 4;
-  ::google::protobuf::int32 camera() const;
-  void set_camera(::google::protobuf::int32 value);
-
-  // optional int32 lane_id = 5;
-  bool has_lane_id() const;
-  void clear_lane_id();
-  static const int kLaneIdFieldNumber = 5;
-  ::google::protobuf::int32 lane_id() const;
-  void set_lane_id(::google::protobuf::int32 value);
-
-  // @@protoc_insertion_point(class_scope:vision.IllegalCarWarn2)
- private:
-  class HasBitSetters;
-
-  // helper for ByteSizeLong()
-  size_t RequiredFieldsByteSizeFallback() const;
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::HasBits<1> _has_bits_;
-  mutable ::google::protobuf::internal::CachedSize _cached_size_;
-  ::google::protobuf::int32 object_id_;
-  ::google::protobuf::int32 x_;
-  ::google::protobuf::int32 y_;
-  ::google::protobuf::int32 camera_;
-  ::google::protobuf::int32 lane_id_;
   friend struct ::TableStruct_vision_2eproto;
 };
 // -------------------------------------------------------------------
@@ -1263,17 +1259,17 @@ class Obstacles final :
 
   // accessors -------------------------------------------------------
 
-  // repeated .vision.Obstacle obstacle = 2;
-  int obstacle_size() const;
-  void clear_obstacle();
-  static const int kObstacleFieldNumber = 2;
-  ::vision::Obstacle* mutable_obstacle(int index);
+  // repeated .vision.Obstacle array = 2;
+  int array_size() const;
+  void clear_array();
+  static const int kArrayFieldNumber = 2;
+  ::vision::Obstacle* mutable_array(int index);
   ::google::protobuf::RepeatedPtrField< ::vision::Obstacle >*
-      mutable_obstacle();
-  const ::vision::Obstacle& obstacle(int index) const;
-  ::vision::Obstacle* add_obstacle();
+      mutable_array();
+  const ::vision::Obstacle& array(int index) const;
+  ::vision::Obstacle* add_array();
   const ::google::protobuf::RepeatedPtrField< ::vision::Obstacle >&
-      obstacle() const;
+      array() const;
 
   // required .vision.ID id = 1;
   bool has_id() const;
@@ -1289,7 +1285,7 @@ class Obstacles final :
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::vision::Obstacle > obstacle_;
+  ::google::protobuf::RepeatedPtrField< ::vision::Obstacle > array_;
   int id_;
   friend struct ::TableStruct_vision_2eproto;
 };
@@ -1432,25 +1428,25 @@ class AvailableAreas final :
 };
 // -------------------------------------------------------------------
 
-class IllegalCarWarns2 final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:vision.IllegalCarWarns2) */ {
+class IllegalCarWarn final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:vision.IllegalCarWarn) */ {
  public:
-  IllegalCarWarns2();
-  virtual ~IllegalCarWarns2();
+  IllegalCarWarn();
+  virtual ~IllegalCarWarn();
 
-  IllegalCarWarns2(const IllegalCarWarns2& from);
+  IllegalCarWarn(const IllegalCarWarn& from);
 
-  inline IllegalCarWarns2& operator=(const IllegalCarWarns2& from) {
+  inline IllegalCarWarn& operator=(const IllegalCarWarn& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  IllegalCarWarns2(IllegalCarWarns2&& from) noexcept
-    : IllegalCarWarns2() {
+  IllegalCarWarn(IllegalCarWarn&& from) noexcept
+    : IllegalCarWarn() {
     *this = ::std::move(from);
   }
 
-  inline IllegalCarWarns2& operator=(IllegalCarWarns2&& from) noexcept {
+  inline IllegalCarWarn& operator=(IllegalCarWarn&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -1469,34 +1465,34 @@ class IllegalCarWarns2 final :
   static const ::google::protobuf::Descriptor* descriptor() {
     return default_instance().GetDescriptor();
   }
-  static const IllegalCarWarns2& default_instance();
+  static const IllegalCarWarn& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const IllegalCarWarns2* internal_default_instance() {
-    return reinterpret_cast<const IllegalCarWarns2*>(
-               &_IllegalCarWarns2_default_instance_);
+  static inline const IllegalCarWarn* internal_default_instance() {
+    return reinterpret_cast<const IllegalCarWarn*>(
+               &_IllegalCarWarn_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     8;
 
-  void Swap(IllegalCarWarns2* other);
-  friend void swap(IllegalCarWarns2& a, IllegalCarWarns2& b) {
+  void Swap(IllegalCarWarn* other);
+  friend void swap(IllegalCarWarn& a, IllegalCarWarn& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline IllegalCarWarns2* New() const final {
-    return CreateMaybeMessage<IllegalCarWarns2>(nullptr);
+  inline IllegalCarWarn* New() const final {
+    return CreateMaybeMessage<IllegalCarWarn>(nullptr);
   }
 
-  IllegalCarWarns2* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<IllegalCarWarns2>(arena);
+  IllegalCarWarn* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<IllegalCarWarn>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const IllegalCarWarns2& from);
-  void MergeFrom(const IllegalCarWarns2& from);
+  void CopyFrom(const IllegalCarWarn& from);
+  void MergeFrom(const IllegalCarWarn& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -1517,10 +1513,10 @@ class IllegalCarWarns2 final :
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(IllegalCarWarns2* other);
+  void InternalSwap(IllegalCarWarn* other);
   friend class ::google::protobuf::internal::AnyMetadata;
   static ::google::protobuf::StringPiece FullMessageName() {
-    return "vision.IllegalCarWarns2";
+    return "vision.IllegalCarWarn";
   }
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
@@ -1537,153 +1533,16 @@ class IllegalCarWarns2 final :
 
   // accessors -------------------------------------------------------
 
-  // repeated .vision.IllegalCarWarn2 llegal = 2;
-  int llegal_size() const;
-  void clear_llegal();
-  static const int kLlegalFieldNumber = 2;
-  ::vision::IllegalCarWarn2* mutable_llegal(int index);
-  ::google::protobuf::RepeatedPtrField< ::vision::IllegalCarWarn2 >*
-      mutable_llegal();
-  const ::vision::IllegalCarWarn2& llegal(int index) const;
-  ::vision::IllegalCarWarn2* add_llegal();
-  const ::google::protobuf::RepeatedPtrField< ::vision::IllegalCarWarn2 >&
-      llegal() const;
-
-  // required .vision.ID id = 1;
-  bool has_id() const;
-  void clear_id();
-  static const int kIdFieldNumber = 1;
-  ::vision::ID id() const;
-  void set_id(::vision::ID value);
-
-  // @@protoc_insertion_point(class_scope:vision.IllegalCarWarns2)
- private:
-  class HasBitSetters;
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::HasBits<1> _has_bits_;
-  mutable ::google::protobuf::internal::CachedSize _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::vision::IllegalCarWarn2 > llegal_;
-  int id_;
-  friend struct ::TableStruct_vision_2eproto;
-};
-// -------------------------------------------------------------------
-
-class ThrowingObj final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:vision.ThrowingObj) */ {
- public:
-  ThrowingObj();
-  virtual ~ThrowingObj();
-
-  ThrowingObj(const ThrowingObj& from);
-
-  inline ThrowingObj& operator=(const ThrowingObj& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  ThrowingObj(ThrowingObj&& from) noexcept
-    : ThrowingObj() {
-    *this = ::std::move(from);
-  }
-
-  inline ThrowingObj& operator=(ThrowingObj&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor() {
-    return default_instance().GetDescriptor();
-  }
-  static const ThrowingObj& default_instance();
-
-  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const ThrowingObj* internal_default_instance() {
-    return reinterpret_cast<const ThrowingObj*>(
-               &_ThrowingObj_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    9;
-
-  void Swap(ThrowingObj* other);
-  friend void swap(ThrowingObj& a, ThrowingObj& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline ThrowingObj* New() const final {
-    return CreateMaybeMessage<ThrowingObj>(nullptr);
-  }
-
-  ThrowingObj* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<ThrowingObj>(arena);
-  }
-  void CopyFrom(const ::google::protobuf::Message& from) final;
-  void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const ThrowingObj& from);
-  void MergeFrom(const ThrowingObj& from);
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
-  #else
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) final;
-  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const final;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      ::google::protobuf::uint8* target) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  inline void SharedCtor();
-  inline void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(ThrowingObj* other);
-  friend class ::google::protobuf::internal::AnyMetadata;
-  static ::google::protobuf::StringPiece FullMessageName() {
-    return "vision.ThrowingObj";
-  }
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return nullptr;
-  }
-  inline void* MaybeArenaPtr() const {
-    return nullptr;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // repeated .vision.Obstacle array = 2;
+  // repeated .vision.AbnormalCar array = 2;
   int array_size() const;
   void clear_array();
   static const int kArrayFieldNumber = 2;
-  ::vision::Obstacle* mutable_array(int index);
-  ::google::protobuf::RepeatedPtrField< ::vision::Obstacle >*
+  ::vision::AbnormalCar* mutable_array(int index);
+  ::google::protobuf::RepeatedPtrField< ::vision::AbnormalCar >*
       mutable_array();
-  const ::vision::Obstacle& array(int index) const;
-  ::vision::Obstacle* add_array();
-  const ::google::protobuf::RepeatedPtrField< ::vision::Obstacle >&
+  const ::vision::AbnormalCar& array(int index) const;
+  ::vision::AbnormalCar* add_array();
+  const ::google::protobuf::RepeatedPtrField< ::vision::AbnormalCar >&
       array() const;
 
   // required .vision.ID id = 1;
@@ -1693,38 +1552,38 @@ class ThrowingObj final :
   ::vision::ID id() const;
   void set_id(::vision::ID value);
 
-  // @@protoc_insertion_point(class_scope:vision.ThrowingObj)
+  // @@protoc_insertion_point(class_scope:vision.IllegalCarWarn)
  private:
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::vision::Obstacle > array_;
+  ::google::protobuf::RepeatedPtrField< ::vision::AbnormalCar > array_;
   int id_;
   friend struct ::TableStruct_vision_2eproto;
 };
 // -------------------------------------------------------------------
 
-class Seeing final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:vision.Seeing) */ {
+class Visibility final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:vision.Visibility) */ {
  public:
-  Seeing();
-  virtual ~Seeing();
+  Visibility();
+  virtual ~Visibility();
 
-  Seeing(const Seeing& from);
+  Visibility(const Visibility& from);
 
-  inline Seeing& operator=(const Seeing& from) {
+  inline Visibility& operator=(const Visibility& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  Seeing(Seeing&& from) noexcept
-    : Seeing() {
+  Visibility(Visibility&& from) noexcept
+    : Visibility() {
     *this = ::std::move(from);
   }
 
-  inline Seeing& operator=(Seeing&& from) noexcept {
+  inline Visibility& operator=(Visibility&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -1743,34 +1602,34 @@ class Seeing final :
   static const ::google::protobuf::Descriptor* descriptor() {
     return default_instance().GetDescriptor();
   }
-  static const Seeing& default_instance();
+  static const Visibility& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const Seeing* internal_default_instance() {
-    return reinterpret_cast<const Seeing*>(
-               &_Seeing_default_instance_);
+  static inline const Visibility* internal_default_instance() {
+    return reinterpret_cast<const Visibility*>(
+               &_Visibility_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    9;
 
-  void Swap(Seeing* other);
-  friend void swap(Seeing& a, Seeing& b) {
+  void Swap(Visibility* other);
+  friend void swap(Visibility& a, Visibility& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline Seeing* New() const final {
-    return CreateMaybeMessage<Seeing>(nullptr);
+  inline Visibility* New() const final {
+    return CreateMaybeMessage<Visibility>(nullptr);
   }
 
-  Seeing* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<Seeing>(arena);
+  Visibility* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<Visibility>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const Seeing& from);
-  void MergeFrom(const Seeing& from);
+  void CopyFrom(const Visibility& from);
+  void MergeFrom(const Visibility& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -1791,10 +1650,10 @@ class Seeing final :
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(Seeing* other);
+  void InternalSwap(Visibility* other);
   friend class ::google::protobuf::internal::AnyMetadata;
   static ::google::protobuf::StringPiece FullMessageName() {
-    return "vision.Seeing";
+    return "vision.Visibility";
   }
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
@@ -1832,7 +1691,7 @@ class Seeing final :
   ::google::protobuf::int32 level() const;
   void set_level(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:vision.Seeing)
+  // @@protoc_insertion_point(class_scope:vision.Visibility)
  private:
   class HasBitSetters;
 
@@ -1894,7 +1753,7 @@ class SmokeWarn final :
                &_SmokeWarn_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    10;
 
   void Swap(SmokeWarn* other);
   friend void swap(SmokeWarn& a, SmokeWarn& b) {
@@ -2270,6 +2129,100 @@ inline void Obstacle::set_heading(::google::protobuf::int32 value) {
 
 // -------------------------------------------------------------------
 
+// AbnormalCar
+
+// required int32 object_id = 1;
+inline bool AbnormalCar::has_object_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void AbnormalCar::clear_object_id() {
+  object_id_ = 0;
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline ::google::protobuf::int32 AbnormalCar::object_id() const {
+  // @@protoc_insertion_point(field_get:vision.AbnormalCar.object_id)
+  return object_id_;
+}
+inline void AbnormalCar::set_object_id(::google::protobuf::int32 value) {
+  _has_bits_[0] |= 0x00000001u;
+  object_id_ = value;
+  // @@protoc_insertion_point(field_set:vision.AbnormalCar.object_id)
+}
+
+// required int32 x = 2;
+inline bool AbnormalCar::has_x() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void AbnormalCar::clear_x() {
+  x_ = 0;
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline ::google::protobuf::int32 AbnormalCar::x() const {
+  // @@protoc_insertion_point(field_get:vision.AbnormalCar.x)
+  return x_;
+}
+inline void AbnormalCar::set_x(::google::protobuf::int32 value) {
+  _has_bits_[0] |= 0x00000002u;
+  x_ = value;
+  // @@protoc_insertion_point(field_set:vision.AbnormalCar.x)
+}
+
+// required int32 y = 3;
+inline bool AbnormalCar::has_y() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void AbnormalCar::clear_y() {
+  y_ = 0;
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline ::google::protobuf::int32 AbnormalCar::y() const {
+  // @@protoc_insertion_point(field_get:vision.AbnormalCar.y)
+  return y_;
+}
+inline void AbnormalCar::set_y(::google::protobuf::int32 value) {
+  _has_bits_[0] |= 0x00000004u;
+  y_ = value;
+  // @@protoc_insertion_point(field_set:vision.AbnormalCar.y)
+}
+
+// optional int32 lane_id = 4;
+inline bool AbnormalCar::has_lane_id() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void AbnormalCar::clear_lane_id() {
+  lane_id_ = 0;
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline ::google::protobuf::int32 AbnormalCar::lane_id() const {
+  // @@protoc_insertion_point(field_get:vision.AbnormalCar.lane_id)
+  return lane_id_;
+}
+inline void AbnormalCar::set_lane_id(::google::protobuf::int32 value) {
+  _has_bits_[0] |= 0x00000008u;
+  lane_id_ = value;
+  // @@protoc_insertion_point(field_set:vision.AbnormalCar.lane_id)
+}
+
+// optional int32 camera = 5;
+inline bool AbnormalCar::has_camera() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void AbnormalCar::clear_camera() {
+  camera_ = 0;
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline ::google::protobuf::int32 AbnormalCar::camera() const {
+  // @@protoc_insertion_point(field_get:vision.AbnormalCar.camera)
+  return camera_;
+}
+inline void AbnormalCar::set_camera(::google::protobuf::int32 value) {
+  _has_bits_[0] |= 0x00000010u;
+  camera_ = value;
+  // @@protoc_insertion_point(field_set:vision.AbnormalCar.camera)
+}
+
+// -------------------------------------------------------------------
+
 // AvailableArea
 
 // required int32 object_id = 1;
@@ -2490,100 +2443,6 @@ inline void AvailableArea::set_y4(::google::protobuf::int32 value) {
 
 // -------------------------------------------------------------------
 
-// IllegalCarWarn2
-
-// required int32 object_id = 1;
-inline bool IllegalCarWarn2::has_object_id() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void IllegalCarWarn2::clear_object_id() {
-  object_id_ = 0;
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline ::google::protobuf::int32 IllegalCarWarn2::object_id() const {
-  // @@protoc_insertion_point(field_get:vision.IllegalCarWarn2.object_id)
-  return object_id_;
-}
-inline void IllegalCarWarn2::set_object_id(::google::protobuf::int32 value) {
-  _has_bits_[0] |= 0x00000001u;
-  object_id_ = value;
-  // @@protoc_insertion_point(field_set:vision.IllegalCarWarn2.object_id)
-}
-
-// required int32 x = 2;
-inline bool IllegalCarWarn2::has_x() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void IllegalCarWarn2::clear_x() {
-  x_ = 0;
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline ::google::protobuf::int32 IllegalCarWarn2::x() const {
-  // @@protoc_insertion_point(field_get:vision.IllegalCarWarn2.x)
-  return x_;
-}
-inline void IllegalCarWarn2::set_x(::google::protobuf::int32 value) {
-  _has_bits_[0] |= 0x00000002u;
-  x_ = value;
-  // @@protoc_insertion_point(field_set:vision.IllegalCarWarn2.x)
-}
-
-// required int32 y = 3;
-inline bool IllegalCarWarn2::has_y() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void IllegalCarWarn2::clear_y() {
-  y_ = 0;
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline ::google::protobuf::int32 IllegalCarWarn2::y() const {
-  // @@protoc_insertion_point(field_get:vision.IllegalCarWarn2.y)
-  return y_;
-}
-inline void IllegalCarWarn2::set_y(::google::protobuf::int32 value) {
-  _has_bits_[0] |= 0x00000004u;
-  y_ = value;
-  // @@protoc_insertion_point(field_set:vision.IllegalCarWarn2.y)
-}
-
-// required int32 camera = 4;
-inline bool IllegalCarWarn2::has_camera() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void IllegalCarWarn2::clear_camera() {
-  camera_ = 0;
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline ::google::protobuf::int32 IllegalCarWarn2::camera() const {
-  // @@protoc_insertion_point(field_get:vision.IllegalCarWarn2.camera)
-  return camera_;
-}
-inline void IllegalCarWarn2::set_camera(::google::protobuf::int32 value) {
-  _has_bits_[0] |= 0x00000008u;
-  camera_ = value;
-  // @@protoc_insertion_point(field_set:vision.IllegalCarWarn2.camera)
-}
-
-// optional int32 lane_id = 5;
-inline bool IllegalCarWarn2::has_lane_id() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
-inline void IllegalCarWarn2::clear_lane_id() {
-  lane_id_ = 0;
-  _has_bits_[0] &= ~0x00000010u;
-}
-inline ::google::protobuf::int32 IllegalCarWarn2::lane_id() const {
-  // @@protoc_insertion_point(field_get:vision.IllegalCarWarn2.lane_id)
-  return lane_id_;
-}
-inline void IllegalCarWarn2::set_lane_id(::google::protobuf::int32 value) {
-  _has_bits_[0] |= 0x00000010u;
-  lane_id_ = value;
-  // @@protoc_insertion_point(field_set:vision.IllegalCarWarn2.lane_id)
-}
-
-// -------------------------------------------------------------------
-
 // Base
 
 // required .vision.ID id = 1;
@@ -2681,34 +2540,34 @@ inline void Obstacles::set_id(::vision::ID value) {
   // @@protoc_insertion_point(field_set:vision.Obstacles.id)
 }
 
-// repeated .vision.Obstacle obstacle = 2;
-inline int Obstacles::obstacle_size() const {
-  return obstacle_.size();
+// repeated .vision.Obstacle array = 2;
+inline int Obstacles::array_size() const {
+  return array_.size();
 }
-inline void Obstacles::clear_obstacle() {
-  obstacle_.Clear();
+inline void Obstacles::clear_array() {
+  array_.Clear();
 }
-inline ::vision::Obstacle* Obstacles::mutable_obstacle(int index) {
-  // @@protoc_insertion_point(field_mutable:vision.Obstacles.obstacle)
-  return obstacle_.Mutable(index);
+inline ::vision::Obstacle* Obstacles::mutable_array(int index) {
+  // @@protoc_insertion_point(field_mutable:vision.Obstacles.array)
+  return array_.Mutable(index);
 }
 inline ::google::protobuf::RepeatedPtrField< ::vision::Obstacle >*
-Obstacles::mutable_obstacle() {
-  // @@protoc_insertion_point(field_mutable_list:vision.Obstacles.obstacle)
-  return &obstacle_;
+Obstacles::mutable_array() {
+  // @@protoc_insertion_point(field_mutable_list:vision.Obstacles.array)
+  return &array_;
 }
-inline const ::vision::Obstacle& Obstacles::obstacle(int index) const {
-  // @@protoc_insertion_point(field_get:vision.Obstacles.obstacle)
-  return obstacle_.Get(index);
+inline const ::vision::Obstacle& Obstacles::array(int index) const {
+  // @@protoc_insertion_point(field_get:vision.Obstacles.array)
+  return array_.Get(index);
 }
-inline ::vision::Obstacle* Obstacles::add_obstacle() {
-  // @@protoc_insertion_point(field_add:vision.Obstacles.obstacle)
-  return obstacle_.Add();
+inline ::vision::Obstacle* Obstacles::add_array() {
+  // @@protoc_insertion_point(field_add:vision.Obstacles.array)
+  return array_.Add();
 }
 inline const ::google::protobuf::RepeatedPtrField< ::vision::Obstacle >&
-Obstacles::obstacle() const {
-  // @@protoc_insertion_point(field_list:vision.Obstacles.obstacle)
-  return obstacle_;
+Obstacles::array() const {
+  // @@protoc_insertion_point(field_list:vision.Obstacles.array)
+  return array_;
 }
 
 // -------------------------------------------------------------------
@@ -2766,167 +2625,114 @@ AvailableAreas::area() const {
 
 // -------------------------------------------------------------------
 
-// IllegalCarWarns2
+// IllegalCarWarn
 
 // required .vision.ID id = 1;
-inline bool IllegalCarWarns2::has_id() const {
+inline bool IllegalCarWarn::has_id() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void IllegalCarWarns2::clear_id() {
+inline void IllegalCarWarn::clear_id() {
   id_ = 0;
   _has_bits_[0] &= ~0x00000001u;
 }
-inline ::vision::ID IllegalCarWarns2::id() const {
-  // @@protoc_insertion_point(field_get:vision.IllegalCarWarns2.id)
+inline ::vision::ID IllegalCarWarn::id() const {
+  // @@protoc_insertion_point(field_get:vision.IllegalCarWarn.id)
   return static_cast< ::vision::ID >(id_);
 }
-inline void IllegalCarWarns2::set_id(::vision::ID value) {
+inline void IllegalCarWarn::set_id(::vision::ID value) {
   assert(::vision::ID_IsValid(value));
   _has_bits_[0] |= 0x00000001u;
   id_ = value;
-  // @@protoc_insertion_point(field_set:vision.IllegalCarWarns2.id)
+  // @@protoc_insertion_point(field_set:vision.IllegalCarWarn.id)
 }
 
-// repeated .vision.IllegalCarWarn2 llegal = 2;
-inline int IllegalCarWarns2::llegal_size() const {
-  return llegal_.size();
-}
-inline void IllegalCarWarns2::clear_llegal() {
-  llegal_.Clear();
-}
-inline ::vision::IllegalCarWarn2* IllegalCarWarns2::mutable_llegal(int index) {
-  // @@protoc_insertion_point(field_mutable:vision.IllegalCarWarns2.llegal)
-  return llegal_.Mutable(index);
-}
-inline ::google::protobuf::RepeatedPtrField< ::vision::IllegalCarWarn2 >*
-IllegalCarWarns2::mutable_llegal() {
-  // @@protoc_insertion_point(field_mutable_list:vision.IllegalCarWarns2.llegal)
-  return &llegal_;
-}
-inline const ::vision::IllegalCarWarn2& IllegalCarWarns2::llegal(int index) const {
-  // @@protoc_insertion_point(field_get:vision.IllegalCarWarns2.llegal)
-  return llegal_.Get(index);
-}
-inline ::vision::IllegalCarWarn2* IllegalCarWarns2::add_llegal() {
-  // @@protoc_insertion_point(field_add:vision.IllegalCarWarns2.llegal)
-  return llegal_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::vision::IllegalCarWarn2 >&
-IllegalCarWarns2::llegal() const {
-  // @@protoc_insertion_point(field_list:vision.IllegalCarWarns2.llegal)
-  return llegal_;
-}
-
-// -------------------------------------------------------------------
-
-// ThrowingObj
-
-// required .vision.ID id = 1;
-inline bool ThrowingObj::has_id() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void ThrowingObj::clear_id() {
-  id_ = 0;
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline ::vision::ID ThrowingObj::id() const {
-  // @@protoc_insertion_point(field_get:vision.ThrowingObj.id)
-  return static_cast< ::vision::ID >(id_);
-}
-inline void ThrowingObj::set_id(::vision::ID value) {
-  assert(::vision::ID_IsValid(value));
-  _has_bits_[0] |= 0x00000001u;
-  id_ = value;
-  // @@protoc_insertion_point(field_set:vision.ThrowingObj.id)
-}
-
-// repeated .vision.Obstacle array = 2;
-inline int ThrowingObj::array_size() const {
+// repeated .vision.AbnormalCar array = 2;
+inline int IllegalCarWarn::array_size() const {
   return array_.size();
 }
-inline void ThrowingObj::clear_array() {
+inline void IllegalCarWarn::clear_array() {
   array_.Clear();
 }
-inline ::vision::Obstacle* ThrowingObj::mutable_array(int index) {
-  // @@protoc_insertion_point(field_mutable:vision.ThrowingObj.array)
+inline ::vision::AbnormalCar* IllegalCarWarn::mutable_array(int index) {
+  // @@protoc_insertion_point(field_mutable:vision.IllegalCarWarn.array)
   return array_.Mutable(index);
 }
-inline ::google::protobuf::RepeatedPtrField< ::vision::Obstacle >*
-ThrowingObj::mutable_array() {
-  // @@protoc_insertion_point(field_mutable_list:vision.ThrowingObj.array)
+inline ::google::protobuf::RepeatedPtrField< ::vision::AbnormalCar >*
+IllegalCarWarn::mutable_array() {
+  // @@protoc_insertion_point(field_mutable_list:vision.IllegalCarWarn.array)
   return &array_;
 }
-inline const ::vision::Obstacle& ThrowingObj::array(int index) const {
-  // @@protoc_insertion_point(field_get:vision.ThrowingObj.array)
+inline const ::vision::AbnormalCar& IllegalCarWarn::array(int index) const {
+  // @@protoc_insertion_point(field_get:vision.IllegalCarWarn.array)
   return array_.Get(index);
 }
-inline ::vision::Obstacle* ThrowingObj::add_array() {
-  // @@protoc_insertion_point(field_add:vision.ThrowingObj.array)
+inline ::vision::AbnormalCar* IllegalCarWarn::add_array() {
+  // @@protoc_insertion_point(field_add:vision.IllegalCarWarn.array)
   return array_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::vision::Obstacle >&
-ThrowingObj::array() const {
-  // @@protoc_insertion_point(field_list:vision.ThrowingObj.array)
+inline const ::google::protobuf::RepeatedPtrField< ::vision::AbnormalCar >&
+IllegalCarWarn::array() const {
+  // @@protoc_insertion_point(field_list:vision.IllegalCarWarn.array)
   return array_;
 }
 
 // -------------------------------------------------------------------
 
-// Seeing
+// Visibility
 
 // required .vision.ID id = 1;
-inline bool Seeing::has_id() const {
+inline bool Visibility::has_id() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void Seeing::clear_id() {
+inline void Visibility::clear_id() {
   id_ = 0;
   _has_bits_[0] &= ~0x00000002u;
 }
-inline ::vision::ID Seeing::id() const {
-  // @@protoc_insertion_point(field_get:vision.Seeing.id)
+inline ::vision::ID Visibility::id() const {
+  // @@protoc_insertion_point(field_get:vision.Visibility.id)
   return static_cast< ::vision::ID >(id_);
 }
-inline void Seeing::set_id(::vision::ID value) {
+inline void Visibility::set_id(::vision::ID value) {
   assert(::vision::ID_IsValid(value));
   _has_bits_[0] |= 0x00000002u;
   id_ = value;
-  // @@protoc_insertion_point(field_set:vision.Seeing.id)
+  // @@protoc_insertion_point(field_set:vision.Visibility.id)
 }
 
 // required double distance = 2;
-inline bool Seeing::has_distance() const {
+inline bool Visibility::has_distance() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void Seeing::clear_distance() {
+inline void Visibility::clear_distance() {
   distance_ = 0;
   _has_bits_[0] &= ~0x00000001u;
 }
-inline double Seeing::distance() const {
-  // @@protoc_insertion_point(field_get:vision.Seeing.distance)
+inline double Visibility::distance() const {
+  // @@protoc_insertion_point(field_get:vision.Visibility.distance)
   return distance_;
 }
-inline void Seeing::set_distance(double value) {
+inline void Visibility::set_distance(double value) {
   _has_bits_[0] |= 0x00000001u;
   distance_ = value;
-  // @@protoc_insertion_point(field_set:vision.Seeing.distance)
+  // @@protoc_insertion_point(field_set:vision.Visibility.distance)
 }
 
 // required int32 level = 3;
-inline bool Seeing::has_level() const {
+inline bool Visibility::has_level() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void Seeing::clear_level() {
+inline void Visibility::clear_level() {
   level_ = 0;
   _has_bits_[0] &= ~0x00000004u;
 }
-inline ::google::protobuf::int32 Seeing::level() const {
-  // @@protoc_insertion_point(field_get:vision.Seeing.level)
+inline ::google::protobuf::int32 Visibility::level() const {
+  // @@protoc_insertion_point(field_get:vision.Visibility.level)
   return level_;
 }
-inline void Seeing::set_level(::google::protobuf::int32 value) {
+inline void Visibility::set_level(::google::protobuf::int32 value) {
   _has_bits_[0] |= 0x00000004u;
   level_ = value;
-  // @@protoc_insertion_point(field_set:vision.Seeing.level)
+  // @@protoc_insertion_point(field_set:vision.Visibility.level)
 }
 
 // -------------------------------------------------------------------
@@ -2973,8 +2779,6 @@ inline void SmokeWarn::set_warn(bool value) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
-// -------------------------------------------------------------------
-
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
