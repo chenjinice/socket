@@ -196,6 +196,8 @@ int main(int argc ,char **argv)
 	usleep(5000);
 
     }
+
+    s.stop();
     return 0;
 }
 

@@ -12,7 +12,7 @@
 static void *read_thread(void *arg);
 
 
-// tcp读取数据最大长度
+// buffer大小
 #define BUFFER_SIZE 10240
 
 static char *m_ip = NULL;
