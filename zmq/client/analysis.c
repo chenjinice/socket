@@ -164,7 +164,6 @@ static void road_danger_fun(uint8_t *buffer,int length)
 // 隧道内火焰与烟雾预警
 static void smoke_fun(uint8_t *buffer,int length)
 {
-    int i;
     Vision__SmokeWarn *c = vision__smoke_warn__unpack(NULL,length,buffer);
     if(c == NULL){
         printf("vclient : smokeWarn unpack failed \n");
