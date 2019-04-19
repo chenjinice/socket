@@ -10,10 +10,10 @@ LIB_DIR += -L/usr/local/lib
 
 
 all:vision.pb.cc
-	g++ -std=c++11  $(SRC) $(LIB_DIR) $(LIB) -o a.out
+	g++ -std=c++11  $(SRC) $(LIB_DIR) $(LIB) -o send.out
 
 clean:	
-	rm a.out
+	-rm send.out
 
 vision.pb.cc:vision.proto
 	protoc --cpp_out=. vision.proto

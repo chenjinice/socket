@@ -7,16 +7,14 @@ enum ID{
 	DEFAULT				= 0;  // 无用
 	PEDESTRIAN_D			= 1;  // 行人与动物闯入检测
 	ILLEGAL_V1			= 2;  // 违章车辆1(违停)
-	CAMERA_CAL			= 3;  // 超视距视频感知(相机标定信息)
-	ROCKFALL_D			= 4;  // 落石/抛撒物检测
-        VISIBILITY			= 5;  // 白天能见度检测
-	AVAILABLE_AREA			= 6;  // 可行驶区域检测	
-        ABNORMAL_CAR			= 7;  // 异常车辆检测
-	ILLEGAL_V2			= 8;  // 违章车辆2(应急车道)
-	TRAFFIC_STATUS			= 9;  // 交通态势感知
-	BACKWARD_DRIVING		= 10; // 逆向行驶告警
-	ROAD_DANGER			= 11; // 道路危险状况提醒(抛洒物)
-	FIRE_SMOKE			= 12; // 隧道内火焰与烟雾预警
+        VISIBILITY			= 3;  // 白天能见度检测
+	AVAILABLE_AREA			= 4;  // 可行驶区域检测	
+        ABNORMAL_CAR			= 5;  // 异常车辆检测(静止)
+	ILLEGAL_V2			= 6;  // 违章车辆2(应急车道)
+	TRAFFIC_STATUS			= 7;  // 交通态势感知
+	BACKWARD_DRIVING		= 8;  // 逆向行驶告警
+	ROAD_DANGER			= 9;  // 道路危险状况提醒(抛洒物)
+	FIRE_SMOKE			= 10; // 隧道内火焰与烟雾预警
 }
 
 // 视觉捕捉到的物体类型
@@ -31,8 +29,8 @@ enum TYPE{
 message Pedestrian {  
 	required int32 object_id = 1;			
 	required TYPE  object_type = 2;	
-	required int32 x = 3;		// 经度
-	required int32 y = 4; 		// 纬度
+	required int32 lng = 3;		// 经度
+	required int32 lat = 4; 	// 纬度
 	required int32 camera = 5;	// 哪个相机（1,2,3,4）
 	optional int32 if_at_lane = 6;	// 是否在车道
 	optional int32 lane_id = 7;	// 车道id
@@ -42,8 +40,8 @@ message Pedestrian {
 // 单个障碍物
 message Obstacle {  
 	required int32 object_id = 1;			
-	required int32 x = 2;		// 经度
-	required int32 y = 3;		// 纬度
+	required int32 lng = 2;		// 经度
+	required int32 lat = 3;		// 纬度
 	required int32 camera = 4;	// 哪个相机（1,2,3,4）
 	optional int32 if_at_lane = 5;	// 是否在车道
 	optional int32 lane_id = 6;	// 车道id
@@ -53,8 +51,8 @@ message Obstacle {
 // 单个车辆(异常车辆)
 message AbnormalCar {
         required int32 object_id = 1;
-        required int32 x = 2;		// 经度
-        required int32 y = 3;		// 纬度
+        required int32 lng = 2;		// 经度
+        required int32 lat = 3;		// 纬度
         optional int32 lane_id = 4;	// 车道id
         optional int32 camera = 5;	// 哪个相机（1,2,3,4）
 
@@ -63,17 +61,17 @@ message AbnormalCar {
 // 单个可行驶区域
 message AvailableArea {  
 	required int32 object_id = 1;			
-	required int32 x1 = 2;		// 第一个点经度
-	required int32 y1 = 3;		// 第一个点纬度
-	required int32 x2 = 4;		// 第二个点经度
-	required int32 y2 = 5;		// 第二个点纬度
-	required int32 camera = 6;	// 哪个相机（1,2,3,4）
-	optional int32 lane_id = 7;	// 车道id
-	optional int32 heading = 8;    
-	required int32 x3 = 9;		// 第三个点经度
-	required int32 y3 = 10;		// 第三个点纬度
-	required int32 x4 = 11;		// 第四个点经度
-	required int32 y4 = 12;		// 第四个点纬度
+	required int32 lng1 = 2;		// 第一个点经度
+	required int32 lat1 = 3;		// 第一个点纬度
+	required int32 lng2 = 4;		// 第二个点经度
+	required int32 lat2 = 5;		// 第二个点纬度
+	required int32 lng3 = 6;		// 第三个点经度
+	required int32 lat3 = 7;		// 第三个点纬度
+	required int32 lng4 = 8;		// 第四个点经度
+	required int32 lat4 = 9;		// 第四个点纬度
+	required int32 camera = 10;		// 哪个相机（1,2,3,4）
+	optional int32 lane_id = 11;		// 车道id
+	optional int32 heading = 12;    
 } 
 
 

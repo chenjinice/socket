@@ -96,12 +96,13 @@ int Vserver::check_interval(struct timeval *tv,int ms)
 
 
 // 发送行人
-void Vserver::send_data(vision::Crowd &msg, int ms)	
+void Vserver::send_data(vision::Crowd &msg,struct timeval *tv, int ms)
 {	
-    static struct timeval s_tv={0};
     if(msg.pedestrian_size() == 0)return;
     // 限制一下发送频率
-    if(check_interval(&s_tv,ms))return;
+    if(tv != NULL){
+        if(check_interval(tv,ms))return;
+    }
 
     int len = 0;
     uint8_t buffer[BUFFER_SIZE];
@@ -113,12 +114,13 @@ void Vserver::send_data(vision::Crowd &msg, int ms)
 }	
 
 //发送障碍物
-void Vserver::send_data(vision::Obstacles &msg,int ms)	
+void Vserver::send_data(vision::Obstacles &msg,struct timeval *tv,int ms)
 {                                 	
-    static struct timeval s_tv={0};
     if(msg.array_size() == 0)return;
     // 限制一下发送频率
-    if(check_interval(&s_tv,ms))return;
+    if(tv != NULL){
+        if(check_interval(tv,ms))return;
+    }
 
     int len = 0;
     uint8_t buffer[BUFFER_SIZE];
@@ -129,12 +131,13 @@ void Vserver::send_data(vision::Obstacles &msg,int ms)
 }	
 
 //发送可行驶区域
-void Vserver::send_data(vision::AvailableAreas &msg, int ms)	
+void Vserver::send_data(vision::AvailableAreas &msg,struct timeval *tv, int ms)
 {	
-    static struct timeval s_tv={0};
     if(msg.area_size() == 0)return;
     // 限制一下发送频率
-    if(check_interval(&s_tv,ms))return;
+    if(tv != NULL){
+        if(check_interval(tv,ms))return;
+    }
 
     int len = 0;
     uint8_t buffer[BUFFER_SIZE];
@@ -145,11 +148,12 @@ void Vserver::send_data(vision::AvailableAreas &msg, int ms)
 }	
 
 // 发送能见度
-void Vserver::send_data(vision::Visibility &msg, int ms)	
+void Vserver::send_data(vision::Visibility &msg,struct timeval *tv, int ms)
 {	
-    static struct timeval s_tv={0};
     // 限制一下发送频率
-    if(check_interval(&s_tv,ms))return;
+    if(tv != NULL){
+        if(check_interval(tv,ms))return;
+    }
 
     int len = 0;
     uint8_t buffer[BUFFER_SIZE];
@@ -159,12 +163,14 @@ void Vserver::send_data(vision::Visibility &msg, int ms)
     this->server_send(buffer,len);
 }	
 
-void Vserver::send_data(vision::SmokeWarn &msg, int ms)
+// 发送烟雾报警
+void Vserver::send_data(vision::SmokeWarn &msg,struct timeval *tv, int ms)
 {	
-    static struct timeval s_tv={0};
     if(msg.warn() == false)return;
     // 限制一下发送频率
-    if(check_interval(&s_tv,ms))return;
+    if(tv != NULL){
+        if(check_interval(tv,ms))return;
+    }
 
     int len = 0;
     uint8_t buffer[BUFFER_SIZE];
@@ -174,12 +180,14 @@ void Vserver::send_data(vision::SmokeWarn &msg, int ms)
     this->server_send(buffer,len);
 }	
 
-void Vserver::send_data(vision::IllegalCarWarn &msg, int ms)
+// 发送相关车辆
+void Vserver::send_data(vision::IllegalCarWarn &msg,struct timeval *tv, int ms)
 {	
-    static struct timeval s_tv={0};
     if(msg.array_size() == 0)return;
     // 限制一下发送频率
-    if(check_interval(&s_tv,ms))return;
+    if(tv != NULL){
+        if(check_interval(tv,ms))return;
+    }
 
     int len = 0;
     uint8_t buffer[BUFFER_SIZE];

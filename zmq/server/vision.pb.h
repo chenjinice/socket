@@ -112,16 +112,14 @@ enum ID {
   DEFAULT = 0,
   PEDESTRIAN_D = 1,
   ILLEGAL_V1 = 2,
-  CAMERA_CAL = 3,
-  ROCKFALL_D = 4,
-  VISIBILITY = 5,
-  AVAILABLE_AREA = 6,
-  ABNORMAL_CAR = 7,
-  ILLEGAL_V2 = 8,
-  TRAFFIC_STATUS = 9,
-  BACKWARD_DRIVING = 10,
-  ROAD_DANGER = 11,
-  FIRE_SMOKE = 12
+  VISIBILITY = 3,
+  AVAILABLE_AREA = 4,
+  ABNORMAL_CAR = 5,
+  ILLEGAL_V2 = 6,
+  TRAFFIC_STATUS = 7,
+  BACKWARD_DRIVING = 8,
+  ROAD_DANGER = 9,
+  FIRE_SMOKE = 10
 };
 bool ID_IsValid(int value);
 constexpr ID ID_MIN = DEFAULT;
@@ -280,19 +278,19 @@ class Pedestrian final :
   ::vision::TYPE object_type() const;
   void set_object_type(::vision::TYPE value);
 
-  // required int32 x = 3;
-  bool has_x() const;
-  void clear_x();
-  static const int kXFieldNumber = 3;
-  ::google::protobuf::int32 x() const;
-  void set_x(::google::protobuf::int32 value);
+  // required int32 lng = 3;
+  bool has_lng() const;
+  void clear_lng();
+  static const int kLngFieldNumber = 3;
+  ::google::protobuf::int32 lng() const;
+  void set_lng(::google::protobuf::int32 value);
 
-  // required int32 y = 4;
-  bool has_y() const;
-  void clear_y();
-  static const int kYFieldNumber = 4;
-  ::google::protobuf::int32 y() const;
-  void set_y(::google::protobuf::int32 value);
+  // required int32 lat = 4;
+  bool has_lat() const;
+  void clear_lat();
+  static const int kLatFieldNumber = 4;
+  ::google::protobuf::int32 lat() const;
+  void set_lat(::google::protobuf::int32 value);
 
   // required int32 camera = 5;
   bool has_camera() const;
@@ -334,8 +332,8 @@ class Pedestrian final :
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   ::google::protobuf::int32 object_id_;
   int object_type_;
-  ::google::protobuf::int32 x_;
-  ::google::protobuf::int32 y_;
+  ::google::protobuf::int32 lng_;
+  ::google::protobuf::int32 lat_;
   ::google::protobuf::int32 camera_;
   ::google::protobuf::int32 if_at_lane_;
   ::google::protobuf::int32 lane_id_;
@@ -456,19 +454,19 @@ class Obstacle final :
   ::google::protobuf::int32 object_id() const;
   void set_object_id(::google::protobuf::int32 value);
 
-  // required int32 x = 2;
-  bool has_x() const;
-  void clear_x();
-  static const int kXFieldNumber = 2;
-  ::google::protobuf::int32 x() const;
-  void set_x(::google::protobuf::int32 value);
+  // required int32 lng = 2;
+  bool has_lng() const;
+  void clear_lng();
+  static const int kLngFieldNumber = 2;
+  ::google::protobuf::int32 lng() const;
+  void set_lng(::google::protobuf::int32 value);
 
-  // required int32 y = 3;
-  bool has_y() const;
-  void clear_y();
-  static const int kYFieldNumber = 3;
-  ::google::protobuf::int32 y() const;
-  void set_y(::google::protobuf::int32 value);
+  // required int32 lat = 3;
+  bool has_lat() const;
+  void clear_lat();
+  static const int kLatFieldNumber = 3;
+  ::google::protobuf::int32 lat() const;
+  void set_lat(::google::protobuf::int32 value);
 
   // required int32 camera = 4;
   bool has_camera() const;
@@ -509,8 +507,8 @@ class Obstacle final :
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   ::google::protobuf::int32 object_id_;
-  ::google::protobuf::int32 x_;
-  ::google::protobuf::int32 y_;
+  ::google::protobuf::int32 lng_;
+  ::google::protobuf::int32 lat_;
   ::google::protobuf::int32 camera_;
   ::google::protobuf::int32 if_at_lane_;
   ::google::protobuf::int32 lane_id_;
@@ -631,19 +629,19 @@ class AbnormalCar final :
   ::google::protobuf::int32 object_id() const;
   void set_object_id(::google::protobuf::int32 value);
 
-  // required int32 x = 2;
-  bool has_x() const;
-  void clear_x();
-  static const int kXFieldNumber = 2;
-  ::google::protobuf::int32 x() const;
-  void set_x(::google::protobuf::int32 value);
+  // required int32 lng = 2;
+  bool has_lng() const;
+  void clear_lng();
+  static const int kLngFieldNumber = 2;
+  ::google::protobuf::int32 lng() const;
+  void set_lng(::google::protobuf::int32 value);
 
-  // required int32 y = 3;
-  bool has_y() const;
-  void clear_y();
-  static const int kYFieldNumber = 3;
-  ::google::protobuf::int32 y() const;
-  void set_y(::google::protobuf::int32 value);
+  // required int32 lat = 3;
+  bool has_lat() const;
+  void clear_lat();
+  static const int kLatFieldNumber = 3;
+  ::google::protobuf::int32 lat() const;
+  void set_lat(::google::protobuf::int32 value);
 
   // optional int32 lane_id = 4;
   bool has_lane_id() const;
@@ -670,8 +668,8 @@ class AbnormalCar final :
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   ::google::protobuf::int32 object_id_;
-  ::google::protobuf::int32 x_;
-  ::google::protobuf::int32 y_;
+  ::google::protobuf::int32 lng_;
+  ::google::protobuf::int32 lat_;
   ::google::protobuf::int32 lane_id_;
   ::google::protobuf::int32 camera_;
   friend struct ::TableStruct_vision_2eproto;
@@ -790,82 +788,82 @@ class AvailableArea final :
   ::google::protobuf::int32 object_id() const;
   void set_object_id(::google::protobuf::int32 value);
 
-  // required int32 x1 = 2;
-  bool has_x1() const;
-  void clear_x1();
-  static const int kX1FieldNumber = 2;
-  ::google::protobuf::int32 x1() const;
-  void set_x1(::google::protobuf::int32 value);
+  // required int32 lng1 = 2;
+  bool has_lng1() const;
+  void clear_lng1();
+  static const int kLng1FieldNumber = 2;
+  ::google::protobuf::int32 lng1() const;
+  void set_lng1(::google::protobuf::int32 value);
 
-  // required int32 y1 = 3;
-  bool has_y1() const;
-  void clear_y1();
-  static const int kY1FieldNumber = 3;
-  ::google::protobuf::int32 y1() const;
-  void set_y1(::google::protobuf::int32 value);
+  // required int32 lat1 = 3;
+  bool has_lat1() const;
+  void clear_lat1();
+  static const int kLat1FieldNumber = 3;
+  ::google::protobuf::int32 lat1() const;
+  void set_lat1(::google::protobuf::int32 value);
 
-  // required int32 x2 = 4;
-  bool has_x2() const;
-  void clear_x2();
-  static const int kX2FieldNumber = 4;
-  ::google::protobuf::int32 x2() const;
-  void set_x2(::google::protobuf::int32 value);
+  // required int32 lng2 = 4;
+  bool has_lng2() const;
+  void clear_lng2();
+  static const int kLng2FieldNumber = 4;
+  ::google::protobuf::int32 lng2() const;
+  void set_lng2(::google::protobuf::int32 value);
 
-  // required int32 y2 = 5;
-  bool has_y2() const;
-  void clear_y2();
-  static const int kY2FieldNumber = 5;
-  ::google::protobuf::int32 y2() const;
-  void set_y2(::google::protobuf::int32 value);
+  // required int32 lat2 = 5;
+  bool has_lat2() const;
+  void clear_lat2();
+  static const int kLat2FieldNumber = 5;
+  ::google::protobuf::int32 lat2() const;
+  void set_lat2(::google::protobuf::int32 value);
 
-  // required int32 camera = 6;
+  // required int32 lng3 = 6;
+  bool has_lng3() const;
+  void clear_lng3();
+  static const int kLng3FieldNumber = 6;
+  ::google::protobuf::int32 lng3() const;
+  void set_lng3(::google::protobuf::int32 value);
+
+  // required int32 lat3 = 7;
+  bool has_lat3() const;
+  void clear_lat3();
+  static const int kLat3FieldNumber = 7;
+  ::google::protobuf::int32 lat3() const;
+  void set_lat3(::google::protobuf::int32 value);
+
+  // required int32 lng4 = 8;
+  bool has_lng4() const;
+  void clear_lng4();
+  static const int kLng4FieldNumber = 8;
+  ::google::protobuf::int32 lng4() const;
+  void set_lng4(::google::protobuf::int32 value);
+
+  // required int32 lat4 = 9;
+  bool has_lat4() const;
+  void clear_lat4();
+  static const int kLat4FieldNumber = 9;
+  ::google::protobuf::int32 lat4() const;
+  void set_lat4(::google::protobuf::int32 value);
+
+  // required int32 camera = 10;
   bool has_camera() const;
   void clear_camera();
-  static const int kCameraFieldNumber = 6;
+  static const int kCameraFieldNumber = 10;
   ::google::protobuf::int32 camera() const;
   void set_camera(::google::protobuf::int32 value);
 
-  // optional int32 lane_id = 7;
+  // optional int32 lane_id = 11;
   bool has_lane_id() const;
   void clear_lane_id();
-  static const int kLaneIdFieldNumber = 7;
+  static const int kLaneIdFieldNumber = 11;
   ::google::protobuf::int32 lane_id() const;
   void set_lane_id(::google::protobuf::int32 value);
 
-  // optional int32 heading = 8;
+  // optional int32 heading = 12;
   bool has_heading() const;
   void clear_heading();
-  static const int kHeadingFieldNumber = 8;
+  static const int kHeadingFieldNumber = 12;
   ::google::protobuf::int32 heading() const;
   void set_heading(::google::protobuf::int32 value);
-
-  // required int32 x3 = 9;
-  bool has_x3() const;
-  void clear_x3();
-  static const int kX3FieldNumber = 9;
-  ::google::protobuf::int32 x3() const;
-  void set_x3(::google::protobuf::int32 value);
-
-  // required int32 y3 = 10;
-  bool has_y3() const;
-  void clear_y3();
-  static const int kY3FieldNumber = 10;
-  ::google::protobuf::int32 y3() const;
-  void set_y3(::google::protobuf::int32 value);
-
-  // required int32 x4 = 11;
-  bool has_x4() const;
-  void clear_x4();
-  static const int kX4FieldNumber = 11;
-  ::google::protobuf::int32 x4() const;
-  void set_x4(::google::protobuf::int32 value);
-
-  // required int32 y4 = 12;
-  bool has_y4() const;
-  void clear_y4();
-  static const int kY4FieldNumber = 12;
-  ::google::protobuf::int32 y4() const;
-  void set_y4(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:vision.AvailableArea)
  private:
@@ -878,17 +876,17 @@ class AvailableArea final :
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   ::google::protobuf::int32 object_id_;
-  ::google::protobuf::int32 x1_;
-  ::google::protobuf::int32 y1_;
-  ::google::protobuf::int32 x2_;
-  ::google::protobuf::int32 y2_;
+  ::google::protobuf::int32 lng1_;
+  ::google::protobuf::int32 lat1_;
+  ::google::protobuf::int32 lng2_;
+  ::google::protobuf::int32 lat2_;
+  ::google::protobuf::int32 lng3_;
+  ::google::protobuf::int32 lat3_;
+  ::google::protobuf::int32 lng4_;
+  ::google::protobuf::int32 lat4_;
   ::google::protobuf::int32 camera_;
   ::google::protobuf::int32 lane_id_;
   ::google::protobuf::int32 heading_;
-  ::google::protobuf::int32 x3_;
-  ::google::protobuf::int32 y3_;
-  ::google::protobuf::int32 x4_;
-  ::google::protobuf::int32 y4_;
   friend struct ::TableStruct_vision_2eproto;
 };
 // -------------------------------------------------------------------
@@ -1889,40 +1887,40 @@ inline void Pedestrian::set_object_type(::vision::TYPE value) {
   // @@protoc_insertion_point(field_set:vision.Pedestrian.object_type)
 }
 
-// required int32 x = 3;
-inline bool Pedestrian::has_x() const {
+// required int32 lng = 3;
+inline bool Pedestrian::has_lng() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void Pedestrian::clear_x() {
-  x_ = 0;
+inline void Pedestrian::clear_lng() {
+  lng_ = 0;
   _has_bits_[0] &= ~0x00000004u;
 }
-inline ::google::protobuf::int32 Pedestrian::x() const {
-  // @@protoc_insertion_point(field_get:vision.Pedestrian.x)
-  return x_;
+inline ::google::protobuf::int32 Pedestrian::lng() const {
+  // @@protoc_insertion_point(field_get:vision.Pedestrian.lng)
+  return lng_;
 }
-inline void Pedestrian::set_x(::google::protobuf::int32 value) {
+inline void Pedestrian::set_lng(::google::protobuf::int32 value) {
   _has_bits_[0] |= 0x00000004u;
-  x_ = value;
-  // @@protoc_insertion_point(field_set:vision.Pedestrian.x)
+  lng_ = value;
+  // @@protoc_insertion_point(field_set:vision.Pedestrian.lng)
 }
 
-// required int32 y = 4;
-inline bool Pedestrian::has_y() const {
+// required int32 lat = 4;
+inline bool Pedestrian::has_lat() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
-inline void Pedestrian::clear_y() {
-  y_ = 0;
+inline void Pedestrian::clear_lat() {
+  lat_ = 0;
   _has_bits_[0] &= ~0x00000008u;
 }
-inline ::google::protobuf::int32 Pedestrian::y() const {
-  // @@protoc_insertion_point(field_get:vision.Pedestrian.y)
-  return y_;
+inline ::google::protobuf::int32 Pedestrian::lat() const {
+  // @@protoc_insertion_point(field_get:vision.Pedestrian.lat)
+  return lat_;
 }
-inline void Pedestrian::set_y(::google::protobuf::int32 value) {
+inline void Pedestrian::set_lat(::google::protobuf::int32 value) {
   _has_bits_[0] |= 0x00000008u;
-  y_ = value;
-  // @@protoc_insertion_point(field_set:vision.Pedestrian.y)
+  lat_ = value;
+  // @@protoc_insertion_point(field_set:vision.Pedestrian.lat)
 }
 
 // required int32 camera = 5;
@@ -2019,40 +2017,40 @@ inline void Obstacle::set_object_id(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:vision.Obstacle.object_id)
 }
 
-// required int32 x = 2;
-inline bool Obstacle::has_x() const {
+// required int32 lng = 2;
+inline bool Obstacle::has_lng() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void Obstacle::clear_x() {
-  x_ = 0;
+inline void Obstacle::clear_lng() {
+  lng_ = 0;
   _has_bits_[0] &= ~0x00000002u;
 }
-inline ::google::protobuf::int32 Obstacle::x() const {
-  // @@protoc_insertion_point(field_get:vision.Obstacle.x)
-  return x_;
+inline ::google::protobuf::int32 Obstacle::lng() const {
+  // @@protoc_insertion_point(field_get:vision.Obstacle.lng)
+  return lng_;
 }
-inline void Obstacle::set_x(::google::protobuf::int32 value) {
+inline void Obstacle::set_lng(::google::protobuf::int32 value) {
   _has_bits_[0] |= 0x00000002u;
-  x_ = value;
-  // @@protoc_insertion_point(field_set:vision.Obstacle.x)
+  lng_ = value;
+  // @@protoc_insertion_point(field_set:vision.Obstacle.lng)
 }
 
-// required int32 y = 3;
-inline bool Obstacle::has_y() const {
+// required int32 lat = 3;
+inline bool Obstacle::has_lat() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void Obstacle::clear_y() {
-  y_ = 0;
+inline void Obstacle::clear_lat() {
+  lat_ = 0;
   _has_bits_[0] &= ~0x00000004u;
 }
-inline ::google::protobuf::int32 Obstacle::y() const {
-  // @@protoc_insertion_point(field_get:vision.Obstacle.y)
-  return y_;
+inline ::google::protobuf::int32 Obstacle::lat() const {
+  // @@protoc_insertion_point(field_get:vision.Obstacle.lat)
+  return lat_;
 }
-inline void Obstacle::set_y(::google::protobuf::int32 value) {
+inline void Obstacle::set_lat(::google::protobuf::int32 value) {
   _has_bits_[0] |= 0x00000004u;
-  y_ = value;
-  // @@protoc_insertion_point(field_set:vision.Obstacle.y)
+  lat_ = value;
+  // @@protoc_insertion_point(field_set:vision.Obstacle.lat)
 }
 
 // required int32 camera = 4;
@@ -2149,40 +2147,40 @@ inline void AbnormalCar::set_object_id(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:vision.AbnormalCar.object_id)
 }
 
-// required int32 x = 2;
-inline bool AbnormalCar::has_x() const {
+// required int32 lng = 2;
+inline bool AbnormalCar::has_lng() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void AbnormalCar::clear_x() {
-  x_ = 0;
+inline void AbnormalCar::clear_lng() {
+  lng_ = 0;
   _has_bits_[0] &= ~0x00000002u;
 }
-inline ::google::protobuf::int32 AbnormalCar::x() const {
-  // @@protoc_insertion_point(field_get:vision.AbnormalCar.x)
-  return x_;
+inline ::google::protobuf::int32 AbnormalCar::lng() const {
+  // @@protoc_insertion_point(field_get:vision.AbnormalCar.lng)
+  return lng_;
 }
-inline void AbnormalCar::set_x(::google::protobuf::int32 value) {
+inline void AbnormalCar::set_lng(::google::protobuf::int32 value) {
   _has_bits_[0] |= 0x00000002u;
-  x_ = value;
-  // @@protoc_insertion_point(field_set:vision.AbnormalCar.x)
+  lng_ = value;
+  // @@protoc_insertion_point(field_set:vision.AbnormalCar.lng)
 }
 
-// required int32 y = 3;
-inline bool AbnormalCar::has_y() const {
+// required int32 lat = 3;
+inline bool AbnormalCar::has_lat() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void AbnormalCar::clear_y() {
-  y_ = 0;
+inline void AbnormalCar::clear_lat() {
+  lat_ = 0;
   _has_bits_[0] &= ~0x00000004u;
 }
-inline ::google::protobuf::int32 AbnormalCar::y() const {
-  // @@protoc_insertion_point(field_get:vision.AbnormalCar.y)
-  return y_;
+inline ::google::protobuf::int32 AbnormalCar::lat() const {
+  // @@protoc_insertion_point(field_get:vision.AbnormalCar.lat)
+  return lat_;
 }
-inline void AbnormalCar::set_y(::google::protobuf::int32 value) {
+inline void AbnormalCar::set_lat(::google::protobuf::int32 value) {
   _has_bits_[0] |= 0x00000004u;
-  y_ = value;
-  // @@protoc_insertion_point(field_set:vision.AbnormalCar.y)
+  lat_ = value;
+  // @@protoc_insertion_point(field_set:vision.AbnormalCar.lat)
 }
 
 // optional int32 lane_id = 4;
@@ -2243,202 +2241,202 @@ inline void AvailableArea::set_object_id(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:vision.AvailableArea.object_id)
 }
 
-// required int32 x1 = 2;
-inline bool AvailableArea::has_x1() const {
+// required int32 lng1 = 2;
+inline bool AvailableArea::has_lng1() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void AvailableArea::clear_x1() {
-  x1_ = 0;
+inline void AvailableArea::clear_lng1() {
+  lng1_ = 0;
   _has_bits_[0] &= ~0x00000002u;
 }
-inline ::google::protobuf::int32 AvailableArea::x1() const {
-  // @@protoc_insertion_point(field_get:vision.AvailableArea.x1)
-  return x1_;
+inline ::google::protobuf::int32 AvailableArea::lng1() const {
+  // @@protoc_insertion_point(field_get:vision.AvailableArea.lng1)
+  return lng1_;
 }
-inline void AvailableArea::set_x1(::google::protobuf::int32 value) {
+inline void AvailableArea::set_lng1(::google::protobuf::int32 value) {
   _has_bits_[0] |= 0x00000002u;
-  x1_ = value;
-  // @@protoc_insertion_point(field_set:vision.AvailableArea.x1)
+  lng1_ = value;
+  // @@protoc_insertion_point(field_set:vision.AvailableArea.lng1)
 }
 
-// required int32 y1 = 3;
-inline bool AvailableArea::has_y1() const {
+// required int32 lat1 = 3;
+inline bool AvailableArea::has_lat1() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void AvailableArea::clear_y1() {
-  y1_ = 0;
+inline void AvailableArea::clear_lat1() {
+  lat1_ = 0;
   _has_bits_[0] &= ~0x00000004u;
 }
-inline ::google::protobuf::int32 AvailableArea::y1() const {
-  // @@protoc_insertion_point(field_get:vision.AvailableArea.y1)
-  return y1_;
+inline ::google::protobuf::int32 AvailableArea::lat1() const {
+  // @@protoc_insertion_point(field_get:vision.AvailableArea.lat1)
+  return lat1_;
 }
-inline void AvailableArea::set_y1(::google::protobuf::int32 value) {
+inline void AvailableArea::set_lat1(::google::protobuf::int32 value) {
   _has_bits_[0] |= 0x00000004u;
-  y1_ = value;
-  // @@protoc_insertion_point(field_set:vision.AvailableArea.y1)
+  lat1_ = value;
+  // @@protoc_insertion_point(field_set:vision.AvailableArea.lat1)
 }
 
-// required int32 x2 = 4;
-inline bool AvailableArea::has_x2() const {
+// required int32 lng2 = 4;
+inline bool AvailableArea::has_lng2() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
-inline void AvailableArea::clear_x2() {
-  x2_ = 0;
+inline void AvailableArea::clear_lng2() {
+  lng2_ = 0;
   _has_bits_[0] &= ~0x00000008u;
 }
-inline ::google::protobuf::int32 AvailableArea::x2() const {
-  // @@protoc_insertion_point(field_get:vision.AvailableArea.x2)
-  return x2_;
+inline ::google::protobuf::int32 AvailableArea::lng2() const {
+  // @@protoc_insertion_point(field_get:vision.AvailableArea.lng2)
+  return lng2_;
 }
-inline void AvailableArea::set_x2(::google::protobuf::int32 value) {
+inline void AvailableArea::set_lng2(::google::protobuf::int32 value) {
   _has_bits_[0] |= 0x00000008u;
-  x2_ = value;
-  // @@protoc_insertion_point(field_set:vision.AvailableArea.x2)
+  lng2_ = value;
+  // @@protoc_insertion_point(field_set:vision.AvailableArea.lng2)
 }
 
-// required int32 y2 = 5;
-inline bool AvailableArea::has_y2() const {
+// required int32 lat2 = 5;
+inline bool AvailableArea::has_lat2() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }
-inline void AvailableArea::clear_y2() {
-  y2_ = 0;
+inline void AvailableArea::clear_lat2() {
+  lat2_ = 0;
   _has_bits_[0] &= ~0x00000010u;
 }
-inline ::google::protobuf::int32 AvailableArea::y2() const {
-  // @@protoc_insertion_point(field_get:vision.AvailableArea.y2)
-  return y2_;
+inline ::google::protobuf::int32 AvailableArea::lat2() const {
+  // @@protoc_insertion_point(field_get:vision.AvailableArea.lat2)
+  return lat2_;
 }
-inline void AvailableArea::set_y2(::google::protobuf::int32 value) {
+inline void AvailableArea::set_lat2(::google::protobuf::int32 value) {
   _has_bits_[0] |= 0x00000010u;
-  y2_ = value;
-  // @@protoc_insertion_point(field_set:vision.AvailableArea.y2)
+  lat2_ = value;
+  // @@protoc_insertion_point(field_set:vision.AvailableArea.lat2)
 }
 
-// required int32 camera = 6;
-inline bool AvailableArea::has_camera() const {
+// required int32 lng3 = 6;
+inline bool AvailableArea::has_lng3() const {
   return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void AvailableArea::clear_lng3() {
+  lng3_ = 0;
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline ::google::protobuf::int32 AvailableArea::lng3() const {
+  // @@protoc_insertion_point(field_get:vision.AvailableArea.lng3)
+  return lng3_;
+}
+inline void AvailableArea::set_lng3(::google::protobuf::int32 value) {
+  _has_bits_[0] |= 0x00000020u;
+  lng3_ = value;
+  // @@protoc_insertion_point(field_set:vision.AvailableArea.lng3)
+}
+
+// required int32 lat3 = 7;
+inline bool AvailableArea::has_lat3() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void AvailableArea::clear_lat3() {
+  lat3_ = 0;
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline ::google::protobuf::int32 AvailableArea::lat3() const {
+  // @@protoc_insertion_point(field_get:vision.AvailableArea.lat3)
+  return lat3_;
+}
+inline void AvailableArea::set_lat3(::google::protobuf::int32 value) {
+  _has_bits_[0] |= 0x00000040u;
+  lat3_ = value;
+  // @@protoc_insertion_point(field_set:vision.AvailableArea.lat3)
+}
+
+// required int32 lng4 = 8;
+inline bool AvailableArea::has_lng4() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void AvailableArea::clear_lng4() {
+  lng4_ = 0;
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline ::google::protobuf::int32 AvailableArea::lng4() const {
+  // @@protoc_insertion_point(field_get:vision.AvailableArea.lng4)
+  return lng4_;
+}
+inline void AvailableArea::set_lng4(::google::protobuf::int32 value) {
+  _has_bits_[0] |= 0x00000080u;
+  lng4_ = value;
+  // @@protoc_insertion_point(field_set:vision.AvailableArea.lng4)
+}
+
+// required int32 lat4 = 9;
+inline bool AvailableArea::has_lat4() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void AvailableArea::clear_lat4() {
+  lat4_ = 0;
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline ::google::protobuf::int32 AvailableArea::lat4() const {
+  // @@protoc_insertion_point(field_get:vision.AvailableArea.lat4)
+  return lat4_;
+}
+inline void AvailableArea::set_lat4(::google::protobuf::int32 value) {
+  _has_bits_[0] |= 0x00000100u;
+  lat4_ = value;
+  // @@protoc_insertion_point(field_set:vision.AvailableArea.lat4)
+}
+
+// required int32 camera = 10;
+inline bool AvailableArea::has_camera() const {
+  return (_has_bits_[0] & 0x00000200u) != 0;
 }
 inline void AvailableArea::clear_camera() {
   camera_ = 0;
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000200u;
 }
 inline ::google::protobuf::int32 AvailableArea::camera() const {
   // @@protoc_insertion_point(field_get:vision.AvailableArea.camera)
   return camera_;
 }
 inline void AvailableArea::set_camera(::google::protobuf::int32 value) {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000200u;
   camera_ = value;
   // @@protoc_insertion_point(field_set:vision.AvailableArea.camera)
 }
 
-// optional int32 lane_id = 7;
+// optional int32 lane_id = 11;
 inline bool AvailableArea::has_lane_id() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+  return (_has_bits_[0] & 0x00000400u) != 0;
 }
 inline void AvailableArea::clear_lane_id() {
   lane_id_ = 0;
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000400u;
 }
 inline ::google::protobuf::int32 AvailableArea::lane_id() const {
   // @@protoc_insertion_point(field_get:vision.AvailableArea.lane_id)
   return lane_id_;
 }
 inline void AvailableArea::set_lane_id(::google::protobuf::int32 value) {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000400u;
   lane_id_ = value;
   // @@protoc_insertion_point(field_set:vision.AvailableArea.lane_id)
 }
 
-// optional int32 heading = 8;
+// optional int32 heading = 12;
 inline bool AvailableArea::has_heading() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
+  return (_has_bits_[0] & 0x00000800u) != 0;
 }
 inline void AvailableArea::clear_heading() {
   heading_ = 0;
-  _has_bits_[0] &= ~0x00000080u;
+  _has_bits_[0] &= ~0x00000800u;
 }
 inline ::google::protobuf::int32 AvailableArea::heading() const {
   // @@protoc_insertion_point(field_get:vision.AvailableArea.heading)
   return heading_;
 }
 inline void AvailableArea::set_heading(::google::protobuf::int32 value) {
-  _has_bits_[0] |= 0x00000080u;
+  _has_bits_[0] |= 0x00000800u;
   heading_ = value;
   // @@protoc_insertion_point(field_set:vision.AvailableArea.heading)
-}
-
-// required int32 x3 = 9;
-inline bool AvailableArea::has_x3() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
-}
-inline void AvailableArea::clear_x3() {
-  x3_ = 0;
-  _has_bits_[0] &= ~0x00000100u;
-}
-inline ::google::protobuf::int32 AvailableArea::x3() const {
-  // @@protoc_insertion_point(field_get:vision.AvailableArea.x3)
-  return x3_;
-}
-inline void AvailableArea::set_x3(::google::protobuf::int32 value) {
-  _has_bits_[0] |= 0x00000100u;
-  x3_ = value;
-  // @@protoc_insertion_point(field_set:vision.AvailableArea.x3)
-}
-
-// required int32 y3 = 10;
-inline bool AvailableArea::has_y3() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
-}
-inline void AvailableArea::clear_y3() {
-  y3_ = 0;
-  _has_bits_[0] &= ~0x00000200u;
-}
-inline ::google::protobuf::int32 AvailableArea::y3() const {
-  // @@protoc_insertion_point(field_get:vision.AvailableArea.y3)
-  return y3_;
-}
-inline void AvailableArea::set_y3(::google::protobuf::int32 value) {
-  _has_bits_[0] |= 0x00000200u;
-  y3_ = value;
-  // @@protoc_insertion_point(field_set:vision.AvailableArea.y3)
-}
-
-// required int32 x4 = 11;
-inline bool AvailableArea::has_x4() const {
-  return (_has_bits_[0] & 0x00000400u) != 0;
-}
-inline void AvailableArea::clear_x4() {
-  x4_ = 0;
-  _has_bits_[0] &= ~0x00000400u;
-}
-inline ::google::protobuf::int32 AvailableArea::x4() const {
-  // @@protoc_insertion_point(field_get:vision.AvailableArea.x4)
-  return x4_;
-}
-inline void AvailableArea::set_x4(::google::protobuf::int32 value) {
-  _has_bits_[0] |= 0x00000400u;
-  x4_ = value;
-  // @@protoc_insertion_point(field_set:vision.AvailableArea.x4)
-}
-
-// required int32 y4 = 12;
-inline bool AvailableArea::has_y4() const {
-  return (_has_bits_[0] & 0x00000800u) != 0;
-}
-inline void AvailableArea::clear_y4() {
-  y4_ = 0;
-  _has_bits_[0] &= ~0x00000800u;
-}
-inline ::google::protobuf::int32 AvailableArea::y4() const {
-  // @@protoc_insertion_point(field_get:vision.AvailableArea.y4)
-  return y4_;
-}
-inline void AvailableArea::set_y4(::google::protobuf::int32 value) {
-  _has_bits_[0] |= 0x00000800u;
-  y4_ = value;
-  // @@protoc_insertion_point(field_set:vision.AvailableArea.y4)
 }
 
 // -------------------------------------------------------------------

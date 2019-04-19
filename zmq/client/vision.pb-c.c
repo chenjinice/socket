@@ -529,24 +529,24 @@ static const ProtobufCFieldDescriptor vision__pedestrian__field_descriptors[8] =
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "x",
+    "lng",
     3,
     PROTOBUF_C_LABEL_REQUIRED,
     PROTOBUF_C_TYPE_INT32,
     0,   /* quantifier_offset */
-    offsetof(Vision__Pedestrian, x),
+    offsetof(Vision__Pedestrian, lng),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "y",
+    "lat",
     4,
     PROTOBUF_C_LABEL_REQUIRED,
     PROTOBUF_C_TYPE_INT32,
     0,   /* quantifier_offset */
-    offsetof(Vision__Pedestrian, y),
+    offsetof(Vision__Pedestrian, lat),
     NULL,
     NULL,
     0,             /* flags */
@@ -606,10 +606,10 @@ static const unsigned vision__pedestrian__field_indices_by_name[] = {
   7,   /* field[7] = heading */
   5,   /* field[5] = if_at_lane */
   6,   /* field[6] = lane_id */
+  3,   /* field[3] = lat */
+  2,   /* field[2] = lng */
   0,   /* field[0] = object_id */
   1,   /* field[1] = object_type */
-  2,   /* field[2] = x */
-  3,   /* field[3] = y */
 };
 static const ProtobufCIntRange vision__pedestrian__number_ranges[1 + 1] =
 {
@@ -646,24 +646,24 @@ static const ProtobufCFieldDescriptor vision__obstacle__field_descriptors[7] =
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "x",
+    "lng",
     2,
     PROTOBUF_C_LABEL_REQUIRED,
     PROTOBUF_C_TYPE_INT32,
     0,   /* quantifier_offset */
-    offsetof(Vision__Obstacle, x),
+    offsetof(Vision__Obstacle, lng),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "y",
+    "lat",
     3,
     PROTOBUF_C_LABEL_REQUIRED,
     PROTOBUF_C_TYPE_INT32,
     0,   /* quantifier_offset */
-    offsetof(Vision__Obstacle, y),
+    offsetof(Vision__Obstacle, lat),
     NULL,
     NULL,
     0,             /* flags */
@@ -723,9 +723,9 @@ static const unsigned vision__obstacle__field_indices_by_name[] = {
   6,   /* field[6] = heading */
   4,   /* field[4] = if_at_lane */
   5,   /* field[5] = lane_id */
+  2,   /* field[2] = lat */
+  1,   /* field[1] = lng */
   0,   /* field[0] = object_id */
-  1,   /* field[1] = x */
-  2,   /* field[2] = y */
 };
 static const ProtobufCIntRange vision__obstacle__number_ranges[1 + 1] =
 {
@@ -762,24 +762,24 @@ static const ProtobufCFieldDescriptor vision__abnormal_car__field_descriptors[5]
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "x",
+    "lng",
     2,
     PROTOBUF_C_LABEL_REQUIRED,
     PROTOBUF_C_TYPE_INT32,
     0,   /* quantifier_offset */
-    offsetof(Vision__AbnormalCar, x),
+    offsetof(Vision__AbnormalCar, lng),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "y",
+    "lat",
     3,
     PROTOBUF_C_LABEL_REQUIRED,
     PROTOBUF_C_TYPE_INT32,
     0,   /* quantifier_offset */
-    offsetof(Vision__AbnormalCar, y),
+    offsetof(Vision__AbnormalCar, lat),
     NULL,
     NULL,
     0,             /* flags */
@@ -813,9 +813,9 @@ static const ProtobufCFieldDescriptor vision__abnormal_car__field_descriptors[5]
 static const unsigned vision__abnormal_car__field_indices_by_name[] = {
   4,   /* field[4] = camera */
   3,   /* field[3] = lane_id */
+  2,   /* field[2] = lat */
+  1,   /* field[1] = lng */
   0,   /* field[0] = object_id */
-  1,   /* field[1] = x */
-  2,   /* field[2] = y */
 };
 static const ProtobufCIntRange vision__abnormal_car__number_ranges[1 + 1] =
 {
@@ -852,48 +852,96 @@ static const ProtobufCFieldDescriptor vision__available_area__field_descriptors[
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "x1",
+    "lng1",
     2,
     PROTOBUF_C_LABEL_REQUIRED,
     PROTOBUF_C_TYPE_INT32,
     0,   /* quantifier_offset */
-    offsetof(Vision__AvailableArea, x1),
+    offsetof(Vision__AvailableArea, lng1),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "y1",
+    "lat1",
     3,
     PROTOBUF_C_LABEL_REQUIRED,
     PROTOBUF_C_TYPE_INT32,
     0,   /* quantifier_offset */
-    offsetof(Vision__AvailableArea, y1),
+    offsetof(Vision__AvailableArea, lat1),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "x2",
+    "lng2",
     4,
     PROTOBUF_C_LABEL_REQUIRED,
     PROTOBUF_C_TYPE_INT32,
     0,   /* quantifier_offset */
-    offsetof(Vision__AvailableArea, x2),
+    offsetof(Vision__AvailableArea, lng2),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "y2",
+    "lat2",
     5,
     PROTOBUF_C_LABEL_REQUIRED,
     PROTOBUF_C_TYPE_INT32,
     0,   /* quantifier_offset */
-    offsetof(Vision__AvailableArea, y2),
+    offsetof(Vision__AvailableArea, lat2),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "lng3",
+    6,
+    PROTOBUF_C_LABEL_REQUIRED,
+    PROTOBUF_C_TYPE_INT32,
+    0,   /* quantifier_offset */
+    offsetof(Vision__AvailableArea, lng3),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "lat3",
+    7,
+    PROTOBUF_C_LABEL_REQUIRED,
+    PROTOBUF_C_TYPE_INT32,
+    0,   /* quantifier_offset */
+    offsetof(Vision__AvailableArea, lat3),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "lng4",
+    8,
+    PROTOBUF_C_LABEL_REQUIRED,
+    PROTOBUF_C_TYPE_INT32,
+    0,   /* quantifier_offset */
+    offsetof(Vision__AvailableArea, lng4),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "lat4",
+    9,
+    PROTOBUF_C_LABEL_REQUIRED,
+    PROTOBUF_C_TYPE_INT32,
+    0,   /* quantifier_offset */
+    offsetof(Vision__AvailableArea, lat4),
     NULL,
     NULL,
     0,             /* flags */
@@ -901,7 +949,7 @@ static const ProtobufCFieldDescriptor vision__available_area__field_descriptors[
   },
   {
     "camera",
-    6,
+    10,
     PROTOBUF_C_LABEL_REQUIRED,
     PROTOBUF_C_TYPE_INT32,
     0,   /* quantifier_offset */
@@ -913,7 +961,7 @@ static const ProtobufCFieldDescriptor vision__available_area__field_descriptors[
   },
   {
     "lane_id",
-    7,
+    11,
     PROTOBUF_C_LABEL_OPTIONAL,
     PROTOBUF_C_TYPE_INT32,
     offsetof(Vision__AvailableArea, has_lane_id),
@@ -925,7 +973,7 @@ static const ProtobufCFieldDescriptor vision__available_area__field_descriptors[
   },
   {
     "heading",
-    8,
+    12,
     PROTOBUF_C_LABEL_OPTIONAL,
     PROTOBUF_C_TYPE_INT32,
     offsetof(Vision__AvailableArea, has_heading),
@@ -935,68 +983,20 @@ static const ProtobufCFieldDescriptor vision__available_area__field_descriptors[
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
-  {
-    "x3",
-    9,
-    PROTOBUF_C_LABEL_REQUIRED,
-    PROTOBUF_C_TYPE_INT32,
-    0,   /* quantifier_offset */
-    offsetof(Vision__AvailableArea, x3),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "y3",
-    10,
-    PROTOBUF_C_LABEL_REQUIRED,
-    PROTOBUF_C_TYPE_INT32,
-    0,   /* quantifier_offset */
-    offsetof(Vision__AvailableArea, y3),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "x4",
-    11,
-    PROTOBUF_C_LABEL_REQUIRED,
-    PROTOBUF_C_TYPE_INT32,
-    0,   /* quantifier_offset */
-    offsetof(Vision__AvailableArea, x4),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "y4",
-    12,
-    PROTOBUF_C_LABEL_REQUIRED,
-    PROTOBUF_C_TYPE_INT32,
-    0,   /* quantifier_offset */
-    offsetof(Vision__AvailableArea, y4),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
 };
 static const unsigned vision__available_area__field_indices_by_name[] = {
-  5,   /* field[5] = camera */
-  7,   /* field[7] = heading */
-  6,   /* field[6] = lane_id */
+  9,   /* field[9] = camera */
+  11,   /* field[11] = heading */
+  10,   /* field[10] = lane_id */
+  2,   /* field[2] = lat1 */
+  4,   /* field[4] = lat2 */
+  6,   /* field[6] = lat3 */
+  8,   /* field[8] = lat4 */
+  1,   /* field[1] = lng1 */
+  3,   /* field[3] = lng2 */
+  5,   /* field[5] = lng3 */
+  7,   /* field[7] = lng4 */
   0,   /* field[0] = object_id */
-  1,   /* field[1] = x1 */
-  3,   /* field[3] = x2 */
-  8,   /* field[8] = x3 */
-  10,   /* field[10] = x4 */
-  2,   /* field[2] = y1 */
-  4,   /* field[4] = y2 */
-  9,   /* field[9] = y3 */
-  11,   /* field[11] = y4 */
 };
 static const ProtobufCIntRange vision__available_area__number_ranges[1 + 1] =
 {
@@ -1375,40 +1375,36 @@ const ProtobufCMessageDescriptor vision__smoke_warn__descriptor =
   (ProtobufCMessageInit) vision__smoke_warn__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCEnumValue vision__id__enum_values_by_number[13] =
+static const ProtobufCEnumValue vision__id__enum_values_by_number[11] =
 {
   { "DEFAULT", "VISION__ID__DEFAULT", 0 },
   { "PEDESTRIAN_D", "VISION__ID__PEDESTRIAN_D", 1 },
   { "ILLEGAL_V1", "VISION__ID__ILLEGAL_V1", 2 },
-  { "CAMERA_CAL", "VISION__ID__CAMERA_CAL", 3 },
-  { "ROCKFALL_D", "VISION__ID__ROCKFALL_D", 4 },
-  { "VISIBILITY", "VISION__ID__VISIBILITY", 5 },
-  { "AVAILABLE_AREA", "VISION__ID__AVAILABLE_AREA", 6 },
-  { "ABNORMAL_CAR", "VISION__ID__ABNORMAL_CAR", 7 },
-  { "ILLEGAL_V2", "VISION__ID__ILLEGAL_V2", 8 },
-  { "TRAFFIC_STATUS", "VISION__ID__TRAFFIC_STATUS", 9 },
-  { "BACKWARD_DRIVING", "VISION__ID__BACKWARD_DRIVING", 10 },
-  { "ROAD_DANGER", "VISION__ID__ROAD_DANGER", 11 },
-  { "FIRE_SMOKE", "VISION__ID__FIRE_SMOKE", 12 },
+  { "VISIBILITY", "VISION__ID__VISIBILITY", 3 },
+  { "AVAILABLE_AREA", "VISION__ID__AVAILABLE_AREA", 4 },
+  { "ABNORMAL_CAR", "VISION__ID__ABNORMAL_CAR", 5 },
+  { "ILLEGAL_V2", "VISION__ID__ILLEGAL_V2", 6 },
+  { "TRAFFIC_STATUS", "VISION__ID__TRAFFIC_STATUS", 7 },
+  { "BACKWARD_DRIVING", "VISION__ID__BACKWARD_DRIVING", 8 },
+  { "ROAD_DANGER", "VISION__ID__ROAD_DANGER", 9 },
+  { "FIRE_SMOKE", "VISION__ID__FIRE_SMOKE", 10 },
 };
 static const ProtobufCIntRange vision__id__value_ranges[] = {
-{0, 0},{0, 13}
+{0, 0},{0, 11}
 };
-static const ProtobufCEnumValueIndex vision__id__enum_values_by_name[13] =
+static const ProtobufCEnumValueIndex vision__id__enum_values_by_name[11] =
 {
-  { "ABNORMAL_CAR", 7 },
-  { "AVAILABLE_AREA", 6 },
-  { "BACKWARD_DRIVING", 10 },
-  { "CAMERA_CAL", 3 },
+  { "ABNORMAL_CAR", 5 },
+  { "AVAILABLE_AREA", 4 },
+  { "BACKWARD_DRIVING", 8 },
   { "DEFAULT", 0 },
-  { "FIRE_SMOKE", 12 },
+  { "FIRE_SMOKE", 10 },
   { "ILLEGAL_V1", 2 },
-  { "ILLEGAL_V2", 8 },
+  { "ILLEGAL_V2", 6 },
   { "PEDESTRIAN_D", 1 },
-  { "ROAD_DANGER", 11 },
-  { "ROCKFALL_D", 4 },
-  { "TRAFFIC_STATUS", 9 },
-  { "VISIBILITY", 5 },
+  { "ROAD_DANGER", 9 },
+  { "TRAFFIC_STATUS", 7 },
+  { "VISIBILITY", 3 },
 };
 const ProtobufCEnumDescriptor vision__id__descriptor =
 {
@@ -1417,9 +1413,9 @@ const ProtobufCEnumDescriptor vision__id__descriptor =
   "ID",
   "Vision__ID",
   "vision",
-  13,
+  11,
   vision__id__enum_values_by_number,
-  13,
+  11,
   vision__id__enum_values_by_name,
   1,
   vision__id__value_ranges,

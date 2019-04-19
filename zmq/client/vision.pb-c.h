@@ -47,45 +47,37 @@ typedef enum _Vision__ID {
    */
   VISION__ID__ILLEGAL_V1 = 2,
   /*
-   * 超视距视频感知(相机标定信息)
-   */
-  VISION__ID__CAMERA_CAL = 3,
-  /*
-   * 落石/抛撒物检测
-   */
-  VISION__ID__ROCKFALL_D = 4,
-  /*
    * 白天能见度检测
    */
-  VISION__ID__VISIBILITY = 5,
+  VISION__ID__VISIBILITY = 3,
   /*
    * 可行驶区域检测	
    */
-  VISION__ID__AVAILABLE_AREA = 6,
+  VISION__ID__AVAILABLE_AREA = 4,
   /*
-   * 异常车辆检测
+   * 异常车辆检测(静止)
    */
-  VISION__ID__ABNORMAL_CAR = 7,
+  VISION__ID__ABNORMAL_CAR = 5,
   /*
    * 违章车辆2(应急车道)
    */
-  VISION__ID__ILLEGAL_V2 = 8,
+  VISION__ID__ILLEGAL_V2 = 6,
   /*
    * 交通态势感知
    */
-  VISION__ID__TRAFFIC_STATUS = 9,
+  VISION__ID__TRAFFIC_STATUS = 7,
   /*
    * 逆向行驶告警
    */
-  VISION__ID__BACKWARD_DRIVING = 10,
+  VISION__ID__BACKWARD_DRIVING = 8,
   /*
    * 道路危险状况提醒(抛洒物)
    */
-  VISION__ID__ROAD_DANGER = 11,
+  VISION__ID__ROAD_DANGER = 9,
   /*
    * 隧道内火焰与烟雾预警
    */
-  VISION__ID__FIRE_SMOKE = 12
+  VISION__ID__FIRE_SMOKE = 10
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(VISION__ID)
 } Vision__ID;
 /*
@@ -124,11 +116,11 @@ struct  _Vision__Pedestrian
   /*
    * 经度
    */
-  int32_t x;
+  int32_t lng;
   /*
    * 纬度
    */
-  int32_t y;
+  int32_t lat;
   /*
    * 哪个相机（1,2,3,4）
    */
@@ -161,11 +153,11 @@ struct  _Vision__Obstacle
   /*
    * 经度
    */
-  int32_t x;
+  int32_t lng;
   /*
    * 纬度
    */
-  int32_t y;
+  int32_t lat;
   /*
    * 哪个相机（1,2,3,4）
    */
@@ -198,11 +190,11 @@ struct  _Vision__AbnormalCar
   /*
    * 经度
    */
-  int32_t x;
+  int32_t lng;
   /*
    * 纬度
    */
-  int32_t y;
+  int32_t lat;
   /*
    * 车道id
    */
@@ -229,19 +221,35 @@ struct  _Vision__AvailableArea
   /*
    * 第一个点经度
    */
-  int32_t x1;
+  int32_t lng1;
   /*
    * 第一个点纬度
    */
-  int32_t y1;
+  int32_t lat1;
   /*
    * 第二个点经度
    */
-  int32_t x2;
+  int32_t lng2;
   /*
    * 第二个点纬度
    */
-  int32_t y2;
+  int32_t lat2;
+  /*
+   * 第三个点经度
+   */
+  int32_t lng3;
+  /*
+   * 第三个点纬度
+   */
+  int32_t lat3;
+  /*
+   * 第四个点经度
+   */
+  int32_t lng4;
+  /*
+   * 第四个点纬度
+   */
+  int32_t lat4;
   /*
    * 哪个相机（1,2,3,4）
    */
@@ -253,22 +261,6 @@ struct  _Vision__AvailableArea
   int32_t lane_id;
   protobuf_c_boolean has_heading;
   int32_t heading;
-  /*
-   * 第三个点经度
-   */
-  int32_t x3;
-  /*
-   * 第三个点纬度
-   */
-  int32_t y3;
-  /*
-   * 第四个点经度
-   */
-  int32_t x4;
-  /*
-   * 第四个点纬度
-   */
-  int32_t y4;
 };
 #define VISION__AVAILABLE_AREA__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&vision__available_area__descriptor) \

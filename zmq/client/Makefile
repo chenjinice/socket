@@ -8,10 +8,10 @@ LIB += -lprotobuf-c -lzmq -lpthread
 LIB_DIR += -L/usr/local/lib
 
 all:vision.pb-c.c
-	gcc  $(SRC) $(LIB_DIR) $(LIB) -o a.out
+	gcc  $(SRC) $(LIB_DIR) $(LIB) -o recv.out
 
 clean:
-	-rm a.out
+	-rm recv.out
 
 vision.pb-c.c:vision.proto
 	protoc-c --c_out=. vision.proto

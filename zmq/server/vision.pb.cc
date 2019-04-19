@@ -250,8 +250,8 @@ const ::google::protobuf::uint32 TableStruct_vision_2eproto::offsets[] PROTOBUF_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::vision::Pedestrian, object_id_),
   PROTOBUF_FIELD_OFFSET(::vision::Pedestrian, object_type_),
-  PROTOBUF_FIELD_OFFSET(::vision::Pedestrian, x_),
-  PROTOBUF_FIELD_OFFSET(::vision::Pedestrian, y_),
+  PROTOBUF_FIELD_OFFSET(::vision::Pedestrian, lng_),
+  PROTOBUF_FIELD_OFFSET(::vision::Pedestrian, lat_),
   PROTOBUF_FIELD_OFFSET(::vision::Pedestrian, camera_),
   PROTOBUF_FIELD_OFFSET(::vision::Pedestrian, if_at_lane_),
   PROTOBUF_FIELD_OFFSET(::vision::Pedestrian, lane_id_),
@@ -270,8 +270,8 @@ const ::google::protobuf::uint32 TableStruct_vision_2eproto::offsets[] PROTOBUF_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::vision::Obstacle, object_id_),
-  PROTOBUF_FIELD_OFFSET(::vision::Obstacle, x_),
-  PROTOBUF_FIELD_OFFSET(::vision::Obstacle, y_),
+  PROTOBUF_FIELD_OFFSET(::vision::Obstacle, lng_),
+  PROTOBUF_FIELD_OFFSET(::vision::Obstacle, lat_),
   PROTOBUF_FIELD_OFFSET(::vision::Obstacle, camera_),
   PROTOBUF_FIELD_OFFSET(::vision::Obstacle, if_at_lane_),
   PROTOBUF_FIELD_OFFSET(::vision::Obstacle, lane_id_),
@@ -289,8 +289,8 @@ const ::google::protobuf::uint32 TableStruct_vision_2eproto::offsets[] PROTOBUF_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::vision::AbnormalCar, object_id_),
-  PROTOBUF_FIELD_OFFSET(::vision::AbnormalCar, x_),
-  PROTOBUF_FIELD_OFFSET(::vision::AbnormalCar, y_),
+  PROTOBUF_FIELD_OFFSET(::vision::AbnormalCar, lng_),
+  PROTOBUF_FIELD_OFFSET(::vision::AbnormalCar, lat_),
   PROTOBUF_FIELD_OFFSET(::vision::AbnormalCar, lane_id_),
   PROTOBUF_FIELD_OFFSET(::vision::AbnormalCar, camera_),
   0,
@@ -304,17 +304,17 @@ const ::google::protobuf::uint32 TableStruct_vision_2eproto::offsets[] PROTOBUF_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::vision::AvailableArea, object_id_),
-  PROTOBUF_FIELD_OFFSET(::vision::AvailableArea, x1_),
-  PROTOBUF_FIELD_OFFSET(::vision::AvailableArea, y1_),
-  PROTOBUF_FIELD_OFFSET(::vision::AvailableArea, x2_),
-  PROTOBUF_FIELD_OFFSET(::vision::AvailableArea, y2_),
+  PROTOBUF_FIELD_OFFSET(::vision::AvailableArea, lng1_),
+  PROTOBUF_FIELD_OFFSET(::vision::AvailableArea, lat1_),
+  PROTOBUF_FIELD_OFFSET(::vision::AvailableArea, lng2_),
+  PROTOBUF_FIELD_OFFSET(::vision::AvailableArea, lat2_),
+  PROTOBUF_FIELD_OFFSET(::vision::AvailableArea, lng3_),
+  PROTOBUF_FIELD_OFFSET(::vision::AvailableArea, lat3_),
+  PROTOBUF_FIELD_OFFSET(::vision::AvailableArea, lng4_),
+  PROTOBUF_FIELD_OFFSET(::vision::AvailableArea, lat4_),
   PROTOBUF_FIELD_OFFSET(::vision::AvailableArea, camera_),
   PROTOBUF_FIELD_OFFSET(::vision::AvailableArea, lane_id_),
   PROTOBUF_FIELD_OFFSET(::vision::AvailableArea, heading_),
-  PROTOBUF_FIELD_OFFSET(::vision::AvailableArea, x3_),
-  PROTOBUF_FIELD_OFFSET(::vision::AvailableArea, y3_),
-  PROTOBUF_FIELD_OFFSET(::vision::AvailableArea, x4_),
-  PROTOBUF_FIELD_OFFSET(::vision::AvailableArea, y4_),
   0,
   1,
   2,
@@ -426,45 +426,44 @@ static ::google::protobuf::internal::AssignDescriptorsTable assign_descriptors_t
 };
 
 const char descriptor_table_protodef_vision_2eproto[] =
-  "\n\014vision.proto\022\006vision\"\236\001\n\nPedestrian\022\021\n"
+  "\n\014vision.proto\022\006vision\"\242\001\n\nPedestrian\022\021\n"
   "\tobject_id\030\001 \002(\005\022!\n\013object_type\030\002 \002(\0162\014."
-  "vision.TYPE\022\t\n\001x\030\003 \002(\005\022\t\n\001y\030\004 \002(\005\022\016\n\006cam"
-  "era\030\005 \002(\005\022\022\n\nif_at_lane\030\006 \001(\005\022\017\n\007lane_id"
-  "\030\007 \001(\005\022\017\n\007heading\030\010 \001(\005\"y\n\010Obstacle\022\021\n\to"
-  "bject_id\030\001 \002(\005\022\t\n\001x\030\002 \002(\005\022\t\n\001y\030\003 \002(\005\022\016\n\006"
-  "camera\030\004 \002(\005\022\022\n\nif_at_lane\030\005 \001(\005\022\017\n\007lane"
-  "_id\030\006 \001(\005\022\017\n\007heading\030\007 \001(\005\"W\n\013AbnormalCa"
-  "r\022\021\n\tobject_id\030\001 \002(\005\022\t\n\001x\030\002 \002(\005\022\t\n\001y\030\003 \002"
-  "(\005\022\017\n\007lane_id\030\004 \001(\005\022\016\n\006camera\030\005 \001(\005\"\264\001\n\r"
-  "AvailableArea\022\021\n\tobject_id\030\001 \002(\005\022\n\n\002x1\030\002"
-  " \002(\005\022\n\n\002y1\030\003 \002(\005\022\n\n\002x2\030\004 \002(\005\022\n\n\002y2\030\005 \002(\005"
-  "\022\016\n\006camera\030\006 \002(\005\022\017\n\007lane_id\030\007 \001(\005\022\017\n\007hea"
-  "ding\030\010 \001(\005\022\n\n\002x3\030\t \002(\005\022\n\n\002y3\030\n \002(\005\022\n\n\002x4"
-  "\030\013 \002(\005\022\n\n\002y4\030\014 \002(\005\"\036\n\004Base\022\026\n\002id\030\001 \002(\0162\n"
-  ".vision.ID\"G\n\005Crowd\022\026\n\002id\030\001 \002(\0162\n.vision"
-  ".ID\022&\n\npedestrian\030\002 \003(\0132\022.vision.Pedestr"
-  "ian\"D\n\tObstacles\022\026\n\002id\030\001 \002(\0162\n.vision.ID"
-  "\022\037\n\005array\030\002 \003(\0132\020.vision.Obstacle\"M\n\016Ava"
-  "ilableAreas\022\026\n\002id\030\001 \002(\0162\n.vision.ID\022#\n\004a"
-  "rea\030\002 \003(\0132\025.vision.AvailableArea\"L\n\016Ille"
-  "galCarWarn\022\026\n\002id\030\001 \002(\0162\n.vision.ID\022\"\n\005ar"
-  "ray\030\002 \003(\0132\023.vision.AbnormalCar\"E\n\nVisibi"
-  "lity\022\026\n\002id\030\001 \002(\0162\n.vision.ID\022\020\n\010distance"
-  "\030\002 \002(\001\022\r\n\005level\030\003 \002(\005\"1\n\tSmokeWarn\022\026\n\002id"
-  "\030\001 \002(\0162\n.vision.ID\022\014\n\004warn\030\002 \002(\010*\344\001\n\002ID\022"
-  "\013\n\007DEFAULT\020\000\022\020\n\014PEDESTRIAN_D\020\001\022\016\n\nILLEGA"
-  "L_V1\020\002\022\016\n\nCAMERA_CAL\020\003\022\016\n\nROCKFALL_D\020\004\022\016"
-  "\n\nVISIBILITY\020\005\022\022\n\016AVAILABLE_AREA\020\006\022\020\n\014AB"
-  "NORMAL_CAR\020\007\022\016\n\nILLEGAL_V2\020\010\022\022\n\016TRAFFIC_"
-  "STATUS\020\t\022\024\n\020BACKWARD_DRIVING\020\n\022\017\n\013ROAD_D"
-  "ANGER\020\013\022\016\n\nFIRE_SMOKE\020\014*:\n\004TYPE\022\n\n\006OTHER"
-  "S\020\000\022\t\n\005HUMAN\020\001\022\013\n\007VEHICLE\020\002\022\016\n\nMOTORCYCL"
-  "E\020\003"
+  "vision.TYPE\022\013\n\003lng\030\003 \002(\005\022\013\n\003lat\030\004 \002(\005\022\016\n"
+  "\006camera\030\005 \002(\005\022\022\n\nif_at_lane\030\006 \001(\005\022\017\n\007lan"
+  "e_id\030\007 \001(\005\022\017\n\007heading\030\010 \001(\005\"}\n\010Obstacle\022"
+  "\021\n\tobject_id\030\001 \002(\005\022\013\n\003lng\030\002 \002(\005\022\013\n\003lat\030\003"
+  " \002(\005\022\016\n\006camera\030\004 \002(\005\022\022\n\nif_at_lane\030\005 \001(\005"
+  "\022\017\n\007lane_id\030\006 \001(\005\022\017\n\007heading\030\007 \001(\005\"[\n\013Ab"
+  "normalCar\022\021\n\tobject_id\030\001 \002(\005\022\013\n\003lng\030\002 \002("
+  "\005\022\013\n\003lat\030\003 \002(\005\022\017\n\007lane_id\030\004 \001(\005\022\016\n\006camer"
+  "a\030\005 \001(\005\"\304\001\n\rAvailableArea\022\021\n\tobject_id\030\001"
+  " \002(\005\022\014\n\004lng1\030\002 \002(\005\022\014\n\004lat1\030\003 \002(\005\022\014\n\004lng2"
+  "\030\004 \002(\005\022\014\n\004lat2\030\005 \002(\005\022\014\n\004lng3\030\006 \002(\005\022\014\n\004la"
+  "t3\030\007 \002(\005\022\014\n\004lng4\030\010 \002(\005\022\014\n\004lat4\030\t \002(\005\022\016\n\006"
+  "camera\030\n \002(\005\022\017\n\007lane_id\030\013 \001(\005\022\017\n\007heading"
+  "\030\014 \001(\005\"\036\n\004Base\022\026\n\002id\030\001 \002(\0162\n.vision.ID\"G"
+  "\n\005Crowd\022\026\n\002id\030\001 \002(\0162\n.vision.ID\022&\n\npedes"
+  "trian\030\002 \003(\0132\022.vision.Pedestrian\"D\n\tObsta"
+  "cles\022\026\n\002id\030\001 \002(\0162\n.vision.ID\022\037\n\005array\030\002 "
+  "\003(\0132\020.vision.Obstacle\"M\n\016AvailableAreas\022"
+  "\026\n\002id\030\001 \002(\0162\n.vision.ID\022#\n\004area\030\002 \003(\0132\025."
+  "vision.AvailableArea\"L\n\016IllegalCarWarn\022\026"
+  "\n\002id\030\001 \002(\0162\n.vision.ID\022\"\n\005array\030\002 \003(\0132\023."
+  "vision.AbnormalCar\"E\n\nVisibility\022\026\n\002id\030\001"
+  " \002(\0162\n.vision.ID\022\020\n\010distance\030\002 \002(\001\022\r\n\005le"
+  "vel\030\003 \002(\005\"1\n\tSmokeWarn\022\026\n\002id\030\001 \002(\0162\n.vis"
+  "ion.ID\022\014\n\004warn\030\002 \002(\010*\304\001\n\002ID\022\013\n\007DEFAULT\020\000"
+  "\022\020\n\014PEDESTRIAN_D\020\001\022\016\n\nILLEGAL_V1\020\002\022\016\n\nVI"
+  "SIBILITY\020\003\022\022\n\016AVAILABLE_AREA\020\004\022\020\n\014ABNORM"
+  "AL_CAR\020\005\022\016\n\nILLEGAL_V2\020\006\022\022\n\016TRAFFIC_STAT"
+  "US\020\007\022\024\n\020BACKWARD_DRIVING\020\010\022\017\n\013ROAD_DANGE"
+  "R\020\t\022\016\n\nFIRE_SMOKE\020\n*:\n\004TYPE\022\n\n\006OTHERS\020\000\022"
+  "\t\n\005HUMAN\020\001\022\013\n\007VEHICLE\020\002\022\016\n\nMOTORCYCLE\020\003"
   ;
 static ::google::protobuf::internal::DescriptorTable descriptor_table_vision_2eproto = {
   false, InitDefaults_vision_2eproto, 
   descriptor_table_protodef_vision_2eproto,
-  "vision.proto", &assign_descriptors_table_vision_2eproto, 1323,
+  "vision.proto", &assign_descriptors_table_vision_2eproto, 1319,
 };
 
 void AddDescriptors_vision_2eproto() {
@@ -494,8 +493,6 @@ bool ID_IsValid(int value) {
     case 8:
     case 9:
     case 10:
-    case 11:
-    case 12:
       return true;
     default:
       return false;
@@ -531,10 +528,10 @@ class Pedestrian::HasBitSetters {
   static void set_has_object_type(Pedestrian* msg) {
     msg->_has_bits_[0] |= 0x00000002u;
   }
-  static void set_has_x(Pedestrian* msg) {
+  static void set_has_lng(Pedestrian* msg) {
     msg->_has_bits_[0] |= 0x00000004u;
   }
-  static void set_has_y(Pedestrian* msg) {
+  static void set_has_lat(Pedestrian* msg) {
     msg->_has_bits_[0] |= 0x00000008u;
   }
   static void set_has_camera(Pedestrian* msg) {
@@ -554,8 +551,8 @@ class Pedestrian::HasBitSetters {
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int Pedestrian::kObjectIdFieldNumber;
 const int Pedestrian::kObjectTypeFieldNumber;
-const int Pedestrian::kXFieldNumber;
-const int Pedestrian::kYFieldNumber;
+const int Pedestrian::kLngFieldNumber;
+const int Pedestrian::kLatFieldNumber;
 const int Pedestrian::kCameraFieldNumber;
 const int Pedestrian::kIfAtLaneFieldNumber;
 const int Pedestrian::kLaneIdFieldNumber;
@@ -643,17 +640,17 @@ const char* Pedestrian::_InternalParse(const char* ptr, ::google::protobuf::inte
         set_object_type(static_cast<::vision::TYPE>(val));
         break;
       }
-      // required int32 x = 3;
+      // required int32 lng = 3;
       case 3: {
         if (static_cast<::google::protobuf::uint8>(tag) != 24) goto handle_unusual;
-        set_x(::google::protobuf::internal::ReadVarint(&ptr));
+        set_lng(::google::protobuf::internal::ReadVarint(&ptr));
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
-      // required int32 y = 4;
+      // required int32 lat = 4;
       case 4: {
         if (static_cast<::google::protobuf::uint8>(tag) != 32) goto handle_unusual;
-        set_y(::google::protobuf::internal::ReadVarint(&ptr));
+        set_lat(::google::protobuf::internal::ReadVarint(&ptr));
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
@@ -743,26 +740,26 @@ bool Pedestrian::MergePartialFromCodedStream(
         break;
       }
 
-      // required int32 x = 3;
+      // required int32 lng = 3;
       case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (24 & 0xFF)) {
-          HasBitSetters::set_has_x(this);
+          HasBitSetters::set_has_lng(this);
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &x_)));
+                 input, &lng_)));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // required int32 y = 4;
+      // required int32 lat = 4;
       case 4: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (32 & 0xFF)) {
-          HasBitSetters::set_has_y(this);
+          HasBitSetters::set_has_lat(this);
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &y_)));
+                 input, &lat_)));
         } else {
           goto handle_unusual;
         }
@@ -860,14 +857,14 @@ void Pedestrian::SerializeWithCachedSizes(
       2, this->object_type(), output);
   }
 
-  // required int32 x = 3;
+  // required int32 lng = 3;
   if (cached_has_bits & 0x00000004u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->x(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->lng(), output);
   }
 
-  // required int32 y = 4;
+  // required int32 lat = 4;
   if (cached_has_bits & 0x00000008u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->y(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->lat(), output);
   }
 
   // required int32 camera = 5;
@@ -915,14 +912,14 @@ void Pedestrian::SerializeWithCachedSizes(
       2, this->object_type(), target);
   }
 
-  // required int32 x = 3;
+  // required int32 lng = 3;
   if (cached_has_bits & 0x00000004u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->x(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->lng(), target);
   }
 
-  // required int32 y = 4;
+  // required int32 lat = 4;
   if (cached_has_bits & 0x00000008u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->y(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->lat(), target);
   }
 
   // required int32 camera = 5;
@@ -970,18 +967,18 @@ size_t Pedestrian::RequiredFieldsByteSizeFallback() const {
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->object_type());
   }
 
-  if (has_x()) {
-    // required int32 x = 3;
+  if (has_lng()) {
+    // required int32 lng = 3;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->x());
+        this->lng());
   }
 
-  if (has_y()) {
-    // required int32 y = 4;
+  if (has_lat()) {
+    // required int32 lat = 4;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->y());
+        this->lat());
   }
 
   if (has_camera()) {
@@ -1012,15 +1009,15 @@ size_t Pedestrian::ByteSizeLong() const {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->object_type());
 
-    // required int32 x = 3;
+    // required int32 lng = 3;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->x());
+        this->lng());
 
-    // required int32 y = 4;
+    // required int32 lat = 4;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->y());
+        this->lat());
 
     // required int32 camera = 5;
     total_size += 1 +
@@ -1094,10 +1091,10 @@ void Pedestrian::MergeFrom(const Pedestrian& from) {
       object_type_ = from.object_type_;
     }
     if (cached_has_bits & 0x00000004u) {
-      x_ = from.x_;
+      lng_ = from.lng_;
     }
     if (cached_has_bits & 0x00000008u) {
-      y_ = from.y_;
+      lat_ = from.lat_;
     }
     if (cached_has_bits & 0x00000010u) {
       camera_ = from.camera_;
@@ -1144,8 +1141,8 @@ void Pedestrian::InternalSwap(Pedestrian* other) {
   swap(_has_bits_[0], other->_has_bits_[0]);
   swap(object_id_, other->object_id_);
   swap(object_type_, other->object_type_);
-  swap(x_, other->x_);
-  swap(y_, other->y_);
+  swap(lng_, other->lng_);
+  swap(lat_, other->lat_);
   swap(camera_, other->camera_);
   swap(if_at_lane_, other->if_at_lane_);
   swap(lane_id_, other->lane_id_);
@@ -1167,10 +1164,10 @@ class Obstacle::HasBitSetters {
   static void set_has_object_id(Obstacle* msg) {
     msg->_has_bits_[0] |= 0x00000001u;
   }
-  static void set_has_x(Obstacle* msg) {
+  static void set_has_lng(Obstacle* msg) {
     msg->_has_bits_[0] |= 0x00000002u;
   }
-  static void set_has_y(Obstacle* msg) {
+  static void set_has_lat(Obstacle* msg) {
     msg->_has_bits_[0] |= 0x00000004u;
   }
   static void set_has_camera(Obstacle* msg) {
@@ -1189,8 +1186,8 @@ class Obstacle::HasBitSetters {
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int Obstacle::kObjectIdFieldNumber;
-const int Obstacle::kXFieldNumber;
-const int Obstacle::kYFieldNumber;
+const int Obstacle::kLngFieldNumber;
+const int Obstacle::kLatFieldNumber;
 const int Obstacle::kCameraFieldNumber;
 const int Obstacle::kIfAtLaneFieldNumber;
 const int Obstacle::kLaneIdFieldNumber;
@@ -1266,17 +1263,17 @@ const char* Obstacle::_InternalParse(const char* ptr, ::google::protobuf::intern
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
-      // required int32 x = 2;
+      // required int32 lng = 2;
       case 2: {
         if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
-        set_x(::google::protobuf::internal::ReadVarint(&ptr));
+        set_lng(::google::protobuf::internal::ReadVarint(&ptr));
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
-      // required int32 y = 3;
+      // required int32 lat = 3;
       case 3: {
         if (static_cast<::google::protobuf::uint8>(tag) != 24) goto handle_unusual;
-        set_y(::google::protobuf::internal::ReadVarint(&ptr));
+        set_lat(::google::protobuf::internal::ReadVarint(&ptr));
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
@@ -1347,26 +1344,26 @@ bool Obstacle::MergePartialFromCodedStream(
         break;
       }
 
-      // required int32 x = 2;
+      // required int32 lng = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
-          HasBitSetters::set_has_x(this);
+          HasBitSetters::set_has_lng(this);
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &x_)));
+                 input, &lng_)));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // required int32 y = 3;
+      // required int32 lat = 3;
       case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (24 & 0xFF)) {
-          HasBitSetters::set_has_y(this);
+          HasBitSetters::set_has_lat(this);
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &y_)));
+                 input, &lat_)));
         } else {
           goto handle_unusual;
         }
@@ -1458,14 +1455,14 @@ void Obstacle::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->object_id(), output);
   }
 
-  // required int32 x = 2;
+  // required int32 lng = 2;
   if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->x(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->lng(), output);
   }
 
-  // required int32 y = 3;
+  // required int32 lat = 3;
   if (cached_has_bits & 0x00000004u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->y(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->lat(), output);
   }
 
   // required int32 camera = 4;
@@ -1507,14 +1504,14 @@ void Obstacle::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->object_id(), target);
   }
 
-  // required int32 x = 2;
+  // required int32 lng = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->x(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->lng(), target);
   }
 
-  // required int32 y = 3;
+  // required int32 lat = 3;
   if (cached_has_bits & 0x00000004u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->y(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->lat(), target);
   }
 
   // required int32 camera = 4;
@@ -1556,18 +1553,18 @@ size_t Obstacle::RequiredFieldsByteSizeFallback() const {
         this->object_id());
   }
 
-  if (has_x()) {
-    // required int32 x = 2;
+  if (has_lng()) {
+    // required int32 lng = 2;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->x());
+        this->lng());
   }
 
-  if (has_y()) {
-    // required int32 y = 3;
+  if (has_lat()) {
+    // required int32 lat = 3;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->y());
+        this->lat());
   }
 
   if (has_camera()) {
@@ -1594,15 +1591,15 @@ size_t Obstacle::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->object_id());
 
-    // required int32 x = 2;
+    // required int32 lng = 2;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->x());
+        this->lng());
 
-    // required int32 y = 3;
+    // required int32 lat = 3;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->y());
+        this->lat());
 
     // required int32 camera = 4;
     total_size += 1 +
@@ -1673,10 +1670,10 @@ void Obstacle::MergeFrom(const Obstacle& from) {
       object_id_ = from.object_id_;
     }
     if (cached_has_bits & 0x00000002u) {
-      x_ = from.x_;
+      lng_ = from.lng_;
     }
     if (cached_has_bits & 0x00000004u) {
-      y_ = from.y_;
+      lat_ = from.lat_;
     }
     if (cached_has_bits & 0x00000008u) {
       camera_ = from.camera_;
@@ -1722,8 +1719,8 @@ void Obstacle::InternalSwap(Obstacle* other) {
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
   swap(object_id_, other->object_id_);
-  swap(x_, other->x_);
-  swap(y_, other->y_);
+  swap(lng_, other->lng_);
+  swap(lat_, other->lat_);
   swap(camera_, other->camera_);
   swap(if_at_lane_, other->if_at_lane_);
   swap(lane_id_, other->lane_id_);
@@ -1745,10 +1742,10 @@ class AbnormalCar::HasBitSetters {
   static void set_has_object_id(AbnormalCar* msg) {
     msg->_has_bits_[0] |= 0x00000001u;
   }
-  static void set_has_x(AbnormalCar* msg) {
+  static void set_has_lng(AbnormalCar* msg) {
     msg->_has_bits_[0] |= 0x00000002u;
   }
-  static void set_has_y(AbnormalCar* msg) {
+  static void set_has_lat(AbnormalCar* msg) {
     msg->_has_bits_[0] |= 0x00000004u;
   }
   static void set_has_lane_id(AbnormalCar* msg) {
@@ -1761,8 +1758,8 @@ class AbnormalCar::HasBitSetters {
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int AbnormalCar::kObjectIdFieldNumber;
-const int AbnormalCar::kXFieldNumber;
-const int AbnormalCar::kYFieldNumber;
+const int AbnormalCar::kLngFieldNumber;
+const int AbnormalCar::kLatFieldNumber;
 const int AbnormalCar::kLaneIdFieldNumber;
 const int AbnormalCar::kCameraFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
@@ -1836,17 +1833,17 @@ const char* AbnormalCar::_InternalParse(const char* ptr, ::google::protobuf::int
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
-      // required int32 x = 2;
+      // required int32 lng = 2;
       case 2: {
         if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
-        set_x(::google::protobuf::internal::ReadVarint(&ptr));
+        set_lng(::google::protobuf::internal::ReadVarint(&ptr));
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
-      // required int32 y = 3;
+      // required int32 lat = 3;
       case 3: {
         if (static_cast<::google::protobuf::uint8>(tag) != 24) goto handle_unusual;
-        set_y(::google::protobuf::internal::ReadVarint(&ptr));
+        set_lat(::google::protobuf::internal::ReadVarint(&ptr));
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
@@ -1903,26 +1900,26 @@ bool AbnormalCar::MergePartialFromCodedStream(
         break;
       }
 
-      // required int32 x = 2;
+      // required int32 lng = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
-          HasBitSetters::set_has_x(this);
+          HasBitSetters::set_has_lng(this);
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &x_)));
+                 input, &lng_)));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // required int32 y = 3;
+      // required int32 lat = 3;
       case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (24 & 0xFF)) {
-          HasBitSetters::set_has_y(this);
+          HasBitSetters::set_has_lat(this);
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &y_)));
+                 input, &lat_)));
         } else {
           goto handle_unusual;
         }
@@ -1988,14 +1985,14 @@ void AbnormalCar::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->object_id(), output);
   }
 
-  // required int32 x = 2;
+  // required int32 lng = 2;
   if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->x(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->lng(), output);
   }
 
-  // required int32 y = 3;
+  // required int32 lat = 3;
   if (cached_has_bits & 0x00000004u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->y(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->lat(), output);
   }
 
   // optional int32 lane_id = 4;
@@ -2027,14 +2024,14 @@ void AbnormalCar::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->object_id(), target);
   }
 
-  // required int32 x = 2;
+  // required int32 lng = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->x(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->lng(), target);
   }
 
-  // required int32 y = 3;
+  // required int32 lat = 3;
   if (cached_has_bits & 0x00000004u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->y(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->lat(), target);
   }
 
   // optional int32 lane_id = 4;
@@ -2066,18 +2063,18 @@ size_t AbnormalCar::RequiredFieldsByteSizeFallback() const {
         this->object_id());
   }
 
-  if (has_x()) {
-    // required int32 x = 2;
+  if (has_lng()) {
+    // required int32 lng = 2;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->x());
+        this->lng());
   }
 
-  if (has_y()) {
-    // required int32 y = 3;
+  if (has_lat()) {
+    // required int32 lat = 3;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->y());
+        this->lat());
   }
 
   return total_size;
@@ -2097,15 +2094,15 @@ size_t AbnormalCar::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->object_id());
 
-    // required int32 x = 2;
+    // required int32 lng = 2;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->x());
+        this->lng());
 
-    // required int32 y = 3;
+    // required int32 lat = 3;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->y());
+        this->lat());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
@@ -2164,10 +2161,10 @@ void AbnormalCar::MergeFrom(const AbnormalCar& from) {
       object_id_ = from.object_id_;
     }
     if (cached_has_bits & 0x00000002u) {
-      x_ = from.x_;
+      lng_ = from.lng_;
     }
     if (cached_has_bits & 0x00000004u) {
-      y_ = from.y_;
+      lat_ = from.lat_;
     }
     if (cached_has_bits & 0x00000008u) {
       lane_id_ = from.lane_id_;
@@ -2207,8 +2204,8 @@ void AbnormalCar::InternalSwap(AbnormalCar* other) {
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
   swap(object_id_, other->object_id_);
-  swap(x_, other->x_);
-  swap(y_, other->y_);
+  swap(lng_, other->lng_);
+  swap(lat_, other->lat_);
   swap(lane_id_, other->lane_id_);
   swap(camera_, other->camera_);
 }
@@ -2228,54 +2225,54 @@ class AvailableArea::HasBitSetters {
   static void set_has_object_id(AvailableArea* msg) {
     msg->_has_bits_[0] |= 0x00000001u;
   }
-  static void set_has_x1(AvailableArea* msg) {
+  static void set_has_lng1(AvailableArea* msg) {
     msg->_has_bits_[0] |= 0x00000002u;
   }
-  static void set_has_y1(AvailableArea* msg) {
+  static void set_has_lat1(AvailableArea* msg) {
     msg->_has_bits_[0] |= 0x00000004u;
   }
-  static void set_has_x2(AvailableArea* msg) {
+  static void set_has_lng2(AvailableArea* msg) {
     msg->_has_bits_[0] |= 0x00000008u;
   }
-  static void set_has_y2(AvailableArea* msg) {
+  static void set_has_lat2(AvailableArea* msg) {
     msg->_has_bits_[0] |= 0x00000010u;
   }
-  static void set_has_camera(AvailableArea* msg) {
+  static void set_has_lng3(AvailableArea* msg) {
     msg->_has_bits_[0] |= 0x00000020u;
   }
-  static void set_has_lane_id(AvailableArea* msg) {
+  static void set_has_lat3(AvailableArea* msg) {
     msg->_has_bits_[0] |= 0x00000040u;
   }
-  static void set_has_heading(AvailableArea* msg) {
+  static void set_has_lng4(AvailableArea* msg) {
     msg->_has_bits_[0] |= 0x00000080u;
   }
-  static void set_has_x3(AvailableArea* msg) {
+  static void set_has_lat4(AvailableArea* msg) {
     msg->_has_bits_[0] |= 0x00000100u;
   }
-  static void set_has_y3(AvailableArea* msg) {
+  static void set_has_camera(AvailableArea* msg) {
     msg->_has_bits_[0] |= 0x00000200u;
   }
-  static void set_has_x4(AvailableArea* msg) {
+  static void set_has_lane_id(AvailableArea* msg) {
     msg->_has_bits_[0] |= 0x00000400u;
   }
-  static void set_has_y4(AvailableArea* msg) {
+  static void set_has_heading(AvailableArea* msg) {
     msg->_has_bits_[0] |= 0x00000800u;
   }
 };
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int AvailableArea::kObjectIdFieldNumber;
-const int AvailableArea::kX1FieldNumber;
-const int AvailableArea::kY1FieldNumber;
-const int AvailableArea::kX2FieldNumber;
-const int AvailableArea::kY2FieldNumber;
+const int AvailableArea::kLng1FieldNumber;
+const int AvailableArea::kLat1FieldNumber;
+const int AvailableArea::kLng2FieldNumber;
+const int AvailableArea::kLat2FieldNumber;
+const int AvailableArea::kLng3FieldNumber;
+const int AvailableArea::kLat3FieldNumber;
+const int AvailableArea::kLng4FieldNumber;
+const int AvailableArea::kLat4FieldNumber;
 const int AvailableArea::kCameraFieldNumber;
 const int AvailableArea::kLaneIdFieldNumber;
 const int AvailableArea::kHeadingFieldNumber;
-const int AvailableArea::kX3FieldNumber;
-const int AvailableArea::kY3FieldNumber;
-const int AvailableArea::kX4FieldNumber;
-const int AvailableArea::kY4FieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 AvailableArea::AvailableArea()
@@ -2289,15 +2286,15 @@ AvailableArea::AvailableArea(const AvailableArea& from)
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&object_id_, &from.object_id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&y4_) -
-    reinterpret_cast<char*>(&object_id_)) + sizeof(y4_));
+    static_cast<size_t>(reinterpret_cast<char*>(&heading_) -
+    reinterpret_cast<char*>(&object_id_)) + sizeof(heading_));
   // @@protoc_insertion_point(copy_constructor:vision.AvailableArea)
 }
 
 void AvailableArea::SharedCtor() {
   ::memset(&object_id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&y4_) -
-      reinterpret_cast<char*>(&object_id_)) + sizeof(y4_));
+      reinterpret_cast<char*>(&heading_) -
+      reinterpret_cast<char*>(&object_id_)) + sizeof(heading_));
 }
 
 AvailableArea::~AvailableArea() {
@@ -2326,13 +2323,13 @@ void AvailableArea::Clear() {
   cached_has_bits = _has_bits_[0];
   if (cached_has_bits & 0x000000ffu) {
     ::memset(&object_id_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&heading_) -
-        reinterpret_cast<char*>(&object_id_)) + sizeof(heading_));
+        reinterpret_cast<char*>(&lng4_) -
+        reinterpret_cast<char*>(&object_id_)) + sizeof(lng4_));
   }
   if (cached_has_bits & 0x00000f00u) {
-    ::memset(&x3_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&y4_) -
-        reinterpret_cast<char*>(&x3_)) + sizeof(y4_));
+    ::memset(&lat4_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&heading_) -
+        reinterpret_cast<char*>(&lat4_)) + sizeof(heading_));
   }
   _has_bits_.Clear();
   _internal_metadata_.Clear();
@@ -2352,80 +2349,80 @@ const char* AvailableArea::_InternalParse(const char* ptr, ::google::protobuf::i
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
-      // required int32 x1 = 2;
+      // required int32 lng1 = 2;
       case 2: {
         if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
-        set_x1(::google::protobuf::internal::ReadVarint(&ptr));
+        set_lng1(::google::protobuf::internal::ReadVarint(&ptr));
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
-      // required int32 y1 = 3;
+      // required int32 lat1 = 3;
       case 3: {
         if (static_cast<::google::protobuf::uint8>(tag) != 24) goto handle_unusual;
-        set_y1(::google::protobuf::internal::ReadVarint(&ptr));
+        set_lat1(::google::protobuf::internal::ReadVarint(&ptr));
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
-      // required int32 x2 = 4;
+      // required int32 lng2 = 4;
       case 4: {
         if (static_cast<::google::protobuf::uint8>(tag) != 32) goto handle_unusual;
-        set_x2(::google::protobuf::internal::ReadVarint(&ptr));
+        set_lng2(::google::protobuf::internal::ReadVarint(&ptr));
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
-      // required int32 y2 = 5;
+      // required int32 lat2 = 5;
       case 5: {
         if (static_cast<::google::protobuf::uint8>(tag) != 40) goto handle_unusual;
-        set_y2(::google::protobuf::internal::ReadVarint(&ptr));
+        set_lat2(::google::protobuf::internal::ReadVarint(&ptr));
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
-      // required int32 camera = 6;
+      // required int32 lng3 = 6;
       case 6: {
         if (static_cast<::google::protobuf::uint8>(tag) != 48) goto handle_unusual;
+        set_lng3(::google::protobuf::internal::ReadVarint(&ptr));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      // required int32 lat3 = 7;
+      case 7: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 56) goto handle_unusual;
+        set_lat3(::google::protobuf::internal::ReadVarint(&ptr));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      // required int32 lng4 = 8;
+      case 8: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 64) goto handle_unusual;
+        set_lng4(::google::protobuf::internal::ReadVarint(&ptr));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      // required int32 lat4 = 9;
+      case 9: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 72) goto handle_unusual;
+        set_lat4(::google::protobuf::internal::ReadVarint(&ptr));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      // required int32 camera = 10;
+      case 10: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 80) goto handle_unusual;
         set_camera(::google::protobuf::internal::ReadVarint(&ptr));
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
-      // optional int32 lane_id = 7;
-      case 7: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 56) goto handle_unusual;
+      // optional int32 lane_id = 11;
+      case 11: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 88) goto handle_unusual;
         set_lane_id(::google::protobuf::internal::ReadVarint(&ptr));
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
-      // optional int32 heading = 8;
-      case 8: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 64) goto handle_unusual;
-        set_heading(::google::protobuf::internal::ReadVarint(&ptr));
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        break;
-      }
-      // required int32 x3 = 9;
-      case 9: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 72) goto handle_unusual;
-        set_x3(::google::protobuf::internal::ReadVarint(&ptr));
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        break;
-      }
-      // required int32 y3 = 10;
-      case 10: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 80) goto handle_unusual;
-        set_y3(::google::protobuf::internal::ReadVarint(&ptr));
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        break;
-      }
-      // required int32 x4 = 11;
-      case 11: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 88) goto handle_unusual;
-        set_x4(::google::protobuf::internal::ReadVarint(&ptr));
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        break;
-      }
-      // required int32 y4 = 12;
+      // optional int32 heading = 12;
       case 12: {
         if (static_cast<::google::protobuf::uint8>(tag) != 96) goto handle_unusual;
-        set_y4(::google::protobuf::internal::ReadVarint(&ptr));
+        set_heading(::google::protobuf::internal::ReadVarint(&ptr));
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
@@ -2468,61 +2465,113 @@ bool AvailableArea::MergePartialFromCodedStream(
         break;
       }
 
-      // required int32 x1 = 2;
+      // required int32 lng1 = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
-          HasBitSetters::set_has_x1(this);
+          HasBitSetters::set_has_lng1(this);
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &x1_)));
+                 input, &lng1_)));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // required int32 y1 = 3;
+      // required int32 lat1 = 3;
       case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (24 & 0xFF)) {
-          HasBitSetters::set_has_y1(this);
+          HasBitSetters::set_has_lat1(this);
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &y1_)));
+                 input, &lat1_)));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // required int32 x2 = 4;
+      // required int32 lng2 = 4;
       case 4: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (32 & 0xFF)) {
-          HasBitSetters::set_has_x2(this);
+          HasBitSetters::set_has_lng2(this);
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &x2_)));
+                 input, &lng2_)));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // required int32 y2 = 5;
+      // required int32 lat2 = 5;
       case 5: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (40 & 0xFF)) {
-          HasBitSetters::set_has_y2(this);
+          HasBitSetters::set_has_lat2(this);
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &y2_)));
+                 input, &lat2_)));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // required int32 camera = 6;
+      // required int32 lng3 = 6;
       case 6: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (48 & 0xFF)) {
+          HasBitSetters::set_has_lng3(this);
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &lng3_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // required int32 lat3 = 7;
+      case 7: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (56 & 0xFF)) {
+          HasBitSetters::set_has_lat3(this);
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &lat3_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // required int32 lng4 = 8;
+      case 8: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (64 & 0xFF)) {
+          HasBitSetters::set_has_lng4(this);
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &lng4_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // required int32 lat4 = 9;
+      case 9: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (72 & 0xFF)) {
+          HasBitSetters::set_has_lat4(this);
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &lat4_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // required int32 camera = 10;
+      case 10: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (80 & 0xFF)) {
           HasBitSetters::set_has_camera(this);
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -2533,9 +2582,9 @@ bool AvailableArea::MergePartialFromCodedStream(
         break;
       }
 
-      // optional int32 lane_id = 7;
-      case 7: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (56 & 0xFF)) {
+      // optional int32 lane_id = 11;
+      case 11: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (88 & 0xFF)) {
           HasBitSetters::set_has_lane_id(this);
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -2546,65 +2595,13 @@ bool AvailableArea::MergePartialFromCodedStream(
         break;
       }
 
-      // optional int32 heading = 8;
-      case 8: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (64 & 0xFF)) {
+      // optional int32 heading = 12;
+      case 12: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (96 & 0xFF)) {
           HasBitSetters::set_has_heading(this);
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &heading_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // required int32 x3 = 9;
-      case 9: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (72 & 0xFF)) {
-          HasBitSetters::set_has_x3(this);
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &x3_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // required int32 y3 = 10;
-      case 10: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (80 & 0xFF)) {
-          HasBitSetters::set_has_y3(this);
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &y3_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // required int32 x4 = 11;
-      case 11: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (88 & 0xFF)) {
-          HasBitSetters::set_has_x4(this);
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &x4_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // required int32 y4 = 12;
-      case 12: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (96 & 0xFF)) {
-          HasBitSetters::set_has_y4(this);
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &y4_)));
         } else {
           goto handle_unusual;
         }
@@ -2644,59 +2641,59 @@ void AvailableArea::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->object_id(), output);
   }
 
-  // required int32 x1 = 2;
+  // required int32 lng1 = 2;
   if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->x1(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->lng1(), output);
   }
 
-  // required int32 y1 = 3;
+  // required int32 lat1 = 3;
   if (cached_has_bits & 0x00000004u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->y1(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->lat1(), output);
   }
 
-  // required int32 x2 = 4;
+  // required int32 lng2 = 4;
   if (cached_has_bits & 0x00000008u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->x2(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->lng2(), output);
   }
 
-  // required int32 y2 = 5;
+  // required int32 lat2 = 5;
   if (cached_has_bits & 0x00000010u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->y2(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->lat2(), output);
   }
 
-  // required int32 camera = 6;
+  // required int32 lng3 = 6;
   if (cached_has_bits & 0x00000020u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->camera(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->lng3(), output);
   }
 
-  // optional int32 lane_id = 7;
+  // required int32 lat3 = 7;
   if (cached_has_bits & 0x00000040u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->lane_id(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->lat3(), output);
   }
 
-  // optional int32 heading = 8;
+  // required int32 lng4 = 8;
   if (cached_has_bits & 0x00000080u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->heading(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->lng4(), output);
   }
 
-  // required int32 x3 = 9;
+  // required int32 lat4 = 9;
   if (cached_has_bits & 0x00000100u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(9, this->x3(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(9, this->lat4(), output);
   }
 
-  // required int32 y3 = 10;
+  // required int32 camera = 10;
   if (cached_has_bits & 0x00000200u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(10, this->y3(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(10, this->camera(), output);
   }
 
-  // required int32 x4 = 11;
+  // optional int32 lane_id = 11;
   if (cached_has_bits & 0x00000400u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(11, this->x4(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(11, this->lane_id(), output);
   }
 
-  // required int32 y4 = 12;
+  // optional int32 heading = 12;
   if (cached_has_bits & 0x00000800u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(12, this->y4(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(12, this->heading(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -2718,59 +2715,59 @@ void AvailableArea::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->object_id(), target);
   }
 
-  // required int32 x1 = 2;
+  // required int32 lng1 = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->x1(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->lng1(), target);
   }
 
-  // required int32 y1 = 3;
+  // required int32 lat1 = 3;
   if (cached_has_bits & 0x00000004u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->y1(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->lat1(), target);
   }
 
-  // required int32 x2 = 4;
+  // required int32 lng2 = 4;
   if (cached_has_bits & 0x00000008u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->x2(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->lng2(), target);
   }
 
-  // required int32 y2 = 5;
+  // required int32 lat2 = 5;
   if (cached_has_bits & 0x00000010u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->y2(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->lat2(), target);
   }
 
-  // required int32 camera = 6;
+  // required int32 lng3 = 6;
   if (cached_has_bits & 0x00000020u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(6, this->camera(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(6, this->lng3(), target);
   }
 
-  // optional int32 lane_id = 7;
+  // required int32 lat3 = 7;
   if (cached_has_bits & 0x00000040u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(7, this->lane_id(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(7, this->lat3(), target);
   }
 
-  // optional int32 heading = 8;
+  // required int32 lng4 = 8;
   if (cached_has_bits & 0x00000080u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->heading(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->lng4(), target);
   }
 
-  // required int32 x3 = 9;
+  // required int32 lat4 = 9;
   if (cached_has_bits & 0x00000100u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(9, this->x3(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(9, this->lat4(), target);
   }
 
-  // required int32 y3 = 10;
+  // required int32 camera = 10;
   if (cached_has_bits & 0x00000200u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(10, this->y3(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(10, this->camera(), target);
   }
 
-  // required int32 x4 = 11;
+  // optional int32 lane_id = 11;
   if (cached_has_bits & 0x00000400u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(11, this->x4(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(11, this->lane_id(), target);
   }
 
-  // required int32 y4 = 12;
+  // optional int32 heading = 12;
   if (cached_has_bits & 0x00000800u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(12, this->y4(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(12, this->heading(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -2792,67 +2789,67 @@ size_t AvailableArea::RequiredFieldsByteSizeFallback() const {
         this->object_id());
   }
 
-  if (has_x1()) {
-    // required int32 x1 = 2;
+  if (has_lng1()) {
+    // required int32 lng1 = 2;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->x1());
+        this->lng1());
   }
 
-  if (has_y1()) {
-    // required int32 y1 = 3;
+  if (has_lat1()) {
+    // required int32 lat1 = 3;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->y1());
+        this->lat1());
   }
 
-  if (has_x2()) {
-    // required int32 x2 = 4;
+  if (has_lng2()) {
+    // required int32 lng2 = 4;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->x2());
+        this->lng2());
   }
 
-  if (has_y2()) {
-    // required int32 y2 = 5;
+  if (has_lat2()) {
+    // required int32 lat2 = 5;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->y2());
+        this->lat2());
+  }
+
+  if (has_lng3()) {
+    // required int32 lng3 = 6;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->lng3());
+  }
+
+  if (has_lat3()) {
+    // required int32 lat3 = 7;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->lat3());
+  }
+
+  if (has_lng4()) {
+    // required int32 lng4 = 8;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->lng4());
+  }
+
+  if (has_lat4()) {
+    // required int32 lat4 = 9;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->lat4());
   }
 
   if (has_camera()) {
-    // required int32 camera = 6;
+    // required int32 camera = 10;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->camera());
-  }
-
-  if (has_x3()) {
-    // required int32 x3 = 9;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->x3());
-  }
-
-  if (has_y3()) {
-    // required int32 y3 = 10;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->y3());
-  }
-
-  if (has_x4()) {
-    // required int32 x4 = 11;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->x4());
-  }
-
-  if (has_y4()) {
-    // required int32 y4 = 12;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->y4());
   }
 
   return total_size;
@@ -2866,56 +2863,56 @@ size_t AvailableArea::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         _internal_metadata_.unknown_fields());
   }
-  if (((_has_bits_[0] & 0x00000f3f) ^ 0x00000f3f) == 0) {  // All required fields are present.
+  if (((_has_bits_[0] & 0x000003ff) ^ 0x000003ff) == 0) {  // All required fields are present.
     // required int32 object_id = 1;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->object_id());
 
-    // required int32 x1 = 2;
+    // required int32 lng1 = 2;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->x1());
+        this->lng1());
 
-    // required int32 y1 = 3;
+    // required int32 lat1 = 3;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->y1());
+        this->lat1());
 
-    // required int32 x2 = 4;
+    // required int32 lng2 = 4;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->x2());
+        this->lng2());
 
-    // required int32 y2 = 5;
+    // required int32 lat2 = 5;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->y2());
+        this->lat2());
 
-    // required int32 camera = 6;
+    // required int32 lng3 = 6;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->lng3());
+
+    // required int32 lat3 = 7;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->lat3());
+
+    // required int32 lng4 = 8;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->lng4());
+
+    // required int32 lat4 = 9;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->lat4());
+
+    // required int32 camera = 10;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->camera());
-
-    // required int32 x3 = 9;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->x3());
-
-    // required int32 y3 = 10;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->y3());
-
-    // required int32 x4 = 11;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->x4());
-
-    // required int32 y4 = 12;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->y4());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
@@ -2925,16 +2922,16 @@ size_t AvailableArea::ByteSizeLong() const {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x000000c0u) {
-    // optional int32 lane_id = 7;
-    if (cached_has_bits & 0x00000040u) {
+  if (cached_has_bits & 0x00000c00u) {
+    // optional int32 lane_id = 11;
+    if (cached_has_bits & 0x00000400u) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->lane_id());
     }
 
-    // optional int32 heading = 8;
-    if (cached_has_bits & 0x00000080u) {
+    // optional int32 heading = 12;
+    if (cached_has_bits & 0x00000800u) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->heading());
@@ -2974,40 +2971,40 @@ void AvailableArea::MergeFrom(const AvailableArea& from) {
       object_id_ = from.object_id_;
     }
     if (cached_has_bits & 0x00000002u) {
-      x1_ = from.x1_;
+      lng1_ = from.lng1_;
     }
     if (cached_has_bits & 0x00000004u) {
-      y1_ = from.y1_;
+      lat1_ = from.lat1_;
     }
     if (cached_has_bits & 0x00000008u) {
-      x2_ = from.x2_;
+      lng2_ = from.lng2_;
     }
     if (cached_has_bits & 0x00000010u) {
-      y2_ = from.y2_;
+      lat2_ = from.lat2_;
     }
     if (cached_has_bits & 0x00000020u) {
-      camera_ = from.camera_;
+      lng3_ = from.lng3_;
     }
     if (cached_has_bits & 0x00000040u) {
-      lane_id_ = from.lane_id_;
+      lat3_ = from.lat3_;
     }
     if (cached_has_bits & 0x00000080u) {
-      heading_ = from.heading_;
+      lng4_ = from.lng4_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
   if (cached_has_bits & 0x00000f00u) {
     if (cached_has_bits & 0x00000100u) {
-      x3_ = from.x3_;
+      lat4_ = from.lat4_;
     }
     if (cached_has_bits & 0x00000200u) {
-      y3_ = from.y3_;
+      camera_ = from.camera_;
     }
     if (cached_has_bits & 0x00000400u) {
-      x4_ = from.x4_;
+      lane_id_ = from.lane_id_;
     }
     if (cached_has_bits & 0x00000800u) {
-      y4_ = from.y4_;
+      heading_ = from.heading_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
@@ -3028,7 +3025,7 @@ void AvailableArea::CopyFrom(const AvailableArea& from) {
 }
 
 bool AvailableArea::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000f3f) != 0x00000f3f) return false;
+  if ((_has_bits_[0] & 0x000003ff) != 0x000003ff) return false;
   return true;
 }
 
@@ -3041,17 +3038,17 @@ void AvailableArea::InternalSwap(AvailableArea* other) {
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
   swap(object_id_, other->object_id_);
-  swap(x1_, other->x1_);
-  swap(y1_, other->y1_);
-  swap(x2_, other->x2_);
-  swap(y2_, other->y2_);
+  swap(lng1_, other->lng1_);
+  swap(lat1_, other->lat1_);
+  swap(lng2_, other->lng2_);
+  swap(lat2_, other->lat2_);
+  swap(lng3_, other->lng3_);
+  swap(lat3_, other->lat3_);
+  swap(lng4_, other->lng4_);
+  swap(lat4_, other->lat4_);
   swap(camera_, other->camera_);
   swap(lane_id_, other->lane_id_);
   swap(heading_, other->heading_);
-  swap(x3_, other->x3_);
-  swap(y3_, other->y3_);
-  swap(x4_, other->x4_);
-  swap(y4_, other->y4_);
 }
 
 ::google::protobuf::Metadata AvailableArea::GetMetadata() const {
