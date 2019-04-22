@@ -7,6 +7,51 @@
 #endif
 
 #include "vision.pb-c.h"
+void   vision__data_time__init
+                     (Vision__DataTime         *message)
+{
+  static const Vision__DataTime init_value = VISION__DATA_TIME__INIT;
+  *message = init_value;
+}
+size_t vision__data_time__get_packed_size
+                     (const Vision__DataTime *message)
+{
+  assert(message->base.descriptor == &vision__data_time__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t vision__data_time__pack
+                     (const Vision__DataTime *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &vision__data_time__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t vision__data_time__pack_to_buffer
+                     (const Vision__DataTime *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &vision__data_time__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Vision__DataTime *
+       vision__data_time__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Vision__DataTime *)
+     protobuf_c_message_unpack (&vision__data_time__descriptor,
+                                allocator, len, data);
+}
+void   vision__data_time__free_unpacked
+                     (Vision__DataTime *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &vision__data_time__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 void   vision__pedestrian__init
                      (Vision__Pedestrian         *message)
 {
@@ -502,6 +547,57 @@ void   vision__smoke_warn__free_unpacked
   assert(message->base.descriptor == &vision__smoke_warn__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+static const ProtobufCFieldDescriptor vision__data_time__field_descriptors[2] =
+{
+  {
+    "sec",
+    1,
+    PROTOBUF_C_LABEL_REQUIRED,
+    PROTOBUF_C_TYPE_UINT64,
+    0,   /* quantifier_offset */
+    offsetof(Vision__DataTime, sec),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "usec",
+    2,
+    PROTOBUF_C_LABEL_REQUIRED,
+    PROTOBUF_C_TYPE_UINT32,
+    0,   /* quantifier_offset */
+    offsetof(Vision__DataTime, usec),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned vision__data_time__field_indices_by_name[] = {
+  0,   /* field[0] = sec */
+  1,   /* field[1] = usec */
+};
+static const ProtobufCIntRange vision__data_time__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor vision__data_time__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "vision.data_time",
+  "DataTime",
+  "Vision__DataTime",
+  "vision",
+  sizeof(Vision__DataTime),
+  2,
+  vision__data_time__field_descriptors,
+  vision__data_time__field_indices_by_name,
+  1,  vision__data_time__number_ranges,
+  (ProtobufCMessageInit) vision__data_time__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
 static const ProtobufCFieldDescriptor vision__pedestrian__field_descriptors[8] =
 {
   {
@@ -1056,7 +1152,7 @@ const ProtobufCMessageDescriptor vision__base__descriptor =
   (ProtobufCMessageInit) vision__base__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor vision__crowd__field_descriptors[2] =
+static const ProtobufCFieldDescriptor vision__crowd__field_descriptors[3] =
 {
   {
     "id",
@@ -1082,15 +1178,28 @@ static const ProtobufCFieldDescriptor vision__crowd__field_descriptors[2] =
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "time",
+    3,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Vision__Crowd, time),
+    &vision__data_time__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned vision__crowd__field_indices_by_name[] = {
   0,   /* field[0] = id */
   1,   /* field[1] = pedestrian */
+  2,   /* field[2] = time */
 };
 static const ProtobufCIntRange vision__crowd__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 2 }
+  { 0, 3 }
 };
 const ProtobufCMessageDescriptor vision__crowd__descriptor =
 {
@@ -1100,14 +1209,14 @@ const ProtobufCMessageDescriptor vision__crowd__descriptor =
   "Vision__Crowd",
   "vision",
   sizeof(Vision__Crowd),
-  2,
+  3,
   vision__crowd__field_descriptors,
   vision__crowd__field_indices_by_name,
   1,  vision__crowd__number_ranges,
   (ProtobufCMessageInit) vision__crowd__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor vision__obstacles__field_descriptors[2] =
+static const ProtobufCFieldDescriptor vision__obstacles__field_descriptors[3] =
 {
   {
     "id",
@@ -1133,15 +1242,28 @@ static const ProtobufCFieldDescriptor vision__obstacles__field_descriptors[2] =
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "time",
+    3,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Vision__Obstacles, time),
+    &vision__data_time__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned vision__obstacles__field_indices_by_name[] = {
   1,   /* field[1] = array */
   0,   /* field[0] = id */
+  2,   /* field[2] = time */
 };
 static const ProtobufCIntRange vision__obstacles__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 2 }
+  { 0, 3 }
 };
 const ProtobufCMessageDescriptor vision__obstacles__descriptor =
 {
@@ -1151,14 +1273,14 @@ const ProtobufCMessageDescriptor vision__obstacles__descriptor =
   "Vision__Obstacles",
   "vision",
   sizeof(Vision__Obstacles),
-  2,
+  3,
   vision__obstacles__field_descriptors,
   vision__obstacles__field_indices_by_name,
   1,  vision__obstacles__number_ranges,
   (ProtobufCMessageInit) vision__obstacles__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor vision__available_areas__field_descriptors[2] =
+static const ProtobufCFieldDescriptor vision__available_areas__field_descriptors[3] =
 {
   {
     "id",
@@ -1184,15 +1306,28 @@ static const ProtobufCFieldDescriptor vision__available_areas__field_descriptors
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "time",
+    3,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Vision__AvailableAreas, time),
+    &vision__data_time__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned vision__available_areas__field_indices_by_name[] = {
   1,   /* field[1] = area */
   0,   /* field[0] = id */
+  2,   /* field[2] = time */
 };
 static const ProtobufCIntRange vision__available_areas__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 2 }
+  { 0, 3 }
 };
 const ProtobufCMessageDescriptor vision__available_areas__descriptor =
 {
@@ -1202,14 +1337,14 @@ const ProtobufCMessageDescriptor vision__available_areas__descriptor =
   "Vision__AvailableAreas",
   "vision",
   sizeof(Vision__AvailableAreas),
-  2,
+  3,
   vision__available_areas__field_descriptors,
   vision__available_areas__field_indices_by_name,
   1,  vision__available_areas__number_ranges,
   (ProtobufCMessageInit) vision__available_areas__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor vision__illegal_car_warn__field_descriptors[2] =
+static const ProtobufCFieldDescriptor vision__illegal_car_warn__field_descriptors[3] =
 {
   {
     "id",
@@ -1235,15 +1370,28 @@ static const ProtobufCFieldDescriptor vision__illegal_car_warn__field_descriptor
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "time",
+    3,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Vision__IllegalCarWarn, time),
+    &vision__data_time__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned vision__illegal_car_warn__field_indices_by_name[] = {
   1,   /* field[1] = array */
   0,   /* field[0] = id */
+  2,   /* field[2] = time */
 };
 static const ProtobufCIntRange vision__illegal_car_warn__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 2 }
+  { 0, 3 }
 };
 const ProtobufCMessageDescriptor vision__illegal_car_warn__descriptor =
 {
@@ -1253,7 +1401,7 @@ const ProtobufCMessageDescriptor vision__illegal_car_warn__descriptor =
   "Vision__IllegalCarWarn",
   "vision",
   sizeof(Vision__IllegalCarWarn),
-  2,
+  3,
   vision__illegal_car_warn__field_descriptors,
   vision__illegal_car_warn__field_indices_by_name,
   1,  vision__illegal_car_warn__number_ranges,

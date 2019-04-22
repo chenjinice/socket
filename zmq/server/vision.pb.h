@@ -49,7 +49,7 @@ struct TableStruct_vision_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::google::protobuf::internal::ParseTable schema[11]
+  static const ::google::protobuf::internal::ParseTable schema[12]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
@@ -90,6 +90,9 @@ extern SmokeWarnDefaultTypeInternal _SmokeWarn_default_instance_;
 class Visibility;
 class VisibilityDefaultTypeInternal;
 extern VisibilityDefaultTypeInternal _Visibility_default_instance_;
+class data_time;
+class data_timeDefaultTypeInternal;
+extern data_timeDefaultTypeInternal _data_time_default_instance_;
 }  // namespace vision
 namespace google {
 namespace protobuf {
@@ -104,6 +107,7 @@ template<> ::vision::Obstacles* Arena::CreateMaybeMessage<::vision::Obstacles>(A
 template<> ::vision::Pedestrian* Arena::CreateMaybeMessage<::vision::Pedestrian>(Arena*);
 template<> ::vision::SmokeWarn* Arena::CreateMaybeMessage<::vision::SmokeWarn>(Arena*);
 template<> ::vision::Visibility* Arena::CreateMaybeMessage<::vision::Visibility>(Arena*);
+template<> ::vision::data_time* Arena::CreateMaybeMessage<::vision::data_time>(Arena*);
 }  // namespace protobuf
 }  // namespace google
 namespace vision {
@@ -159,6 +163,141 @@ inline bool TYPE_Parse(
 }
 // ===================================================================
 
+class data_time final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:vision.data_time) */ {
+ public:
+  data_time();
+  virtual ~data_time();
+
+  data_time(const data_time& from);
+
+  inline data_time& operator=(const data_time& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  data_time(data_time&& from) noexcept
+    : data_time() {
+    *this = ::std::move(from);
+  }
+
+  inline data_time& operator=(data_time&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const data_time& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const data_time* internal_default_instance() {
+    return reinterpret_cast<const data_time*>(
+               &_data_time_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    0;
+
+  void Swap(data_time* other);
+  friend void swap(data_time& a, data_time& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline data_time* New() const final {
+    return CreateMaybeMessage<data_time>(nullptr);
+  }
+
+  data_time* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<data_time>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const data_time& from);
+  void MergeFrom(const data_time& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(data_time* other);
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::google::protobuf::StringPiece FullMessageName() {
+    return "vision.data_time";
+  }
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required uint64 sec = 1;
+  bool has_sec() const;
+  void clear_sec();
+  static const int kSecFieldNumber = 1;
+  ::google::protobuf::uint64 sec() const;
+  void set_sec(::google::protobuf::uint64 value);
+
+  // required uint32 usec = 2;
+  bool has_usec() const;
+  void clear_usec();
+  static const int kUsecFieldNumber = 2;
+  ::google::protobuf::uint32 usec() const;
+  void set_usec(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:vision.data_time)
+ private:
+  class HasBitSetters;
+
+  // helper for ByteSizeLong()
+  size_t RequiredFieldsByteSizeFallback() const;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::HasBits<1> _has_bits_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  ::google::protobuf::uint64 sec_;
+  ::google::protobuf::uint32 usec_;
+  friend struct ::TableStruct_vision_2eproto;
+};
+// -------------------------------------------------------------------
+
 class Pedestrian final :
     public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:vision.Pedestrian) */ {
  public:
@@ -204,7 +343,7 @@ class Pedestrian final :
                &_Pedestrian_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    0;
+    1;
 
   void Swap(Pedestrian* other);
   friend void swap(Pedestrian& a, Pedestrian& b) {
@@ -387,7 +526,7 @@ class Obstacle final :
                &_Obstacle_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    2;
 
   void Swap(Obstacle* other);
   friend void swap(Obstacle& a, Obstacle& b) {
@@ -562,7 +701,7 @@ class AbnormalCar final :
                &_AbnormalCar_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    3;
 
   void Swap(AbnormalCar* other);
   friend void swap(AbnormalCar& a, AbnormalCar& b) {
@@ -721,7 +860,7 @@ class AvailableArea final :
                &_AvailableArea_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    4;
 
   void Swap(AvailableArea* other);
   friend void swap(AvailableArea& a, AvailableArea& b) {
@@ -936,7 +1075,7 @@ class Base final :
                &_Base_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    5;
 
   void Swap(Base* other);
   friend void swap(Base& a, Base& b) {
@@ -1060,7 +1199,7 @@ class Crowd final :
                &_Crowd_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    6;
 
   void Swap(Crowd* other);
   friend void swap(Crowd& a, Crowd& b) {
@@ -1132,6 +1271,15 @@ class Crowd final :
   const ::google::protobuf::RepeatedPtrField< ::vision::Pedestrian >&
       pedestrian() const;
 
+  // optional .vision.data_time time = 3;
+  bool has_time() const;
+  void clear_time();
+  static const int kTimeFieldNumber = 3;
+  const ::vision::data_time& time() const;
+  ::vision::data_time* release_time();
+  ::vision::data_time* mutable_time();
+  void set_allocated_time(::vision::data_time* time);
+
   // required .vision.ID id = 1;
   bool has_id() const;
   void clear_id();
@@ -1147,6 +1295,7 @@ class Crowd final :
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   ::google::protobuf::RepeatedPtrField< ::vision::Pedestrian > pedestrian_;
+  ::vision::data_time* time_;
   int id_;
   friend struct ::TableStruct_vision_2eproto;
 };
@@ -1197,7 +1346,7 @@ class Obstacles final :
                &_Obstacles_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    7;
 
   void Swap(Obstacles* other);
   friend void swap(Obstacles& a, Obstacles& b) {
@@ -1269,6 +1418,15 @@ class Obstacles final :
   const ::google::protobuf::RepeatedPtrField< ::vision::Obstacle >&
       array() const;
 
+  // optional .vision.data_time time = 3;
+  bool has_time() const;
+  void clear_time();
+  static const int kTimeFieldNumber = 3;
+  const ::vision::data_time& time() const;
+  ::vision::data_time* release_time();
+  ::vision::data_time* mutable_time();
+  void set_allocated_time(::vision::data_time* time);
+
   // required .vision.ID id = 1;
   bool has_id() const;
   void clear_id();
@@ -1284,6 +1442,7 @@ class Obstacles final :
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   ::google::protobuf::RepeatedPtrField< ::vision::Obstacle > array_;
+  ::vision::data_time* time_;
   int id_;
   friend struct ::TableStruct_vision_2eproto;
 };
@@ -1334,7 +1493,7 @@ class AvailableAreas final :
                &_AvailableAreas_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    8;
 
   void Swap(AvailableAreas* other);
   friend void swap(AvailableAreas& a, AvailableAreas& b) {
@@ -1406,6 +1565,15 @@ class AvailableAreas final :
   const ::google::protobuf::RepeatedPtrField< ::vision::AvailableArea >&
       area() const;
 
+  // optional .vision.data_time time = 3;
+  bool has_time() const;
+  void clear_time();
+  static const int kTimeFieldNumber = 3;
+  const ::vision::data_time& time() const;
+  ::vision::data_time* release_time();
+  ::vision::data_time* mutable_time();
+  void set_allocated_time(::vision::data_time* time);
+
   // required .vision.ID id = 1;
   bool has_id() const;
   void clear_id();
@@ -1421,6 +1589,7 @@ class AvailableAreas final :
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   ::google::protobuf::RepeatedPtrField< ::vision::AvailableArea > area_;
+  ::vision::data_time* time_;
   int id_;
   friend struct ::TableStruct_vision_2eproto;
 };
@@ -1471,7 +1640,7 @@ class IllegalCarWarn final :
                &_IllegalCarWarn_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    9;
 
   void Swap(IllegalCarWarn* other);
   friend void swap(IllegalCarWarn& a, IllegalCarWarn& b) {
@@ -1543,6 +1712,15 @@ class IllegalCarWarn final :
   const ::google::protobuf::RepeatedPtrField< ::vision::AbnormalCar >&
       array() const;
 
+  // optional .vision.data_time time = 3;
+  bool has_time() const;
+  void clear_time();
+  static const int kTimeFieldNumber = 3;
+  const ::vision::data_time& time() const;
+  ::vision::data_time* release_time();
+  ::vision::data_time* mutable_time();
+  void set_allocated_time(::vision::data_time* time);
+
   // required .vision.ID id = 1;
   bool has_id() const;
   void clear_id();
@@ -1558,6 +1736,7 @@ class IllegalCarWarn final :
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   ::google::protobuf::RepeatedPtrField< ::vision::AbnormalCar > array_;
+  ::vision::data_time* time_;
   int id_;
   friend struct ::TableStruct_vision_2eproto;
 };
@@ -1608,7 +1787,7 @@ class Visibility final :
                &_Visibility_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    10;
 
   void Swap(Visibility* other);
   friend void swap(Visibility& a, Visibility& b) {
@@ -1751,7 +1930,7 @@ class SmokeWarn final :
                &_SmokeWarn_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    11;
 
   void Swap(SmokeWarn* other);
   friend void swap(SmokeWarn& a, SmokeWarn& b) {
@@ -1848,6 +2027,46 @@ class SmokeWarn final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// data_time
+
+// required uint64 sec = 1;
+inline bool data_time::has_sec() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void data_time::clear_sec() {
+  sec_ = PROTOBUF_ULONGLONG(0);
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline ::google::protobuf::uint64 data_time::sec() const {
+  // @@protoc_insertion_point(field_get:vision.data_time.sec)
+  return sec_;
+}
+inline void data_time::set_sec(::google::protobuf::uint64 value) {
+  _has_bits_[0] |= 0x00000001u;
+  sec_ = value;
+  // @@protoc_insertion_point(field_set:vision.data_time.sec)
+}
+
+// required uint32 usec = 2;
+inline bool data_time::has_usec() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void data_time::clear_usec() {
+  usec_ = 0u;
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline ::google::protobuf::uint32 data_time::usec() const {
+  // @@protoc_insertion_point(field_get:vision.data_time.usec)
+  return usec_;
+}
+inline void data_time::set_usec(::google::protobuf::uint32 value) {
+  _has_bits_[0] |= 0x00000002u;
+  usec_ = value;
+  // @@protoc_insertion_point(field_set:vision.data_time.usec)
+}
+
+// -------------------------------------------------------------------
+
 // Pedestrian
 
 // required int32 object_id = 1;
@@ -2468,11 +2687,11 @@ inline void Base::set_id(::vision::ID value) {
 
 // required .vision.ID id = 1;
 inline bool Crowd::has_id() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void Crowd::clear_id() {
   id_ = 0;
-  _has_bits_[0] &= ~0x00000001u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline ::vision::ID Crowd::id() const {
   // @@protoc_insertion_point(field_get:vision.Crowd.id)
@@ -2480,7 +2699,7 @@ inline ::vision::ID Crowd::id() const {
 }
 inline void Crowd::set_id(::vision::ID value) {
   assert(::vision::ID_IsValid(value));
-  _has_bits_[0] |= 0x00000001u;
+  _has_bits_[0] |= 0x00000002u;
   id_ = value;
   // @@protoc_insertion_point(field_set:vision.Crowd.id)
 }
@@ -2515,17 +2734,66 @@ Crowd::pedestrian() const {
   return pedestrian_;
 }
 
+// optional .vision.data_time time = 3;
+inline bool Crowd::has_time() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void Crowd::clear_time() {
+  if (time_ != nullptr) time_->Clear();
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const ::vision::data_time& Crowd::time() const {
+  const ::vision::data_time* p = time_;
+  // @@protoc_insertion_point(field_get:vision.Crowd.time)
+  return p != nullptr ? *p : *reinterpret_cast<const ::vision::data_time*>(
+      &::vision::_data_time_default_instance_);
+}
+inline ::vision::data_time* Crowd::release_time() {
+  // @@protoc_insertion_point(field_release:vision.Crowd.time)
+  _has_bits_[0] &= ~0x00000001u;
+  ::vision::data_time* temp = time_;
+  time_ = nullptr;
+  return temp;
+}
+inline ::vision::data_time* Crowd::mutable_time() {
+  _has_bits_[0] |= 0x00000001u;
+  if (time_ == nullptr) {
+    auto* p = CreateMaybeMessage<::vision::data_time>(GetArenaNoVirtual());
+    time_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:vision.Crowd.time)
+  return time_;
+}
+inline void Crowd::set_allocated_time(::vision::data_time* time) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete time_;
+  }
+  if (time) {
+    ::google::protobuf::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      time = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, time, submessage_arena);
+    }
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  time_ = time;
+  // @@protoc_insertion_point(field_set_allocated:vision.Crowd.time)
+}
+
 // -------------------------------------------------------------------
 
 // Obstacles
 
 // required .vision.ID id = 1;
 inline bool Obstacles::has_id() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void Obstacles::clear_id() {
   id_ = 0;
-  _has_bits_[0] &= ~0x00000001u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline ::vision::ID Obstacles::id() const {
   // @@protoc_insertion_point(field_get:vision.Obstacles.id)
@@ -2533,7 +2801,7 @@ inline ::vision::ID Obstacles::id() const {
 }
 inline void Obstacles::set_id(::vision::ID value) {
   assert(::vision::ID_IsValid(value));
-  _has_bits_[0] |= 0x00000001u;
+  _has_bits_[0] |= 0x00000002u;
   id_ = value;
   // @@protoc_insertion_point(field_set:vision.Obstacles.id)
 }
@@ -2568,17 +2836,66 @@ Obstacles::array() const {
   return array_;
 }
 
+// optional .vision.data_time time = 3;
+inline bool Obstacles::has_time() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void Obstacles::clear_time() {
+  if (time_ != nullptr) time_->Clear();
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const ::vision::data_time& Obstacles::time() const {
+  const ::vision::data_time* p = time_;
+  // @@protoc_insertion_point(field_get:vision.Obstacles.time)
+  return p != nullptr ? *p : *reinterpret_cast<const ::vision::data_time*>(
+      &::vision::_data_time_default_instance_);
+}
+inline ::vision::data_time* Obstacles::release_time() {
+  // @@protoc_insertion_point(field_release:vision.Obstacles.time)
+  _has_bits_[0] &= ~0x00000001u;
+  ::vision::data_time* temp = time_;
+  time_ = nullptr;
+  return temp;
+}
+inline ::vision::data_time* Obstacles::mutable_time() {
+  _has_bits_[0] |= 0x00000001u;
+  if (time_ == nullptr) {
+    auto* p = CreateMaybeMessage<::vision::data_time>(GetArenaNoVirtual());
+    time_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:vision.Obstacles.time)
+  return time_;
+}
+inline void Obstacles::set_allocated_time(::vision::data_time* time) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete time_;
+  }
+  if (time) {
+    ::google::protobuf::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      time = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, time, submessage_arena);
+    }
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  time_ = time;
+  // @@protoc_insertion_point(field_set_allocated:vision.Obstacles.time)
+}
+
 // -------------------------------------------------------------------
 
 // AvailableAreas
 
 // required .vision.ID id = 1;
 inline bool AvailableAreas::has_id() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void AvailableAreas::clear_id() {
   id_ = 0;
-  _has_bits_[0] &= ~0x00000001u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline ::vision::ID AvailableAreas::id() const {
   // @@protoc_insertion_point(field_get:vision.AvailableAreas.id)
@@ -2586,7 +2903,7 @@ inline ::vision::ID AvailableAreas::id() const {
 }
 inline void AvailableAreas::set_id(::vision::ID value) {
   assert(::vision::ID_IsValid(value));
-  _has_bits_[0] |= 0x00000001u;
+  _has_bits_[0] |= 0x00000002u;
   id_ = value;
   // @@protoc_insertion_point(field_set:vision.AvailableAreas.id)
 }
@@ -2621,17 +2938,66 @@ AvailableAreas::area() const {
   return area_;
 }
 
+// optional .vision.data_time time = 3;
+inline bool AvailableAreas::has_time() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void AvailableAreas::clear_time() {
+  if (time_ != nullptr) time_->Clear();
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const ::vision::data_time& AvailableAreas::time() const {
+  const ::vision::data_time* p = time_;
+  // @@protoc_insertion_point(field_get:vision.AvailableAreas.time)
+  return p != nullptr ? *p : *reinterpret_cast<const ::vision::data_time*>(
+      &::vision::_data_time_default_instance_);
+}
+inline ::vision::data_time* AvailableAreas::release_time() {
+  // @@protoc_insertion_point(field_release:vision.AvailableAreas.time)
+  _has_bits_[0] &= ~0x00000001u;
+  ::vision::data_time* temp = time_;
+  time_ = nullptr;
+  return temp;
+}
+inline ::vision::data_time* AvailableAreas::mutable_time() {
+  _has_bits_[0] |= 0x00000001u;
+  if (time_ == nullptr) {
+    auto* p = CreateMaybeMessage<::vision::data_time>(GetArenaNoVirtual());
+    time_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:vision.AvailableAreas.time)
+  return time_;
+}
+inline void AvailableAreas::set_allocated_time(::vision::data_time* time) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete time_;
+  }
+  if (time) {
+    ::google::protobuf::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      time = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, time, submessage_arena);
+    }
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  time_ = time;
+  // @@protoc_insertion_point(field_set_allocated:vision.AvailableAreas.time)
+}
+
 // -------------------------------------------------------------------
 
 // IllegalCarWarn
 
 // required .vision.ID id = 1;
 inline bool IllegalCarWarn::has_id() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void IllegalCarWarn::clear_id() {
   id_ = 0;
-  _has_bits_[0] &= ~0x00000001u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline ::vision::ID IllegalCarWarn::id() const {
   // @@protoc_insertion_point(field_get:vision.IllegalCarWarn.id)
@@ -2639,7 +3005,7 @@ inline ::vision::ID IllegalCarWarn::id() const {
 }
 inline void IllegalCarWarn::set_id(::vision::ID value) {
   assert(::vision::ID_IsValid(value));
-  _has_bits_[0] |= 0x00000001u;
+  _has_bits_[0] |= 0x00000002u;
   id_ = value;
   // @@protoc_insertion_point(field_set:vision.IllegalCarWarn.id)
 }
@@ -2672,6 +3038,55 @@ inline const ::google::protobuf::RepeatedPtrField< ::vision::AbnormalCar >&
 IllegalCarWarn::array() const {
   // @@protoc_insertion_point(field_list:vision.IllegalCarWarn.array)
   return array_;
+}
+
+// optional .vision.data_time time = 3;
+inline bool IllegalCarWarn::has_time() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void IllegalCarWarn::clear_time() {
+  if (time_ != nullptr) time_->Clear();
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const ::vision::data_time& IllegalCarWarn::time() const {
+  const ::vision::data_time* p = time_;
+  // @@protoc_insertion_point(field_get:vision.IllegalCarWarn.time)
+  return p != nullptr ? *p : *reinterpret_cast<const ::vision::data_time*>(
+      &::vision::_data_time_default_instance_);
+}
+inline ::vision::data_time* IllegalCarWarn::release_time() {
+  // @@protoc_insertion_point(field_release:vision.IllegalCarWarn.time)
+  _has_bits_[0] &= ~0x00000001u;
+  ::vision::data_time* temp = time_;
+  time_ = nullptr;
+  return temp;
+}
+inline ::vision::data_time* IllegalCarWarn::mutable_time() {
+  _has_bits_[0] |= 0x00000001u;
+  if (time_ == nullptr) {
+    auto* p = CreateMaybeMessage<::vision::data_time>(GetArenaNoVirtual());
+    time_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:vision.IllegalCarWarn.time)
+  return time_;
+}
+inline void IllegalCarWarn::set_allocated_time(::vision::data_time* time) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete time_;
+  }
+  if (time) {
+    ::google::protobuf::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      time = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, time, submessage_arena);
+    }
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  time_ = time;
+  // @@protoc_insertion_point(field_set_allocated:vision.IllegalCarWarn.time)
 }
 
 // -------------------------------------------------------------------
@@ -2777,6 +3192,8 @@ inline void SmokeWarn::set_warn(bool value) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

@@ -25,6 +25,13 @@ enum TYPE{
 	MOTORCYCLE	= 3;	// 摩托车
 }
 
+
+// 时间戳
+message data_time {
+	required uint64 sec  = 1;	// 秒
+	required uint32 usec = 2;	// 微秒
+}
+
 // 单个行人
 message Pedestrian {  
 	required int32 object_id = 1;			
@@ -76,36 +83,45 @@ message AvailableArea {
 
 
 
-// 下面是要发送给rsu的消息结构
+
 message Base {
 	required ID id = 1;
 } 
 
+//---------------------------------------------------------------------------
+// 下面是要发送给rsu的消息结构
+
+
 // 行人
 message Crowd {
 	required ID id = 1;
-	repeated Pedestrian pedestrian = 2;  
+	repeated Pedestrian pedestrian = 2;
+	optional data_time time = 3;
 } 
 
 // 障碍物
 message Obstacles {
 	required ID id = 1;
         repeated Obstacle array = 2;
+	optional data_time time = 3;
 }
 
 // 可行驶区域
 message AvailableAreas { 
 	required ID id = 1;
 	repeated AvailableArea area = 2;
+	optional data_time time = 3;
 }
 
 // 违章车辆
 message IllegalCarWarn {
 	required ID id = 1;
         repeated AbnormalCar array = 2;  //车辆数组
+	optional data_time time = 3;
 }
 
-/* 能见度检测
+/* 
+   能见度检测
    能见度距离 能见度等级
     > 500       0(较好)
      200~500      1(好)
@@ -124,5 +140,12 @@ message SmokeWarn{
 	required ID id = 1;
         required bool warn = 2;         // 是否有报警
 }
+
+
+
+
+
+
+
 
 

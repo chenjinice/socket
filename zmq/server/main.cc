@@ -170,7 +170,30 @@ void send_smoke(Vserver &s)
 }	
 
 
+// 带时间的异常车辆（静止）
+void test(Vserver &s)
+{
+    IllegalCarWarn a;
+    AbnormalCar   *p;
+    static struct timeval tv = {0};   // 时间结构体,用于限制发送频率
+    a.set_id(ILLEGAL_V2);
+    for(int i=0;i<1;i++){
+        p = a.add_array();
+        p->set_object_id(i);
+        p->set_camera(i);      // 哪个相机 :1,2,3,4
+        p->set_lng(3);         // 经度
+        p->set_lat(4);         // 纬度
+    }
 
+
+    // 设置时间
+    data_time *time = new data_time();
+    time->set_sec(987654321);	 	// 秒
+    time->set_usec(1234567890);		// 微秒
+    a.set_allocated_time(time);	
+
+    s.send_data(a,&tv);
+}
 
 
 
@@ -193,7 +216,12 @@ int main(int argc ,char **argv)
         send_area(s);           // 动态可行驶区域检测
         send_smoke(s);          // 隧道内火焰与烟雾预警
 	
-	usleep(5000);
+
+        // 带时间的异常车辆（静止）
+        test(s);
+
+
+        usleep(5000);
 
     }
 

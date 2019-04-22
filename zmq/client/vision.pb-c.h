@@ -15,6 +15,7 @@ PROTOBUF_C__BEGIN_DECLS
 #endif
 
 
+typedef struct _Vision__DataTime Vision__DataTime;
 typedef struct _Vision__Pedestrian Vision__Pedestrian;
 typedef struct _Vision__Obstacle Vision__Obstacle;
 typedef struct _Vision__AbnormalCar Vision__AbnormalCar;
@@ -104,6 +105,26 @@ typedef enum _Vision__TYPE {
 } Vision__TYPE;
 
 /* --- messages --- */
+
+/*
+ * 时间戳
+ */
+struct  _Vision__DataTime
+{
+  ProtobufCMessage base;
+  /*
+   * 秒
+   */
+  uint64_t sec;
+  /*
+   * 微秒
+   */
+  uint32_t usec;
+};
+#define VISION__DATA_TIME__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&vision__data_time__descriptor) \
+    , 0, 0 }
+
 
 /*
  * 单个行人
@@ -267,9 +288,6 @@ struct  _Vision__AvailableArea
     , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
 
 
-/*
- * 下面是要发送给rsu的消息结构
- */
 struct  _Vision__Base
 {
   ProtobufCMessage base;
@@ -289,10 +307,11 @@ struct  _Vision__Crowd
   Vision__ID id;
   size_t n_pedestrian;
   Vision__Pedestrian **pedestrian;
+  Vision__DataTime *time;
 };
 #define VISION__CROWD__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&vision__crowd__descriptor) \
-    , VISION__ID__DEFAULT, 0,NULL }
+    , VISION__ID__DEFAULT, 0,NULL, NULL }
 
 
 /*
@@ -304,10 +323,11 @@ struct  _Vision__Obstacles
   Vision__ID id;
   size_t n_array;
   Vision__Obstacle **array;
+  Vision__DataTime *time;
 };
 #define VISION__OBSTACLES__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&vision__obstacles__descriptor) \
-    , VISION__ID__DEFAULT, 0,NULL }
+    , VISION__ID__DEFAULT, 0,NULL, NULL }
 
 
 /*
@@ -319,10 +339,11 @@ struct  _Vision__AvailableAreas
   Vision__ID id;
   size_t n_area;
   Vision__AvailableArea **area;
+  Vision__DataTime *time;
 };
 #define VISION__AVAILABLE_AREAS__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&vision__available_areas__descriptor) \
-    , VISION__ID__DEFAULT, 0,NULL }
+    , VISION__ID__DEFAULT, 0,NULL, NULL }
 
 
 /*
@@ -337,14 +358,16 @@ struct  _Vision__IllegalCarWarn
    */
   size_t n_array;
   Vision__AbnormalCar **array;
+  Vision__DataTime *time;
 };
 #define VISION__ILLEGAL_CAR_WARN__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&vision__illegal_car_warn__descriptor) \
-    , VISION__ID__DEFAULT, 0,NULL }
+    , VISION__ID__DEFAULT, 0,NULL, NULL }
 
 
 /*
- * 能见度检测
+ * 
+ *能见度检测
  *能见度距离 能见度等级
  *> 500       0(较好)
  *200~500      1(好)
@@ -387,6 +410,25 @@ struct  _Vision__SmokeWarn
     , VISION__ID__DEFAULT, 0 }
 
 
+/* Vision__DataTime methods */
+void   vision__data_time__init
+                     (Vision__DataTime         *message);
+size_t vision__data_time__get_packed_size
+                     (const Vision__DataTime   *message);
+size_t vision__data_time__pack
+                     (const Vision__DataTime   *message,
+                      uint8_t             *out);
+size_t vision__data_time__pack_to_buffer
+                     (const Vision__DataTime   *message,
+                      ProtobufCBuffer     *buffer);
+Vision__DataTime *
+       vision__data_time__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   vision__data_time__free_unpacked
+                     (Vision__DataTime *message,
+                      ProtobufCAllocator *allocator);
 /* Vision__Pedestrian methods */
 void   vision__pedestrian__init
                      (Vision__Pedestrian         *message);
@@ -598,6 +640,9 @@ void   vision__smoke_warn__free_unpacked
                       ProtobufCAllocator *allocator);
 /* --- per-message closures --- */
 
+typedef void (*Vision__DataTime_Closure)
+                 (const Vision__DataTime *message,
+                  void *closure_data);
 typedef void (*Vision__Pedestrian_Closure)
                  (const Vision__Pedestrian *message,
                   void *closure_data);
@@ -639,6 +684,7 @@ typedef void (*Vision__SmokeWarn_Closure)
 
 extern const ProtobufCEnumDescriptor    vision__id__descriptor;
 extern const ProtobufCEnumDescriptor    vision__type__descriptor;
+extern const ProtobufCMessageDescriptor vision__data_time__descriptor;
 extern const ProtobufCMessageDescriptor vision__pedestrian__descriptor;
 extern const ProtobufCMessageDescriptor vision__obstacle__descriptor;
 extern const ProtobufCMessageDescriptor vision__abnormal_car__descriptor;

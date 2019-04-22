@@ -98,6 +98,7 @@ static void illegal2_fun(uint8_t *buffer,int length)
         return;
     }
     printf("vclient : [%d car] --- %s\n",c->n_array,__FUNCTION__);
+    if(c->time)printf("++++++++++++++++++++++++++=time = %lld : %d \n",c->time->sec,c->time->usec);
 
     for(i=0;i<c->n_array;i++){
         Vision__AbnormalCar * p = c->array[i];
