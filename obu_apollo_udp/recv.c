@@ -5,11 +5,12 @@
 #include <netdb.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <net/if.h>
 #include <string.h>
 #include "obu_apollo.pb-c.h"
 
 
-int main()
+int main(int argc,char *argv[])
 {
     // 绑定地址
     struct sockaddr_in addrto;
@@ -17,7 +18,6 @@ int main()
     addrto.sin_family = AF_INET;
     addrto.sin_addr.s_addr = htonl(INADDR_ANY);
     addrto.sin_port = htons(9999);
-
 
     struct sockaddr_in from;
 
@@ -41,27 +41,23 @@ int main()
     int len = sizeof(struct sockaddr_in);
     uint8_t buffer[1000] = {0};
 
+    int count  = 0;
     while(1)
     {
         memset(buffer,0,sizeof(buffer));
         int ret=recvfrom(sock, buffer, 100, 0, (struct sockaddr*)&from,(socklen_t*)&len);
+		char *ip = inet_ntoa(from.sin_addr);
+		printf("[%s:%d] ret === %d\n",ip,ntohs(from.sin_port),ret);
 
-	int i;
-//	printf("%s\n",buffer);
 
-        ObuMsg *msg = obu_msg__unpack(NULL,ret-5,buffer+4);
-        if(msg == NULL){
-            printf("client : obu msg unpack failed \n");
-            continue;
-        }
-        printf("count ==== %d\n",msg->count);
-        for(i=0;i<msg->n_obs;i++){
-            Obstacle *obs= msg->obs[i];
-            printf("obs[%d]:id=%d,type=%d,lat=%d,lng=%d\n",i,obs->id,obs->type,obs->lat,obs->lng);
-        }
-        obu_msg__free_unpacked(msg,NULL);
-
+		if(1)
+		{
+	    	sendto(sock, "apollo", 7, 0, (struct sockaddr*)&from, sizeof(from));
+		}
     }
 
     return 0;
 }
+
+
+

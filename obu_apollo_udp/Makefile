@@ -2,8 +2,8 @@ CC = gcc
 CROSS = arm-linux-gnueabihf-$(CC) 
 
 PROTO_SRC = obu_apollo.pb-c.c
-SEND_SRC = send.c $(PROTO_SRC) obu_apollo.c
-RECV_SRC = recv.c $(PROTO_SRC) obu_apollo.c
+SEND_SRC = send.c $(PROTO_SRC) obu_server.c
+RECV_SRC = recv.c $(PROTO_SRC)
 
 LIB += -lpthread
 LIB += -lprotobuf-c

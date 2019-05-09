@@ -2,14 +2,14 @@
 #include <signal.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "obu_apollo.h"
+#include "obu_server.h"
 #include "obu_apollo.pb-c.h"
 
 static int flag = 1;
 
 void fun(int arg){
     flag = 0;
-    obu_apollo_stop();
+    obu_server_stop();
     printf("integer === %d\n",arg);
 }
 
@@ -22,11 +22,11 @@ int main(int argc,char *argv[])
 
     signal(SIGINT,fun);
     signal(SIGPIPE,SIG_IGN);
-    obu_apollo_start(device,9999);
+    obu_server_start(device,9999);
 
     int count = 0;
     while (flag) {
-
+/*
         int num = 3,i;
         ObuMsg msg = OBU_MSG__INIT;
         Obstacle **obs = calloc(sizeof(Obstacle *),num);
@@ -55,7 +55,11 @@ int main(int argc,char *argv[])
         }
         free(obs);
         obs = NULL;
-
+*/
+	uint8_t buffer[10] ={0};
+	buffer[0] = 1;
+	buffer[1] = 2;
+	obu_server_send(buffer,10);
         sleep(1);
     }
 
