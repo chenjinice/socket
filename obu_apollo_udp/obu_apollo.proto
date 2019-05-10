@@ -9,6 +9,7 @@ syntax = "proto2";
 package obu_apollo;
 
 
+
 // 车辆信息
 message Car_info{
 	required uint32 id = 1;			// 车辆ID
@@ -21,7 +22,7 @@ message Car_info{
 	required int32 acc = 8;         // 加速度*10
 	
 	optional uint32 time = 9;       // 时间戳（当前的秒值（0～59）×1000+当前的毫秒值（0～999））
-	optional uint32 satellite_num = 10; // 卫星数量
+	optional uint32 hz_accuracy = 10; // 水平精确度*10（5到999）
 	optional uint32 gear = 11;      // 车的挡位
 	optional uint32	brake = 12;     // 制动开关
 	optional uint32 rtk = 13;       // rtk定位方式
@@ -59,8 +60,8 @@ message SingleLightInfo {
 }
 
 message LaneStopPoint {
-    optional uint32 latitude = 1;
-    optional uint32 longitude = 2;
+    optional int32 latitude = 1;
+    optional int32 longitude = 2;
 }
 
 message TrafficLightInfo{

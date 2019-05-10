@@ -13,8 +13,8 @@
 
 
 #define SOCK_INVALID	-1
-#define HEADER_SIZE      2
-static uint8_t g_header[2] = {0x60,0x61};
+#define MSG_HEAD_1 0x60
+#define MSG_HEAD_2 0x61
 
 static pthread_mutex_t m_mutex;
 static char   * m_device   = "eth0";
@@ -37,29 +37,29 @@ static void *read_thread()
     // 线程结束时，自动释放资源
     pthread_detach(pthread_self());
 
-    uint8_t buffer[20] = {0};
+    uint8_t buffer[30] = {0};
     struct sockaddr_in from;
     int len = sizeof(struct sockaddr_in);
     int ret,count;
 
     m_loop = 1;
-	count = 0;
+    count = 0;
     while(m_loop){
         memset(buffer,0,sizeof(buffer));
-        ret=recvfrom(m_fd, buffer, sizeof(buffer), 0, (struct sockaddr*)&from,(socklen_t*)&len);
+        ret = recvfrom(m_fd, buffer, sizeof(buffer), 0, (struct sockaddr*)&from,(socklen_t*)&len);
         printf("[%s:%d] ret === %d\n",inet_ntoa(from.sin_addr),ntohs(from.sin_port),ret);
         if( (ret > 0) && (strcmp(buffer,"apollo") == 0) )
         {
             char *ip = inet_ntoa(from.sin_addr);
             m_addr.sin_addr.s_addr=inet_addr(ip);
-			m_addr.sin_port = from.sin_port;
-			count = 0;
+            m_addr.sin_port = from.sin_port;
+            count = 0;
         }else{
-			if(count++ == 10){
-				m_addr.sin_addr.s_addr=htonl(INADDR_BROADCAST);
-    			m_addr.sin_port=htons(m_port);
-			}
-		}
+            if(count++ == 10){
+                m_addr.sin_addr.s_addr=htonl(INADDR_BROADCAST);
+                m_addr.sin_port=htons(m_port);
+            }
+        }
     }
 
 
@@ -86,7 +86,7 @@ static void udp_init()
     }
 
     // 绑定网卡
-	struct ifreq ifr = {0};
+    struct ifreq ifr = {0};
     strcpy(ifr.ifr_name,m_device);
     if (setsockopt(m_fd, SOL_SOCKET, SO_BINDTODEVICE, (char *)&ifr, sizeof(ifr)) < 0){
         udp_close();
@@ -94,13 +94,13 @@ static void udp_init()
         exit(-1);
     }
 
-	//设置读数据的超时时间
+    //设置读数据的超时时间
     struct timeval tv_out;
-    tv_out.tv_sec = 2;
+    tv_out.tv_sec = 4;
     tv_out.tv_usec = 0;
     setsockopt(m_fd,SOL_SOCKET,SO_RCVTIMEO,&tv_out, sizeof(tv_out));
 
- 	// 绑定地址,用于接收消息
+    // 绑定地址,用于接收消息
     struct sockaddr_in this_addr;
     bzero(&this_addr, sizeof(struct sockaddr_in));
     this_addr.sin_family = AF_INET;
@@ -113,14 +113,14 @@ static void udp_init()
         exit(-1);
     }
 
-	// 设置广播地址和端口
+    // 设置广播地址和端口
     bzero(&m_addr, sizeof(struct sockaddr_in));
     m_addr.sin_family=AF_INET;
     m_addr.sin_addr.s_addr=htonl(INADDR_BROADCAST);
     m_addr.sin_port=htons(m_port);
-//    m_addr.sin_addr.s_addr=inet_addr("192.168.1.255");
+    //    m_addr.sin_addr.s_addr=inet_addr("192.168.1.255");
 
-	// 创建读消息线程
+    // 创建读消息线程
     pthread_create(&thread,NULL,read_thread,NULL);
 }
 
@@ -147,7 +147,8 @@ void obu_server_stop()
 
 void obu_server_send(uint8_t *data,int len)
 {
-    if(len > MSG_BUFFER_SIZE){
+    if(len > MSG_BUFFER_SIZE-5){
+        printf("obu_server : data length = %d > %d\n",len,MSG_BUFFER_SIZE-5);
         return;
     }
 
@@ -156,16 +157,20 @@ void obu_server_send(uint8_t *data,int len)
     uint8_t sum = 0 ;
 
     //
-    uint8_t buffer[MSG_BUFFER_SIZE+10] = {0};
-    memcpy(buffer,g_header,HEADER_SIZE);
-    memcpy(buffer+HEADER_SIZE,data,len);
-    for (i=0;i<HEADER_SIZE+len;i++) {
+    uint8_t buffer[MSG_BUFFER_SIZE] = {0};
+    buffer[0] = MSG_HEAD_1;
+    buffer[1] = MSG_HEAD_2;
+    buffer[2] = len & 0xff;
+    buffer[3] = (len >> 8) & 0xff;
+    memcpy(buffer+4,data,len);
+    for (i=0;i<len+4;i++) {
         sum+=buffer[i];
     }
-    buffer[len+HEADER_SIZE] = sum;
-    send_size = len+HEADER_SIZE+1;
+    buffer[len+4] = sum;
+    send_size = len+5;
 
     pthread_mutex_lock(&m_mutex);
+    printf("send  =  %s:%d\n",inet_ntoa(m_addr.sin_addr),ntohs(m_addr.sin_port));
     ret=sendto(m_fd, buffer, send_size, 0, (struct sockaddr*)&m_addr, sizeof(m_addr));
     if(ret<0){
         perror("obu_server sendto error");

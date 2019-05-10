@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-#define MSG_BUFFER_SIZE 1000
+#define MSG_BUFFER_SIZE 1024
 
 void obu_server_start(char *device,uint16_t port);
 void obu_server_stop();
