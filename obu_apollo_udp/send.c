@@ -72,7 +72,9 @@ void init_msg(ObuApollo__ObuMsg *msg)
     car_info->heading = 99.99*100;
     car_info->speed = 2*100;
     car_info->acc = 1*10;
+	car_info->has_gear=1;	// c版本的protobuf，optional的基本数据类型的成员必须这么弄，好恶心，c++版本的比较简洁，c语言真是不适合写应用程序
     car_info->gear = 2;
+	car_info->has_rtk = 1;
     car_info->rtk = 5;
     msg->car = car_info;
 
@@ -89,6 +91,7 @@ void init_msg(ObuApollo__ObuMsg *msg)
         lane_array[i] = calloc(1,sizeof(ObuApollo__LaneFlag));
         obu_apollo__lane_flag__init(lane_array[i]);
         lane_array[i]->lane_id = i+100;
+		lane_array[i]->has_flag = 1;
         lane_array[i]->flag = i+200;
     }
     lane_info->n_lane_flags = lane_num;
@@ -102,16 +105,22 @@ void init_msg(ObuApollo__ObuMsg *msg)
     // current light
     lights->current_lane_light = calloc(1,sizeof(ObuApollo__SingleLightInfo));
     obu_apollo__single_light_info__init(lights->current_lane_light);
+	lights->current_lane_light->has_color_status = 1;
+	lights->current_lane_light->has_light_remain_times = 1;
     lights->current_lane_light->color_status = OBU_APOLLO__SINGLE_LIGHT_INFO__COLOR__YELLOW;
     lights->current_lane_light->light_remain_times = 10;
     // left light
     lights->left_turn = calloc(1,sizeof(ObuApollo__SingleLightInfo));
     obu_apollo__single_light_info__init(lights->left_turn);
+	lights->left_turn->has_color_status = 1;
+	lights->left_turn->has_light_remain_times = 1;
     lights->left_turn->color_status = OBU_APOLLO__SINGLE_LIGHT_INFO__COLOR__YELLOW;
-    lights->left_turn->light_remain_times = 10;
+    lights->left_turn->light_remain_times = 20;
     // stop point
     lights->current_lane_stop_point = calloc(1,sizeof(ObuApollo__LaneStopPoint));
     obu_apollo__lane_stop_point__init(lights->current_lane_stop_point);
+	lights->current_lane_stop_point->has_latitude = 1;
+	lights->current_lane_stop_point->has_longitude = 1;
     lights->current_lane_stop_point->latitude  = 33.33*1e7;
     lights->current_lane_stop_point->longitude = 44.44*1e7;
     msg->lights = lights;
@@ -126,6 +135,7 @@ void init_msg(ObuApollo__ObuMsg *msg)
         obs_array[i]->type = OBU_APOLLO__OBSTACLE__OBS__TYPE__HUMAN;
         obs_array[i]->lng = 55.55*1e7;
         obs_array[i]->lat = 66.66*1e7;
+		obs_array[i]->has_speed = 1;
         obs_array[i]->speed = i*200;
     }
     msg->n_obs = obs_num;
