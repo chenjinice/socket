@@ -12,7 +12,7 @@ int obumsg_get_gps(uint8_t *buffer,int len)
         return -1;
     }
     printf("gps_time:%lf,heading:%lf",gps->gps_time,gps->heading);
-    if(gps->position_std_dev)printf(",position_std_dev(x:%lf,y:%lf,z:%lf)",gps->position_std_dev->x,gps->position_std_dev->y,gps->position_std_dev->z);
+    if(gps->position)printf(",position(lng:%d,lat:%d,alt:%d)",gps->position->longitude,gps->position->latitude,gps->position->altitude);
     printf("\n");
 
     apollo__drivers__ci_di_gps__free_unpacked(gps,NULL);

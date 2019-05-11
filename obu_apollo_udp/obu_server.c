@@ -72,6 +72,9 @@ static void *read_thread()
 // 发送数据线程
 static void *send_thread()
 {
+    // 线程结束时，自动释放资源
+    pthread_detach(pthread_self());
+
     int length;
     uint8_t buffer[1024] ={0};
 
@@ -88,8 +91,8 @@ static void *send_thread()
             }
             obumsg_free(&msg);
         }
-        // 自动驾驶那边，10hz读，所以休眠100ms
-        usleep(1000*1000);
+        // 10hz
+        usleep(100*1000);
     }
 
 }
@@ -195,7 +198,7 @@ void obu_server_send(uint8_t *data,int len)
     int send_size = 0;
     uint8_t sum = 0 ;
 
-    // 添加头
+    // 添加2字节头，2字节数据长度，末尾添加1字节校验码
     uint8_t buffer[MSG_BUFFER_SIZE] = {0};
     buffer[0] = MSG_HEAD_1;
     buffer[1] = MSG_HEAD_2;
