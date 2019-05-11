@@ -10,9 +10,11 @@
 #include <signal.h>
 #include <pthread.h>
 #include "obu_server.h"
+#include "obu_apollo.pb-c.h"
+#include "gps.pb-c.h"
+#include "obu_msgs.h"
 
-
-#define SOCK_INVALID	-1
+#define SOCK_INVALID -1
 #define MSG_HEAD_1 0x60
 #define MSG_HEAD_2 0x61
 
@@ -32,24 +34,27 @@ static void udp_close()
     }
 }
 
+
+// 读数据线程
 static void *read_thread()
 {
     // 线程结束时，自动释放资源
     pthread_detach(pthread_self());
 
-    uint8_t buffer[30] = {0};
+    uint8_t buffer[1024] = {0};
     struct sockaddr_in from;
     int len = sizeof(struct sockaddr_in);
     int ret,count;
 
-    m_loop = 1;
     count = 0;
     while(m_loop){
         memset(buffer,0,sizeof(buffer));
         ret = recvfrom(m_fd, buffer, sizeof(buffer), 0, (struct sockaddr*)&from,(socklen_t*)&len);
-        printf("[%s:%d] ret === %d\n",inet_ntoa(from.sin_addr),ntohs(from.sin_port),ret);
-        if( (ret > 0) && (strcmp(buffer,"apollo") == 0) )
+        //        printf("[%s:%d] recv length === %d\n",inet_ntoa(from.sin_addr),ntohs(from.sin_port),ret);
+        if( ret > 0 )
         {
+            obumsg_get_gps(buffer,ret);
+
             char *ip = inet_ntoa(from.sin_addr);
             m_addr.sin_addr.s_addr=inet_addr(ip);
             m_addr.sin_port = from.sin_port;
@@ -61,15 +66,41 @@ static void *read_thread()
             }
         }
     }
+}
 
+
+// 发送数据线程
+static void *send_thread()
+{
+    int length;
+    uint8_t buffer[1024] ={0};
+
+    while(m_loop){
+        memset(buffer,0,sizeof(buffer));
+        ObuApollo__ObuMsg msg;
+
+        if(obumsg_init(&msg) == 0){
+            length = obu_apollo__obu_msg__get_packed_size(&msg);
+            printf("length == %d , count ======= %d\n",length,msg.count);
+            if(length <= sizeof(buffer)){
+                obu_apollo__obu_msg__pack(&msg,buffer);
+                obu_server_send(buffer,length);
+            }
+            obumsg_free(&msg);
+        }
+        // 自动驾驶那边，10hz读，所以休眠100ms
+        usleep(1000*1000);
+    }
 
 }
+
 
 static void udp_init()
 {
     int ret = -1;
     int opt = 1;
-    pthread_t thread;
+    pthread_t r_thread;
+    pthread_t s_thread;
 
     m_fd = socket(AF_INET, SOCK_DGRAM, 0);
     if (m_fd <= 0)
@@ -96,7 +127,7 @@ static void udp_init()
 
     //设置读数据的超时时间
     struct timeval tv_out;
-    tv_out.tv_sec = 4;
+    tv_out.tv_sec = 2;
     tv_out.tv_usec = 0;
     setsockopt(m_fd,SOL_SOCKET,SO_RCVTIMEO,&tv_out, sizeof(tv_out));
 
@@ -120,8 +151,11 @@ static void udp_init()
     m_addr.sin_port=htons(m_port);
     //    m_addr.sin_addr.s_addr=inet_addr("192.168.1.255");
 
-    // 创建读消息线程
-    pthread_create(&thread,NULL,read_thread,NULL);
+    m_loop = 1;
+    // 读消息线程
+    pthread_create(&r_thread,NULL,read_thread,NULL);
+    // 发送数据线程
+    pthread_create(&s_thread,NULL,send_thread,NULL);
 }
 
 
@@ -130,11 +164,11 @@ void obu_server_start(char * device,uint16_t port)
     if(m_fd == SOCK_INVALID)
     {
         m_port = port;
+        m_loop = 0;
         if(device)m_device = device;
         pthread_mutex_init(&m_mutex,NULL);
         udp_init();
     }
-
 }
 
 void obu_server_stop()
@@ -147,6 +181,11 @@ void obu_server_stop()
 
 void obu_server_send(uint8_t *data,int len)
 {
+    if(m_fd == SOCK_INVALID){
+        printf("obu_server : socket fd invalid \n");
+        return;
+    }
+
     if(len > MSG_BUFFER_SIZE-5){
         printf("obu_server : data length = %d > %d\n",len,MSG_BUFFER_SIZE-5);
         return;
@@ -156,7 +195,7 @@ void obu_server_send(uint8_t *data,int len)
     int send_size = 0;
     uint8_t sum = 0 ;
 
-    //
+    // 添加头
     uint8_t buffer[MSG_BUFFER_SIZE] = {0};
     buffer[0] = MSG_HEAD_1;
     buffer[1] = MSG_HEAD_2;
@@ -170,12 +209,15 @@ void obu_server_send(uint8_t *data,int len)
     send_size = len+5;
 
     pthread_mutex_lock(&m_mutex);
-    printf("send  =  %s:%d\n",inet_ntoa(m_addr.sin_addr),ntohs(m_addr.sin_port));
+    printf("send to |%s|  %s:%d \n",m_device,inet_ntoa(m_addr.sin_addr),ntohs(m_addr.sin_port));
     ret=sendto(m_fd, buffer, send_size, 0, (struct sockaddr*)&m_addr, sizeof(m_addr));
     if(ret<0){
         perror("obu_server sendto error");
     }
     pthread_mutex_unlock(&m_mutex);
 }
+
+
+
 
 

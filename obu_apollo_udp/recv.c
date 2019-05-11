@@ -9,7 +9,9 @@
 #include <string.h>
 #include "obu_apollo.pb-c.h"
 
+
 void analysis(uint8_t *buffer,int len);
+
 
 int main(int argc,char *argv[])
 {
@@ -51,6 +53,7 @@ int main(int argc,char *argv[])
         printf("[%s:%d] ret === %d\n",ip,ntohs(from.sin_port),ret);
 
         analysis(buffer,ret);
+//        sleep(5);
 
         if(1)
         {
@@ -65,11 +68,11 @@ int main(int argc,char *argv[])
 void analysis(uint8_t *buffer,int len)
 {
     int i;
-//    for(i=0;i<10;i++){
-//        printf("%02X ",buffer[i]);
-//    }
-//    printf("\n");
-//    return;
+    //    for(i=0;i<10;i++){
+    //        printf("%02X ",buffer[i]);
+    //    }
+    //    printf("\n");
+    //    return;
     if(len <= 5)return;
 
     ObuApollo__ObuMsg *msg =  obu_apollo__obu_msg__unpack(NULL,len-5,buffer+4);
@@ -77,7 +80,7 @@ void analysis(uint8_t *buffer,int len)
         printf("obumsg unpack failed \n");
         return;
     }
-
+    printf("count ============ %d\n",msg->count);
     if(msg->car){
         ObuApollo__CarInfo *c = msg->car;
         printf("car=id:0x%x,depth:%d,width:%d,lng:%d,lat:%d,heading:%d,speed:%d,acc:%d,gear:%d,rtk:%d\n",
