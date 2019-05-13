@@ -50,11 +50,9 @@ static void *read_thread()
     while(m_loop){
         memset(buffer,0,sizeof(buffer));
         ret = recvfrom(m_fd, buffer, sizeof(buffer), 0, (struct sockaddr*)&from,(socklen_t*)&len);
-        //        printf("[%s:%d] recv length === %d\n",inet_ntoa(from.sin_addr),ntohs(from.sin_port),ret);
-        if( ret > 0 )
+//        printf("[%s:%d] recv length === %d\n",inet_ntoa(from.sin_addr),ntohs(from.sin_port),ret);
+        if( (ret > 0) && (obumsg_get_gps(buffer,ret) == 0) )
         {
-            obumsg_get_gps(buffer,ret);
-
             char *ip = inet_ntoa(from.sin_addr);
             m_addr.sin_addr.s_addr=inet_addr(ip);
             m_addr.sin_port = from.sin_port;
@@ -84,7 +82,7 @@ static void *send_thread()
 
         if(obumsg_init(&msg) == 0){
             length = obu_apollo__obu_msg__get_packed_size(&msg);
-            printf("length == %d , count ======= %d\n",length,msg.count);
+//            printf("length == %d , count ======= %d\n",length,msg.count);
             if(length <= sizeof(buffer)){
                 obu_apollo__obu_msg__pack(&msg,buffer);
                 obu_server_send(buffer,length);
@@ -92,7 +90,7 @@ static void *send_thread()
             obumsg_free(&msg);
         }
         // 10hz
-        usleep(100*1000);
+        usleep(1000*1000);
     }
 
 }
@@ -212,7 +210,7 @@ void obu_server_send(uint8_t *data,int len)
     send_size = len+5;
 
     pthread_mutex_lock(&m_mutex);
-    printf("send to |%s|  %s:%d \n",m_device,inet_ntoa(m_addr.sin_addr),ntohs(m_addr.sin_port));
+    printf("obu_server : send to |%s|  %s:%d ,length = %d\n",m_device,inet_ntoa(m_addr.sin_addr),ntohs(m_addr.sin_port),send_size);
     ret=sendto(m_fd, buffer, send_size, 0, (struct sockaddr*)&m_addr, sizeof(m_addr));
     if(ret<0){
         perror("obu_server sendto error");
@@ -220,6 +218,27 @@ void obu_server_send(uint8_t *data,int len)
     pthread_mutex_unlock(&m_mutex);
 }
 
+void obu_server_send_origin(uint8_t *data,int len)
+{
+	if(m_fd == SOCK_INVALID){
+		printf("obu_server : socket fd invalid \n");
+		return;
+	}
+
+	if(len > MSG_BUFFER_SIZE-5){
+		printf("obu_server : data length = %d > %d\n",len,MSG_BUFFER_SIZE-5);
+		return;
+	}
+
+	int ret;
+	pthread_mutex_lock(&m_mutex);
+	printf("obu_server : send origin to |%s|  %s:%d ,length = %d\n",m_device,inet_ntoa(m_addr.sin_addr),ntohs(m_addr.sin_port),len);
+	ret=sendto(m_fd, data, len, 0, (struct sockaddr*)&m_addr, sizeof(m_addr));
+	if(ret<0){
+		perror("obu_server sendto error");
+	}
+	pthread_mutex_unlock(&m_mutex);
+}
 
 
 

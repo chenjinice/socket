@@ -50,7 +50,7 @@ int main(int argc,char *argv[])
         memset(buffer,0,sizeof(buffer));
         int ret=recvfrom(sock, buffer, 1024, 0, (struct sockaddr*)&from,(socklen_t*)&len);
         char *ip = inet_ntoa(from.sin_addr);
-        printf("[%s:%d] ret === %d\n",ip,ntohs(from.sin_port),ret);
+        printf("[%s:%d] recv length === %d\n",ip,ntohs(from.sin_port),ret);
 
         analysis(buffer,ret);
 //        sleep(5);
@@ -98,11 +98,11 @@ void analysis(uint8_t *buffer,int len)
 
     if(msg->lights){
         ObuApollo__TrafficLightInfo *t = msg->lights;
-        if(t->current_lane_light)printf("current:(%d,%d),",t->current_lane_light->color_status,t->current_lane_light->light_remain_times);
-        if(t->left_turn)printf("left:(%d,%d),",t->left_turn->color_status,t->left_turn->light_remain_times);
-        if(t->straight)printf("straight:(%d,%d),",t->straight->color_status,t->straight->light_remain_times);
-        if(t->right_turn)printf("right:(%d,%d),",t->right_turn->color_status,t->right_turn->light_remain_times);
-        if(t->current_lane_stop_point)printf("lng:%d,lat:%d",t->current_lane_stop_point->longitude,t->current_lane_stop_point->latitude);
+        if(t->current_lane_light)printf("current light:(%d,%d),",t->current_lane_light->color_status,t->current_lane_light->light_remain_times);
+        if(t->left_turn)printf("left light:(%d,%d),",t->left_turn->color_status,t->left_turn->light_remain_times);
+        if(t->straight)printf("straight light:(%d,%d),",t->straight->color_status,t->straight->light_remain_times);
+        if(t->right_turn)printf("right light:(%d,%d),",t->right_turn->color_status,t->right_turn->light_remain_times);
+        if(t->current_lane_stop_point)printf("lane_stop_point:lng:%d,lat:%d",t->current_lane_stop_point->longitude,t->current_lane_stop_point->latitude);
         printf("\n");
     }
 
@@ -111,6 +111,16 @@ void analysis(uint8_t *buffer,int len)
             printf("%d[lng:%d,lat:%d,speed:%d] , ",msg->obs[i]->id,msg->obs[i]->lng,msg->obs[i]->lat,msg->obs[i]->speed);
         }
         printf("\n");
+    }
+
+    if(msg->cars_nearby){
+        ObuApollo__CarInfo **array = msg->cars_nearby;
+	for(i=0;i<msg->n_cars_nearby;i++){
+	    ObuApollo__CarInfo *c = array[i];
+	    printf("car[%d]=id:0x%x,depth:%d,width:%d,lng:%d,lat:%d,heading:%d,speed:%d,acc:%d\n",
+               i,c->id,c->depth,c->width,c->lng,c->lat,c->heading,c->speed,c->acc);	
+	}
+        
     }
 
     obu_apollo__obu_msg__free_unpacked(msg,NULL);
