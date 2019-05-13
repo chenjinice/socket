@@ -1,18 +1,38 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <sys/time.h>
 #include "obu_msgs.h"
 #include "gps.pb-c.h"
 
 
+//
+static int read_interval(struct timeval *tv)
+{
+    if((tv->tv_sec == 0) && (tv->tv_usec == 0)){
+        gettimeofday(tv,NULL);
+        return 0;
+    }
+    struct timeval now={0};
+    gettimeofday(&now,NULL);
+    int ret = (now.tv_sec - tv->tv_sec)*1000 + (now.tv_usec-tv->tv_usec)/1000;
+    gettimeofday(tv,NULL);
+    return ret;
+}
+
+
+//
 int obumsg_get_gps(uint8_t *buffer,int len)
 {
+    static struct timeval s_tv = {0};
     Apollo__Drivers__CiDiGps * gps = apollo__drivers__ci_di_gps__unpack(NULL,len,buffer);
     if(gps == NULL){
         printf("obu_server : gps unpack failed , length = %d\n",len);
         return -1;
     }
-    printf("gps_time:%lf,heading:%lf",gps->gps_time,gps->heading);
+    int ms = read_interval(&s_tv);
+    printf("%05d(ms):gps_time:%lf,heading:%lf",ms,gps->gps_time,gps->heading);
     if(gps->position)printf(",position(lng:%d,lat:%d,alt:%d)",gps->position->longitude,gps->position->latitude,gps->position->altitude);
+    if(gps->linear_velocity)printf(",linear_v(x:%lf,y:%lf,z:%lf)",gps->linear_velocity->x,gps->linear_velocity->y,gps->linear_velocity->z);
     printf("\n");
 
     apollo__drivers__ci_di_gps__free_unpacked(gps,NULL);
