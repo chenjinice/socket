@@ -5,8 +5,8 @@
 #include "gps.pb-c.h"
 
 
-//
-static int read_interval(struct timeval *tv)
+// 获取时间戳的差值
+int time_interval(struct timeval *tv)
 {
     if((tv->tv_sec == 0) && (tv->tv_usec == 0)){
         gettimeofday(tv,NULL);
@@ -19,6 +19,15 @@ static int read_interval(struct timeval *tv)
     return ret;
 }
 
+// 休眠函数，最少 25 ms
+void mysleep(uint32_t ms)
+{
+    int min = 25;
+    uint32_t count = ms/min;
+    while(count--){
+	usleep(min*1000);
+    }
+}
 
 //
 int obumsg_get_gps(uint8_t *buffer,int len)
@@ -29,11 +38,12 @@ int obumsg_get_gps(uint8_t *buffer,int len)
         printf("obu_server : gps unpack failed , length = %d\n",len);
         return -1;
     }
-    int ms = read_interval(&s_tv);
-    printf("%05d(ms):gps_time:%lf,heading:%lf",ms,gps->gps_time,gps->heading);
+    int ms = time_interval(&s_tv);
+    printf("%d(ms):gps_time:%lf,heading:%lf",ms,gps->gps_time,gps->heading);
     if(gps->position)printf(",position(lng:%d,lat:%d,alt:%d)",gps->position->longitude,gps->position->latitude,gps->position->altitude);
     if(gps->linear_velocity)printf(",linear_v(x:%lf,y:%lf,z:%lf)",gps->linear_velocity->x,gps->linear_velocity->y,gps->linear_velocity->z);
-    printf("\n");
+    if(gps->position_std_dev)printf(",dev(x:%lf,y:%lf,z:%lf)",gps->position_std_dev->x,gps->position_std_dev->y,gps->position_std_dev->z);
+    printf(",recv_len = %d\n",len);
 
     apollo__drivers__ci_di_gps__free_unpacked(gps,NULL);
     return 0;

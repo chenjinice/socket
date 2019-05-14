@@ -55,12 +55,12 @@ static void *read_thread()
         {
             char *ip = inet_ntoa(from.sin_addr);
             m_addr.sin_addr.s_addr=inet_addr(ip);
-            m_addr.sin_port = from.sin_port;
+ //           m_addr.sin_port = from.sin_port;
             count = 0;
         }else{
             if(count++ == 10){
                 m_addr.sin_addr.s_addr=htonl(INADDR_BROADCAST);
-                m_addr.sin_port=htons(m_port);
+//                m_addr.sin_port=htons(m_port);
             }
         }
     }
@@ -73,6 +73,7 @@ static void *send_thread()
     // 线程结束时，自动释放资源
     pthread_detach(pthread_self());
 
+    static struct timeval s_tv = {0};
     int length;
     uint8_t buffer[1024] ={0};
 
@@ -86,11 +87,13 @@ static void *send_thread()
             if(length <= sizeof(buffer)){
                 obu_apollo__obu_msg__pack(&msg,buffer);
                 obu_server_send(buffer,length);
+		int num = time_interval(&s_tv);
+		if(num > 130)printf("num ==== %d\n",num);
             }
             obumsg_free(&msg);
         }
         // 10hz
-        usleep(1000*1000);
+        mysleep(100);
     }
 
 }
@@ -137,7 +140,7 @@ static void udp_init()
     bzero(&this_addr, sizeof(struct sockaddr_in));
     this_addr.sin_family = AF_INET;
     this_addr.sin_addr.s_addr = htonl(INADDR_ANY);
-    this_addr.sin_port = htons(8888);
+    this_addr.sin_port = htons(22222);
     if(bind(m_fd,(struct sockaddr *)&(this_addr), sizeof(struct sockaddr_in)) == -1)
     {
         udp_close();
@@ -210,7 +213,7 @@ void obu_server_send(uint8_t *data,int len)
     send_size = len+5;
 
     pthread_mutex_lock(&m_mutex);
-    printf("obu_server : send to |%s|  %s:%d ,length = %d\n",m_device,inet_ntoa(m_addr.sin_addr),ntohs(m_addr.sin_port),send_size);
+//    printf("obu_server : send to |%s|  %s:%d ,length = %d\n",m_device,inet_ntoa(m_addr.sin_addr),ntohs(m_addr.sin_port),send_size);
     ret=sendto(m_fd, buffer, send_size, 0, (struct sockaddr*)&m_addr, sizeof(m_addr));
     if(ret<0){
         perror("obu_server sendto error");
