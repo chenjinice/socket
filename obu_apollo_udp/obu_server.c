@@ -88,12 +88,12 @@ static void *send_thread()
                 obu_apollo__obu_msg__pack(&msg,buffer);
                 obu_server_send(buffer,length);
 		int num = time_interval(&s_tv);
-		if(num > 130)printf("num ==== %d\n",num);
+	//	if(num > 130)
+			printf("num ==== %d\n",num);
             }
             obumsg_free(&msg);
         }
-        // 10hz
-        mysleep(100);
+	usleep(100*1000);
     }
 
 }

@@ -19,15 +19,6 @@ int time_interval(struct timeval *tv)
     return ret;
 }
 
-// 休眠函数，最少 25 ms
-void mysleep(uint32_t ms)
-{
-    int min = 25;
-    uint32_t count = ms/min;
-    while(count--){
-	usleep(min*1000);
-    }
-}
 
 //
 int obumsg_get_gps(uint8_t *buffer,int len)
