@@ -1,9 +1,20 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/time.h>
+#include <time.h>
 #include "obu_msgs.h"
 #include "gps.pb-c.h"
 
+
+//
+void print_interval(int num)
+{
+    time_t timep;
+    struct tm *p;
+    time (&timep);
+    p=gmtime(&timep);
+    printf("[%02d:%02d:%02d] num == %d\n",p->tm_hour+8,p->tm_min,p->tm_sec,num);
+}
 
 // 获取时间戳的差值
 int time_interval(struct timeval *tv)
@@ -20,7 +31,7 @@ int time_interval(struct timeval *tv)
 }
 
 
-//
+// 解析gps数据
 int obumsg_get_gps(uint8_t *buffer,int len)
 {
     static struct timeval s_tv = {0};
@@ -31,10 +42,16 @@ int obumsg_get_gps(uint8_t *buffer,int len)
     }
     int ms = time_interval(&s_tv);
     printf("%d(ms):gps_time:%lf,heading:%lf",ms,gps->gps_time,gps->heading);
-    if(gps->position)printf(",position(lng:%d,lat:%d,alt:%d)",gps->position->longitude,gps->position->latitude,gps->position->altitude);
-    if(gps->linear_velocity)printf(",linear_v(x:%lf,y:%lf,z:%lf)",gps->linear_velocity->x,gps->linear_velocity->y,gps->linear_velocity->z);
-    if(gps->position_std_dev)printf(",dev(x:%lf,y:%lf,z:%lf)",gps->position_std_dev->x,gps->position_std_dev->y,gps->position_std_dev->z);
-    printf(",recv_len = %d\n",len);
+    if(gps->position && gps->position->has_altitude && gps->position->has_latitude && gps->position->has_longitude){
+    	printf(",position(lng:%d,lat:%d,alt:%d)",gps->position->longitude,gps->position->latitude,gps->position->altitude);
+    }
+    if(gps->linear_velocity && gps->linear_velocity->has_x && gps->linear_velocity->has_y && gps->linear_velocity->has_z){
+    	printf(",linear_v(x:%lf,y:%lf,z:%lf)",gps->linear_velocity->x,gps->linear_velocity->y,gps->linear_velocity->z);
+    }
+    if(gps->position_std_dev && gps->position_std_dev->has_x && gps->position_std_dev->has_y && gps->position_std_dev->has_z){
+    	printf(",dev(x:%lf,y:%lf,z:%lf)",gps->position_std_dev->x,gps->position_std_dev->y,gps->position_std_dev->z);
+    }
+    printf(",length = %d\n",len);
 
     apollo__drivers__ci_di_gps__free_unpacked(gps,NULL);
     return 0;

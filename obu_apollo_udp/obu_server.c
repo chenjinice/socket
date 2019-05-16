@@ -17,10 +17,11 @@
 #define SOCK_INVALID -1
 #define MSG_HEAD_1 0x60
 #define MSG_HEAD_2 0x61
+#define GPS_HEAD_LEN 4
 
 static pthread_mutex_t m_mutex;
 static char   * m_device   = "eth0";
-static uint16_t m_port = 9999;
+static uint16_t m_port = 22222;
 static int      m_fd   = SOCK_INVALID;
 static struct sockaddr_in m_addr;
 static int      m_loop = 0;
@@ -51,8 +52,10 @@ static void *read_thread()
         memset(buffer,0,sizeof(buffer));
         ret = recvfrom(m_fd, buffer, sizeof(buffer), 0, (struct sockaddr*)&from,(socklen_t*)&len);
 //        printf("[%s:%d] recv length === %d\n",inet_ntoa(from.sin_addr),ntohs(from.sin_port),ret);
-        if( (ret > 0) && (obumsg_get_gps(buffer,ret) == 0) )
-        {
+        if( (ret >= GPS_HEAD_LEN) && (memcmp(buffer,"cidi",GPS_HEAD_LEN)==0) ){
+	    if( (ret-GPS_HEAD_LEN) > 0 ){
+		obumsg_get_gps(buffer+GPS_HEAD_LEN,ret-GPS_HEAD_LEN);
+            }
             char *ip = inet_ntoa(from.sin_addr);
             m_addr.sin_addr.s_addr=inet_addr(ip);
  //           m_addr.sin_port = from.sin_port;
@@ -88,8 +91,8 @@ static void *send_thread()
                 obu_apollo__obu_msg__pack(&msg,buffer);
                 obu_server_send(buffer,length);
 		int num = time_interval(&s_tv);
-	//	if(num > 130)
-			printf("num ==== %d\n",num);
+		if(num > 130)
+			 print_interval(num);
             }
             obumsg_free(&msg);
         }

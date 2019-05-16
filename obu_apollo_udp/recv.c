@@ -20,7 +20,7 @@ int main(int argc,char *argv[])
     bzero(&addrto, sizeof(struct sockaddr_in));
     addrto.sin_family = AF_INET;
     addrto.sin_addr.s_addr = htonl(INADDR_ANY);
-    addrto.sin_port = htons(9999);
+    addrto.sin_port = htons(22222);
 
     struct sockaddr_in from;
 
@@ -57,7 +57,7 @@ int main(int argc,char *argv[])
 
         if(1)
         {
-            sendto(sock, "apollo", 7, 0, (struct sockaddr*)&from, sizeof(from));
+            sendto(sock, "cidi", 5, 0, (struct sockaddr*)&from, sizeof(from));
         }
     }
 
@@ -107,19 +107,22 @@ void analysis(uint8_t *buffer,int len)
     }
 
     if(msg->obs){
+	printf("obs(%d)",msg->n_obs);
         for(i=0;i<msg->n_obs;i++){
-            printf("%d[lng:%d,lat:%d,speed:%d] , ",msg->obs[i]->id,msg->obs[i]->lng,msg->obs[i]->lat,msg->obs[i]->speed);
+            printf("[id:%d,lng:%d,lat:%d,type:%d,land_id:%d,speed:%d] , ",msg->obs[i]->id,msg->obs[i]->lng,msg->obs[i]->lat,msg->obs[i]->type,msg->obs[i]->lane_id,msg->obs[i]->speed);
         }
         printf("\n");
     }
 
     if(msg->cars_nearby){
+	printf("cars_nearby(%d)",msg->n_cars_nearby);	
         ObuApollo__CarInfo **array = msg->cars_nearby;
 	for(i=0;i<msg->n_cars_nearby;i++){
 	    ObuApollo__CarInfo *c = array[i];
-	    printf("car[%d]=id:0x%x,depth:%d,width:%d,lng:%d,lat:%d,heading:%d,speed:%d,acc:%d\n",
-               i,c->id,c->depth,c->width,c->lng,c->lat,c->heading,c->speed,c->acc);	
+	    printf("[id:0x%x,depth:%d,width:%d,lng:%d,lat:%d,heading:%d,speed:%d,acc:%d] , ",
+               c->id,c->depth,c->width,c->lng,c->lat,c->heading,c->speed,c->acc);	
 	}
+	printf("\n");
         
     }
 

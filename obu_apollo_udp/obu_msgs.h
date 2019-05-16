@@ -3,6 +3,7 @@
 
 #include "obu_apollo.pb-c.h"
 
+void print_interval(int num);
 int time_interval(struct timeval *tv);
 int obumsg_init(ObuApollo__ObuMsg *msg);
 void obumsg_free(ObuApollo__ObuMsg *msg);
