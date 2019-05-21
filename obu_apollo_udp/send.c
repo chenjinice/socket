@@ -24,7 +24,7 @@ int main(int argc,char *argv[])
 
     signal(SIGINT,fun);
     signal(SIGPIPE,SIG_IGN);
-    obu_server_start(device,22222);
+    obu_server_start(device,6611);
 
 
     while (flag) {

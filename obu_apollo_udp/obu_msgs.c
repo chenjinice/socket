@@ -1,12 +1,17 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <sys/time.h>
 #include <time.h>
 #include "obu_msgs.h"
 #include "gps.pb-c.h"
+//#include "vhc_cacc.h"
+//#include "obu.h"
 
 
-//
+#define GPS_HEADER_LEN 4
+static uint8_t s_gps_header[GPS_HEADER_LEN] = {'c','i','d','i'};
+
+//extern tStateStore Store;
+
 void print_interval(int num)
 {
     time_t timep;
@@ -30,18 +35,25 @@ int time_interval(struct timeval *tv)
     return ret;
 }
 
-
-// 解析gps数据
+// 解析apollo发过来的gps数据
 int obumsg_get_gps(uint8_t *buffer,int len)
 {
+	int ret = -1;
+	Apollo__Drivers__CiDiGps * gps = NULL;
     static struct timeval s_tv = {0};
-    Apollo__Drivers__CiDiGps * gps = apollo__drivers__ci_di_gps__unpack(NULL,len,buffer);
+
+    if(len < GPS_HEADER_LEN)return ret;
+    if(memcmp(buffer,s_gps_header,GPS_HEADER_LEN) != 0 )return ret;
+
+    gps = apollo__drivers__ci_di_gps__unpack(NULL,len-GPS_HEADER_LEN,buffer+GPS_HEADER_LEN);
     if(gps == NULL){
-        printf("obu_server : gps unpack failed , length = %d\n",len);
-        return -1;
+//        printf("obu_server : gps unpack failed , length = %d\n",len);
+    	ret = 0;
+        return ret;
     }
+
     int ms = time_interval(&s_tv);
-    printf("%d(ms):gps_time:%lf,heading:%lf",ms,gps->gps_time,gps->heading);
+    printf("==%d(ms)==:gps_time:%lf,heading:%lf",ms,gps->gps_time,gps->heading);
     if(gps->position && gps->position->has_altitude && gps->position->has_latitude && gps->position->has_longitude){
     	printf(",position(lng:%d,lat:%d,alt:%d)",gps->position->longitude,gps->position->latitude,gps->position->altitude);
     }
@@ -54,19 +66,30 @@ int obumsg_get_gps(uint8_t *buffer,int len)
     printf(",length = %d\n",len);
 
     apollo__drivers__ci_di_gps__free_unpacked(gps,NULL);
-    return 0;
+    ret = 1;
+    return ret;
 }
 
-int obumsg_init(ObuApollo__ObuMsg *msg)
+
+// 添加本车信息
+static void set_obumsg_car(ObuApollo__ObuMsg *msg)
 {
-    if(msg == NULL)return -1;
 
+}
+
+// 获取序列化后的obumsg消息的buffer
+int get_obumsg_buffer(uint8_t *buffer,int buffer_size)
+{
+    int length,i,ret = -1;
     static int count = 0;
-    count++;
-    int i;
+    ObuApollo__ObuMsg msg;
 
-    obu_apollo__obu_msg__init(msg);
-    msg->count = count;
+    obu_apollo__obu_msg__init(&msg);
+    msg.count = count++;
+
+//    set_obumsg_obstacle(&msg);   // 添加障碍物
+//    apollo_pkg_vhc_nearby(&msg); // 添加附近车辆
+
 
     //car_info
     ObuApollo__CarInfo *car_info = calloc(1,sizeof(ObuApollo__CarInfo));
@@ -83,7 +106,7 @@ int obumsg_init(ObuApollo__ObuMsg *msg)
     car_info->gear = 2;
     car_info->has_rtk = 1;
     car_info->rtk = 5;
-    msg->car = car_info;
+    msg.car = car_info;
 
     // lane_info
     int lane_num = 2;
@@ -103,7 +126,7 @@ int obumsg_init(ObuApollo__ObuMsg *msg)
     }
     lane_info->n_lane_flags = lane_num;
     lane_info->lane_flags = lane_array;
-    msg->lanes = lane_info;
+    msg.lanes = lane_info;
 
     //traffic light
     ObuApollo__TrafficLightInfo *lights = calloc(1,sizeof(ObuApollo__TrafficLightInfo));
@@ -130,7 +153,7 @@ int obumsg_init(ObuApollo__ObuMsg *msg)
     lights->current_lane_stop_point->has_longitude = 1;
     lights->current_lane_stop_point->latitude  = 33.33*1e7;
     lights->current_lane_stop_point->longitude = 44.44*1e7;
-    msg->lights = lights;
+    msg.lights = lights;
 
     // obstacle
     int obs_num = 3;
@@ -139,19 +162,31 @@ int obumsg_init(ObuApollo__ObuMsg *msg)
         obs_array[i] = calloc(1,sizeof(ObuApollo__Obstacle));
         obu_apollo__obstacle__init(obs_array[i]);
         obs_array[i]->id = i;
-        obs_array[i]->type = OBU_APOLLO__OBSTACLE__OBS__TYPE__HUMAN;
+        obs_array[i]->type = OBU_APOLLO__OBSTACLE__OBS_TYPE__HUMAN;
         obs_array[i]->lng = 55.55*1e7;
         obs_array[i]->lat = 66.66*1e7;
         obs_array[i]->has_speed = 1;
         obs_array[i]->speed = i*200;
     }
-    msg->n_obs = obs_num;
-    msg->obs = obs_array;
+    msg.n_obs = obs_num;
+    msg.obs = obs_array;
 
-    return 0;
+
+    length = obu_apollo__obu_msg__get_packed_size(&msg);
+    if(length <= buffer_size){
+    	obu_apollo__obu_msg__pack(&msg,buffer);
+    	ret = length;
+    }else{
+    	printf("obu_server : obu msg packed size (%d) > buffer_size (%d)\n",length,buffer_size);
+    	ret = -1;
+    }
+
+    obumsg_free(&msg);
+    return ret;
 }
 
-//
+
+// 释放消息内malloc内存
 void obumsg_free(ObuApollo__ObuMsg *msg)
 {
     if(msg == NULL)return;
@@ -221,18 +256,16 @@ void obumsg_free(ObuApollo__ObuMsg *msg)
         msg->n_obs = 0;
     }
 
-    if(msg->cars_nearby){
-        for(i=0;i<msg->n_cars_nearby;i++){
-            free(msg->cars_nearby[i]);
-            msg->cars_nearby[i] = NULL;
-        }
-        free(msg->cars_nearby);
-        msg->cars_nearby = NULL;
-        msg->n_cars_nearby = 0;
-    }
+//    if(msg->cars_nearby){
+//        for(i=0;i<msg->n_cars_nearby;i++){
+//            free(msg->cars_nearby[i]);
+//            msg->cars_nearby[i] = NULL;
+//        }
+//        free(msg->cars_nearby);
+//        msg->cars_nearby = NULL;
+//        msg->n_cars_nearby = 0;
+//    }
 }
-
-
 
 
 

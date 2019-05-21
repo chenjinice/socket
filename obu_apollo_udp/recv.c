@@ -8,10 +8,11 @@
 #include <net/if.h>
 #include <string.h>
 #include "obu_apollo.pb-c.h"
+#include "gps.pb-c.h"
 
 
 void analysis(uint8_t *buffer,int len);
-
+void send_gps(int fd,struct sockaddr_in *from);
 
 int main(int argc,char *argv[])
 {
@@ -20,7 +21,7 @@ int main(int argc,char *argv[])
     bzero(&addrto, sizeof(struct sockaddr_in));
     addrto.sin_family = AF_INET;
     addrto.sin_addr.s_addr = htonl(INADDR_ANY);
-    addrto.sin_port = htons(22222);
+    addrto.sin_port = htons(6611);
 
     struct sockaddr_in from;
 
@@ -57,11 +58,30 @@ int main(int argc,char *argv[])
 
         if(1)
         {
-            sendto(sock, "cidi", 5, 0, (struct sockaddr*)&from, sizeof(from));
+            send_gps(sock,&from);
         }
     }
 
     return 0;
+}
+
+
+void send_gps(int fd,struct sockaddr_in *from)
+{
+    Apollo__Drivers__CiDiGps gps = APOLLO__DRIVERS__CI_DI_GPS__INIT;
+    gps.has_gps_time = 1;
+    gps.gps_time = 9.87654321;
+    
+    uint8_t buffer[1024] = {0};
+    buffer[0]='c';
+    buffer[1]='i';
+    buffer[2]='d';
+    buffer[3]='i';
+    int len = apollo__drivers__ci_di_gps__get_packed_size(&gps);
+    
+    apollo__drivers__ci_di_gps__pack(&gps,buffer+4);
+
+    sendto(fd, buffer, len+4, 0, (struct sockaddr*)from, sizeof(struct sockaddr));
 }
 
 
@@ -83,7 +103,7 @@ void analysis(uint8_t *buffer,int len)
     printf("count ============ %d\n",msg->count);
     if(msg->car){
         ObuApollo__CarInfo *c = msg->car;
-        printf("car=id:0x%x,depth:%d,width:%d,lng:%d,lat:%d,heading:%d,speed:%d,acc:%d,gear:%d,rtk:%d\n",
+        printf("this_car = id:0x%x,depth:%d,width:%d,lng:%d,lat:%d,heading:%d,speed:%d,acc:%d,gear:%d,rtk:%d\n",
                c->id,c->depth,c->width,c->lng,c->lat,c->heading,c->speed,c->acc,c->gear,c->rtk);
     }
 

@@ -11,7 +11,7 @@ package obu_apollo;
 
 
 // 车辆信息
-message Car_info{
+message CarInfo{
 	required uint32 id = 1;			// 车辆ID
 	required uint32 depth = 2;		// 车长*100
 	required uint32 width = 3;      // 车宽*100
@@ -31,18 +31,18 @@ message Car_info{
 }
 
 // 单个车道信息
-message Lane_flag {
+message LaneFlag {
     required uint32 lane_id = 1;  // 车道id
     optional uint32 flag  =  2;   // 车道标识
 }
 
 // 本车车道信息
-message Lane_info {
+message LaneInfo {
     optional uint32 count = 1;
     optional uint32 in_map = 2;		    // 1=在地图内，0=不在地图内
     optional uint32 in_lane = 3;	    // 1=在车道内，0=不在车道内
     optional uint32 current_lane = 4;   // 当前车道
-    repeated Lane_flag lane_flags = 5;  // 车道标识
+    repeated LaneFlag lane_flags = 5;  // 车道标识
 }
 
 message SingleLightInfo {
@@ -75,7 +75,7 @@ message TrafficLightInfo{
 }
 
 // 单个标牌信息
-message Road_sign {
+message RoadSign {
 	required uint32 type = 1;	// 类型:1 禁止停车 ,2 人行道,3 休息服务区,4 前方学校,5 停车场,
 	                                //      6 限速7 危险品禁止驶入,8 禁止鸣笛,9 限重,10 公交站
 	optional uint32 detail = 2;     // 标牌细节,暂只对限速和限重有用，为限速和限重值
@@ -86,13 +86,14 @@ message Road_sign {
 // 单个障碍物信息
 message Obstacle { 
 	// 障碍物类型
-	enum OBS_TYPE{
-		HUMAN 	    = 0;	// 人
-		VEHICLE	    = 1;	// 车
-		OTHER	    = 2;	// 其他障碍
+	enum ObsType{
+		OTHERS		= 0;	// 其他
+		HUMAN		= 1;	// 人
+		VEHICLE		= 2;	// 车
+		MOTORCYCLE	= 3;	// 摩托车
 	}
 	required int32 id = 1;		// 障碍物 ID 
-	required OBS_TYPE type = 2;	// 障碍物类型
+	required ObsType type = 2;	// 障碍物类型
 	required int32 lng = 3;		// 实际经度*1e7
 	required int32 lat = 4;		// 实际纬度*1e7 
 	optional uint32 speed = 5;      // 速度*100
@@ -107,13 +108,13 @@ message Obstacle {
 // -------------下面是要传给apollo的消息包类型-----------------------------------------------
 
 message ObuMsg {
-	required uint32	count = 1; 		    // 每次加1
-	optional Car_info car = 2;      	// 本车信息
-	optional Lane_info lanes = 3;		// 本车车道信息
-	optional TrafficLightInfo lights = 4;  // 红绿灯信息
-	repeated Road_sign signs = 5;   	// 道路标牌信息
-	repeated Obstacle obs = 6;			// 障碍物信息
-	repeated Car_info cars_nearby = 7;	// 周边车辆信息
+	required uint32	count = 1; 		// 每次加1
+	optional CarInfo car = 2;      		// 本车信息
+	optional LaneInfo lanes = 3;		// 本车车道信息
+	optional TrafficLightInfo lights = 4;   // 红绿灯信息
+	repeated RoadSign signs = 5;   		// 道路标牌信息
+	repeated Obstacle obs = 6;		// 障碍物信息
+	repeated CarInfo cars_nearby = 7;	// 周边车辆信息
 } 
 
 
