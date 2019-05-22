@@ -35,6 +35,7 @@ public:
     void send_data(vision::Visibility &msg,struct timeval *tv=NULL,int ms=1000);
     void send_data(vision::SmokeWarn &msg,struct timeval *tv=NULL,int ms=1000);
     void send_data(vision::IllegalCarWarn &msg,struct timeval *tv=NULL,int ms=1000);
+    void send_data(vision::TrafficJam &msg,struct timeval *tv=NULL,int ms=1000);
 
 private:
     pthread_mutex_t m_mutex;

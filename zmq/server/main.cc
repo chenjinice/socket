@@ -114,8 +114,8 @@ void send_visibility(Vserver &s)
     Visibility a;
     static struct timeval tv = {0};          // 时间结构体,用于限制发送频率
     a.set_id(VISIBILITY);
-    a.set_distance(123.456789);
-    a.set_level(3);
+    a.set_distance(123.456789);				 // 能见度距离 米
+    a.set_level(3);							 // 能见度等级
     s.send_data(a,&tv);
 }	
 
@@ -169,6 +169,21 @@ void send_smoke(Vserver &s)
     s.send_data(a,&tv);
 }	
 
+// 前方拥堵提醒
+void send_jam(Vserver &s)
+{
+    TrafficJam a;
+    JamInfo *p;
+    static struct timeval tv = {0};
+    a.set_id(TRAFFIC_JAM);
+    for(int i=0;i<2;i++){
+        p = a.add_jam();
+        p->set_vehicle_num(5);              // 车辆数量
+        p->set_vehicle_avg_speed(10.1234);  // 车辆平均速度
+        p->set_road_yaw(90.123);            // 道路航向角
+    }
+    s.send_data(a,&tv);
+}
 
 // 带时间的异常车辆（静止）
 void test(Vserver &s)
@@ -215,7 +230,7 @@ int main(int argc ,char **argv)
         send_crowd(s);          // 行人与动物闯入检测
         send_area(s);           // 动态可行驶区域检测
         send_smoke(s);          // 隧道内火焰与烟雾预警
-	
+        send_jam(s);            // 前方拥堵提醒
 
         // 带时间的异常车辆（静止）
         test(s);

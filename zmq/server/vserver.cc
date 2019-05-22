@@ -197,6 +197,23 @@ void Vserver::send_data(vision::IllegalCarWarn &msg,struct timeval *tv, int ms)
     this->server_send(buffer,len);
 }
 
+// 发送前方拥堵提醒
+void Vserver::send_data(vision::TrafficJam &msg,struct timeval *tv, int ms)
+{
+    if(msg.jam_size() == 0)return;
+    // 限制一下发送频率
+    if(tv != NULL){
+        if(check_interval(tv,ms))return;
+    }
+
+    int len = 0;
+    uint8_t buffer[BUFFER_SIZE];
+    len = msg.ByteSize();
+    msg.SerializeToArray(buffer,len);
+
+    this->server_send(buffer,len);
+}
+
 
 
 
