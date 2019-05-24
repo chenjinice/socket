@@ -54,7 +54,7 @@ static void *read_thread()
 		bzero(&from, sizeof(struct sockaddr_in));
 		memset(buffer,0,sizeof(buffer));
 		ret = recvfrom(m_fd, buffer, sizeof(buffer), 0, (struct sockaddr*)&from,(socklen_t*)&len);
-		printf("[%s:%d] recv length === %d\n",inet_ntoa(from.sin_addr),ntohs(from.sin_port),ret);
+//		printf("[%s:%d] recv length === %d\n",inet_ntoa(from.sin_addr),ntohs(from.sin_port),ret);
 		if( obumsg_get_gps(buffer,ret) != -1 ){
 			char *ip = inet_ntoa(from.sin_addr);
 			m_addr.sin_addr.s_addr=inet_addr(ip);

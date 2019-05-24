@@ -3,6 +3,7 @@
 SRC += main.cc
 SRC += vserver.cc
 SRC += vision.pb.cc
+SRC += analysis.cc
 
 INC += -I../libs/protoc/include
 

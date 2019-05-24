@@ -185,6 +185,26 @@ void send_jam(Vserver &s)
     s.send_data(a,&tv);
 }
 
+// 动态配时场景
+void send_flow(Vserver &s)
+{
+    TrafficFlow a;
+    FlowInfo *p;
+    static struct timeval tv = {0};
+    a.set_id(TRAFFIC_FLOW);
+    for(int i=0;i<1;i++){
+        p = a.add_flow();
+        p->set_camera(1);
+        for(int m=0;m<3;m++){
+            p->add_vehicle_num(m*10);
+        }
+//        for(int n=0;n<5;n++){
+//            p->add_pass_num(n*100);
+//        }
+    }
+    s.send_data(a,&tv);
+}
+
 // 带时间的异常车辆（静止）
 void test(Vserver &s)
 {
@@ -215,7 +235,11 @@ void test(Vserver &s)
 
 int main(int argc ,char **argv)
 {	
-    Vserver s(12347);
+//    Vserver s(12347);
+
+    char * ip = (char *)"127.0.0.1";
+    Vserver s(12347,ip,12348);
+
     s.start();
 
     while(1)
@@ -231,12 +255,11 @@ int main(int argc ,char **argv)
         send_area(s);           // 动态可行驶区域检测
         send_smoke(s);          // 隧道内火焰与烟雾预警
         send_jam(s);            // 前方拥堵提醒
-
-        // 带时间的异常车辆（静止）
-        test(s);
+        send_flow(s);           // 动态配时场景
 
 
-        usleep(5000);
+//        test(s);                // 带时间的异常车辆（静止）
+        usleep(100000);
 
     }
 

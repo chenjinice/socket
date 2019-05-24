@@ -194,6 +194,33 @@ static void jam_fun(uint8_t *buffer,int length)
 }
 
 
+// 动态配时场景
+static void traffic_flow_fun(uint8_t *buffer,int length)
+{
+    int i,m;
+    Vision__TrafficFlow *c = vision__traffic_flow__unpack(NULL,length,buffer);
+    if(c == NULL){
+        printf("vclient : traffic flow unpack failed \n");
+        return;
+    }
+    printf("vclient : [%d flow] --- %s\n",c->n_flow,__FUNCTION__);
+    for(i=0;i<c->n_flow;i++){
+        Vision__FlowInfo *p = c->flow[i];
+        printf("vclient : flow[%d] : camera = %d,vehicle[",i,p->camera);
+        for(m=0;m<p->n_vehicle_num;m++){
+            printf("%d,",p->vehicle_num[m]);
+        }
+        printf("],pass[");
+        for(m=0;m<p->n_pass_num;m++){
+            printf("%d,",p->pass_num[m]);
+        }
+        printf("]\n");
+    }
+
+    vision__traffic_flow__free_unpacked(c,NULL);
+}
+
+
 void analysis(uint8_t *buffer,int len)
 {
     Vision__ID	id =  -1;
@@ -239,6 +266,9 @@ void analysis(uint8_t *buffer,int len)
         break;
     case VISION__ID__TRAFFIC_JAM:        // 前方拥堵提醒
         jam_fun(buffer,len);
+        break;
+    case VISION__ID__TRAFFIC_FLOW:       // 动态配时场景
+        traffic_flow_fun(buffer,len);
         break;
     default:
         break;

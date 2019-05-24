@@ -17,17 +17,24 @@ int main(int argc ,char **argv)
 {
 	signal(SIGINT,fun);
 
+    static int s_count = 0;
 	char *ip = "127.0.0.1";
 	int port = 12347;
-
+    int this_port = 12348;
 	if(argc == 2)ip = argv[1];
 
-	vclient_start(ip,port);
+
+    vclient_start(ip,port,this_port);
+
 
 	while(flag)
 	{
-		usleep(200000);
+        s_count++;
+        if(s_count %5 ==0)vclient_send_signal(SIG_Y2G,1);
+        if(s_count %9 ==0)vclient_send_signal(SIG_OVER,1);
+        usleep(1000000);
 	}
+
 	printf(" ======== \n");
 	return 0;
 }

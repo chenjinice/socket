@@ -17,6 +17,7 @@ enum ID{
 	FIRE_SMOKE			= 10; // 隧道内火焰与烟雾预警
 	DETECTOBJECTS		= 11; // 检测目标数据
 	TRAFFIC_JAM			= 12; // 前方拥堵提醒
+	TRAFFIC_FLOW		= 13; // 动态配时场景
 }
 
 // 视觉捕捉到的物体类型
@@ -82,7 +83,7 @@ message AvailableArea {
 } 
 
 
-// 单个车道拥堵情况
+// 单个相机拍摄到的拥堵情况
 message JamInfo {
 	required uint32 vehicle_num = 1;		// 车辆数
 	required double vehicle_avg_speed = 2;  // 车辆平均速度 km/h
@@ -90,6 +91,18 @@ message JamInfo {
 	optional int32	lane_id = 4;			// 车道id
 }
 
+// 交叉路口单个相机拍到的流量情况
+message FlowInfo{
+	enum TrafficSig{
+		UNKNOWN = 0;
+		Y2G = 1;	// 黄灯切换到绿灯信号
+		OVER = 2;	// 消散时间结束信号
+	}
+	optional int32 camera = 1; 			// 哪个相机
+	repeated uint32 vehicle_num = 2;  	// 每个车道车辆数
+	repeated uint32 pass_num = 3;		// 每个车道消散时间内通过车辆数
+	optional TrafficSig signal = 4;     // 黄灯切换到绿灯信号
+}
 
 
 message Base {
@@ -191,6 +204,10 @@ message TrafficJam {
 	repeated JamInfo jam = 2;
 }
 
-
+// 动态配时场景需要数据
+message TrafficFlow {
+	required ID id = 1;
+	repeated FlowInfo flow = 2;
+}
 
 
