@@ -237,6 +237,7 @@ int main(int argc ,char **argv)
 {	
 //    Vserver s(12347);
 
+	//涉及到交互的初始化
     char * ip = (char *)"127.0.0.1";
     Vserver s(12347,ip,12348);
 
@@ -257,7 +258,6 @@ int main(int argc ,char **argv)
         send_jam(s);            // 前方拥堵提醒
         send_flow(s);           // 动态配时场景
 
-
 //        test(s);                // 带时间的异常车辆（静止）
         usleep(100000);
 
@@ -266,8 +266,6 @@ int main(int argc ,char **argv)
     s.stop();
     return 0;
 }
-
-
 
 
 
