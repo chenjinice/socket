@@ -194,7 +194,7 @@ void send_flow(Vserver &s)
     a.set_id(TRAFFIC_FLOW);
     for(int i=0;i<1;i++){
         p = a.add_flow();
-        p->set_camera(1);
+        p->set_camera(i);
         for(int m=0;m<3;m++){
             p->add_vehicle_num(m*10);
         }

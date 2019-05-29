@@ -116,6 +116,7 @@ static void vclient_send(uint8_t *buffer,int len){
     zmq_send(m_publisher,buffer,len,0);
 }
 
+
 void vclient_send_signal(TRAFFIC_SIGNAL signal, uint32_t camera)
 {
     static Vision__TrafficFlow *msg = NULL;

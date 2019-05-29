@@ -2,11 +2,10 @@ CC  = gcc
 CPP = g++
 RM  = rm -f
 
-protobuf_dir = /usr/local
 
 target  = send.out
-inc_dir += -I$(protobuf_dir)/include
-lib_dir += -L$(protobuf_dir)/lib
+inc_dir += -I/usr/local/include
+lib_dir += -L/usr/local/lib
 lib 	+= -lprotobuf -lzmq -lpthread
 obj 	= $(patsubst %.cc,%.o,$(wildcard *.cc))
 

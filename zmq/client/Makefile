@@ -1,24 +1,23 @@
+
 CC  = gcc
-CPP = g++
 RM  = rm -f
 
-protobuf_dir = /usr/local
-
-target  = recv.out
-inc_dir += -I$(protobuf_dir)/include
-lib_dir += -L$(protobuf_dir)/lib
+target   = recv.out
+inc_dir += -I/usr/local/include
+lib_dir += -L/usr/local/lib
 lib 	+= -lprotobuf-c -lzmq -lpthread
-obj 	= $(patsubst %.c,%.o,$(wildcard *.c))
+obj 	 = $(patsubst %.c,%.o,$(wildcard *.c))
 
 all:$(target)
+
 
 $(target):$(obj)
 	$(CC) -o $(target) $(obj) $(inc_dir) $(lib_dir) $(lib)
 
-%.o:%.cc
-	$(CC) -c -o $@ $<
+%.o:%.c
+	$(CC) -c -o $@ $< $(inc_dir)
 
-p:vision.proto
+p:
 	protoc-c --c_out=. vision.proto
 
 clean:	
@@ -28,5 +27,7 @@ cleanall:clean
 	-$(RM) vision.pb-c.c vision.pb-c.h
 
 .phony: clean cleanall
+
+
 
 
