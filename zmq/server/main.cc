@@ -239,6 +239,7 @@ int main(int argc ,char **argv)
 
 	//涉及到交互的初始化
     char * ip = (char *)"127.0.0.1";
+    if(argc == 2)ip = argv[1];
     Vserver s(12347,ip,12348);
 
     s.start();

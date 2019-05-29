@@ -1,24 +1,32 @@
+CC  = gcc
+CPP = g++
+RM  = rm -f
 
+protobuf_dir = /usr/local
 
+target  = send.out
+inc_dir += -I$(protobuf_dir)/include
+lib_dir += -L$(protobuf_dir)/lib
+lib 	+= -lprotobuf -lzmq -lpthread
+obj 	= $(patsubst %.cc,%.o,$(wildcard *.cc))
 
-SRC += main.cc
-SRC += vserver.cc
-SRC += vision.pb.cc
-SRC += analysis.cc
+all:$(target)
 
-INC += -I../libs/protoc/include
-LIB_DIR += -L../libs/protoc/lib
-LIB += -lprotobuf -lzmq -lpthread
+$(target):$(obj)
+	$(CPP) -o $(target) $(obj) $(inc_dir) $(lib_dir) $(lib)
 
-all:vision.pb.cc
-	g++ -std=c++11 $(INC) $(SRC) $(LIB_DIR) $(LIB) -o send.out
+%.o:%.cc
+	$(CPP) -std=c++11 -c -o $@ $<
 
-clean:	
-	-rm send.out vision.pb.cc vision.pb.h
-
-vision.pb.cc:vision.proto
+p:vision.proto
 	protoc --cpp_out=. vision.proto
 
-.phony: clean
+clean:	
+	-$(RM) $(obj) $(target)
+
+cleanall:clean
+	-$(RM) vision.pb.cc vision.pb.h
+
+.phony: clean cleanall
 
 

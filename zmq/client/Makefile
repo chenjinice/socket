@@ -1,22 +1,32 @@
-SRC += main.c
-SRC += vclient.c
-SRC += vision.pb-c.c
-SRC += analysis.c
+CC  = gcc
+CPP = g++
+RM  = rm -f
 
-INC += -I../libs/protoc-c/include
+protobuf_dir = /usr/local
 
-LIB += -lprotobuf-c -lzmq -lpthread
+target  = recv.out
+inc_dir += -I$(protobuf_dir)/include
+lib_dir += -L$(protobuf_dir)/lib
+lib 	+= -lprotobuf-c -lzmq -lpthread
+obj 	= $(patsubst %.c,%.o,$(wildcard *.c))
 
-LIB_DIR += -L../libs/protoc-c/lib
+all:$(target)
 
-all:vision.pb-c.c
-	gcc $(INC) $(SRC) $(LIB_DIR) $(LIB) -o recv.out
+$(target):$(obj)
+	$(CC) -o $(target) $(obj) $(inc_dir) $(lib_dir) $(lib)
 
-clean:
-	-rm recv.out vision.pb-c.h vision.pb-c.c
+%.o:%.cc
+	$(CC) -c -o $@ $<
 
-vision.pb-c.c:vision.proto
+p:vision.proto
 	protoc-c --c_out=. vision.proto
 
-.phony: clean
+clean:	
+	-$(RM) $(obj) $(target)
+
+cleanall:clean
+	-$(RM) vision.pb-c.c vision.pb-c.h
+
+.phony: clean cleanall
+
 
