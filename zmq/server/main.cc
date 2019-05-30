@@ -220,7 +220,6 @@ void test(Vserver &s)
         p->set_lat(4);         // 纬度
     }
 
-
     // 设置时间
     data_time *time = new data_time();
     time->set_sec(987654321);	 	// 秒
@@ -232,15 +231,20 @@ void test(Vserver &s)
 
 
 
-
 int main(int argc ,char **argv)
-{	
-//    Vserver s(12347);
+{
+    int this_port = 12347;
+    char *remote_ip = (char *)"127.0.0.1";
+    int   remote_port = 12348;
 
-	//涉及到交互的初始化
-    char * ip = (char *)"127.0.0.1";
-    if(argc == 2)ip = argv[1];
-    Vserver s(12347,ip,12348);
+    if(argc >= 2)this_port = atoi(argv[1]);
+    if(argc >= 3)remote_ip = argv[2];
+    if(argc >= 4)remote_port = atoi(argv[3]);
+
+
+//    Vserver s(this_port);
+    //涉及到交互的初始化
+    Vserver s(this_port,remote_ip,remote_port);
 
     s.start();
 
@@ -267,6 +271,7 @@ int main(int argc ,char **argv)
     s.stop();
     return 0;
 }
+
 
 
 

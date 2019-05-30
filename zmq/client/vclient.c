@@ -148,5 +148,3 @@ void vclient_send_signal(TRAFFIC_SIGNAL signal, uint32_t camera)
 
 
 
-
-

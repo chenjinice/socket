@@ -1,26 +1,40 @@
-CC  = gcc
-CPP = g++
+CXX = g++
 RM  = rm -f
+
+INC_SYS_PATH = /usr/local/include
+LIB_SYS_PATH = /usr/local/lib 
+
+INC_PC_PATH = ../libs/pc/include
+LIB_PC_PATH = ../libs/pc/lib
 
 
 target  = send.out
-inc_dir += -I/usr/local/include
-lib_dir += -L/usr/local/lib
-lib 	+= -lprotobuf -lzmq -lpthread
+lib 	= -lprotobuf -lzmq -lpthread
 obj 	= $(patsubst %.cc,%.o,$(wildcard *.cc))
 
-all:$(target)
+
+
+ifeq ($(MAKECMDGOALS),pc)
+	inc_dir += -I$(INC_PC_PATH)
+	lib_dir += -L$(LIB_PC_PATH)
+else
+	inc_dir += -I$(INC_SYS_PATH)
+	lib_dir += -L$(LIB_SYS_PATH)
+endif
+
+
+all pc:$(target)
 
 $(target):$(obj)
-	$(CPP) -o $(target) $(obj) $(inc_dir) $(lib_dir) $(lib)
+	$(CXX) -o $(target) $(obj) $(inc_dir) $(lib_dir) $(lib)
 
 %.o:%.cc
-	$(CPP) -std=c++11 -c -o $@ $<
+	$(CXX) -std=c++11 -c -o $@ $<
 
-p:vision.proto
-	protoc --cpp_out=. vision.proto
+proto:vision.proto
+	protoc --cpp_out=. $<
 
-clean:	
+clean:
 	-$(RM) $(obj) $(target)
 
 cleanall:clean

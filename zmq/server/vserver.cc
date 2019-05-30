@@ -81,12 +81,12 @@ void Vserver::start()
         ret = zmq_connect(m_subscriber,sub_endpoint);
         if(ret != 0){
             perror("vserver : zmq connect error");
-            return;
+            exit(-1);
         }
         ret = zmq_setsockopt(m_subscriber,ZMQ_SUBSCRIBE,m_filter,strlen(m_filter));
         if(ret != 0){
             printf("vserver : zmq set filter error\n");
-            return;
+            exit(-1);
         }
         pthread_t thread;
         pthread_create(&thread,NULL,vserver_read_fun,this);

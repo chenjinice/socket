@@ -2,14 +2,36 @@
 CC  = gcc
 RM  = rm -f
 
+INC_SYS_PATH = /usr/local/include
+LIB_SYS_PATH = /usr/local/lib 
+
+INC_PC_PATH = ../libs/pc/include
+LIB_PC_PATH = ../libs/pc/lib
+
+INC_ARM_PATH = ../libs/arm/include
+LIB_ARM_PATH = ../libs/arm/lib
+
+
 target   = recv.out
-inc_dir += -I/usr/local/include
-lib_dir += -L/usr/local/lib
-lib 	+= -lprotobuf-c -lzmq -lpthread
+lib 	 = -lprotobuf-c -lzmq -lpthread
 obj 	 = $(patsubst %.c,%.o,$(wildcard *.c))
 
-all:$(target)
 
+ifeq ($(MAKECMDGOALS),pc)
+	inc_dir += -I$(INC_PC_PATH)
+	lib_dir += -L$(LIB_PC_PATH)
+else ifeq ($(MAKECMDGOALS),arm)
+	CC = arm-linux-gnueabihf-gcc
+	target = recv-arm.out
+	inc_dir += -I$(INC_ARM_PATH)
+	lib_dir += -L$(LIB_ARM_PATH)
+else
+	inc_dir += -I$(INC_SYS_PATH)
+	lib_dir += -L$(LIB_SYS_PATH)
+endif
+
+
+all pc arm:$(target)
 
 $(target):$(obj)
 	$(CC) -o $(target) $(obj) $(inc_dir) $(lib_dir) $(lib)
@@ -17,11 +39,11 @@ $(target):$(obj)
 %.o:%.c
 	$(CC) -c -o $@ $< $(inc_dir)
 
-p:
-	protoc-c --c_out=. vision.proto
+proto:vision.proto
+	protoc-c --c_out=. $<
 
 clean:	
-	-$(RM) $(obj) $(target)
+	-$(RM) $(obj) *.out
 
 cleanall:clean
 	-$(RM) vision.pb-c.c vision.pb-c.h
