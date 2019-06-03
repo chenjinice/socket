@@ -18,6 +18,11 @@ class Vserver
 public:	
     // port为socket端口
     Vserver(uint16_t host_port);
+    /*  需要交互的初始化函数
+	host_port : 本机服务端绑定端口
+	remote_ip : 需要连接的对方ip
+	remote_port : 需要连接的对方端口
+    */	
     Vserver(uint16_t host_port,char *remote_ip,uint16_t remote_port);
     ~Vserver();
 
@@ -57,9 +62,12 @@ private:
     void    run();
     void    server_send(uint8_t *buffer,int len);
     int     check_interval(struct timeval *tv,int ms);
+    // 友元函数，pthread 创建线程时需要
     friend  void *vserver_read_fun(void *param);
 
 };
 
 #endif
+
+
 

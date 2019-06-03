@@ -61,6 +61,7 @@ void Vserver::start()
     GOOGLE_PROTOBUF_VERIFY_VERSION;
 
     int ret;
+	// 创建服务端，用于发布消息
     char pub_endpoint[50] = {0};
     sprintf(pub_endpoint,"tcp://*:%d",m_host_port);
     printf("vserver : zmq pub = %s\n",pub_endpoint);
@@ -71,9 +72,9 @@ void Vserver::start()
         perror("vserver : zmq bind error");
         exit(-1);
     }
-    m_ready = true;
 
     if(m_remote_ip){
+		// 创建客户端，用于订阅消息，接收消息
         char sub_endpoint[50] = {0};
         sprintf(sub_endpoint,"tcp://%s:%d",m_remote_ip,m_remote_port);
         printf("vserver : zmq sub to %s\n",sub_endpoint);
@@ -92,6 +93,7 @@ void Vserver::start()
         pthread_create(&thread,NULL,vserver_read_fun,this);
     }
 
+    m_ready = true;
 }	
 
 void Vserver::stop()
@@ -131,6 +133,7 @@ void Vserver::run()
     }
 }
 
+// zmq 发送数据,为方便视觉的同志们，加了线程锁
 void Vserver::server_send(uint8_t *buffer, int len)
 {	
     if(!m_ready){

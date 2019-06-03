@@ -43,6 +43,7 @@ void vclient_start(char *remote_ip , uint16_t remote_port, uint16_t host_port)
     m_host_port = host_port;
     m_context = zmq_ctx_new();
 
+    // 创建客户端，用于接收消息
     char sub_endpoint[50] = {0};
     sprintf(sub_endpoint,"tcp://%s:%d",m_remote_ip,m_remote_port);
     printf("vclient : connect to %s : %d\n",m_remote_ip,m_remote_port);
@@ -58,6 +59,7 @@ void vclient_start(char *remote_ip , uint16_t remote_port, uint16_t host_port)
         return;
     }
 
+    // 创建PUB模式的服务端，用于发布数据
     char pub_endpoint[50] = {0};
     sprintf(pub_endpoint,"tcp://*:%d",m_host_port);
     printf("vclient : zmq pub = %s\n",pub_endpoint);
@@ -111,14 +113,20 @@ static void *read_thread(void *arg)
 }
 
 
+// zmq 发送函数
 static void vclient_send(uint8_t *buffer,int len){
+    if(m_ready == 0 )return;
+
     zmq_send(m_publisher,m_filter,strlen(m_filter),ZMQ_SNDMORE);
     zmq_send(m_publisher,buffer,len,0);
 }
 
 
+// 动态配时场景需要，发送红绿灯信号给视觉那边
 void vclient_send_signal(TRAFFIC_SIGNAL signal, uint32_t camera)
 {
+    if(m_ready == 0 )return;
+
     static Vision__TrafficFlow *msg = NULL;
     static Vision__FlowInfo **flow_array = NULL;
 
