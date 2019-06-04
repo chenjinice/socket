@@ -14,7 +14,7 @@ message LaserObj{
         required int32 lng = 2;			// 经度
         required int32 lat = 3; 		// 纬度
         optional int32 speed = 4;		// 物体速度*100
-        optional int32 heading = 6;             // 物体航向角*100
+        optional int32 heading = 5;             // 物体方向*100
 } 
 
 
