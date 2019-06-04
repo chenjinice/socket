@@ -1,0 +1,29 @@
+syntax = "proto2";
+
+package laser;
+
+// 时间戳
+message Timestamp {
+	required uint64 sec  = 1;	// 秒
+	required uint32 usec = 2;	// 微秒
+}
+
+// 单个检测物体
+message LaserObj{
+        required int32 object_id = 1;
+        required int32 lng = 2;			// 经度
+        required int32 lat = 3; 		// 纬度
+        optional int32 speed = 4;		// 物体速度*100
+        optional int32 heading = 6;             // 物体航向角*100
+} 
+
+
+
+//---------------------------------------------------------------------------
+
+
+// 下面是要发送的消息结构
+message LaserMsg {
+        repeated LaserObj objs = 1;
+        optional Timestamp time = 2;
+}

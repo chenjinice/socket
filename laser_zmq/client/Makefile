@@ -5,11 +5,11 @@ RM  = rm -f
 INC_SYS_PATH = /usr/local/include
 LIB_SYS_PATH = /usr/local/lib 
 
-INC_PC_PATH = ../libs/pc/include
-LIB_PC_PATH = ../libs/pc/lib
+INC_PC_PATH = ../../libs/pc/include
+LIB_PC_PATH = ../../libs/pc/lib
 
-INC_ARM_PATH = ../libs/arm/include
-LIB_ARM_PATH = ../libs/arm/lib
+INC_ARM_PATH = ../../libs/arm/include
+LIB_ARM_PATH = ../../libs/arm/lib
 
 
 target   = recv.out
@@ -39,14 +39,14 @@ $(target):$(obj)
 %.o:%.c
 	$(CC) -c -o $@ $< $(inc_dir)
 
-proto:vision.proto
+proto:laser.proto
 	protoc-c --c_out=. $<
 
 clean:	
 	-$(RM) $(obj) *.out
 
 cleanall:clean
-	-$(RM) vision.pb-c.c vision.pb-c.h
+	-$(RM) laser.pb-c.c laser.pb-c.h
 
 .phony: clean cleanall
 

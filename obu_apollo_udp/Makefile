@@ -8,9 +8,9 @@ RECV_SRC = recv.c $(PROTO_SRC)
 LIB += -lpthread
 LIB += -lprotobuf-c
 
-LIB_DIR += -L/usr/local/lib
-LIB_DIR_ARM += -L./protobuf-c/lib
-INC_DIR_ARM += -I./protobuf-c/include
+#LIB_DIR += -L/usr/local/lib
+LIB_DIR_ARM += -L../libs/arm/lib
+INC_DIR_ARM += -I../libs/arm/include
 
 all: $(PROTO_SRC)
 	$(CC) $(SEND_SRC) -o send.out  $(LIB_DIR) $(LIB)

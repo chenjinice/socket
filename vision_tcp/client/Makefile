@@ -1,6 +1,6 @@
 FLAGS += -lpthread
-FLAGS += -Lprotobuf-c/lib	-lprotobuf-c
-INC   += -Iprotobuf-c/include
+FLAGS += -Lusr/local/lib	-lprotobuf-c
+INC   += -Iusr/local/include
 
 all:
 	gcc *.c $(INC) $(FLAGS) -lpthread -lprotobuf-c

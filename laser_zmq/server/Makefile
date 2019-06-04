@@ -4,8 +4,8 @@ RM  = rm -f
 INC_SYS_PATH = /usr/local/include
 LIB_SYS_PATH = /usr/local/lib 
 
-INC_PC_PATH = ../libs/pc/include
-LIB_PC_PATH = ../libs/pc/lib
+INC_PC_PATH = ../../libs/pc/include
+LIB_PC_PATH = ../../libs/pc/lib
 
 
 target  = send.out
@@ -31,15 +31,20 @@ $(target):$(obj)
 %.o:%.cc
 	$(CXX) -std=c++11 -c -o $@ $<
 
-proto:vision.proto
+proto:laser.proto
 	protoc --cpp_out=. $<
 
 clean:
 	-$(RM) $(obj) $(target)
 
 cleanall:clean
-	-$(RM) vision.pb.cc vision.pb.h
+	-$(RM) laser.pb.cc laser.pb.h
 
 .phony: clean cleanall
+
+
+
+
+
 
 
