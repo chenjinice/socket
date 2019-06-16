@@ -6,3 +6,4 @@
 *.pb-c.h
 *.pb.cc
 *.pb.h
+radar/build
