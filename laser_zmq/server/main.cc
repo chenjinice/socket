@@ -10,7 +10,7 @@ void send_msg(LaserServer &s)
     LaserMsg a;
     LaserObj   *p;
     static struct timeval tv = {0};    // 时间结构体,用于限制发送频率
-    for(int i=0;i<5;i++){
+    for(int i=0;i<10;i++){
         p = a.add_objs();
         p->set_object_id(i);
         p->set_lng(i*1);

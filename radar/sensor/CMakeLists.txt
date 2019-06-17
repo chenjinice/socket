@@ -14,6 +14,8 @@ add_executable(${TARGET}
     main.cpp
     can/can.cpp
     ars408/ars408.cpp
+    ars408/ars408_analysis.cpp
+    ars408/ars408_protocol.cpp
 )
 
 target_link_libraries(${TARGET}
