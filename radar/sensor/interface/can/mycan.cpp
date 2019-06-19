@@ -4,22 +4,22 @@
 #include <net/if.h>
 #include <string.h>
 #include <stdio.h>
-#include "can.h"
+#include "mycan.h"
 
 
-Can::Can()
+MyCan::MyCan()
 {
     m_fd = -1;
     m_ready = false;
 }
 
-Can::~Can()
+MyCan::~MyCan()
 {
     if(m_fd != -1)shutdown(m_fd , SHUT_RDWR);
 }
 
 
-bool Can::can_open(char *dev)
+bool MyCan::can_open(char *dev)
 {
     struct sockaddr_can addr;
     struct ifreq ifr;
@@ -42,7 +42,7 @@ bool Can::can_open(char *dev)
 }
 
 
-int Can::can_write(can_frame *pFrame)
+int MyCan::can_write(can_frame *pFrame)
 {
     int ret = -1;
     if(!m_ready)return ret;
@@ -52,7 +52,7 @@ int Can::can_write(can_frame *pFrame)
 }
 
 
-int Can::can_read(can_frame *pFrame)
+int MyCan::can_read(can_frame *pFrame)
 {
     int ret = -1;
     if(!m_ready)return ret;

@@ -1,15 +1,15 @@
-#ifndef __CAN_H__
-#define __CAN_H__
+#ifndef __MYCAN_H__
+#define __MYCAN_H__
 
 
 #include <linux/can.h>
 
 
-class Can
+class MyCan
 {
 public:
-    Can();
-    ~Can();
+    MyCan();
+    ~MyCan();
     bool can_open(char *dev);
     int  can_write(struct can_frame *pFrame);
     int  can_read(struct can_frame *pFrame);
