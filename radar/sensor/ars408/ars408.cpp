@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include "ars408.h"
 #include "can/mycan.h"
+#include "zmq/zmq_pub.h"
 #include "interval.h"
 
 using namespace std;
@@ -22,6 +23,7 @@ ARS408::ARS408(char *dev)
     m_dev = dev;
     m_device_id = -1;
     m_can = new MyCan();
+    m_pub = new ZmqPub();
     m_ready = false;
 }
 
@@ -30,6 +32,7 @@ ARS408::~ARS408()
 {
     m_ready = false;
     if(m_can)delete m_can;
+    if(m_pub)delete m_pub;
 }
 
 
@@ -43,6 +46,7 @@ void ARS408::start()
     }else {
         printf("ARS408 : success to open %s \n",m_dev);
     }
+    m_pub->start(22222,(char *)"radar");
     m_ready = true;
 
     pthread_t thread;
@@ -68,6 +72,7 @@ void ARS408::read_loop()
 }
 
 
+// 解析can收到的雷达数据
 void ARS408::analysis(can_frame *pFrame)
 {
     static int s_id = m_device_id;
@@ -112,7 +117,7 @@ void ARS408::obj_list_fun(can_frame *pFrame)
 //    ars408_get_objectNum(pFrame);
 }
 
-
+// 解析雷达探测到的object的普通信息，并保存到vector
 void ARS408::obj_general_fun(can_frame *pFrame)
 {
     Ars408_ObjGeneral obj_general = {0};
@@ -128,7 +133,7 @@ void ARS408::obj_general_fun(can_frame *pFrame)
     m_vector.push_back(obs);
 }
 
-
+// 解析雷达探测到的object的quality信息，并保存到vector
 void ARS408::obj_quality_fun(can_frame *pFrame)
 {
     Ars408_ObjQuality obj_quality = {0};
@@ -145,7 +150,7 @@ void ARS408::obj_quality_fun(can_frame *pFrame)
     obs->exist = obj_quality.exist;
 }
 
-
+// 解析雷达探测到的object的扩展信息，并保存到vector
 void ARS408::obj_extend_fun(can_frame *pFrame)
 {
     Ars408_ObjExtend obj_extend = {0};
@@ -161,7 +166,7 @@ void ARS408::obj_extend_fun(can_frame *pFrame)
     obs->angle = obj_extend.angle;
 }
 
-
+//解析雷达软件版本号
 void ARS408::version_fun(can_frame *pFrame)
 {
      m_soft_version = ars408_get_version(pFrame);
@@ -179,14 +184,21 @@ int ARS408::seach_obstacle(int id)
     return index;
 }
 
-
+// zmq发送障碍信息
 void ARS408::pub_obstacle()
 {
     this->print_obstacle();
+
+    uint8_t buffer[1024] = {0};
+    int count = 10;
+    for(int i=0;i<count;i++)buffer[i]='0'+i;
+    m_pub->send(buffer,count);
+
     m_vector.clear();
 }
 
 
+// 打印存储的雷达的障碍信息
 void ARS408::print_obstacle()
 {
     int size = m_vector.size();

@@ -29,37 +29,37 @@ typedef enum{
 
 
 typedef struct {
-    int   id;
-    float lng;
-    float lat;
-    float v_lng;
-    float v_lat;
-    float rcs;
+    int   id;       // 障碍id
+    float lng;      // 纵向距离 m
+    float lat;      // 横向距离 m
+    float v_lng;    // 纵向速度 m/s
+    float v_lat;    // 横向速度 m/s
+    float rcs;      // 雷达截面积
 }Ars408_ObjGeneral;
 
 
 typedef struct {
-    int   id;
-    float lng_rms;
-    float lat_rms;
-    float v_lng_rms;
-    float v_lat_rms;
-    float acc_lng_rms;
-    float acc_lat_rms;
-    float orientation_rms;
+    int   id;          // 障碍id
+    float lng_rms;     // 纵向距离方差
+    float lat_rms;     // 横向距离方差
+    float v_lng_rms;   // 纵向速度方差
+    float v_lat_rms;   // 横向速度方差
+    float acc_lng_rms; // 纵向加速度方差
+    float acc_lat_rms; // 横向加速度方差
+    float orientation_rms; // 方向方差
     int   meas_state;
-    float exist;
+    float exist;       // 存在的概率
 }Ars408_ObjQuality;
 
 
 typedef struct {
     int   id;
-    int   object_class;
-    float acc_lng;
-    float acc_lat;
-    float angle;
-    float length;
-    float width;
+    int   object_class; // 障碍类型：人、车等等，这东西不靠谱，没啥用
+    float acc_lng;      // 纵向加速度
+    float acc_lat;      // 横向加速度
+    float angle;        // 角度 度数
+    float length;       // 长 m
+    float width;        // 宽 m
 }Ars408_ObjExtend;
 
 

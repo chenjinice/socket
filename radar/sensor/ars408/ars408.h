@@ -8,7 +8,7 @@
 #include "common_defines.h"
 
 class MyCan;
-
+class ZmqPub;
 
 class ARS408{
 public:
@@ -17,10 +17,11 @@ public:
     void start();
 
 private:
-    MyCan *m_can;
-    char  *m_dev;
-    int    m_device_id;
-    bool   m_ready;
+    MyCan  *m_can;
+    ZmqPub *m_pub;
+    char   *m_dev;
+    int     m_device_id;
+    bool    m_ready;
     std::string m_soft_version;
     std::vector<Obstacle_Info> m_vector;
 
