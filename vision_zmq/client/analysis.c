@@ -178,7 +178,7 @@ static void smoke_fun(uint8_t *buffer,int length)
 // 前方拥堵提醒
 static void jam_fun(uint8_t *buffer,int length)
 {
-    int i;
+    int i,m;
     Vision__TrafficJam *c = vision__traffic_jam__unpack(NULL,length,buffer);
     if(c == NULL){
         printf("vclient : traffic jam unpack failed \n");
@@ -187,7 +187,11 @@ static void jam_fun(uint8_t *buffer,int length)
     printf("vclient : [%d jam] --- %s\n",c->n_jam,__FUNCTION__);
     for(i=0;i<c->n_jam;i++){
         Vision__JamInfo *p = c->jam[i];
-        printf("vclient : jam[%d] : vehicle_num=%d,avg_speed=%lf,road_yaw=%lf\n",i,p->vehicle_num,p->vehicle_avg_speed,p->road_yaw);
+        printf("vclient : jam[%d] : vehicle_num=%d,avg_speed=%lf,road_yaw=%lf,vehicle_flow=",i,p->vehicle_num,p->vehicle_avg_speed,p->road_yaw);
+        for(m=0;m<p->n_vehicle_flow;m++){
+            printf("%d,",p->vehicle_flow[m]);
+        }
+        printf("\n");
     }
 
     vision__traffic_jam__free_unpacked(c,NULL);

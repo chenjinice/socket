@@ -181,6 +181,10 @@ void send_jam(Vserver &s)
         p->set_vehicle_num(5);              // 车辆数量
         p->set_vehicle_avg_speed(10.1234);  // 车辆平均速度
         p->set_road_yaw(90.123);            // 道路航向角
+
+		for(int m=0;m<4;m++){
+            p->add_vehicle_flow(m*10);		// 车流量
+		}
     }
     s.send_data(a,&tv);
 }

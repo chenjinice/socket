@@ -93,7 +93,8 @@ message JamInfo {
 	required uint32 vehicle_num = 1;		// 车辆数
 	required double vehicle_avg_speed = 2;  // 车辆平均速度 km/h
 	required double road_yaw = 3;			// 道路航向角  (度)
-	optional int32	lane_id = 4;			// 车道id
+	repeated int32	vehicle_flow = 4;		// 每个车道车辆单位时间通过数
+	optional int32	lane_id = 5;			// 车道id
 }
 
 // 交叉路口单个相机拍到的流量情况
