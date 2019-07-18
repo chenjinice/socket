@@ -6,4 +6,5 @@
 *.pb-c.h
 *.pb.cc
 *.pb.h
+*.txt.user
 radar/build
