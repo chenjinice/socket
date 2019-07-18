@@ -1,26 +1,35 @@
 
-CC = ar
-TARGET = libltev_asn.a
+TARGET = libltev_asn1.a
+SRC = $(wildcard *.c)
+OBJS = $(SRC:%.c=%.o)
 
-all:generate target install clean
+INC += -I ./
 
-generate:
-	asn1c -fskeletons-copy -fnative-types -gen-PER -pdu=auto  LTEV.asn
-	-rm Makefile.am.*
-	-rm converter-example.*
 
-target:
-	$(CC) -rcv $(TARGET) *.c
+all:$(OBJS)
+	ar -crv $(TARGET) $^
 
-install:
-	cp *.h ../include
-	cp $(TARGET) ../
+mv:
+	mv $(TARGET) ../
+
+%.o:%.c
+	gcc -c $< -o $@ $(INC)
 
 clean:
-	-rm *.h *.c $(TARGET)
+	-rm  $(OBJS)
 
 cleanall:clean
-	-rm ../include/*.h
-	-rm ../$(TARGET)
+	-rm *.c *.h
+
+regenerate:
+#	asn1c -fskeletons-copy -fnative-types -gen-PER -pdu=auto -no-gen-example LTEV.asn
+	asn1c -fskeletons-copy -fnative-types -gen-PER -pdu=auto LTEV.asn
+	-rm Makefile.am.*
+	-rm converter-example.*
 	
+
+
+
+
+
 
