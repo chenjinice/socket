@@ -33,8 +33,8 @@ void send_status(Vserver &s)
         p->set_object_id(i);
         p->set_object_type(HUMAN);      // 类型:人,车,摩托车
         p->set_camera(1);               // 哪个相机 :1,2,3,4
-        p->set_lng(1128990180);         // 经度
-        p->set_lat(281265890);	        // 纬度
+        p->set_lng(11);         // 经度
+        p->set_lat(12);	        // 纬度
     }
     s.send_data(a,&tv,1000);            // 两次发送间隔为小于 1000 ms的话，不会发送
 }	
@@ -46,12 +46,14 @@ void send_abnormal_car(Vserver &s)
     AbnormalCar   *p;
     static struct timeval tv = {0};     // 时间结构体,用于限制发送频率
     a.set_id(ABNORMAL_CAR);
+
     for(int i=0;i<1;i++){
         p = a.add_array();
         p->set_object_id(i);
         p->set_camera(1);         // 哪个相机 :1,2,3,4
-        p->set_lng(11);           // 经度
+        p->set_lng(21);           // 经度
         p->set_lat(22);           // 纬度
+        p->set_abnormal_type(LINE_PRESSING);
     }
     s.send_data(a,&tv);
 }	
@@ -67,8 +69,8 @@ void send_road_danger(Vserver &s)
         p = a.add_array();
         p->set_object_id(i);
         p->set_camera(1);       // 哪个相机 :1,2,3,4
-        p->set_lng(111);        // 经度
-        p->set_lat(222);        // 纬度
+        p->set_lng(31);        // 经度
+        p->set_lat(32);        // 纬度
     }
     s.send_data(a,&tv);
 }	
@@ -84,8 +86,8 @@ void send_illegal_car1(Vserver &s)
         p = a.add_array();
         p->set_object_id(i);
         p->set_camera(i);    	// 哪个相机 :1,2,3,4
-        p->set_lng(1111);       // 经度
-        p->set_lat(2222);       // 纬度
+        p->set_lng(41);       // 经度
+        p->set_lat(42);       // 纬度
         p->set_lane_id(1);   	// 车道id
     }
     s.send_data(a,&tv);
@@ -102,8 +104,8 @@ void send_illegal_car2(Vserver &s)
         p = a.add_array();
         p->set_object_id(i);
         p->set_camera(i);      // 哪个相机 :1,2,3,4
-        p->set_lng(3);         // 经度
-        p->set_lat(4);         // 纬度
+        p->set_lng(51);         // 经度
+        p->set_lat(52);         // 纬度
     }
     s.send_data(a,&tv);
 }	
@@ -114,8 +116,8 @@ void send_visibility(Vserver &s)
     Visibility a;
     static struct timeval tv = {0};          // 时间结构体,用于限制发送频率
     a.set_id(VISIBILITY);
-    a.set_distance(123.456789);				 // 能见度距离 米
-    a.set_level(3);							 // 能见度等级
+    a.set_distance(123.456789);              // 能见度距离 米
+    a.set_level(3);                          // 能见度等级
     s.send_data(a,&tv);
 }	
 
@@ -131,8 +133,8 @@ void send_crowd(Vserver &s)
         p->set_object_id(i);
         p->set_object_type(HUMAN);      // 类型:人,车,摩托车
         p->set_camera(1);               // 哪个相机 :1,2,3,4
-        p->set_lng(33);                 // 经度
-        p->set_lat(44);                 // 纬度
+        p->set_lng(61);                 // 经度
+        p->set_lat(62);                 // 纬度
     }
     s.send_data(a,&tv,1000);            // 两次发送间隔为小于 1000 ms的话，不会发送
 }			
@@ -147,15 +149,15 @@ void send_area(Vserver &s)
     a.set_id(AVAILABLE_AREA);
     pa=a.add_area();
     pa->set_object_id(1);
-    pa->set_camera(3);             // 哪个相机 :1,2,3,4
-    pa->set_lng1(1000000);         // 第一个点经度
-    pa->set_lat1(1111111);         // 第二个点纬度
-    pa->set_lng2(2000000);         // 第二个点经度
-    pa->set_lat2(2222222);         // 第二个点纬度
-    pa->set_lng3(3000000);         // 第3个点经度
-    pa->set_lat3(3333333);         // 第3个点纬度
-    pa->set_lng4(4000000);         // 第4个点经度
-    pa->set_lat4(4444444);         // 第4个点纬度
+    pa->set_camera(3);        // 哪个相机 :1,2,3,4
+    pa->set_lng1(71);         // 第一个点经度
+    pa->set_lat1(72);         // 第二个点纬度
+    pa->set_lng2(73);         // 第二个点经度
+    pa->set_lat2(74);         // 第二个点纬度
+    pa->set_lng3(75);         // 第3个点经度
+    pa->set_lat3(76);         // 第3个点纬度
+    pa->set_lng4(77);         // 第4个点经度
+    pa->set_lat4(78);         // 第4个点纬度
     s.send_data(a,&tv);
 }
 
@@ -182,9 +184,9 @@ void send_jam(Vserver &s)
         p->set_vehicle_avg_speed(10.1234);  // 车辆平均速度
         p->set_road_yaw(90.123);            // 道路航向角
 
-		for(int m=0;m<4;m++){
-            p->add_vehicle_flow(m*10);		// 车流量
-		}
+        for(int m=0;m<4;m++){
+            p->add_vehicle_flow(m*10);      // 车流量
+        }
     }
     s.send_data(a,&tv);
 }
@@ -209,30 +211,68 @@ void send_flow(Vserver &s)
     s.send_data(a,&tv);
 }
 
-// 带时间的异常车辆（静止）
-void test(Vserver &s)
+// 特殊车辆
+void send_special_car(Vserver &s)
 {
-    IllegalCarWarn a;
-    AbnormalCar   *p;
-    static struct timeval tv = {0};   // 时间结构体,用于限制发送频率
-    a.set_id(ILLEGAL_V2);
-    for(int i=0;i<1;i++){
+    SpecialCarMsg a;
+    SpecialCar *p;
+    static struct timeval tv={0};
+    a.set_id(SPECIALCAR);
+    for(int i=0;i<2;i++){
         p = a.add_array();
         p->set_object_id(i);
-        p->set_camera(i);      // 哪个相机 :1,2,3,4
-        p->set_lng(3);         // 经度
-        p->set_lat(4);         // 纬度
+        p->set_special_type(SpecialCar_SPECIALTYPE_DANGERCAR);
+        p->set_lng(81);
+        p->set_lat(82);
+        p->set_camera(i);
     }
-
-    // 设置时间
-    data_time *time = new data_time();
-    time->set_sec(987654321);	 	// 秒
-    time->set_usec(1234567890);		// 微秒
-    a.set_allocated_time(time);	
-
     s.send_data(a,&tv);
 }
 
+// 交通事故
+void send_accident_area(Vserver &s)
+{
+    AvailableAreas a;
+    AvailableArea *pa;
+    static struct timeval tv = {0};      // 时间结构体,用于限制发送频率
+    a.set_id(ACCIDENT);
+    pa=a.add_area();
+    pa->set_object_id(1);
+    pa->set_camera(3);         // 哪个相机 :1,2,3,4
+    pa->set_lng1(101);         // 第一个点经度
+    pa->set_lat1(102);         // 第二个点纬度
+    pa->set_lng2(103);         // 第二个点经度
+    pa->set_lat2(104);         // 第二个点纬度
+    pa->set_lng3(105);         // 第3个点经度
+    pa->set_lat3(106);         // 第3个点纬度
+    pa->set_lng4(107);         // 第4个点经度
+    pa->set_lat4(108);         // 第4个点纬度
+    s.send_data(a,&tv);
+}
+
+// 结冰
+void send_ice_warn(Vserver &s)
+{
+    IceWarn a;
+    static struct timeval tv = {0};       // 时间结构体,用于限制发送频率
+    a.set_id(ICEWARN);
+    a.set_warn(true);
+    s.send_data(a,&tv);
+}
+
+// 车道线磨损
+void send_lane_ware(Vserver &s)
+{
+    LaneWare a;
+    static struct timeval tv = {0};       // 时间结构体,用于限制发送频率
+    a.set_id(LANE_WARE);
+    a.set_ware_type(LaneWare_WARETYPE_DOUBLEYELLOWLINE);
+    a.set_lng1(91);
+    a.set_lat1(92);
+    a.set_lng2(93);
+    a.set_lat2(94);
+    s.send_data(a,&tv);
+}
 
 
 int main(int argc ,char **argv)
@@ -266,10 +306,12 @@ int main(int argc ,char **argv)
         send_smoke(s);          // 隧道内火焰与烟雾预警
         send_jam(s);            // 前方拥堵提醒
         send_flow(s);           // 动态配时场景
+        send_special_car(s);    // 特殊车辆
+        send_accident_area(s);  // 交通事故
+        send_ice_warn(s);       // 结冰
+        send_lane_ware(s);      // 车道线磨损
 
-//        test(s);                // 带时间的异常车辆（静止）
         usleep(100000);
-
     }
 
     s.stop();

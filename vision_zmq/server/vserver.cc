@@ -300,6 +300,7 @@ void Vserver::send_data(vision::TrafficJam &msg,struct timeval *tv, int ms)
     this->server_send(buffer,len);
 }
 
+// 发送动态配时场景需要数据
 void Vserver::send_data(vision::TrafficFlow &msg,struct timeval *tv, int ms)
 {
     if(msg.flow_size() == 0)return;
@@ -326,6 +327,52 @@ void Vserver::send_data(vision::TrafficFlow &msg,struct timeval *tv, int ms)
     len = msg.ByteSize();
     msg.SerializeToArray(buffer,len);
 
+    this->server_send(buffer,len);
+}
+
+// 发送结冰
+void Vserver::send_data(vision::IceWarn &msg,struct timeval *tv, int ms)
+{
+    if(msg.warn() == false)return;
+    // 限制一下发送频率
+    if(tv != NULL){
+        if(check_interval(tv,ms))return;
+    }
+
+    int len = 0;
+    uint8_t buffer[BUFFER_SIZE];
+    len = msg.ByteSize();
+    msg.SerializeToArray(buffer,len);
+
+    this->server_send(buffer,len);
+}
+
+// 特殊车辆
+void Vserver::send_data(vision::SpecialCarMsg &msg,struct timeval *tv, int ms)
+{
+    if(msg.array_size() == 0)return;
+    // 限制一下发送频率
+    if(tv != NULL){
+        if(check_interval(tv,ms))return;
+    }
+    int len = 0;
+    uint8_t buffer[BUFFER_SIZE];
+    len = msg.ByteSize();
+    msg.SerializeToArray(buffer,len);
+    this->server_send(buffer,len);
+}
+
+// 车道线磨损
+void Vserver::send_data(vision::LaneWare &msg, timeval *tv, int ms)
+{
+    // 限制一下发送频率
+    if(tv != NULL){
+        if(check_interval(tv,ms))return;
+    }
+    int len = 0;
+    uint8_t buffer[BUFFER_SIZE];
+    len = msg.ByteSize();
+    msg.SerializeToArray(buffer,len);
     this->server_send(buffer,len);
 }
 

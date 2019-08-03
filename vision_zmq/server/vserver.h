@@ -42,7 +42,9 @@ public:
     void send_data(vision::IllegalCarWarn &msg,struct timeval *tv=NULL,int ms=1000);
     void send_data(vision::TrafficJam &msg,struct timeval *tv=NULL,int ms=1000);
     void send_data(vision::TrafficFlow &msg,struct timeval *tv=NULL,int ms=1000);
-
+    void send_data(vision::IceWarn &msg,struct timeval *tv=NULL, int ms=1000);
+    void send_data(vision::SpecialCarMsg &msg,struct timeval *tv=NULL, int ms=1000);
+    void send_data(vision::LaneWare &msg,struct timeval *tv=NULL, int ms=1000);
 
 private:
     pthread_mutex_t m_mutex;
