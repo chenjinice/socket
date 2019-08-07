@@ -208,6 +208,15 @@ void send_flow(Vserver &s)
 //            p->add_pass_num(n*100);
 //        }
     }
+
+//     设置时间
+//    data_time *time = new data_time();
+//    struct timeval tv_now = {0};
+//    gettimeofday(&tv_now,NULL);
+//    time->set_sec(tv_now.tv_sec);       // 秒
+//    time->set_usec(tv_now.tv_usec);     // 微秒
+//    a.set_allocated_time(time);
+
     s.send_data(a,&tv);
 }
 

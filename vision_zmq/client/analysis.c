@@ -209,6 +209,7 @@ static void traffic_flow_fun(uint8_t *buffer,int length)
         return;
     }
     printf("vclient : [%d flow] --- %s\n",c->n_flow,__FUNCTION__);
+	if(c->time)printf("sec = %lld, usec = %d\n",c->time->sec,c->time->usec);
     for(i=0;i<c->n_flow;i++){
         Vision__FlowInfo *p = c->flow[i];
         printf("vclient : flow[%d] : camera = %d,vehicle[",i,p->camera);
