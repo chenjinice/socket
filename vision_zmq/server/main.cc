@@ -209,13 +209,13 @@ void send_flow(Vserver &s)
 //        }
     }
 
-//     设置时间
-//    data_time *time = new data_time();
+//     设置开始时间
+//    data_time *time_begin = new data_time();
 //    struct timeval tv_now = {0};
 //    gettimeofday(&tv_now,NULL);
-//    time->set_sec(tv_now.tv_sec);       // 秒
-//    time->set_usec(tv_now.tv_usec);     // 微秒
-//    a.set_allocated_time(time);
+//    time_begin->set_sec(tv_now.tv_sec);       // 秒
+//    time_begin->set_usec(tv_now.tv_usec);     // 微秒
+//    a.set_allocated_time_begin(time_begin);
 
     s.send_data(a,&tv);
 }

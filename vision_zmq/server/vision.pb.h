@@ -3528,14 +3528,23 @@ class TrafficFlow final :
   const ::google::protobuf::RepeatedPtrField< ::vision::FlowInfo >&
       flow() const;
 
-  // optional .vision.data_time time = 3;
-  bool has_time() const;
-  void clear_time();
-  static const int kTimeFieldNumber = 3;
-  const ::vision::data_time& time() const;
-  ::vision::data_time* release_time();
-  ::vision::data_time* mutable_time();
-  void set_allocated_time(::vision::data_time* time);
+  // optional .vision.data_time time_begin = 3;
+  bool has_time_begin() const;
+  void clear_time_begin();
+  static const int kTimeBeginFieldNumber = 3;
+  const ::vision::data_time& time_begin() const;
+  ::vision::data_time* release_time_begin();
+  ::vision::data_time* mutable_time_begin();
+  void set_allocated_time_begin(::vision::data_time* time_begin);
+
+  // optional .vision.data_time time_end = 4;
+  bool has_time_end() const;
+  void clear_time_end();
+  static const int kTimeEndFieldNumber = 4;
+  const ::vision::data_time& time_end() const;
+  ::vision::data_time* release_time_end();
+  ::vision::data_time* mutable_time_end();
+  void set_allocated_time_end(::vision::data_time* time_end);
 
   // required .vision.ID id = 1;
   bool has_id() const;
@@ -3552,7 +3561,8 @@ class TrafficFlow final :
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   ::google::protobuf::RepeatedPtrField< ::vision::FlowInfo > flow_;
-  ::vision::data_time* time_;
+  ::vision::data_time* time_begin_;
+  ::vision::data_time* time_end_;
   int id_;
   friend struct ::TableStruct_vision_2eproto;
 };
@@ -6150,11 +6160,11 @@ inline void TrafficJam::set_allocated_time(::vision::data_time* time) {
 
 // required .vision.ID id = 1;
 inline bool TrafficFlow::has_id() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void TrafficFlow::clear_id() {
   id_ = 0;
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline ::vision::ID TrafficFlow::id() const {
   // @@protoc_insertion_point(field_get:vision.TrafficFlow.id)
@@ -6162,7 +6172,7 @@ inline ::vision::ID TrafficFlow::id() const {
 }
 inline void TrafficFlow::set_id(::vision::ID value) {
   assert(::vision::ID_IsValid(value));
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000004u;
   id_ = value;
   // @@protoc_insertion_point(field_set:vision.TrafficFlow.id)
 }
@@ -6197,53 +6207,102 @@ TrafficFlow::flow() const {
   return flow_;
 }
 
-// optional .vision.data_time time = 3;
-inline bool TrafficFlow::has_time() const {
+// optional .vision.data_time time_begin = 3;
+inline bool TrafficFlow::has_time_begin() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void TrafficFlow::clear_time() {
-  if (time_ != nullptr) time_->Clear();
+inline void TrafficFlow::clear_time_begin() {
+  if (time_begin_ != nullptr) time_begin_->Clear();
   _has_bits_[0] &= ~0x00000001u;
 }
-inline const ::vision::data_time& TrafficFlow::time() const {
-  const ::vision::data_time* p = time_;
-  // @@protoc_insertion_point(field_get:vision.TrafficFlow.time)
+inline const ::vision::data_time& TrafficFlow::time_begin() const {
+  const ::vision::data_time* p = time_begin_;
+  // @@protoc_insertion_point(field_get:vision.TrafficFlow.time_begin)
   return p != nullptr ? *p : *reinterpret_cast<const ::vision::data_time*>(
       &::vision::_data_time_default_instance_);
 }
-inline ::vision::data_time* TrafficFlow::release_time() {
-  // @@protoc_insertion_point(field_release:vision.TrafficFlow.time)
+inline ::vision::data_time* TrafficFlow::release_time_begin() {
+  // @@protoc_insertion_point(field_release:vision.TrafficFlow.time_begin)
   _has_bits_[0] &= ~0x00000001u;
-  ::vision::data_time* temp = time_;
-  time_ = nullptr;
+  ::vision::data_time* temp = time_begin_;
+  time_begin_ = nullptr;
   return temp;
 }
-inline ::vision::data_time* TrafficFlow::mutable_time() {
+inline ::vision::data_time* TrafficFlow::mutable_time_begin() {
   _has_bits_[0] |= 0x00000001u;
-  if (time_ == nullptr) {
+  if (time_begin_ == nullptr) {
     auto* p = CreateMaybeMessage<::vision::data_time>(GetArenaNoVirtual());
-    time_ = p;
+    time_begin_ = p;
   }
-  // @@protoc_insertion_point(field_mutable:vision.TrafficFlow.time)
-  return time_;
+  // @@protoc_insertion_point(field_mutable:vision.TrafficFlow.time_begin)
+  return time_begin_;
 }
-inline void TrafficFlow::set_allocated_time(::vision::data_time* time) {
+inline void TrafficFlow::set_allocated_time_begin(::vision::data_time* time_begin) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == nullptr) {
-    delete time_;
+    delete time_begin_;
   }
-  if (time) {
+  if (time_begin) {
     ::google::protobuf::Arena* submessage_arena = nullptr;
     if (message_arena != submessage_arena) {
-      time = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, time, submessage_arena);
+      time_begin = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, time_begin, submessage_arena);
     }
     _has_bits_[0] |= 0x00000001u;
   } else {
     _has_bits_[0] &= ~0x00000001u;
   }
-  time_ = time;
-  // @@protoc_insertion_point(field_set_allocated:vision.TrafficFlow.time)
+  time_begin_ = time_begin;
+  // @@protoc_insertion_point(field_set_allocated:vision.TrafficFlow.time_begin)
+}
+
+// optional .vision.data_time time_end = 4;
+inline bool TrafficFlow::has_time_end() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void TrafficFlow::clear_time_end() {
+  if (time_end_ != nullptr) time_end_->Clear();
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline const ::vision::data_time& TrafficFlow::time_end() const {
+  const ::vision::data_time* p = time_end_;
+  // @@protoc_insertion_point(field_get:vision.TrafficFlow.time_end)
+  return p != nullptr ? *p : *reinterpret_cast<const ::vision::data_time*>(
+      &::vision::_data_time_default_instance_);
+}
+inline ::vision::data_time* TrafficFlow::release_time_end() {
+  // @@protoc_insertion_point(field_release:vision.TrafficFlow.time_end)
+  _has_bits_[0] &= ~0x00000002u;
+  ::vision::data_time* temp = time_end_;
+  time_end_ = nullptr;
+  return temp;
+}
+inline ::vision::data_time* TrafficFlow::mutable_time_end() {
+  _has_bits_[0] |= 0x00000002u;
+  if (time_end_ == nullptr) {
+    auto* p = CreateMaybeMessage<::vision::data_time>(GetArenaNoVirtual());
+    time_end_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:vision.TrafficFlow.time_end)
+  return time_end_;
+}
+inline void TrafficFlow::set_allocated_time_end(::vision::data_time* time_end) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete time_end_;
+  }
+  if (time_end) {
+    ::google::protobuf::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      time_end = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, time_end, submessage_arena);
+    }
+    _has_bits_[0] |= 0x00000002u;
+  } else {
+    _has_bits_[0] &= ~0x00000002u;
+  }
+  time_end_ = time_end;
+  // @@protoc_insertion_point(field_set_allocated:vision.TrafficFlow.time_end)
 }
 
 // -------------------------------------------------------------------

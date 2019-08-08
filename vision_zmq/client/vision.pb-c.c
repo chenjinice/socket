@@ -2814,7 +2814,7 @@ const ProtobufCMessageDescriptor vision__traffic_jam__descriptor =
   (ProtobufCMessageInit) vision__traffic_jam__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor vision__traffic_flow__field_descriptors[3] =
+static const ProtobufCFieldDescriptor vision__traffic_flow__field_descriptors[4] =
 {
   {
     "id",
@@ -2841,12 +2841,24 @@ static const ProtobufCFieldDescriptor vision__traffic_flow__field_descriptors[3]
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "time",
+    "time_begin",
     3,
     PROTOBUF_C_LABEL_OPTIONAL,
     PROTOBUF_C_TYPE_MESSAGE,
     0,   /* quantifier_offset */
-    offsetof(Vision__TrafficFlow, time),
+    offsetof(Vision__TrafficFlow, time_begin),
+    &vision__data_time__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "time_end",
+    4,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Vision__TrafficFlow, time_end),
     &vision__data_time__descriptor,
     NULL,
     0,             /* flags */
@@ -2856,12 +2868,13 @@ static const ProtobufCFieldDescriptor vision__traffic_flow__field_descriptors[3]
 static const unsigned vision__traffic_flow__field_indices_by_name[] = {
   1,   /* field[1] = flow */
   0,   /* field[0] = id */
-  2,   /* field[2] = time */
+  2,   /* field[2] = time_begin */
+  3,   /* field[3] = time_end */
 };
 static const ProtobufCIntRange vision__traffic_flow__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 3 }
+  { 0, 4 }
 };
 const ProtobufCMessageDescriptor vision__traffic_flow__descriptor =
 {
@@ -2871,7 +2884,7 @@ const ProtobufCMessageDescriptor vision__traffic_flow__descriptor =
   "Vision__TrafficFlow",
   "vision",
   sizeof(Vision__TrafficFlow),
-  3,
+  4,
   vision__traffic_flow__field_descriptors,
   vision__traffic_flow__field_indices_by_name,
   1,  vision__traffic_flow__number_ranges,

@@ -1,6 +1,7 @@
 /*
-	视觉与rsu通信协议
-	最后修改日期：2019-08-07
+	V1.0
+	视觉与rsu通信协议 
+	1.动态配时场景，添加 time_begin 和 time_end    ----2019-08-08
 */
 
 syntax = "proto2";
@@ -251,7 +252,8 @@ message TrafficJam {
 message TrafficFlow {
 	required ID id = 1;
 	repeated FlowInfo flow = 2;
-	optional data_time time = 3;
+	optional data_time time_begin = 3;
+	optional data_time time_end = 4;
 }
 
 // 结冰报警

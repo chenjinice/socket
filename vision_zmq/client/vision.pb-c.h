@@ -777,11 +777,12 @@ struct  _Vision__TrafficFlow
   Vision__ID id;
   size_t n_flow;
   Vision__FlowInfo **flow;
-  Vision__DataTime *time;
+  Vision__DataTime *time_begin;
+  Vision__DataTime *time_end;
 };
 #define VISION__TRAFFIC_FLOW__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&vision__traffic_flow__descriptor) \
-    , VISION__ID__DEFAULT, 0,NULL, NULL }
+    , VISION__ID__DEFAULT, 0,NULL, NULL, NULL }
 
 
 /*

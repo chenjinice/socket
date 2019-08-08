@@ -781,10 +781,12 @@ const ::google::protobuf::uint32 TableStruct_vision_2eproto::offsets[] PROTOBUF_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::vision::TrafficFlow, id_),
   PROTOBUF_FIELD_OFFSET(::vision::TrafficFlow, flow_),
-  PROTOBUF_FIELD_OFFSET(::vision::TrafficFlow, time_),
-  1,
+  PROTOBUF_FIELD_OFFSET(::vision::TrafficFlow, time_begin_),
+  PROTOBUF_FIELD_OFFSET(::vision::TrafficFlow, time_end_),
+  2,
   ~0u,
   0,
+  1,
   PROTOBUF_FIELD_OFFSET(::vision::IceWarn, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::vision::IceWarn, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -845,10 +847,10 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] PROTOBUF_SE
   { 238, 253, sizeof(::vision::Detectobject)},
   { 263, 271, sizeof(::vision::Detectobjects)},
   { 274, 282, sizeof(::vision::TrafficJam)},
-  { 285, 293, sizeof(::vision::TrafficFlow)},
-  { 296, 303, sizeof(::vision::IceWarn)},
-  { 305, 317, sizeof(::vision::LaneWare)},
-  { 324, 332, sizeof(::vision::SpecialCarMsg)},
+  { 285, 294, sizeof(::vision::TrafficFlow)},
+  { 298, 305, sizeof(::vision::IceWarn)},
+  { 307, 319, sizeof(::vision::LaneWare)},
+  { 326, 334, sizeof(::vision::SpecialCarMsg)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -944,36 +946,38 @@ const char descriptor_table_protodef_vision_2eproto[] =
   "ct\022\037\n\004time\030\003 \001(\0132\021.vision.Timestamp\"c\n\nT"
   "rafficJam\022\026\n\002id\030\001 \002(\0162\n.vision.ID\022\034\n\003jam"
   "\030\002 \003(\0132\017.vision.JamInfo\022\037\n\004time\030\003 \001(\0132\021."
-  "vision.data_time\"f\n\013TrafficFlow\022\026\n\002id\030\001 "
-  "\002(\0162\n.vision.ID\022\036\n\004flow\030\002 \003(\0132\020.vision.F"
-  "lowInfo\022\037\n\004time\030\003 \001(\0132\021.vision.data_time"
-  "\"/\n\007IceWarn\022\026\n\002id\030\001 \002(\0162\n.vision.ID\022\014\n\004w"
-  "arn\030\002 \002(\010\"\346\001\n\010LaneWare\022\026\n\002id\030\001 \002(\0162\n.vis"
-  "ion.ID\022,\n\tware_type\030\002 \002(\0162\031.vision.LaneW"
-  "are.WARETYPE\022\014\n\004lng1\030\003 \002(\005\022\014\n\004lat1\030\004 \002(\005"
-  "\022\014\n\004lng2\030\005 \002(\005\022\014\n\004lat2\030\006 \002(\005\022\017\n\007heading\030"
-  "\007 \001(\005\"K\n\010WARETYPE\022\013\n\007DEFAULT\020\000\022\014\n\010FULLLI"
-  "NE\020\001\022\016\n\nDOTTEDLINE\020\002\022\024\n\020DOUBLEYELLOWLINE"
-  "\020\003\"k\n\rSpecialCarMsg\022\026\n\002id\030\001 \002(\0162\n.vision"
-  ".ID\022!\n\005array\030\002 \003(\0132\022.vision.SpecialCar\022\037"
-  "\n\004time\030\003 \001(\0132\021.vision.data_time*\264\002\n\002ID\022\013"
-  "\n\007DEFAULT\020\000\022\020\n\014PEDESTRIAN_D\020\001\022\016\n\nILLEGAL"
-  "_V1\020\002\022\016\n\nVISIBILITY\020\003\022\022\n\016AVAILABLE_AREA\020"
-  "\004\022\020\n\014ABNORMAL_CAR\020\005\022\016\n\nILLEGAL_V2\020\006\022\022\n\016T"
-  "RAFFIC_STATUS\020\007\022\024\n\020BACKWARD_DRIVING\020\010\022\017\n"
-  "\013ROAD_DANGER\020\t\022\016\n\nFIRE_SMOKE\020\n\022\021\n\rDETECT"
-  "OBJECTS\020\013\022\017\n\013TRAFFIC_JAM\020\014\022\020\n\014TRAFFIC_FL"
-  "OW\020\r\022\016\n\nSPECIALCAR\020\016\022\014\n\010ACCIDENT\020\017\022\013\n\007IC"
-  "EWARN\020\020\022\r\n\tLANE_WARE\020\021*F\n\004TYPE\022\n\n\006OTHERS"
-  "\020\000\022\t\n\005HUMAN\020\001\022\013\n\007VEHICLE\020\002\022\016\n\nMOTORCYCLE"
-  "\020\003\022\n\n\006ANIMAL\020\004*h\n\014ABNORMALTYPE\022\r\n\tDEFAUL"
-  "T_A\020\000\022\r\n\tSTOP_CAR1\020\001\022\r\n\tSTOP_CAR2\020\002\022\030\n\024C"
-  "ONTINUOUS_DIVERSION\020\003\022\021\n\rLINE_PRESSING\020\004"
+  "vision.data_time\"\221\001\n\013TrafficFlow\022\026\n\002id\030\001"
+  " \002(\0162\n.vision.ID\022\036\n\004flow\030\002 \003(\0132\020.vision."
+  "FlowInfo\022%\n\ntime_begin\030\003 \001(\0132\021.vision.da"
+  "ta_time\022#\n\010time_end\030\004 \001(\0132\021.vision.data_"
+  "time\"/\n\007IceWarn\022\026\n\002id\030\001 \002(\0162\n.vision.ID\022"
+  "\014\n\004warn\030\002 \002(\010\"\346\001\n\010LaneWare\022\026\n\002id\030\001 \002(\0162\n"
+  ".vision.ID\022,\n\tware_type\030\002 \002(\0162\031.vision.L"
+  "aneWare.WARETYPE\022\014\n\004lng1\030\003 \002(\005\022\014\n\004lat1\030\004"
+  " \002(\005\022\014\n\004lng2\030\005 \002(\005\022\014\n\004lat2\030\006 \002(\005\022\017\n\007head"
+  "ing\030\007 \001(\005\"K\n\010WARETYPE\022\013\n\007DEFAULT\020\000\022\014\n\010FU"
+  "LLLINE\020\001\022\016\n\nDOTTEDLINE\020\002\022\024\n\020DOUBLEYELLOW"
+  "LINE\020\003\"k\n\rSpecialCarMsg\022\026\n\002id\030\001 \002(\0162\n.vi"
+  "sion.ID\022!\n\005array\030\002 \003(\0132\022.vision.SpecialC"
+  "ar\022\037\n\004time\030\003 \001(\0132\021.vision.data_time*\264\002\n\002"
+  "ID\022\013\n\007DEFAULT\020\000\022\020\n\014PEDESTRIAN_D\020\001\022\016\n\nILL"
+  "EGAL_V1\020\002\022\016\n\nVISIBILITY\020\003\022\022\n\016AVAILABLE_A"
+  "REA\020\004\022\020\n\014ABNORMAL_CAR\020\005\022\016\n\nILLEGAL_V2\020\006\022"
+  "\022\n\016TRAFFIC_STATUS\020\007\022\024\n\020BACKWARD_DRIVING\020"
+  "\010\022\017\n\013ROAD_DANGER\020\t\022\016\n\nFIRE_SMOKE\020\n\022\021\n\rDE"
+  "TECTOBJECTS\020\013\022\017\n\013TRAFFIC_JAM\020\014\022\020\n\014TRAFFI"
+  "C_FLOW\020\r\022\016\n\nSPECIALCAR\020\016\022\014\n\010ACCIDENT\020\017\022\013"
+  "\n\007ICEWARN\020\020\022\r\n\tLANE_WARE\020\021*F\n\004TYPE\022\n\n\006OT"
+  "HERS\020\000\022\t\n\005HUMAN\020\001\022\013\n\007VEHICLE\020\002\022\016\n\nMOTORC"
+  "YCLE\020\003\022\n\n\006ANIMAL\020\004*h\n\014ABNORMALTYPE\022\r\n\tDE"
+  "FAULT_A\020\000\022\r\n\tSTOP_CAR1\020\001\022\r\n\tSTOP_CAR2\020\002\022"
+  "\030\n\024CONTINUOUS_DIVERSION\020\003\022\021\n\rLINE_PRESSI"
+  "NG\020\004"
   ;
 static ::google::protobuf::internal::DescriptorTable descriptor_table_vision_2eproto = {
   false, InitDefaults_vision_2eproto, 
   descriptor_table_protodef_vision_2eproto,
-  "vision.proto", &assign_descriptors_table_vision_2eproto, 3400,
+  "vision.proto", &assign_descriptors_table_vision_2eproto, 3444,
 };
 
 void AddDescriptors_vision_2eproto() {
@@ -10488,28 +10492,39 @@ void TrafficJam::InternalSwap(TrafficJam* other) {
 // ===================================================================
 
 void TrafficFlow::InitAsDefaultInstance() {
-  ::vision::_TrafficFlow_default_instance_._instance.get_mutable()->time_ = const_cast< ::vision::data_time*>(
+  ::vision::_TrafficFlow_default_instance_._instance.get_mutable()->time_begin_ = const_cast< ::vision::data_time*>(
+      ::vision::data_time::internal_default_instance());
+  ::vision::_TrafficFlow_default_instance_._instance.get_mutable()->time_end_ = const_cast< ::vision::data_time*>(
       ::vision::data_time::internal_default_instance());
 }
 class TrafficFlow::HasBitSetters {
  public:
   static void set_has_id(TrafficFlow* msg) {
-    msg->_has_bits_[0] |= 0x00000002u;
+    msg->_has_bits_[0] |= 0x00000004u;
   }
-  static const ::vision::data_time& time(const TrafficFlow* msg);
-  static void set_has_time(TrafficFlow* msg) {
+  static const ::vision::data_time& time_begin(const TrafficFlow* msg);
+  static void set_has_time_begin(TrafficFlow* msg) {
     msg->_has_bits_[0] |= 0x00000001u;
+  }
+  static const ::vision::data_time& time_end(const TrafficFlow* msg);
+  static void set_has_time_end(TrafficFlow* msg) {
+    msg->_has_bits_[0] |= 0x00000002u;
   }
 };
 
 const ::vision::data_time&
-TrafficFlow::HasBitSetters::time(const TrafficFlow* msg) {
-  return *msg->time_;
+TrafficFlow::HasBitSetters::time_begin(const TrafficFlow* msg) {
+  return *msg->time_begin_;
+}
+const ::vision::data_time&
+TrafficFlow::HasBitSetters::time_end(const TrafficFlow* msg) {
+  return *msg->time_end_;
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int TrafficFlow::kIdFieldNumber;
 const int TrafficFlow::kFlowFieldNumber;
-const int TrafficFlow::kTimeFieldNumber;
+const int TrafficFlow::kTimeBeginFieldNumber;
+const int TrafficFlow::kTimeEndFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 TrafficFlow::TrafficFlow()
@@ -10523,10 +10538,15 @@ TrafficFlow::TrafficFlow(const TrafficFlow& from)
       _has_bits_(from._has_bits_),
       flow_(from.flow_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  if (from.has_time()) {
-    time_ = new ::vision::data_time(*from.time_);
+  if (from.has_time_begin()) {
+    time_begin_ = new ::vision::data_time(*from.time_begin_);
   } else {
-    time_ = nullptr;
+    time_begin_ = nullptr;
+  }
+  if (from.has_time_end()) {
+    time_end_ = new ::vision::data_time(*from.time_end_);
+  } else {
+    time_end_ = nullptr;
   }
   id_ = from.id_;
   // @@protoc_insertion_point(copy_constructor:vision.TrafficFlow)
@@ -10535,9 +10555,9 @@ TrafficFlow::TrafficFlow(const TrafficFlow& from)
 void TrafficFlow::SharedCtor() {
   ::google::protobuf::internal::InitSCC(
       &scc_info_TrafficFlow_vision_2eproto.base);
-  ::memset(&time_, 0, static_cast<size_t>(
+  ::memset(&time_begin_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&id_) -
-      reinterpret_cast<char*>(&time_)) + sizeof(id_));
+      reinterpret_cast<char*>(&time_begin_)) + sizeof(id_));
 }
 
 TrafficFlow::~TrafficFlow() {
@@ -10546,7 +10566,8 @@ TrafficFlow::~TrafficFlow() {
 }
 
 void TrafficFlow::SharedDtor() {
-  if (this != internal_default_instance()) delete time_;
+  if (this != internal_default_instance()) delete time_begin_;
+  if (this != internal_default_instance()) delete time_end_;
 }
 
 void TrafficFlow::SetCachedSize(int size) const {
@@ -10566,9 +10587,15 @@ void TrafficFlow::Clear() {
 
   flow_.Clear();
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(time_ != nullptr);
-    time_->Clear();
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      GOOGLE_DCHECK(time_begin_ != nullptr);
+      time_begin_->Clear();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      GOOGLE_DCHECK(time_end_ != nullptr);
+      time_end_->Clear();
+    }
   }
   id_ = 0;
   _has_bits_.Clear();
@@ -10604,10 +10631,17 @@ const char* TrafficFlow::_InternalParse(const char* ptr, ::google::protobuf::int
         } while ((::google::protobuf::internal::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 18 && (ptr += 1));
         break;
       }
-      // optional .vision.data_time time = 3;
+      // optional .vision.data_time time_begin = 3;
       case 3: {
         if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
-        ptr = ctx->ParseMessage(mutable_time(), ptr);
+        ptr = ctx->ParseMessage(mutable_time_begin(), ptr);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      // optional .vision.data_time time_end = 4;
+      case 4: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 34) goto handle_unusual;
+        ptr = ctx->ParseMessage(mutable_time_end(), ptr);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
@@ -10667,11 +10701,22 @@ bool TrafficFlow::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .vision.data_time time = 3;
+      // optional .vision.data_time time_begin = 3;
       case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_time()));
+               input, mutable_time_begin()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // optional .vision.data_time time_end = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (34 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+               input, mutable_time_end()));
         } else {
           goto handle_unusual;
         }
@@ -10707,7 +10752,7 @@ void TrafficFlow::SerializeWithCachedSizes(
 
   cached_has_bits = _has_bits_[0];
   // required .vision.ID id = 1;
-  if (cached_has_bits & 0x00000002u) {
+  if (cached_has_bits & 0x00000004u) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       1, this->id(), output);
   }
@@ -10721,10 +10766,16 @@ void TrafficFlow::SerializeWithCachedSizes(
       output);
   }
 
-  // optional .vision.data_time time = 3;
+  // optional .vision.data_time time_begin = 3;
   if (cached_has_bits & 0x00000001u) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, HasBitSetters::time(this), output);
+      3, HasBitSetters::time_begin(this), output);
+  }
+
+  // optional .vision.data_time time_end = 4;
+  if (cached_has_bits & 0x00000002u) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      4, HasBitSetters::time_end(this), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -10742,7 +10793,7 @@ void TrafficFlow::SerializeWithCachedSizes(
 
   cached_has_bits = _has_bits_[0];
   // required .vision.ID id = 1;
-  if (cached_has_bits & 0x00000002u) {
+  if (cached_has_bits & 0x00000004u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       1, this->id(), target);
   }
@@ -10755,11 +10806,18 @@ void TrafficFlow::SerializeWithCachedSizes(
         2, this->flow(static_cast<int>(i)), target);
   }
 
-  // optional .vision.data_time time = 3;
+  // optional .vision.data_time time_begin = 3;
   if (cached_has_bits & 0x00000001u) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        3, HasBitSetters::time(this), target);
+        3, HasBitSetters::time_begin(this), target);
+  }
+
+  // optional .vision.data_time time_end = 4;
+  if (cached_has_bits & 0x00000002u) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        4, HasBitSetters::time_end(this), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -10799,14 +10857,23 @@ size_t TrafficFlow::ByteSizeLong() const {
     }
   }
 
-  // optional .vision.data_time time = 3;
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *time_);
-  }
+  if (cached_has_bits & 0x00000003u) {
+    // optional .vision.data_time time_begin = 3;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          *time_begin_);
+    }
 
+    // optional .vision.data_time time_end = 4;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          *time_end_);
+    }
+
+  }
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -10836,11 +10903,14 @@ void TrafficFlow::MergeFrom(const TrafficFlow& from) {
 
   flow_.MergeFrom(from.flow_);
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
+  if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
-      mutable_time()->::vision::data_time::MergeFrom(from.time());
+      mutable_time_begin()->::vision::data_time::MergeFrom(from.time_begin());
     }
     if (cached_has_bits & 0x00000002u) {
+      mutable_time_end()->::vision::data_time::MergeFrom(from.time_end());
+    }
+    if (cached_has_bits & 0x00000004u) {
       id_ = from.id_;
     }
     _has_bits_[0] |= cached_has_bits;
@@ -10862,9 +10932,12 @@ void TrafficFlow::CopyFrom(const TrafficFlow& from) {
 }
 
 bool TrafficFlow::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000002) != 0x00000002) return false;
-  if (has_time()) {
-    if (!this->time_->IsInitialized()) return false;
+  if ((_has_bits_[0] & 0x00000004) != 0x00000004) return false;
+  if (has_time_begin()) {
+    if (!this->time_begin_->IsInitialized()) return false;
+  }
+  if (has_time_end()) {
+    if (!this->time_end_->IsInitialized()) return false;
   }
   return true;
 }
@@ -10878,7 +10951,8 @@ void TrafficFlow::InternalSwap(TrafficFlow* other) {
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
   CastToBase(&flow_)->InternalSwap(CastToBase(&other->flow_));
-  swap(time_, other->time_);
+  swap(time_begin_, other->time_begin_);
+  swap(time_end_, other->time_end_);
   swap(id_, other->id_);
 }
 

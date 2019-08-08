@@ -103,13 +103,13 @@ void Vserver::stop()
         zmq_close(m_publisher);
         m_publisher = nullptr;
     }
-    if(m_context){
-        zmq_ctx_destroy(m_context);
-        m_context = nullptr;
-    }
     if(m_subscriber){
         zmq_close(m_subscriber);
         m_subscriber = nullptr;
+    }
+ 	if(m_context){
+        zmq_ctx_destroy(m_context);
+        m_context = nullptr;
     }
     pthread_mutex_destroy(&m_mutex);
     google::protobuf::ShutdownProtobufLibrary();
