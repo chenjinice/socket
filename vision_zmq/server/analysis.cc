@@ -20,7 +20,7 @@ static void traffic_flow_fun(uint8_t *buffer,int len)
             printf("vserver : traffic_flow  camera = %d",t.flow(i).camera());
         }
         if(t.flow(i).has_signal()){
-            printf(",signal = %d\n",t.flow(i).signal());
+            printf(",signal = %d",t.flow(i).signal());
         }
         printf("\n");
     }

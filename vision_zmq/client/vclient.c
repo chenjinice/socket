@@ -26,7 +26,7 @@ static int   m_host_port = 12348;
 
 static void *m_context = NULL;
 static int   m_ready = 0;
-static int 	 m_loop = 0;
+static int   m_loop = 0;
 static char *m_filter = "vision";
 
 //
@@ -79,7 +79,9 @@ void vclient_start(char *remote_ip , uint16_t remote_port, uint16_t host_port)
 void vclient_stop(void)
 {
     m_loop = 0;
+    zmq_ctx_destroy(m_context);
     m_ready = 0;
+    printf("vclient : stop\n");
 }
 
 //
@@ -108,7 +110,6 @@ static void *read_thread(void *arg)
 
     zmq_close(m_subscriber);
     zmq_close(m_publisher);
-    zmq_ctx_destroy(m_context);
     return NULL;
 }
 

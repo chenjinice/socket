@@ -22,6 +22,7 @@ void *vserver_read_fun(void *param)
 
 void Vserver::init()
 {
+    GOOGLE_PROTOBUF_VERIFY_VERSION;
     m_host_port = 12347;
     m_context = nullptr;
     m_publisher = nullptr;
@@ -51,14 +52,15 @@ Vserver::Vserver(uint16_t host_port, char *remote_ip, uint16_t remote_port)
 
 Vserver::~Vserver()
 {	
-    printf("~~~vserver~~~~~~~end~~~~ \n");
     this->stop();
+    pthread_mutex_destroy(&m_mutex);
+    google::protobuf::ShutdownProtobufLibrary();
+	printf("~~~vserver~~~~~~~end~~~~ \n");
 }	
 
 void Vserver::start()
 {	
     if(m_ready)return;
-    GOOGLE_PROTOBUF_VERIFY_VERSION;
 
     int ret;
 	// 创建服务端，用于发布消息
@@ -92,27 +94,16 @@ void Vserver::start()
         pthread_t thread;
         pthread_create(&thread,NULL,vserver_read_fun,this);
     }
-
     m_ready = true;
 }	
 
 void Vserver::stop()
-{	
+{
     m_ready = false;
-    if(m_publisher){
-        zmq_close(m_publisher);
-        m_publisher = nullptr;
-    }
-    if(m_subscriber){
-        zmq_close(m_subscriber);
-        m_subscriber = nullptr;
-    }
- 	if(m_context){
+    if(m_context){
         zmq_ctx_destroy(m_context);
         m_context = nullptr;
     }
-    pthread_mutex_destroy(&m_mutex);
-    google::protobuf::ShutdownProtobufLibrary();
 }
 
 void Vserver::run()
@@ -131,6 +122,10 @@ void Vserver::run()
         }
         analysis(buffer,len);
     }
+    zmq_close(m_subscriber);
+    zmq_close(m_publisher);
+    m_subscriber = nullptr;
+    m_publisher  = nullptr;
 }
 
 // zmq 发送数据,为方便视觉的同志们，加了线程锁
