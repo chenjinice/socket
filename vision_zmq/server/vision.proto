@@ -1,7 +1,8 @@
 /*
-	V1.0
-	视觉与rsu通信协议 
-	1.动态配时场景，添加 time_begin 和 time_end    ----2019-08-08
+	视觉与rsu通信协议 : V2019.08.17
+	修改log : 
+    	2019-08-17 : 修改特殊车辆 和 Detectobject，lane_type 改为 lane_info    
+		2019-08-08 : 动态配时场景，添加 time_begin 和 time_end
 */
 
 syntax = "proto2";
@@ -75,7 +76,6 @@ message Obstacle {
 	optional int32 height= 10;		// 高
 }
 
-
 enum ABNORMALTYPE {
 	DEFAULT_A			= 0;  // 无用
 	STOP_CAR1			= 1;  // 静止车辆（主道）
@@ -101,6 +101,7 @@ message SpecialCar{
 		AMBULANCE	= 1;	// 救护车
 		DANGERCAR	= 2;	// 危险品车辆
 		FIREENGINE	= 3;	// 消防车
+		POLICECAR	= 4;	// 警车
 	}
 	required int32 object_id = 1;			
     required SPECIALTYPE special_type = 2;	
@@ -109,7 +110,12 @@ message SpecialCar{
 	required int32 camera = 5;		// 哪个相机（1,2,3,4）
 	optional int32 lane_id = 6;		// 车道id
 	optional int32 heading = 7;    
-    optional int32 lane_type = 8;	// 1=主道，2=上匝道，3=下匝道
+    // lane_info 0xabcd
+    // bit 0~4 d : 摄像头监控区域类型 1：汇入 2：汇出：3 常规路段
+    // bit 5~8 c : 车道总数
+    // bit 9~12 b : 车道序号：行车方向从左到右累加，从1开始计数。
+    // bit 13~31 a : 保留
+    optional int32 lane_info = 8;
 } 
 
 // 单个可行驶区域
@@ -127,7 +133,6 @@ message AvailableArea {
 	optional int32 lane_id = 11;	// 车道id
 	optional int32 heading = 12;    
 } 
-
 
 // 单个相机拍摄到的拥堵情况
 message JamInfo {
@@ -151,7 +156,6 @@ message FlowInfo{
 	optional TrafficSig signal = 4;     // 黄灯切换到绿灯信号
 }
 
-
 message Base {
 	required ID id = 1;
 } 
@@ -159,9 +163,7 @@ message Base {
 
 
 
-//---------------------------------------------------------------------------
-// 下面是要发送给rsu的消息结构
-
+//-------------------------------------发送给rsu的消息--------------------------------------------
 
 // 行人
 message Crowd {
@@ -210,37 +212,6 @@ message SmokeWarn{
     required bool warn = 2;         // 是否有报警
 }
 
-/*********** add for radar and vision fusion ***************
-  *date: 2019-05-06
-  *Author: she
-  *version: V1.1
-  *Description: add timestamp
-  *history：2019-06-17 add velocity
-  **************************************************************/
-message Timestamp {
-  required int64 seconds = 1;	// 秒
-  required int32 nanos   = 2;	// 纳秒
-}
-
-message Detectobject {  
-	required int32 object_id = 1;			
-	required TYPE  object_type = 2;	
-	required int32 longitudinalX = 3;	// 融合：纵向距离 普通：经度
-	required int32 lateralY = 4;		// 融合：横向距离 普通：纬度
-	required int32 velocity = 5;		// 融合：速度 km/h 小数点右移两位，0.01的精度 如：10.01km/h  传入1001	
-	required int32 camera = 6;			// 哪个相机（1,2,3,4）
-	optional int32 if_at_lane = 7;		// 是否在车道
-	optional int32 lane_id = 8;			// 车道id(从右至左1,2，…)
-	optional int32 heading = 9;    		
-    optional int32 lane_type = 10;		// 1=主道，2=上匝道，3=下匝道
-}   
-  
-message Detectobjects {
-	required ID id = 1;
-	repeated Detectobject object = 2;
-	optional Timestamp time = 3;
-} 
-
 // 前方拥堵提醒
 message TrafficJam {
 	required ID id = 1;
@@ -286,6 +257,55 @@ message SpecialCarMsg{
 	optional data_time time = 3;
 }
 
+
+
+
+// ----------------------------------发给融合程序的---------------------------------------------
+
+/*********** add for radar and vision fusion ***************
+  *date: 2019-05-06
+  *Author: she
+  *version: V1.1
+  *Description: add timestamp
+  *history：2019-06-17 add velocity
+  **************************************************************/
+message Timestamp {
+  // Represents seconds of UTC time since Unix epoch
+  // 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to
+  // 9999-12-31T23:59:59Z inclusive.
+  required int64 seconds = 1;
+
+  // Non-negative fractions of a second at nanosecond resolution. Negative
+  // second values with fractions must still have non-negative nanos values
+  // that count forward in time. Must be from 0 to 999,999,999
+  // inclusive.
+  required int32 nanos = 2;
+}
+
+message Detectobject {  
+	required int32 object_id = 1;			
+	required TYPE  object_type = 2;	
+	required int32 longitudinalX = 3;	// 融合：纵向距离 普通：经度
+	required int32 lateralY = 4;		// 融合：横向距离 普通：纬度
+	required int32 velocity = 5;		// 融合：速度 km/h 小数点右移两位，0.01的精度 如：10.01km/h  传入1001	
+	required int32 camera = 6;			// 哪个相机（1,2,3,4）
+	optional int32 if_at_lane = 7;		// 是否在车道
+	optional int32 lane_id = 8;			// 车道id(从右至左1,2，…)
+	optional int32 heading = 9;    		
+    // lane_info 0xabcd
+    // bit 0~4 d : 摄像头监控区域类型 1：汇入 2：汇出：3 常规路段
+    // bit 5~8 c : 车道总数
+    // bit 9~12 b : 车道序号：行车方向从左到右累加，从1开始计数。
+    // bit 13~31 a : 保留
+    optional int32 lane_info = 10; 
+}   
+
+// 发给融合程序的检测目标
+message Detectobjects {
+	required ID id = 1;
+	repeated Detectobject object = 2;
+	optional Timestamp time = 3;
+} 
 
 
 

@@ -87,18 +87,6 @@ class SmokeWarnDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<SmokeWarn> _instance;
 } _SmokeWarn_default_instance_;
-class TimestampDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<Timestamp> _instance;
-} _Timestamp_default_instance_;
-class DetectobjectDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<Detectobject> _instance;
-} _Detectobject_default_instance_;
-class DetectobjectsDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<Detectobjects> _instance;
-} _Detectobjects_default_instance_;
 class TrafficJamDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<TrafficJam> _instance;
@@ -119,6 +107,18 @@ class SpecialCarMsgDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<SpecialCarMsg> _instance;
 } _SpecialCarMsg_default_instance_;
+class TimestampDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<Timestamp> _instance;
+} _Timestamp_default_instance_;
+class DetectobjectDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<Detectobject> _instance;
+} _Detectobject_default_instance_;
+class DetectobjectsDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<Detectobjects> _instance;
+} _Detectobjects_default_instance_;
 }  // namespace vision
 static void InitDefaultsdata_time_vision_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -338,50 +338,6 @@ static void InitDefaultsSmokeWarn_vision_2eproto() {
 ::google::protobuf::internal::SCCInfo<0> scc_info_SmokeWarn_vision_2eproto =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsSmokeWarn_vision_2eproto}, {}};
 
-static void InitDefaultsTimestamp_vision_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::vision::_Timestamp_default_instance_;
-    new (ptr) ::vision::Timestamp();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::vision::Timestamp::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_Timestamp_vision_2eproto =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsTimestamp_vision_2eproto}, {}};
-
-static void InitDefaultsDetectobject_vision_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::vision::_Detectobject_default_instance_;
-    new (ptr) ::vision::Detectobject();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::vision::Detectobject::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_Detectobject_vision_2eproto =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsDetectobject_vision_2eproto}, {}};
-
-static void InitDefaultsDetectobjects_vision_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::vision::_Detectobjects_default_instance_;
-    new (ptr) ::vision::Detectobjects();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::vision::Detectobjects::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<2> scc_info_Detectobjects_vision_2eproto =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsDetectobjects_vision_2eproto}, {
-      &scc_info_Detectobject_vision_2eproto.base,
-      &scc_info_Timestamp_vision_2eproto.base,}};
-
 static void InitDefaultsTrafficJam_vision_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -458,6 +414,50 @@ static void InitDefaultsSpecialCarMsg_vision_2eproto() {
       &scc_info_SpecialCar_vision_2eproto.base,
       &scc_info_data_time_vision_2eproto.base,}};
 
+static void InitDefaultsTimestamp_vision_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::vision::_Timestamp_default_instance_;
+    new (ptr) ::vision::Timestamp();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::vision::Timestamp::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_Timestamp_vision_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsTimestamp_vision_2eproto}, {}};
+
+static void InitDefaultsDetectobject_vision_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::vision::_Detectobject_default_instance_;
+    new (ptr) ::vision::Detectobject();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::vision::Detectobject::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_Detectobject_vision_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsDetectobject_vision_2eproto}, {}};
+
+static void InitDefaultsDetectobjects_vision_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::vision::_Detectobjects_default_instance_;
+    new (ptr) ::vision::Detectobjects();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::vision::Detectobjects::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<2> scc_info_Detectobjects_vision_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsDetectobjects_vision_2eproto}, {
+      &scc_info_Detectobject_vision_2eproto.base,
+      &scc_info_Timestamp_vision_2eproto.base,}};
+
 void InitDefaults_vision_2eproto() {
   ::google::protobuf::internal::InitSCC(&scc_info_data_time_vision_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_Pedestrian_vision_2eproto.base);
@@ -474,14 +474,14 @@ void InitDefaults_vision_2eproto() {
   ::google::protobuf::internal::InitSCC(&scc_info_IllegalCarWarn_vision_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_Visibility_vision_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_SmokeWarn_vision_2eproto.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_Timestamp_vision_2eproto.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_Detectobject_vision_2eproto.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_Detectobjects_vision_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_TrafficJam_vision_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_TrafficFlow_vision_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_IceWarn_vision_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_LaneWare_vision_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_SpecialCarMsg_vision_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_Timestamp_vision_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_Detectobject_vision_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_Detectobjects_vision_2eproto.base);
 }
 
 static ::google::protobuf::Metadata file_level_metadata_vision_2eproto[23];
@@ -581,7 +581,7 @@ const ::google::protobuf::uint32 TableStruct_vision_2eproto::offsets[] PROTOBUF_
   PROTOBUF_FIELD_OFFSET(::vision::SpecialCar, camera_),
   PROTOBUF_FIELD_OFFSET(::vision::SpecialCar, lane_id_),
   PROTOBUF_FIELD_OFFSET(::vision::SpecialCar, heading_),
-  PROTOBUF_FIELD_OFFSET(::vision::SpecialCar, lane_type_),
+  PROTOBUF_FIELD_OFFSET(::vision::SpecialCar, lane_info_),
   0,
   1,
   2,
@@ -718,51 +718,6 @@ const ::google::protobuf::uint32 TableStruct_vision_2eproto::offsets[] PROTOBUF_
   PROTOBUF_FIELD_OFFSET(::vision::SmokeWarn, warn_),
   0,
   1,
-  PROTOBUF_FIELD_OFFSET(::vision::Timestamp, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::vision::Timestamp, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::vision::Timestamp, seconds_),
-  PROTOBUF_FIELD_OFFSET(::vision::Timestamp, nanos_),
-  0,
-  1,
-  PROTOBUF_FIELD_OFFSET(::vision::Detectobject, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::vision::Detectobject, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::vision::Detectobject, object_id_),
-  PROTOBUF_FIELD_OFFSET(::vision::Detectobject, object_type_),
-  PROTOBUF_FIELD_OFFSET(::vision::Detectobject, longitudinalx_),
-  PROTOBUF_FIELD_OFFSET(::vision::Detectobject, lateraly_),
-  PROTOBUF_FIELD_OFFSET(::vision::Detectobject, velocity_),
-  PROTOBUF_FIELD_OFFSET(::vision::Detectobject, camera_),
-  PROTOBUF_FIELD_OFFSET(::vision::Detectobject, if_at_lane_),
-  PROTOBUF_FIELD_OFFSET(::vision::Detectobject, lane_id_),
-  PROTOBUF_FIELD_OFFSET(::vision::Detectobject, heading_),
-  PROTOBUF_FIELD_OFFSET(::vision::Detectobject, lane_type_),
-  0,
-  1,
-  2,
-  3,
-  4,
-  5,
-  6,
-  7,
-  8,
-  9,
-  PROTOBUF_FIELD_OFFSET(::vision::Detectobjects, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::vision::Detectobjects, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::vision::Detectobjects, id_),
-  PROTOBUF_FIELD_OFFSET(::vision::Detectobjects, object_),
-  PROTOBUF_FIELD_OFFSET(::vision::Detectobjects, time_),
-  1,
-  ~0u,
-  0,
   PROTOBUF_FIELD_OFFSET(::vision::TrafficJam, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::vision::TrafficJam, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -826,6 +781,51 @@ const ::google::protobuf::uint32 TableStruct_vision_2eproto::offsets[] PROTOBUF_
   1,
   ~0u,
   0,
+  PROTOBUF_FIELD_OFFSET(::vision::Timestamp, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::vision::Timestamp, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::vision::Timestamp, seconds_),
+  PROTOBUF_FIELD_OFFSET(::vision::Timestamp, nanos_),
+  0,
+  1,
+  PROTOBUF_FIELD_OFFSET(::vision::Detectobject, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::vision::Detectobject, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::vision::Detectobject, object_id_),
+  PROTOBUF_FIELD_OFFSET(::vision::Detectobject, object_type_),
+  PROTOBUF_FIELD_OFFSET(::vision::Detectobject, longitudinalx_),
+  PROTOBUF_FIELD_OFFSET(::vision::Detectobject, lateraly_),
+  PROTOBUF_FIELD_OFFSET(::vision::Detectobject, velocity_),
+  PROTOBUF_FIELD_OFFSET(::vision::Detectobject, camera_),
+  PROTOBUF_FIELD_OFFSET(::vision::Detectobject, if_at_lane_),
+  PROTOBUF_FIELD_OFFSET(::vision::Detectobject, lane_id_),
+  PROTOBUF_FIELD_OFFSET(::vision::Detectobject, heading_),
+  PROTOBUF_FIELD_OFFSET(::vision::Detectobject, lane_info_),
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  PROTOBUF_FIELD_OFFSET(::vision::Detectobjects, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::vision::Detectobjects, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::vision::Detectobjects, id_),
+  PROTOBUF_FIELD_OFFSET(::vision::Detectobjects, object_),
+  PROTOBUF_FIELD_OFFSET(::vision::Detectobjects, time_),
+  1,
+  ~0u,
+  0,
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 7, sizeof(::vision::data_time)},
@@ -843,14 +843,14 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] PROTOBUF_SE
   { 198, 206, sizeof(::vision::IllegalCarWarn)},
   { 209, 217, sizeof(::vision::Visibility)},
   { 220, 227, sizeof(::vision::SmokeWarn)},
-  { 229, 236, sizeof(::vision::Timestamp)},
-  { 238, 253, sizeof(::vision::Detectobject)},
-  { 263, 271, sizeof(::vision::Detectobjects)},
-  { 274, 282, sizeof(::vision::TrafficJam)},
-  { 285, 294, sizeof(::vision::TrafficFlow)},
-  { 298, 305, sizeof(::vision::IceWarn)},
-  { 307, 319, sizeof(::vision::LaneWare)},
-  { 326, 334, sizeof(::vision::SpecialCarMsg)},
+  { 229, 237, sizeof(::vision::TrafficJam)},
+  { 240, 249, sizeof(::vision::TrafficFlow)},
+  { 253, 260, sizeof(::vision::IceWarn)},
+  { 262, 274, sizeof(::vision::LaneWare)},
+  { 281, 289, sizeof(::vision::SpecialCarMsg)},
+  { 292, 299, sizeof(::vision::Timestamp)},
+  { 301, 316, sizeof(::vision::Detectobject)},
+  { 326, 334, sizeof(::vision::Detectobjects)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -869,14 +869,14 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::vision::_IllegalCarWarn_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::vision::_Visibility_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::vision::_SmokeWarn_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::vision::_Timestamp_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::vision::_Detectobject_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::vision::_Detectobjects_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::vision::_TrafficJam_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::vision::_TrafficFlow_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::vision::_IceWarn_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::vision::_LaneWare_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::vision::_SpecialCarMsg_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::vision::_Timestamp_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::vision::_Detectobject_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::vision::_Detectobjects_default_instance_),
 };
 
 static ::google::protobuf::internal::AssignDescriptorsTable assign_descriptors_table_vision_2eproto = {
@@ -901,83 +901,83 @@ const char descriptor_table_protodef_vision_2eproto[] =
   " \001(\005\"\210\001\n\013AbnormalCar\022\021\n\tobject_id\030\001 \002(\005\022"
   "\013\n\003lng\030\002 \002(\005\022\013\n\003lat\030\003 \002(\005\022\017\n\007lane_id\030\004 \001"
   "(\005\022\016\n\006camera\030\005 \001(\005\022+\n\rabnormal_type\030\006 \001("
-  "\0162\024.vision.ABNORMALTYPE\"\375\001\n\nSpecialCar\022\021"
+  "\0162\024.vision.ABNORMALTYPE\"\214\002\n\nSpecialCar\022\021"
   "\n\tobject_id\030\001 \002(\005\0224\n\014special_type\030\002 \002(\0162"
   "\036.vision.SpecialCar.SPECIALTYPE\022\013\n\003lng\030\003"
   " \002(\005\022\013\n\003lat\030\004 \002(\005\022\016\n\006camera\030\005 \002(\005\022\017\n\007lan"
-  "e_id\030\006 \001(\005\022\017\n\007heading\030\007 \001(\005\022\021\n\tlane_type"
-  "\030\010 \001(\005\"G\n\013SPECIALTYPE\022\n\n\006NORMAL\020\000\022\r\n\tAMB"
-  "ULANCE\020\001\022\r\n\tDANGERCAR\020\002\022\016\n\nFIREENGINE\020\003\""
-  "\304\001\n\rAvailableArea\022\021\n\tobject_id\030\001 \002(\005\022\014\n\004"
-  "lng1\030\002 \002(\005\022\014\n\004lat1\030\003 \002(\005\022\014\n\004lng2\030\004 \002(\005\022\014"
-  "\n\004lat2\030\005 \002(\005\022\014\n\004lng3\030\006 \002(\005\022\014\n\004lat3\030\007 \002(\005"
-  "\022\014\n\004lng4\030\010 \002(\005\022\014\n\004lat4\030\t \002(\005\022\016\n\006camera\030\n"
-  " \002(\005\022\017\n\007lane_id\030\013 \001(\005\022\017\n\007heading\030\014 \001(\005\"r"
-  "\n\007JamInfo\022\023\n\013vehicle_num\030\001 \002(\r\022\031\n\021vehicl"
-  "e_avg_speed\030\002 \002(\001\022\020\n\010road_yaw\030\003 \002(\001\022\024\n\014v"
-  "ehicle_flow\030\004 \003(\005\022\017\n\007lane_id\030\005 \001(\005\"\234\001\n\010F"
-  "lowInfo\022\016\n\006camera\030\001 \001(\005\022\023\n\013vehicle_num\030\002"
-  " \003(\r\022\020\n\010pass_num\030\003 \003(\r\022+\n\006signal\030\004 \001(\0162\033"
-  ".vision.FlowInfo.TrafficSig\",\n\nTrafficSi"
-  "g\022\013\n\007UNKNOWN\020\000\022\007\n\003Y2G\020\001\022\010\n\004OVER\020\002\"\036\n\004Bas"
-  "e\022\026\n\002id\030\001 \002(\0162\n.vision.ID\"h\n\005Crowd\022\026\n\002id"
-  "\030\001 \002(\0162\n.vision.ID\022&\n\npedestrian\030\002 \003(\0132\022"
-  ".vision.Pedestrian\022\037\n\004time\030\003 \001(\0132\021.visio"
-  "n.data_time\"e\n\tObstacles\022\026\n\002id\030\001 \002(\0162\n.v"
-  "ision.ID\022\037\n\005array\030\002 \003(\0132\020.vision.Obstacl"
-  "e\022\037\n\004time\030\003 \001(\0132\021.vision.data_time\"n\n\016Av"
-  "ailableAreas\022\026\n\002id\030\001 \002(\0162\n.vision.ID\022#\n\004"
-  "area\030\002 \003(\0132\025.vision.AvailableArea\022\037\n\004tim"
-  "e\030\003 \001(\0132\021.vision.data_time\"m\n\016IllegalCar"
-  "Warn\022\026\n\002id\030\001 \002(\0162\n.vision.ID\022\"\n\005array\030\002 "
-  "\003(\0132\023.vision.AbnormalCar\022\037\n\004time\030\003 \001(\0132\021"
-  ".vision.data_time\"E\n\nVisibility\022\026\n\002id\030\001 "
-  "\002(\0162\n.vision.ID\022\020\n\010distance\030\002 \002(\001\022\r\n\005lev"
-  "el\030\003 \002(\005\"1\n\tSmokeWarn\022\026\n\002id\030\001 \002(\0162\n.visi"
-  "on.ID\022\014\n\004warn\030\002 \002(\010\"+\n\tTimestamp\022\017\n\007seco"
-  "nds\030\001 \002(\003\022\r\n\005nanos\030\002 \002(\005\"\330\001\n\014Detectobjec"
-  "t\022\021\n\tobject_id\030\001 \002(\005\022!\n\013object_type\030\002 \002("
-  "\0162\014.vision.TYPE\022\025\n\rlongitudinalX\030\003 \002(\005\022\020"
-  "\n\010lateralY\030\004 \002(\005\022\020\n\010velocity\030\005 \002(\005\022\016\n\006ca"
-  "mera\030\006 \002(\005\022\022\n\nif_at_lane\030\007 \001(\005\022\017\n\007lane_i"
-  "d\030\010 \001(\005\022\017\n\007heading\030\t \001(\005\022\021\n\tlane_type\030\n "
-  "\001(\005\"n\n\rDetectobjects\022\026\n\002id\030\001 \002(\0162\n.visio"
-  "n.ID\022$\n\006object\030\002 \003(\0132\024.vision.Detectobje"
-  "ct\022\037\n\004time\030\003 \001(\0132\021.vision.Timestamp\"c\n\nT"
-  "rafficJam\022\026\n\002id\030\001 \002(\0162\n.vision.ID\022\034\n\003jam"
-  "\030\002 \003(\0132\017.vision.JamInfo\022\037\n\004time\030\003 \001(\0132\021."
-  "vision.data_time\"\221\001\n\013TrafficFlow\022\026\n\002id\030\001"
-  " \002(\0162\n.vision.ID\022\036\n\004flow\030\002 \003(\0132\020.vision."
-  "FlowInfo\022%\n\ntime_begin\030\003 \001(\0132\021.vision.da"
-  "ta_time\022#\n\010time_end\030\004 \001(\0132\021.vision.data_"
-  "time\"/\n\007IceWarn\022\026\n\002id\030\001 \002(\0162\n.vision.ID\022"
-  "\014\n\004warn\030\002 \002(\010\"\346\001\n\010LaneWare\022\026\n\002id\030\001 \002(\0162\n"
-  ".vision.ID\022,\n\tware_type\030\002 \002(\0162\031.vision.L"
-  "aneWare.WARETYPE\022\014\n\004lng1\030\003 \002(\005\022\014\n\004lat1\030\004"
-  " \002(\005\022\014\n\004lng2\030\005 \002(\005\022\014\n\004lat2\030\006 \002(\005\022\017\n\007head"
-  "ing\030\007 \001(\005\"K\n\010WARETYPE\022\013\n\007DEFAULT\020\000\022\014\n\010FU"
-  "LLLINE\020\001\022\016\n\nDOTTEDLINE\020\002\022\024\n\020DOUBLEYELLOW"
-  "LINE\020\003\"k\n\rSpecialCarMsg\022\026\n\002id\030\001 \002(\0162\n.vi"
-  "sion.ID\022!\n\005array\030\002 \003(\0132\022.vision.SpecialC"
-  "ar\022\037\n\004time\030\003 \001(\0132\021.vision.data_time*\264\002\n\002"
-  "ID\022\013\n\007DEFAULT\020\000\022\020\n\014PEDESTRIAN_D\020\001\022\016\n\nILL"
-  "EGAL_V1\020\002\022\016\n\nVISIBILITY\020\003\022\022\n\016AVAILABLE_A"
-  "REA\020\004\022\020\n\014ABNORMAL_CAR\020\005\022\016\n\nILLEGAL_V2\020\006\022"
-  "\022\n\016TRAFFIC_STATUS\020\007\022\024\n\020BACKWARD_DRIVING\020"
-  "\010\022\017\n\013ROAD_DANGER\020\t\022\016\n\nFIRE_SMOKE\020\n\022\021\n\rDE"
-  "TECTOBJECTS\020\013\022\017\n\013TRAFFIC_JAM\020\014\022\020\n\014TRAFFI"
-  "C_FLOW\020\r\022\016\n\nSPECIALCAR\020\016\022\014\n\010ACCIDENT\020\017\022\013"
-  "\n\007ICEWARN\020\020\022\r\n\tLANE_WARE\020\021*F\n\004TYPE\022\n\n\006OT"
-  "HERS\020\000\022\t\n\005HUMAN\020\001\022\013\n\007VEHICLE\020\002\022\016\n\nMOTORC"
-  "YCLE\020\003\022\n\n\006ANIMAL\020\004*h\n\014ABNORMALTYPE\022\r\n\tDE"
-  "FAULT_A\020\000\022\r\n\tSTOP_CAR1\020\001\022\r\n\tSTOP_CAR2\020\002\022"
-  "\030\n\024CONTINUOUS_DIVERSION\020\003\022\021\n\rLINE_PRESSI"
-  "NG\020\004"
+  "e_id\030\006 \001(\005\022\017\n\007heading\030\007 \001(\005\022\021\n\tlane_info"
+  "\030\010 \001(\005\"V\n\013SPECIALTYPE\022\n\n\006NORMAL\020\000\022\r\n\tAMB"
+  "ULANCE\020\001\022\r\n\tDANGERCAR\020\002\022\016\n\nFIREENGINE\020\003\022"
+  "\r\n\tPOLICECAR\020\004\"\304\001\n\rAvailableArea\022\021\n\tobje"
+  "ct_id\030\001 \002(\005\022\014\n\004lng1\030\002 \002(\005\022\014\n\004lat1\030\003 \002(\005\022"
+  "\014\n\004lng2\030\004 \002(\005\022\014\n\004lat2\030\005 \002(\005\022\014\n\004lng3\030\006 \002("
+  "\005\022\014\n\004lat3\030\007 \002(\005\022\014\n\004lng4\030\010 \002(\005\022\014\n\004lat4\030\t "
+  "\002(\005\022\016\n\006camera\030\n \002(\005\022\017\n\007lane_id\030\013 \001(\005\022\017\n\007"
+  "heading\030\014 \001(\005\"r\n\007JamInfo\022\023\n\013vehicle_num\030"
+  "\001 \002(\r\022\031\n\021vehicle_avg_speed\030\002 \002(\001\022\020\n\010road"
+  "_yaw\030\003 \002(\001\022\024\n\014vehicle_flow\030\004 \003(\005\022\017\n\007lane"
+  "_id\030\005 \001(\005\"\234\001\n\010FlowInfo\022\016\n\006camera\030\001 \001(\005\022\023"
+  "\n\013vehicle_num\030\002 \003(\r\022\020\n\010pass_num\030\003 \003(\r\022+\n"
+  "\006signal\030\004 \001(\0162\033.vision.FlowInfo.TrafficS"
+  "ig\",\n\nTrafficSig\022\013\n\007UNKNOWN\020\000\022\007\n\003Y2G\020\001\022\010"
+  "\n\004OVER\020\002\"\036\n\004Base\022\026\n\002id\030\001 \002(\0162\n.vision.ID"
+  "\"h\n\005Crowd\022\026\n\002id\030\001 \002(\0162\n.vision.ID\022&\n\nped"
+  "estrian\030\002 \003(\0132\022.vision.Pedestrian\022\037\n\004tim"
+  "e\030\003 \001(\0132\021.vision.data_time\"e\n\tObstacles\022"
+  "\026\n\002id\030\001 \002(\0162\n.vision.ID\022\037\n\005array\030\002 \003(\0132\020"
+  ".vision.Obstacle\022\037\n\004time\030\003 \001(\0132\021.vision."
+  "data_time\"n\n\016AvailableAreas\022\026\n\002id\030\001 \002(\0162"
+  "\n.vision.ID\022#\n\004area\030\002 \003(\0132\025.vision.Avail"
+  "ableArea\022\037\n\004time\030\003 \001(\0132\021.vision.data_tim"
+  "e\"m\n\016IllegalCarWarn\022\026\n\002id\030\001 \002(\0162\n.vision"
+  ".ID\022\"\n\005array\030\002 \003(\0132\023.vision.AbnormalCar\022"
+  "\037\n\004time\030\003 \001(\0132\021.vision.data_time\"E\n\nVisi"
+  "bility\022\026\n\002id\030\001 \002(\0162\n.vision.ID\022\020\n\010distan"
+  "ce\030\002 \002(\001\022\r\n\005level\030\003 \002(\005\"1\n\tSmokeWarn\022\026\n\002"
+  "id\030\001 \002(\0162\n.vision.ID\022\014\n\004warn\030\002 \002(\010\"c\n\nTr"
+  "afficJam\022\026\n\002id\030\001 \002(\0162\n.vision.ID\022\034\n\003jam\030"
+  "\002 \003(\0132\017.vision.JamInfo\022\037\n\004time\030\003 \001(\0132\021.v"
+  "ision.data_time\"\221\001\n\013TrafficFlow\022\026\n\002id\030\001 "
+  "\002(\0162\n.vision.ID\022\036\n\004flow\030\002 \003(\0132\020.vision.F"
+  "lowInfo\022%\n\ntime_begin\030\003 \001(\0132\021.vision.dat"
+  "a_time\022#\n\010time_end\030\004 \001(\0132\021.vision.data_t"
+  "ime\"/\n\007IceWarn\022\026\n\002id\030\001 \002(\0162\n.vision.ID\022\014"
+  "\n\004warn\030\002 \002(\010\"\346\001\n\010LaneWare\022\026\n\002id\030\001 \002(\0162\n."
+  "vision.ID\022,\n\tware_type\030\002 \002(\0162\031.vision.La"
+  "neWare.WARETYPE\022\014\n\004lng1\030\003 \002(\005\022\014\n\004lat1\030\004 "
+  "\002(\005\022\014\n\004lng2\030\005 \002(\005\022\014\n\004lat2\030\006 \002(\005\022\017\n\007headi"
+  "ng\030\007 \001(\005\"K\n\010WARETYPE\022\013\n\007DEFAULT\020\000\022\014\n\010FUL"
+  "LLINE\020\001\022\016\n\nDOTTEDLINE\020\002\022\024\n\020DOUBLEYELLOWL"
+  "INE\020\003\"k\n\rSpecialCarMsg\022\026\n\002id\030\001 \002(\0162\n.vis"
+  "ion.ID\022!\n\005array\030\002 \003(\0132\022.vision.SpecialCa"
+  "r\022\037\n\004time\030\003 \001(\0132\021.vision.data_time\"+\n\tTi"
+  "mestamp\022\017\n\007seconds\030\001 \002(\003\022\r\n\005nanos\030\002 \002(\005\""
+  "\330\001\n\014Detectobject\022\021\n\tobject_id\030\001 \002(\005\022!\n\013o"
+  "bject_type\030\002 \002(\0162\014.vision.TYPE\022\025\n\rlongit"
+  "udinalX\030\003 \002(\005\022\020\n\010lateralY\030\004 \002(\005\022\020\n\010veloc"
+  "ity\030\005 \002(\005\022\016\n\006camera\030\006 \002(\005\022\022\n\nif_at_lane\030"
+  "\007 \001(\005\022\017\n\007lane_id\030\010 \001(\005\022\017\n\007heading\030\t \001(\005\022"
+  "\021\n\tlane_info\030\n \001(\005\"n\n\rDetectobjects\022\026\n\002i"
+  "d\030\001 \002(\0162\n.vision.ID\022$\n\006object\030\002 \003(\0132\024.vi"
+  "sion.Detectobject\022\037\n\004time\030\003 \001(\0132\021.vision"
+  ".Timestamp*\264\002\n\002ID\022\013\n\007DEFAULT\020\000\022\020\n\014PEDEST"
+  "RIAN_D\020\001\022\016\n\nILLEGAL_V1\020\002\022\016\n\nVISIBILITY\020\003"
+  "\022\022\n\016AVAILABLE_AREA\020\004\022\020\n\014ABNORMAL_CAR\020\005\022\016"
+  "\n\nILLEGAL_V2\020\006\022\022\n\016TRAFFIC_STATUS\020\007\022\024\n\020BA"
+  "CKWARD_DRIVING\020\010\022\017\n\013ROAD_DANGER\020\t\022\016\n\nFIR"
+  "E_SMOKE\020\n\022\021\n\rDETECTOBJECTS\020\013\022\017\n\013TRAFFIC_"
+  "JAM\020\014\022\020\n\014TRAFFIC_FLOW\020\r\022\016\n\nSPECIALCAR\020\016\022"
+  "\014\n\010ACCIDENT\020\017\022\013\n\007ICEWARN\020\020\022\r\n\tLANE_WARE\020"
+  "\021*F\n\004TYPE\022\n\n\006OTHERS\020\000\022\t\n\005HUMAN\020\001\022\013\n\007VEHI"
+  "CLE\020\002\022\016\n\nMOTORCYCLE\020\003\022\n\n\006ANIMAL\020\004*h\n\014ABN"
+  "ORMALTYPE\022\r\n\tDEFAULT_A\020\000\022\r\n\tSTOP_CAR1\020\001\022"
+  "\r\n\tSTOP_CAR2\020\002\022\030\n\024CONTINUOUS_DIVERSION\020\003"
+  "\022\021\n\rLINE_PRESSING\020\004"
   ;
 static ::google::protobuf::internal::DescriptorTable descriptor_table_vision_2eproto = {
   false, InitDefaults_vision_2eproto, 
   descriptor_table_protodef_vision_2eproto,
-  "vision.proto", &assign_descriptors_table_vision_2eproto, 3444,
+  "vision.proto", &assign_descriptors_table_vision_2eproto, 3459,
 };
 
 void AddDescriptors_vision_2eproto() {
@@ -1000,6 +1000,7 @@ bool SpecialCar_SPECIALTYPE_IsValid(int value) {
     case 1:
     case 2:
     case 3:
+    case 4:
       return true;
     default:
       return false;
@@ -1011,6 +1012,7 @@ constexpr SpecialCar_SPECIALTYPE SpecialCar::NORMAL;
 constexpr SpecialCar_SPECIALTYPE SpecialCar::AMBULANCE;
 constexpr SpecialCar_SPECIALTYPE SpecialCar::DANGERCAR;
 constexpr SpecialCar_SPECIALTYPE SpecialCar::FIREENGINE;
+constexpr SpecialCar_SPECIALTYPE SpecialCar::POLICECAR;
 constexpr SpecialCar_SPECIALTYPE SpecialCar::SPECIALTYPE_MIN;
 constexpr SpecialCar_SPECIALTYPE SpecialCar::SPECIALTYPE_MAX;
 constexpr int SpecialCar::SPECIALTYPE_ARRAYSIZE;
@@ -3587,7 +3589,7 @@ class SpecialCar::HasBitSetters {
   static void set_has_heading(SpecialCar* msg) {
     msg->_has_bits_[0] |= 0x00000040u;
   }
-  static void set_has_lane_type(SpecialCar* msg) {
+  static void set_has_lane_info(SpecialCar* msg) {
     msg->_has_bits_[0] |= 0x00000080u;
   }
 };
@@ -3600,7 +3602,7 @@ const int SpecialCar::kLatFieldNumber;
 const int SpecialCar::kCameraFieldNumber;
 const int SpecialCar::kLaneIdFieldNumber;
 const int SpecialCar::kHeadingFieldNumber;
-const int SpecialCar::kLaneTypeFieldNumber;
+const int SpecialCar::kLaneInfoFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 SpecialCar::SpecialCar()
@@ -3614,15 +3616,15 @@ SpecialCar::SpecialCar(const SpecialCar& from)
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&object_id_, &from.object_id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&lane_type_) -
-    reinterpret_cast<char*>(&object_id_)) + sizeof(lane_type_));
+    static_cast<size_t>(reinterpret_cast<char*>(&lane_info_) -
+    reinterpret_cast<char*>(&object_id_)) + sizeof(lane_info_));
   // @@protoc_insertion_point(copy_constructor:vision.SpecialCar)
 }
 
 void SpecialCar::SharedCtor() {
   ::memset(&object_id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&lane_type_) -
-      reinterpret_cast<char*>(&object_id_)) + sizeof(lane_type_));
+      reinterpret_cast<char*>(&lane_info_) -
+      reinterpret_cast<char*>(&object_id_)) + sizeof(lane_info_));
 }
 
 SpecialCar::~SpecialCar() {
@@ -3651,8 +3653,8 @@ void SpecialCar::Clear() {
   cached_has_bits = _has_bits_[0];
   if (cached_has_bits & 0x000000ffu) {
     ::memset(&object_id_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&lane_type_) -
-        reinterpret_cast<char*>(&object_id_)) + sizeof(lane_type_));
+        reinterpret_cast<char*>(&lane_info_) -
+        reinterpret_cast<char*>(&object_id_)) + sizeof(lane_info_));
   }
   _has_bits_.Clear();
   _internal_metadata_.Clear();
@@ -3719,10 +3721,10 @@ const char* SpecialCar::_InternalParse(const char* ptr, ::google::protobuf::inte
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
-      // optional int32 lane_type = 8;
+      // optional int32 lane_info = 8;
       case 8: {
         if (static_cast<::google::protobuf::uint8>(tag) != 64) goto handle_unusual;
-        set_lane_type(::google::protobuf::internal::ReadVarint(&ptr));
+        set_lane_info(::google::protobuf::internal::ReadVarint(&ptr));
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
@@ -3849,13 +3851,13 @@ bool SpecialCar::MergePartialFromCodedStream(
         break;
       }
 
-      // optional int32 lane_type = 8;
+      // optional int32 lane_info = 8;
       case 8: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (64 & 0xFF)) {
-          HasBitSetters::set_has_lane_type(this);
+          HasBitSetters::set_has_lane_info(this);
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &lane_type_)));
+                 input, &lane_info_)));
         } else {
           goto handle_unusual;
         }
@@ -3926,9 +3928,9 @@ void SpecialCar::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->heading(), output);
   }
 
-  // optional int32 lane_type = 8;
+  // optional int32 lane_info = 8;
   if (cached_has_bits & 0x00000080u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->lane_type(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->lane_info(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -3981,9 +3983,9 @@ void SpecialCar::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(7, this->heading(), target);
   }
 
-  // optional int32 lane_type = 8;
+  // optional int32 lane_info = 8;
   if (cached_has_bits & 0x00000080u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->lane_type(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->lane_info(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -4091,11 +4093,11 @@ size_t SpecialCar::ByteSizeLong() const {
           this->heading());
     }
 
-    // optional int32 lane_type = 8;
+    // optional int32 lane_info = 8;
     if (cached_has_bits & 0x00000080u) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->lane_type());
+          this->lane_info());
     }
 
   }
@@ -4150,7 +4152,7 @@ void SpecialCar::MergeFrom(const SpecialCar& from) {
       heading_ = from.heading_;
     }
     if (cached_has_bits & 0x00000080u) {
-      lane_type_ = from.lane_type_;
+      lane_info_ = from.lane_info_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
@@ -4190,7 +4192,7 @@ void SpecialCar::InternalSwap(SpecialCar* other) {
   swap(camera_, other->camera_);
   swap(lane_id_, other->lane_id_);
   swap(heading_, other->heading_);
-  swap(lane_type_, other->lane_type_);
+  swap(lane_info_, other->lane_info_);
 }
 
 ::google::protobuf::Metadata SpecialCar::GetMetadata() const {
@@ -8599,1494 +8601,6 @@ void SmokeWarn::InternalSwap(SmokeWarn* other) {
 
 // ===================================================================
 
-void Timestamp::InitAsDefaultInstance() {
-}
-class Timestamp::HasBitSetters {
- public:
-  static void set_has_seconds(Timestamp* msg) {
-    msg->_has_bits_[0] |= 0x00000001u;
-  }
-  static void set_has_nanos(Timestamp* msg) {
-    msg->_has_bits_[0] |= 0x00000002u;
-  }
-};
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Timestamp::kSecondsFieldNumber;
-const int Timestamp::kNanosFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-Timestamp::Timestamp()
-  : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:vision.Timestamp)
-}
-Timestamp::Timestamp(const Timestamp& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(nullptr),
-      _has_bits_(from._has_bits_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::memcpy(&seconds_, &from.seconds_,
-    static_cast<size_t>(reinterpret_cast<char*>(&nanos_) -
-    reinterpret_cast<char*>(&seconds_)) + sizeof(nanos_));
-  // @@protoc_insertion_point(copy_constructor:vision.Timestamp)
-}
-
-void Timestamp::SharedCtor() {
-  ::memset(&seconds_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&nanos_) -
-      reinterpret_cast<char*>(&seconds_)) + sizeof(nanos_));
-}
-
-Timestamp::~Timestamp() {
-  // @@protoc_insertion_point(destructor:vision.Timestamp)
-  SharedDtor();
-}
-
-void Timestamp::SharedDtor() {
-}
-
-void Timestamp::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const Timestamp& Timestamp::default_instance() {
-  ::google::protobuf::internal::InitSCC(&::scc_info_Timestamp_vision_2eproto.base);
-  return *internal_default_instance();
-}
-
-
-void Timestamp::Clear() {
-// @@protoc_insertion_point(message_clear_start:vision.Timestamp)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    ::memset(&seconds_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&nanos_) -
-        reinterpret_cast<char*>(&seconds_)) + sizeof(nanos_));
-  }
-  _has_bits_.Clear();
-  _internal_metadata_.Clear();
-}
-
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-const char* Timestamp::_InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) {
-  while (!ctx->Done(&ptr)) {
-    ::google::protobuf::uint32 tag;
-    ptr = ::google::protobuf::internal::ReadTag(ptr, &tag);
-    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-    switch (tag >> 3) {
-      // required int64 seconds = 1;
-      case 1: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
-        set_seconds(::google::protobuf::internal::ReadVarint(&ptr));
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        break;
-      }
-      // required int32 nanos = 2;
-      case 2: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
-        set_nanos(::google::protobuf::internal::ReadVarint(&ptr));
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        break;
-      }
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          return ptr;
-        }
-        ptr = UnknownFieldParse(tag,
-          _internal_metadata_.mutable_unknown_fields(), ptr, ctx);
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr != nullptr);
-        break;
-      }
-    }  // switch
-  }  // while
-  return ptr;
-}
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool Timestamp::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:vision.Timestamp)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required int64 seconds = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
-          HasBitSetters::set_has_seconds(this);
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
-                 input, &seconds_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // required int32 nanos = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
-          HasBitSetters::set_has_nanos(this);
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &nanos_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:vision.Timestamp)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:vision.Timestamp)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void Timestamp::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:vision.Timestamp)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  // required int64 seconds = 1;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt64(1, this->seconds(), output);
-  }
-
-  // required int32 nanos = 2;
-  if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->nanos(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:vision.Timestamp)
-}
-
-::google::protobuf::uint8* Timestamp::InternalSerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:vision.Timestamp)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  // required int64 seconds = 1;
-  if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(1, this->seconds(), target);
-  }
-
-  // required int32 nanos = 2;
-  if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->nanos(), target);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:vision.Timestamp)
-  return target;
-}
-
-size_t Timestamp::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:vision.Timestamp)
-  size_t total_size = 0;
-
-  if (has_seconds()) {
-    // required int64 seconds = 1;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int64Size(
-        this->seconds());
-  }
-
-  if (has_nanos()) {
-    // required int32 nanos = 2;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->nanos());
-  }
-
-  return total_size;
-}
-size_t Timestamp::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:vision.Timestamp)
-  size_t total_size = 0;
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
-  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
-    // required int64 seconds = 1;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int64Size(
-        this->seconds());
-
-    // required int32 nanos = 2;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->nanos());
-
-  } else {
-    total_size += RequiredFieldsByteSizeFallback();
-  }
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
-}
-
-void Timestamp::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:vision.Timestamp)
-  GOOGLE_DCHECK_NE(&from, this);
-  const Timestamp* source =
-      ::google::protobuf::DynamicCastToGenerated<Timestamp>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:vision.Timestamp)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:vision.Timestamp)
-    MergeFrom(*source);
-  }
-}
-
-void Timestamp::MergeFrom(const Timestamp& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:vision.Timestamp)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      seconds_ = from.seconds_;
-    }
-    if (cached_has_bits & 0x00000002u) {
-      nanos_ = from.nanos_;
-    }
-    _has_bits_[0] |= cached_has_bits;
-  }
-}
-
-void Timestamp::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:vision.Timestamp)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void Timestamp::CopyFrom(const Timestamp& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:vision.Timestamp)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool Timestamp::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
-  return true;
-}
-
-void Timestamp::Swap(Timestamp* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void Timestamp::InternalSwap(Timestamp* other) {
-  using std::swap;
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  swap(seconds_, other->seconds_);
-  swap(nanos_, other->nanos_);
-}
-
-::google::protobuf::Metadata Timestamp::GetMetadata() const {
-  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_vision_2eproto);
-  return ::file_level_metadata_vision_2eproto[kIndexInFileMessages];
-}
-
-
-// ===================================================================
-
-void Detectobject::InitAsDefaultInstance() {
-}
-class Detectobject::HasBitSetters {
- public:
-  static void set_has_object_id(Detectobject* msg) {
-    msg->_has_bits_[0] |= 0x00000001u;
-  }
-  static void set_has_object_type(Detectobject* msg) {
-    msg->_has_bits_[0] |= 0x00000002u;
-  }
-  static void set_has_longitudinalx(Detectobject* msg) {
-    msg->_has_bits_[0] |= 0x00000004u;
-  }
-  static void set_has_lateraly(Detectobject* msg) {
-    msg->_has_bits_[0] |= 0x00000008u;
-  }
-  static void set_has_velocity(Detectobject* msg) {
-    msg->_has_bits_[0] |= 0x00000010u;
-  }
-  static void set_has_camera(Detectobject* msg) {
-    msg->_has_bits_[0] |= 0x00000020u;
-  }
-  static void set_has_if_at_lane(Detectobject* msg) {
-    msg->_has_bits_[0] |= 0x00000040u;
-  }
-  static void set_has_lane_id(Detectobject* msg) {
-    msg->_has_bits_[0] |= 0x00000080u;
-  }
-  static void set_has_heading(Detectobject* msg) {
-    msg->_has_bits_[0] |= 0x00000100u;
-  }
-  static void set_has_lane_type(Detectobject* msg) {
-    msg->_has_bits_[0] |= 0x00000200u;
-  }
-};
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Detectobject::kObjectIdFieldNumber;
-const int Detectobject::kObjectTypeFieldNumber;
-const int Detectobject::kLongitudinalXFieldNumber;
-const int Detectobject::kLateralYFieldNumber;
-const int Detectobject::kVelocityFieldNumber;
-const int Detectobject::kCameraFieldNumber;
-const int Detectobject::kIfAtLaneFieldNumber;
-const int Detectobject::kLaneIdFieldNumber;
-const int Detectobject::kHeadingFieldNumber;
-const int Detectobject::kLaneTypeFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-Detectobject::Detectobject()
-  : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:vision.Detectobject)
-}
-Detectobject::Detectobject(const Detectobject& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(nullptr),
-      _has_bits_(from._has_bits_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::memcpy(&object_id_, &from.object_id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&lane_type_) -
-    reinterpret_cast<char*>(&object_id_)) + sizeof(lane_type_));
-  // @@protoc_insertion_point(copy_constructor:vision.Detectobject)
-}
-
-void Detectobject::SharedCtor() {
-  ::memset(&object_id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&lane_type_) -
-      reinterpret_cast<char*>(&object_id_)) + sizeof(lane_type_));
-}
-
-Detectobject::~Detectobject() {
-  // @@protoc_insertion_point(destructor:vision.Detectobject)
-  SharedDtor();
-}
-
-void Detectobject::SharedDtor() {
-}
-
-void Detectobject::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const Detectobject& Detectobject::default_instance() {
-  ::google::protobuf::internal::InitSCC(&::scc_info_Detectobject_vision_2eproto.base);
-  return *internal_default_instance();
-}
-
-
-void Detectobject::Clear() {
-// @@protoc_insertion_point(message_clear_start:vision.Detectobject)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x000000ffu) {
-    ::memset(&object_id_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&lane_id_) -
-        reinterpret_cast<char*>(&object_id_)) + sizeof(lane_id_));
-  }
-  if (cached_has_bits & 0x00000300u) {
-    ::memset(&heading_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&lane_type_) -
-        reinterpret_cast<char*>(&heading_)) + sizeof(lane_type_));
-  }
-  _has_bits_.Clear();
-  _internal_metadata_.Clear();
-}
-
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-const char* Detectobject::_InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) {
-  while (!ctx->Done(&ptr)) {
-    ::google::protobuf::uint32 tag;
-    ptr = ::google::protobuf::internal::ReadTag(ptr, &tag);
-    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-    switch (tag >> 3) {
-      // required int32 object_id = 1;
-      case 1: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
-        set_object_id(::google::protobuf::internal::ReadVarint(&ptr));
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        break;
-      }
-      // required .vision.TYPE object_type = 2;
-      case 2: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
-        ::google::protobuf::uint64 val = ::google::protobuf::internal::ReadVarint(&ptr);
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        if (!::vision::TYPE_IsValid(val)) {
-          ::google::protobuf::internal::WriteVarint(2, val, mutable_unknown_fields());
-          break;
-        }
-        set_object_type(static_cast<::vision::TYPE>(val));
-        break;
-      }
-      // required int32 longitudinalX = 3;
-      case 3: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 24) goto handle_unusual;
-        set_longitudinalx(::google::protobuf::internal::ReadVarint(&ptr));
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        break;
-      }
-      // required int32 lateralY = 4;
-      case 4: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 32) goto handle_unusual;
-        set_lateraly(::google::protobuf::internal::ReadVarint(&ptr));
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        break;
-      }
-      // required int32 velocity = 5;
-      case 5: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 40) goto handle_unusual;
-        set_velocity(::google::protobuf::internal::ReadVarint(&ptr));
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        break;
-      }
-      // required int32 camera = 6;
-      case 6: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 48) goto handle_unusual;
-        set_camera(::google::protobuf::internal::ReadVarint(&ptr));
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        break;
-      }
-      // optional int32 if_at_lane = 7;
-      case 7: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 56) goto handle_unusual;
-        set_if_at_lane(::google::protobuf::internal::ReadVarint(&ptr));
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        break;
-      }
-      // optional int32 lane_id = 8;
-      case 8: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 64) goto handle_unusual;
-        set_lane_id(::google::protobuf::internal::ReadVarint(&ptr));
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        break;
-      }
-      // optional int32 heading = 9;
-      case 9: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 72) goto handle_unusual;
-        set_heading(::google::protobuf::internal::ReadVarint(&ptr));
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        break;
-      }
-      // optional int32 lane_type = 10;
-      case 10: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 80) goto handle_unusual;
-        set_lane_type(::google::protobuf::internal::ReadVarint(&ptr));
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        break;
-      }
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          return ptr;
-        }
-        ptr = UnknownFieldParse(tag,
-          _internal_metadata_.mutable_unknown_fields(), ptr, ctx);
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr != nullptr);
-        break;
-      }
-    }  // switch
-  }  // while
-  return ptr;
-}
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool Detectobject::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:vision.Detectobject)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required int32 object_id = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
-          HasBitSetters::set_has_object_id(this);
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &object_id_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // required .vision.TYPE object_type = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
-          int value = 0;
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          if (::vision::TYPE_IsValid(value)) {
-            set_object_type(static_cast< ::vision::TYPE >(value));
-          } else {
-            mutable_unknown_fields()->AddVarint(
-                2, static_cast<::google::protobuf::uint64>(value));
-          }
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // required int32 longitudinalX = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (24 & 0xFF)) {
-          HasBitSetters::set_has_longitudinalx(this);
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &longitudinalx_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // required int32 lateralY = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (32 & 0xFF)) {
-          HasBitSetters::set_has_lateraly(this);
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &lateraly_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // required int32 velocity = 5;
-      case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (40 & 0xFF)) {
-          HasBitSetters::set_has_velocity(this);
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &velocity_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // required int32 camera = 6;
-      case 6: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (48 & 0xFF)) {
-          HasBitSetters::set_has_camera(this);
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &camera_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // optional int32 if_at_lane = 7;
-      case 7: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (56 & 0xFF)) {
-          HasBitSetters::set_has_if_at_lane(this);
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &if_at_lane_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // optional int32 lane_id = 8;
-      case 8: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (64 & 0xFF)) {
-          HasBitSetters::set_has_lane_id(this);
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &lane_id_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // optional int32 heading = 9;
-      case 9: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (72 & 0xFF)) {
-          HasBitSetters::set_has_heading(this);
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &heading_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // optional int32 lane_type = 10;
-      case 10: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (80 & 0xFF)) {
-          HasBitSetters::set_has_lane_type(this);
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &lane_type_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:vision.Detectobject)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:vision.Detectobject)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void Detectobject::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:vision.Detectobject)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  // required int32 object_id = 1;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->object_id(), output);
-  }
-
-  // required .vision.TYPE object_type = 2;
-  if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      2, this->object_type(), output);
-  }
-
-  // required int32 longitudinalX = 3;
-  if (cached_has_bits & 0x00000004u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->longitudinalx(), output);
-  }
-
-  // required int32 lateralY = 4;
-  if (cached_has_bits & 0x00000008u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->lateraly(), output);
-  }
-
-  // required int32 velocity = 5;
-  if (cached_has_bits & 0x00000010u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->velocity(), output);
-  }
-
-  // required int32 camera = 6;
-  if (cached_has_bits & 0x00000020u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->camera(), output);
-  }
-
-  // optional int32 if_at_lane = 7;
-  if (cached_has_bits & 0x00000040u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->if_at_lane(), output);
-  }
-
-  // optional int32 lane_id = 8;
-  if (cached_has_bits & 0x00000080u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->lane_id(), output);
-  }
-
-  // optional int32 heading = 9;
-  if (cached_has_bits & 0x00000100u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(9, this->heading(), output);
-  }
-
-  // optional int32 lane_type = 10;
-  if (cached_has_bits & 0x00000200u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(10, this->lane_type(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:vision.Detectobject)
-}
-
-::google::protobuf::uint8* Detectobject::InternalSerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:vision.Detectobject)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  // required int32 object_id = 1;
-  if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->object_id(), target);
-  }
-
-  // required .vision.TYPE object_type = 2;
-  if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      2, this->object_type(), target);
-  }
-
-  // required int32 longitudinalX = 3;
-  if (cached_has_bits & 0x00000004u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->longitudinalx(), target);
-  }
-
-  // required int32 lateralY = 4;
-  if (cached_has_bits & 0x00000008u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->lateraly(), target);
-  }
-
-  // required int32 velocity = 5;
-  if (cached_has_bits & 0x00000010u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->velocity(), target);
-  }
-
-  // required int32 camera = 6;
-  if (cached_has_bits & 0x00000020u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(6, this->camera(), target);
-  }
-
-  // optional int32 if_at_lane = 7;
-  if (cached_has_bits & 0x00000040u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(7, this->if_at_lane(), target);
-  }
-
-  // optional int32 lane_id = 8;
-  if (cached_has_bits & 0x00000080u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->lane_id(), target);
-  }
-
-  // optional int32 heading = 9;
-  if (cached_has_bits & 0x00000100u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(9, this->heading(), target);
-  }
-
-  // optional int32 lane_type = 10;
-  if (cached_has_bits & 0x00000200u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(10, this->lane_type(), target);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:vision.Detectobject)
-  return target;
-}
-
-size_t Detectobject::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:vision.Detectobject)
-  size_t total_size = 0;
-
-  if (has_object_id()) {
-    // required int32 object_id = 1;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->object_id());
-  }
-
-  if (has_object_type()) {
-    // required .vision.TYPE object_type = 2;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->object_type());
-  }
-
-  if (has_longitudinalx()) {
-    // required int32 longitudinalX = 3;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->longitudinalx());
-  }
-
-  if (has_lateraly()) {
-    // required int32 lateralY = 4;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->lateraly());
-  }
-
-  if (has_velocity()) {
-    // required int32 velocity = 5;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->velocity());
-  }
-
-  if (has_camera()) {
-    // required int32 camera = 6;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->camera());
-  }
-
-  return total_size;
-}
-size_t Detectobject::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:vision.Detectobject)
-  size_t total_size = 0;
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
-  if (((_has_bits_[0] & 0x0000003f) ^ 0x0000003f) == 0) {  // All required fields are present.
-    // required int32 object_id = 1;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->object_id());
-
-    // required .vision.TYPE object_type = 2;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->object_type());
-
-    // required int32 longitudinalX = 3;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->longitudinalx());
-
-    // required int32 lateralY = 4;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->lateraly());
-
-    // required int32 velocity = 5;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->velocity());
-
-    // required int32 camera = 6;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->camera());
-
-  } else {
-    total_size += RequiredFieldsByteSizeFallback();
-  }
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x000000c0u) {
-    // optional int32 if_at_lane = 7;
-    if (cached_has_bits & 0x00000040u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->if_at_lane());
-    }
-
-    // optional int32 lane_id = 8;
-    if (cached_has_bits & 0x00000080u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->lane_id());
-    }
-
-  }
-  if (cached_has_bits & 0x00000300u) {
-    // optional int32 heading = 9;
-    if (cached_has_bits & 0x00000100u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->heading());
-    }
-
-    // optional int32 lane_type = 10;
-    if (cached_has_bits & 0x00000200u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->lane_type());
-    }
-
-  }
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
-}
-
-void Detectobject::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:vision.Detectobject)
-  GOOGLE_DCHECK_NE(&from, this);
-  const Detectobject* source =
-      ::google::protobuf::DynamicCastToGenerated<Detectobject>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:vision.Detectobject)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:vision.Detectobject)
-    MergeFrom(*source);
-  }
-}
-
-void Detectobject::MergeFrom(const Detectobject& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:vision.Detectobject)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x000000ffu) {
-    if (cached_has_bits & 0x00000001u) {
-      object_id_ = from.object_id_;
-    }
-    if (cached_has_bits & 0x00000002u) {
-      object_type_ = from.object_type_;
-    }
-    if (cached_has_bits & 0x00000004u) {
-      longitudinalx_ = from.longitudinalx_;
-    }
-    if (cached_has_bits & 0x00000008u) {
-      lateraly_ = from.lateraly_;
-    }
-    if (cached_has_bits & 0x00000010u) {
-      velocity_ = from.velocity_;
-    }
-    if (cached_has_bits & 0x00000020u) {
-      camera_ = from.camera_;
-    }
-    if (cached_has_bits & 0x00000040u) {
-      if_at_lane_ = from.if_at_lane_;
-    }
-    if (cached_has_bits & 0x00000080u) {
-      lane_id_ = from.lane_id_;
-    }
-    _has_bits_[0] |= cached_has_bits;
-  }
-  if (cached_has_bits & 0x00000300u) {
-    if (cached_has_bits & 0x00000100u) {
-      heading_ = from.heading_;
-    }
-    if (cached_has_bits & 0x00000200u) {
-      lane_type_ = from.lane_type_;
-    }
-    _has_bits_[0] |= cached_has_bits;
-  }
-}
-
-void Detectobject::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:vision.Detectobject)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void Detectobject::CopyFrom(const Detectobject& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:vision.Detectobject)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool Detectobject::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000003f) != 0x0000003f) return false;
-  return true;
-}
-
-void Detectobject::Swap(Detectobject* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void Detectobject::InternalSwap(Detectobject* other) {
-  using std::swap;
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  swap(object_id_, other->object_id_);
-  swap(object_type_, other->object_type_);
-  swap(longitudinalx_, other->longitudinalx_);
-  swap(lateraly_, other->lateraly_);
-  swap(velocity_, other->velocity_);
-  swap(camera_, other->camera_);
-  swap(if_at_lane_, other->if_at_lane_);
-  swap(lane_id_, other->lane_id_);
-  swap(heading_, other->heading_);
-  swap(lane_type_, other->lane_type_);
-}
-
-::google::protobuf::Metadata Detectobject::GetMetadata() const {
-  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_vision_2eproto);
-  return ::file_level_metadata_vision_2eproto[kIndexInFileMessages];
-}
-
-
-// ===================================================================
-
-void Detectobjects::InitAsDefaultInstance() {
-  ::vision::_Detectobjects_default_instance_._instance.get_mutable()->time_ = const_cast< ::vision::Timestamp*>(
-      ::vision::Timestamp::internal_default_instance());
-}
-class Detectobjects::HasBitSetters {
- public:
-  static void set_has_id(Detectobjects* msg) {
-    msg->_has_bits_[0] |= 0x00000002u;
-  }
-  static const ::vision::Timestamp& time(const Detectobjects* msg);
-  static void set_has_time(Detectobjects* msg) {
-    msg->_has_bits_[0] |= 0x00000001u;
-  }
-};
-
-const ::vision::Timestamp&
-Detectobjects::HasBitSetters::time(const Detectobjects* msg) {
-  return *msg->time_;
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Detectobjects::kIdFieldNumber;
-const int Detectobjects::kObjectFieldNumber;
-const int Detectobjects::kTimeFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-Detectobjects::Detectobjects()
-  : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:vision.Detectobjects)
-}
-Detectobjects::Detectobjects(const Detectobjects& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(nullptr),
-      _has_bits_(from._has_bits_),
-      object_(from.object_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  if (from.has_time()) {
-    time_ = new ::vision::Timestamp(*from.time_);
-  } else {
-    time_ = nullptr;
-  }
-  id_ = from.id_;
-  // @@protoc_insertion_point(copy_constructor:vision.Detectobjects)
-}
-
-void Detectobjects::SharedCtor() {
-  ::google::protobuf::internal::InitSCC(
-      &scc_info_Detectobjects_vision_2eproto.base);
-  ::memset(&time_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&id_) -
-      reinterpret_cast<char*>(&time_)) + sizeof(id_));
-}
-
-Detectobjects::~Detectobjects() {
-  // @@protoc_insertion_point(destructor:vision.Detectobjects)
-  SharedDtor();
-}
-
-void Detectobjects::SharedDtor() {
-  if (this != internal_default_instance()) delete time_;
-}
-
-void Detectobjects::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const Detectobjects& Detectobjects::default_instance() {
-  ::google::protobuf::internal::InitSCC(&::scc_info_Detectobjects_vision_2eproto.base);
-  return *internal_default_instance();
-}
-
-
-void Detectobjects::Clear() {
-// @@protoc_insertion_point(message_clear_start:vision.Detectobjects)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  object_.Clear();
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(time_ != nullptr);
-    time_->Clear();
-  }
-  id_ = 0;
-  _has_bits_.Clear();
-  _internal_metadata_.Clear();
-}
-
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-const char* Detectobjects::_InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) {
-  while (!ctx->Done(&ptr)) {
-    ::google::protobuf::uint32 tag;
-    ptr = ::google::protobuf::internal::ReadTag(ptr, &tag);
-    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-    switch (tag >> 3) {
-      // required .vision.ID id = 1;
-      case 1: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
-        ::google::protobuf::uint64 val = ::google::protobuf::internal::ReadVarint(&ptr);
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        if (!::vision::ID_IsValid(val)) {
-          ::google::protobuf::internal::WriteVarint(1, val, mutable_unknown_fields());
-          break;
-        }
-        set_id(static_cast<::vision::ID>(val));
-        break;
-      }
-      // repeated .vision.Detectobject object = 2;
-      case 2: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
-        do {
-          ptr = ctx->ParseMessage(add_object(), ptr);
-          GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-          if (ctx->Done(&ptr)) return ptr;
-        } while ((::google::protobuf::internal::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 18 && (ptr += 1));
-        break;
-      }
-      // optional .vision.Timestamp time = 3;
-      case 3: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
-        ptr = ctx->ParseMessage(mutable_time(), ptr);
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        break;
-      }
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          return ptr;
-        }
-        ptr = UnknownFieldParse(tag,
-          _internal_metadata_.mutable_unknown_fields(), ptr, ctx);
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr != nullptr);
-        break;
-      }
-    }  // switch
-  }  // while
-  return ptr;
-}
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool Detectobjects::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:vision.Detectobjects)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .vision.ID id = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
-          int value = 0;
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          if (::vision::ID_IsValid(value)) {
-            set_id(static_cast< ::vision::ID >(value));
-          } else {
-            mutable_unknown_fields()->AddVarint(
-                1, static_cast<::google::protobuf::uint64>(value));
-          }
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // repeated .vision.Detectobject object = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_object()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // optional .vision.Timestamp time = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_time()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:vision.Detectobjects)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:vision.Detectobjects)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void Detectobjects::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:vision.Detectobjects)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  // required .vision.ID id = 1;
-  if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      1, this->id(), output);
-  }
-
-  // repeated .vision.Detectobject object = 2;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->object_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2,
-      this->object(static_cast<int>(i)),
-      output);
-  }
-
-  // optional .vision.Timestamp time = 3;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, HasBitSetters::time(this), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:vision.Detectobjects)
-}
-
-::google::protobuf::uint8* Detectobjects::InternalSerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:vision.Detectobjects)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  // required .vision.ID id = 1;
-  if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      1, this->id(), target);
-  }
-
-  // repeated .vision.Detectobject object = 2;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->object_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        2, this->object(static_cast<int>(i)), target);
-  }
-
-  // optional .vision.Timestamp time = 3;
-  if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        3, HasBitSetters::time(this), target);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:vision.Detectobjects)
-  return target;
-}
-
-size_t Detectobjects::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:vision.Detectobjects)
-  size_t total_size = 0;
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
-  // required .vision.ID id = 1;
-  if (has_id()) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->id());
-  }
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // repeated .vision.Detectobject object = 2;
-  {
-    unsigned int count = static_cast<unsigned int>(this->object_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->object(static_cast<int>(i)));
-    }
-  }
-
-  // optional .vision.Timestamp time = 3;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *time_);
-  }
-
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
-}
-
-void Detectobjects::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:vision.Detectobjects)
-  GOOGLE_DCHECK_NE(&from, this);
-  const Detectobjects* source =
-      ::google::protobuf::DynamicCastToGenerated<Detectobjects>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:vision.Detectobjects)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:vision.Detectobjects)
-    MergeFrom(*source);
-  }
-}
-
-void Detectobjects::MergeFrom(const Detectobjects& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:vision.Detectobjects)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  object_.MergeFrom(from.object_);
-  cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      mutable_time()->::vision::Timestamp::MergeFrom(from.time());
-    }
-    if (cached_has_bits & 0x00000002u) {
-      id_ = from.id_;
-    }
-    _has_bits_[0] |= cached_has_bits;
-  }
-}
-
-void Detectobjects::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:vision.Detectobjects)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void Detectobjects::CopyFrom(const Detectobjects& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:vision.Detectobjects)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool Detectobjects::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000002) != 0x00000002) return false;
-  if (!::google::protobuf::internal::AllAreInitialized(this->object())) return false;
-  if (has_time()) {
-    if (!this->time_->IsInitialized()) return false;
-  }
-  return true;
-}
-
-void Detectobjects::Swap(Detectobjects* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void Detectobjects::InternalSwap(Detectobjects* other) {
-  using std::swap;
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  CastToBase(&object_)->InternalSwap(CastToBase(&other->object_));
-  swap(time_, other->time_);
-  swap(id_, other->id_);
-}
-
-::google::protobuf::Metadata Detectobjects::GetMetadata() const {
-  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_vision_2eproto);
-  return ::file_level_metadata_vision_2eproto[kIndexInFileMessages];
-}
-
-
-// ===================================================================
-
 void TrafficJam::InitAsDefaultInstance() {
   ::vision::_TrafficJam_default_instance_._instance.get_mutable()->time_ = const_cast< ::vision::data_time*>(
       ::vision::data_time::internal_default_instance());
@@ -12321,6 +10835,1494 @@ void SpecialCarMsg::InternalSwap(SpecialCarMsg* other) {
 }
 
 
+// ===================================================================
+
+void Timestamp::InitAsDefaultInstance() {
+}
+class Timestamp::HasBitSetters {
+ public:
+  static void set_has_seconds(Timestamp* msg) {
+    msg->_has_bits_[0] |= 0x00000001u;
+  }
+  static void set_has_nanos(Timestamp* msg) {
+    msg->_has_bits_[0] |= 0x00000002u;
+  }
+};
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int Timestamp::kSecondsFieldNumber;
+const int Timestamp::kNanosFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+Timestamp::Timestamp()
+  : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:vision.Timestamp)
+}
+Timestamp::Timestamp(const Timestamp& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(nullptr),
+      _has_bits_(from._has_bits_) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::memcpy(&seconds_, &from.seconds_,
+    static_cast<size_t>(reinterpret_cast<char*>(&nanos_) -
+    reinterpret_cast<char*>(&seconds_)) + sizeof(nanos_));
+  // @@protoc_insertion_point(copy_constructor:vision.Timestamp)
+}
+
+void Timestamp::SharedCtor() {
+  ::memset(&seconds_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&nanos_) -
+      reinterpret_cast<char*>(&seconds_)) + sizeof(nanos_));
+}
+
+Timestamp::~Timestamp() {
+  // @@protoc_insertion_point(destructor:vision.Timestamp)
+  SharedDtor();
+}
+
+void Timestamp::SharedDtor() {
+}
+
+void Timestamp::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const Timestamp& Timestamp::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_Timestamp_vision_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void Timestamp::Clear() {
+// @@protoc_insertion_point(message_clear_start:vision.Timestamp)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    ::memset(&seconds_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&nanos_) -
+        reinterpret_cast<char*>(&seconds_)) + sizeof(nanos_));
+  }
+  _has_bits_.Clear();
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* Timestamp::_InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) {
+  while (!ctx->Done(&ptr)) {
+    ::google::protobuf::uint32 tag;
+    ptr = ::google::protobuf::internal::ReadTag(ptr, &tag);
+    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+    switch (tag >> 3) {
+      // required int64 seconds = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
+        set_seconds(::google::protobuf::internal::ReadVarint(&ptr));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      // required int32 nanos = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
+        set_nanos(::google::protobuf::internal::ReadVarint(&ptr));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          return ptr;
+        }
+        ptr = UnknownFieldParse(tag,
+          _internal_metadata_.mutable_unknown_fields(), ptr, ctx);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr != nullptr);
+        break;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool Timestamp::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:vision.Timestamp)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required int64 seconds = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
+          HasBitSetters::set_has_seconds(this);
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
+                 input, &seconds_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // required int32 nanos = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
+          HasBitSetters::set_has_nanos(this);
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &nanos_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:vision.Timestamp)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:vision.Timestamp)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void Timestamp::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:vision.Timestamp)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  // required int64 seconds = 1;
+  if (cached_has_bits & 0x00000001u) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(1, this->seconds(), output);
+  }
+
+  // required int32 nanos = 2;
+  if (cached_has_bits & 0x00000002u) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->nanos(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:vision.Timestamp)
+}
+
+::google::protobuf::uint8* Timestamp::InternalSerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:vision.Timestamp)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  // required int64 seconds = 1;
+  if (cached_has_bits & 0x00000001u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(1, this->seconds(), target);
+  }
+
+  // required int32 nanos = 2;
+  if (cached_has_bits & 0x00000002u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->nanos(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:vision.Timestamp)
+  return target;
+}
+
+size_t Timestamp::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:vision.Timestamp)
+  size_t total_size = 0;
+
+  if (has_seconds()) {
+    // required int64 seconds = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int64Size(
+        this->seconds());
+  }
+
+  if (has_nanos()) {
+    // required int32 nanos = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->nanos());
+  }
+
+  return total_size;
+}
+size_t Timestamp::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:vision.Timestamp)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+    // required int64 seconds = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int64Size(
+        this->seconds());
+
+    // required int32 nanos = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->nanos());
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
+  }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void Timestamp::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:vision.Timestamp)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Timestamp* source =
+      ::google::protobuf::DynamicCastToGenerated<Timestamp>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:vision.Timestamp)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:vision.Timestamp)
+    MergeFrom(*source);
+  }
+}
+
+void Timestamp::MergeFrom(const Timestamp& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:vision.Timestamp)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      seconds_ = from.seconds_;
+    }
+    if (cached_has_bits & 0x00000002u) {
+      nanos_ = from.nanos_;
+    }
+    _has_bits_[0] |= cached_has_bits;
+  }
+}
+
+void Timestamp::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:vision.Timestamp)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Timestamp::CopyFrom(const Timestamp& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:vision.Timestamp)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Timestamp::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+  return true;
+}
+
+void Timestamp::Swap(Timestamp* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void Timestamp::InternalSwap(Timestamp* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
+  swap(seconds_, other->seconds_);
+  swap(nanos_, other->nanos_);
+}
+
+::google::protobuf::Metadata Timestamp::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_vision_2eproto);
+  return ::file_level_metadata_vision_2eproto[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void Detectobject::InitAsDefaultInstance() {
+}
+class Detectobject::HasBitSetters {
+ public:
+  static void set_has_object_id(Detectobject* msg) {
+    msg->_has_bits_[0] |= 0x00000001u;
+  }
+  static void set_has_object_type(Detectobject* msg) {
+    msg->_has_bits_[0] |= 0x00000002u;
+  }
+  static void set_has_longitudinalx(Detectobject* msg) {
+    msg->_has_bits_[0] |= 0x00000004u;
+  }
+  static void set_has_lateraly(Detectobject* msg) {
+    msg->_has_bits_[0] |= 0x00000008u;
+  }
+  static void set_has_velocity(Detectobject* msg) {
+    msg->_has_bits_[0] |= 0x00000010u;
+  }
+  static void set_has_camera(Detectobject* msg) {
+    msg->_has_bits_[0] |= 0x00000020u;
+  }
+  static void set_has_if_at_lane(Detectobject* msg) {
+    msg->_has_bits_[0] |= 0x00000040u;
+  }
+  static void set_has_lane_id(Detectobject* msg) {
+    msg->_has_bits_[0] |= 0x00000080u;
+  }
+  static void set_has_heading(Detectobject* msg) {
+    msg->_has_bits_[0] |= 0x00000100u;
+  }
+  static void set_has_lane_info(Detectobject* msg) {
+    msg->_has_bits_[0] |= 0x00000200u;
+  }
+};
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int Detectobject::kObjectIdFieldNumber;
+const int Detectobject::kObjectTypeFieldNumber;
+const int Detectobject::kLongitudinalXFieldNumber;
+const int Detectobject::kLateralYFieldNumber;
+const int Detectobject::kVelocityFieldNumber;
+const int Detectobject::kCameraFieldNumber;
+const int Detectobject::kIfAtLaneFieldNumber;
+const int Detectobject::kLaneIdFieldNumber;
+const int Detectobject::kHeadingFieldNumber;
+const int Detectobject::kLaneInfoFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+Detectobject::Detectobject()
+  : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:vision.Detectobject)
+}
+Detectobject::Detectobject(const Detectobject& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(nullptr),
+      _has_bits_(from._has_bits_) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::memcpy(&object_id_, &from.object_id_,
+    static_cast<size_t>(reinterpret_cast<char*>(&lane_info_) -
+    reinterpret_cast<char*>(&object_id_)) + sizeof(lane_info_));
+  // @@protoc_insertion_point(copy_constructor:vision.Detectobject)
+}
+
+void Detectobject::SharedCtor() {
+  ::memset(&object_id_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&lane_info_) -
+      reinterpret_cast<char*>(&object_id_)) + sizeof(lane_info_));
+}
+
+Detectobject::~Detectobject() {
+  // @@protoc_insertion_point(destructor:vision.Detectobject)
+  SharedDtor();
+}
+
+void Detectobject::SharedDtor() {
+}
+
+void Detectobject::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const Detectobject& Detectobject::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_Detectobject_vision_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void Detectobject::Clear() {
+// @@protoc_insertion_point(message_clear_start:vision.Detectobject)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x000000ffu) {
+    ::memset(&object_id_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&lane_id_) -
+        reinterpret_cast<char*>(&object_id_)) + sizeof(lane_id_));
+  }
+  if (cached_has_bits & 0x00000300u) {
+    ::memset(&heading_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&lane_info_) -
+        reinterpret_cast<char*>(&heading_)) + sizeof(lane_info_));
+  }
+  _has_bits_.Clear();
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* Detectobject::_InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) {
+  while (!ctx->Done(&ptr)) {
+    ::google::protobuf::uint32 tag;
+    ptr = ::google::protobuf::internal::ReadTag(ptr, &tag);
+    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+    switch (tag >> 3) {
+      // required int32 object_id = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
+        set_object_id(::google::protobuf::internal::ReadVarint(&ptr));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      // required .vision.TYPE object_type = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
+        ::google::protobuf::uint64 val = ::google::protobuf::internal::ReadVarint(&ptr);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        if (!::vision::TYPE_IsValid(val)) {
+          ::google::protobuf::internal::WriteVarint(2, val, mutable_unknown_fields());
+          break;
+        }
+        set_object_type(static_cast<::vision::TYPE>(val));
+        break;
+      }
+      // required int32 longitudinalX = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 24) goto handle_unusual;
+        set_longitudinalx(::google::protobuf::internal::ReadVarint(&ptr));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      // required int32 lateralY = 4;
+      case 4: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 32) goto handle_unusual;
+        set_lateraly(::google::protobuf::internal::ReadVarint(&ptr));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      // required int32 velocity = 5;
+      case 5: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 40) goto handle_unusual;
+        set_velocity(::google::protobuf::internal::ReadVarint(&ptr));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      // required int32 camera = 6;
+      case 6: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 48) goto handle_unusual;
+        set_camera(::google::protobuf::internal::ReadVarint(&ptr));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      // optional int32 if_at_lane = 7;
+      case 7: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 56) goto handle_unusual;
+        set_if_at_lane(::google::protobuf::internal::ReadVarint(&ptr));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      // optional int32 lane_id = 8;
+      case 8: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 64) goto handle_unusual;
+        set_lane_id(::google::protobuf::internal::ReadVarint(&ptr));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      // optional int32 heading = 9;
+      case 9: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 72) goto handle_unusual;
+        set_heading(::google::protobuf::internal::ReadVarint(&ptr));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      // optional int32 lane_info = 10;
+      case 10: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 80) goto handle_unusual;
+        set_lane_info(::google::protobuf::internal::ReadVarint(&ptr));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          return ptr;
+        }
+        ptr = UnknownFieldParse(tag,
+          _internal_metadata_.mutable_unknown_fields(), ptr, ctx);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr != nullptr);
+        break;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool Detectobject::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:vision.Detectobject)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required int32 object_id = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
+          HasBitSetters::set_has_object_id(this);
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &object_id_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // required .vision.TYPE object_type = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
+          int value = 0;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::vision::TYPE_IsValid(value)) {
+            set_object_type(static_cast< ::vision::TYPE >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(
+                2, static_cast<::google::protobuf::uint64>(value));
+          }
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // required int32 longitudinalX = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (24 & 0xFF)) {
+          HasBitSetters::set_has_longitudinalx(this);
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &longitudinalx_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // required int32 lateralY = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (32 & 0xFF)) {
+          HasBitSetters::set_has_lateraly(this);
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &lateraly_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // required int32 velocity = 5;
+      case 5: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (40 & 0xFF)) {
+          HasBitSetters::set_has_velocity(this);
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &velocity_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // required int32 camera = 6;
+      case 6: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (48 & 0xFF)) {
+          HasBitSetters::set_has_camera(this);
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &camera_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // optional int32 if_at_lane = 7;
+      case 7: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (56 & 0xFF)) {
+          HasBitSetters::set_has_if_at_lane(this);
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &if_at_lane_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // optional int32 lane_id = 8;
+      case 8: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (64 & 0xFF)) {
+          HasBitSetters::set_has_lane_id(this);
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &lane_id_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // optional int32 heading = 9;
+      case 9: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (72 & 0xFF)) {
+          HasBitSetters::set_has_heading(this);
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &heading_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // optional int32 lane_info = 10;
+      case 10: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (80 & 0xFF)) {
+          HasBitSetters::set_has_lane_info(this);
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &lane_info_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:vision.Detectobject)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:vision.Detectobject)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void Detectobject::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:vision.Detectobject)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  // required int32 object_id = 1;
+  if (cached_has_bits & 0x00000001u) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->object_id(), output);
+  }
+
+  // required .vision.TYPE object_type = 2;
+  if (cached_has_bits & 0x00000002u) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      2, this->object_type(), output);
+  }
+
+  // required int32 longitudinalX = 3;
+  if (cached_has_bits & 0x00000004u) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->longitudinalx(), output);
+  }
+
+  // required int32 lateralY = 4;
+  if (cached_has_bits & 0x00000008u) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->lateraly(), output);
+  }
+
+  // required int32 velocity = 5;
+  if (cached_has_bits & 0x00000010u) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->velocity(), output);
+  }
+
+  // required int32 camera = 6;
+  if (cached_has_bits & 0x00000020u) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->camera(), output);
+  }
+
+  // optional int32 if_at_lane = 7;
+  if (cached_has_bits & 0x00000040u) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->if_at_lane(), output);
+  }
+
+  // optional int32 lane_id = 8;
+  if (cached_has_bits & 0x00000080u) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->lane_id(), output);
+  }
+
+  // optional int32 heading = 9;
+  if (cached_has_bits & 0x00000100u) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(9, this->heading(), output);
+  }
+
+  // optional int32 lane_info = 10;
+  if (cached_has_bits & 0x00000200u) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(10, this->lane_info(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:vision.Detectobject)
+}
+
+::google::protobuf::uint8* Detectobject::InternalSerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:vision.Detectobject)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  // required int32 object_id = 1;
+  if (cached_has_bits & 0x00000001u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->object_id(), target);
+  }
+
+  // required .vision.TYPE object_type = 2;
+  if (cached_has_bits & 0x00000002u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      2, this->object_type(), target);
+  }
+
+  // required int32 longitudinalX = 3;
+  if (cached_has_bits & 0x00000004u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->longitudinalx(), target);
+  }
+
+  // required int32 lateralY = 4;
+  if (cached_has_bits & 0x00000008u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->lateraly(), target);
+  }
+
+  // required int32 velocity = 5;
+  if (cached_has_bits & 0x00000010u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->velocity(), target);
+  }
+
+  // required int32 camera = 6;
+  if (cached_has_bits & 0x00000020u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(6, this->camera(), target);
+  }
+
+  // optional int32 if_at_lane = 7;
+  if (cached_has_bits & 0x00000040u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(7, this->if_at_lane(), target);
+  }
+
+  // optional int32 lane_id = 8;
+  if (cached_has_bits & 0x00000080u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->lane_id(), target);
+  }
+
+  // optional int32 heading = 9;
+  if (cached_has_bits & 0x00000100u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(9, this->heading(), target);
+  }
+
+  // optional int32 lane_info = 10;
+  if (cached_has_bits & 0x00000200u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(10, this->lane_info(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:vision.Detectobject)
+  return target;
+}
+
+size_t Detectobject::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:vision.Detectobject)
+  size_t total_size = 0;
+
+  if (has_object_id()) {
+    // required int32 object_id = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->object_id());
+  }
+
+  if (has_object_type()) {
+    // required .vision.TYPE object_type = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->object_type());
+  }
+
+  if (has_longitudinalx()) {
+    // required int32 longitudinalX = 3;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->longitudinalx());
+  }
+
+  if (has_lateraly()) {
+    // required int32 lateralY = 4;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->lateraly());
+  }
+
+  if (has_velocity()) {
+    // required int32 velocity = 5;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->velocity());
+  }
+
+  if (has_camera()) {
+    // required int32 camera = 6;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->camera());
+  }
+
+  return total_size;
+}
+size_t Detectobject::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:vision.Detectobject)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  if (((_has_bits_[0] & 0x0000003f) ^ 0x0000003f) == 0) {  // All required fields are present.
+    // required int32 object_id = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->object_id());
+
+    // required .vision.TYPE object_type = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->object_type());
+
+    // required int32 longitudinalX = 3;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->longitudinalx());
+
+    // required int32 lateralY = 4;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->lateraly());
+
+    // required int32 velocity = 5;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->velocity());
+
+    // required int32 camera = 6;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->camera());
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
+  }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x000000c0u) {
+    // optional int32 if_at_lane = 7;
+    if (cached_has_bits & 0x00000040u) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->if_at_lane());
+    }
+
+    // optional int32 lane_id = 8;
+    if (cached_has_bits & 0x00000080u) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->lane_id());
+    }
+
+  }
+  if (cached_has_bits & 0x00000300u) {
+    // optional int32 heading = 9;
+    if (cached_has_bits & 0x00000100u) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->heading());
+    }
+
+    // optional int32 lane_info = 10;
+    if (cached_has_bits & 0x00000200u) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->lane_info());
+    }
+
+  }
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void Detectobject::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:vision.Detectobject)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Detectobject* source =
+      ::google::protobuf::DynamicCastToGenerated<Detectobject>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:vision.Detectobject)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:vision.Detectobject)
+    MergeFrom(*source);
+  }
+}
+
+void Detectobject::MergeFrom(const Detectobject& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:vision.Detectobject)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._has_bits_[0];
+  if (cached_has_bits & 0x000000ffu) {
+    if (cached_has_bits & 0x00000001u) {
+      object_id_ = from.object_id_;
+    }
+    if (cached_has_bits & 0x00000002u) {
+      object_type_ = from.object_type_;
+    }
+    if (cached_has_bits & 0x00000004u) {
+      longitudinalx_ = from.longitudinalx_;
+    }
+    if (cached_has_bits & 0x00000008u) {
+      lateraly_ = from.lateraly_;
+    }
+    if (cached_has_bits & 0x00000010u) {
+      velocity_ = from.velocity_;
+    }
+    if (cached_has_bits & 0x00000020u) {
+      camera_ = from.camera_;
+    }
+    if (cached_has_bits & 0x00000040u) {
+      if_at_lane_ = from.if_at_lane_;
+    }
+    if (cached_has_bits & 0x00000080u) {
+      lane_id_ = from.lane_id_;
+    }
+    _has_bits_[0] |= cached_has_bits;
+  }
+  if (cached_has_bits & 0x00000300u) {
+    if (cached_has_bits & 0x00000100u) {
+      heading_ = from.heading_;
+    }
+    if (cached_has_bits & 0x00000200u) {
+      lane_info_ = from.lane_info_;
+    }
+    _has_bits_[0] |= cached_has_bits;
+  }
+}
+
+void Detectobject::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:vision.Detectobject)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Detectobject::CopyFrom(const Detectobject& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:vision.Detectobject)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Detectobject::IsInitialized() const {
+  if ((_has_bits_[0] & 0x0000003f) != 0x0000003f) return false;
+  return true;
+}
+
+void Detectobject::Swap(Detectobject* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void Detectobject::InternalSwap(Detectobject* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
+  swap(object_id_, other->object_id_);
+  swap(object_type_, other->object_type_);
+  swap(longitudinalx_, other->longitudinalx_);
+  swap(lateraly_, other->lateraly_);
+  swap(velocity_, other->velocity_);
+  swap(camera_, other->camera_);
+  swap(if_at_lane_, other->if_at_lane_);
+  swap(lane_id_, other->lane_id_);
+  swap(heading_, other->heading_);
+  swap(lane_info_, other->lane_info_);
+}
+
+::google::protobuf::Metadata Detectobject::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_vision_2eproto);
+  return ::file_level_metadata_vision_2eproto[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void Detectobjects::InitAsDefaultInstance() {
+  ::vision::_Detectobjects_default_instance_._instance.get_mutable()->time_ = const_cast< ::vision::Timestamp*>(
+      ::vision::Timestamp::internal_default_instance());
+}
+class Detectobjects::HasBitSetters {
+ public:
+  static void set_has_id(Detectobjects* msg) {
+    msg->_has_bits_[0] |= 0x00000002u;
+  }
+  static const ::vision::Timestamp& time(const Detectobjects* msg);
+  static void set_has_time(Detectobjects* msg) {
+    msg->_has_bits_[0] |= 0x00000001u;
+  }
+};
+
+const ::vision::Timestamp&
+Detectobjects::HasBitSetters::time(const Detectobjects* msg) {
+  return *msg->time_;
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int Detectobjects::kIdFieldNumber;
+const int Detectobjects::kObjectFieldNumber;
+const int Detectobjects::kTimeFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+Detectobjects::Detectobjects()
+  : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:vision.Detectobjects)
+}
+Detectobjects::Detectobjects(const Detectobjects& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(nullptr),
+      _has_bits_(from._has_bits_),
+      object_(from.object_) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  if (from.has_time()) {
+    time_ = new ::vision::Timestamp(*from.time_);
+  } else {
+    time_ = nullptr;
+  }
+  id_ = from.id_;
+  // @@protoc_insertion_point(copy_constructor:vision.Detectobjects)
+}
+
+void Detectobjects::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_Detectobjects_vision_2eproto.base);
+  ::memset(&time_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&id_) -
+      reinterpret_cast<char*>(&time_)) + sizeof(id_));
+}
+
+Detectobjects::~Detectobjects() {
+  // @@protoc_insertion_point(destructor:vision.Detectobjects)
+  SharedDtor();
+}
+
+void Detectobjects::SharedDtor() {
+  if (this != internal_default_instance()) delete time_;
+}
+
+void Detectobjects::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const Detectobjects& Detectobjects::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_Detectobjects_vision_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void Detectobjects::Clear() {
+// @@protoc_insertion_point(message_clear_start:vision.Detectobjects)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  object_.Clear();
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    GOOGLE_DCHECK(time_ != nullptr);
+    time_->Clear();
+  }
+  id_ = 0;
+  _has_bits_.Clear();
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* Detectobjects::_InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) {
+  while (!ctx->Done(&ptr)) {
+    ::google::protobuf::uint32 tag;
+    ptr = ::google::protobuf::internal::ReadTag(ptr, &tag);
+    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+    switch (tag >> 3) {
+      // required .vision.ID id = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
+        ::google::protobuf::uint64 val = ::google::protobuf::internal::ReadVarint(&ptr);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        if (!::vision::ID_IsValid(val)) {
+          ::google::protobuf::internal::WriteVarint(1, val, mutable_unknown_fields());
+          break;
+        }
+        set_id(static_cast<::vision::ID>(val));
+        break;
+      }
+      // repeated .vision.Detectobject object = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
+        do {
+          ptr = ctx->ParseMessage(add_object(), ptr);
+          GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+          if (ctx->Done(&ptr)) return ptr;
+        } while ((::google::protobuf::internal::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 18 && (ptr += 1));
+        break;
+      }
+      // optional .vision.Timestamp time = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
+        ptr = ctx->ParseMessage(mutable_time(), ptr);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          return ptr;
+        }
+        ptr = UnknownFieldParse(tag,
+          _internal_metadata_.mutable_unknown_fields(), ptr, ctx);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr != nullptr);
+        break;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool Detectobjects::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:vision.Detectobjects)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required .vision.ID id = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
+          int value = 0;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::vision::ID_IsValid(value)) {
+            set_id(static_cast< ::vision::ID >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(
+                1, static_cast<::google::protobuf::uint64>(value));
+          }
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // repeated .vision.Detectobject object = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+                input, add_object()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // optional .vision.Timestamp time = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+               input, mutable_time()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:vision.Detectobjects)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:vision.Detectobjects)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void Detectobjects::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:vision.Detectobjects)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  // required .vision.ID id = 1;
+  if (cached_has_bits & 0x00000002u) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      1, this->id(), output);
+  }
+
+  // repeated .vision.Detectobject object = 2;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->object_size()); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2,
+      this->object(static_cast<int>(i)),
+      output);
+  }
+
+  // optional .vision.Timestamp time = 3;
+  if (cached_has_bits & 0x00000001u) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, HasBitSetters::time(this), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:vision.Detectobjects)
+}
+
+::google::protobuf::uint8* Detectobjects::InternalSerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:vision.Detectobjects)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  // required .vision.ID id = 1;
+  if (cached_has_bits & 0x00000002u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      1, this->id(), target);
+  }
+
+  // repeated .vision.Detectobject object = 2;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->object_size()); i < n; i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        2, this->object(static_cast<int>(i)), target);
+  }
+
+  // optional .vision.Timestamp time = 3;
+  if (cached_has_bits & 0x00000001u) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        3, HasBitSetters::time(this), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:vision.Detectobjects)
+  return target;
+}
+
+size_t Detectobjects::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:vision.Detectobjects)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  // required .vision.ID id = 1;
+  if (has_id()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->id());
+  }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .vision.Detectobject object = 2;
+  {
+    unsigned int count = static_cast<unsigned int>(this->object_size());
+    total_size += 1UL * count;
+    for (unsigned int i = 0; i < count; i++) {
+      total_size +=
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          this->object(static_cast<int>(i)));
+    }
+  }
+
+  // optional .vision.Timestamp time = 3;
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *time_);
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void Detectobjects::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:vision.Detectobjects)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Detectobjects* source =
+      ::google::protobuf::DynamicCastToGenerated<Detectobjects>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:vision.Detectobjects)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:vision.Detectobjects)
+    MergeFrom(*source);
+  }
+}
+
+void Detectobjects::MergeFrom(const Detectobjects& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:vision.Detectobjects)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  object_.MergeFrom(from.object_);
+  cached_has_bits = from._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      mutable_time()->::vision::Timestamp::MergeFrom(from.time());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      id_ = from.id_;
+    }
+    _has_bits_[0] |= cached_has_bits;
+  }
+}
+
+void Detectobjects::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:vision.Detectobjects)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Detectobjects::CopyFrom(const Detectobjects& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:vision.Detectobjects)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Detectobjects::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000002) != 0x00000002) return false;
+  if (!::google::protobuf::internal::AllAreInitialized(this->object())) return false;
+  if (has_time()) {
+    if (!this->time_->IsInitialized()) return false;
+  }
+  return true;
+}
+
+void Detectobjects::Swap(Detectobjects* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void Detectobjects::InternalSwap(Detectobjects* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
+  CastToBase(&object_)->InternalSwap(CastToBase(&other->object_));
+  swap(time_, other->time_);
+  swap(id_, other->id_);
+}
+
+::google::protobuf::Metadata Detectobjects::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_vision_2eproto);
+  return ::file_level_metadata_vision_2eproto[kIndexInFileMessages];
+}
+
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace vision
 namespace google {
@@ -12370,15 +12372,6 @@ template<> PROTOBUF_NOINLINE ::vision::Visibility* Arena::CreateMaybeMessage< ::
 template<> PROTOBUF_NOINLINE ::vision::SmokeWarn* Arena::CreateMaybeMessage< ::vision::SmokeWarn >(Arena* arena) {
   return Arena::CreateInternal< ::vision::SmokeWarn >(arena);
 }
-template<> PROTOBUF_NOINLINE ::vision::Timestamp* Arena::CreateMaybeMessage< ::vision::Timestamp >(Arena* arena) {
-  return Arena::CreateInternal< ::vision::Timestamp >(arena);
-}
-template<> PROTOBUF_NOINLINE ::vision::Detectobject* Arena::CreateMaybeMessage< ::vision::Detectobject >(Arena* arena) {
-  return Arena::CreateInternal< ::vision::Detectobject >(arena);
-}
-template<> PROTOBUF_NOINLINE ::vision::Detectobjects* Arena::CreateMaybeMessage< ::vision::Detectobjects >(Arena* arena) {
-  return Arena::CreateInternal< ::vision::Detectobjects >(arena);
-}
 template<> PROTOBUF_NOINLINE ::vision::TrafficJam* Arena::CreateMaybeMessage< ::vision::TrafficJam >(Arena* arena) {
   return Arena::CreateInternal< ::vision::TrafficJam >(arena);
 }
@@ -12393,6 +12386,15 @@ template<> PROTOBUF_NOINLINE ::vision::LaneWare* Arena::CreateMaybeMessage< ::vi
 }
 template<> PROTOBUF_NOINLINE ::vision::SpecialCarMsg* Arena::CreateMaybeMessage< ::vision::SpecialCarMsg >(Arena* arena) {
   return Arena::CreateInternal< ::vision::SpecialCarMsg >(arena);
+}
+template<> PROTOBUF_NOINLINE ::vision::Timestamp* Arena::CreateMaybeMessage< ::vision::Timestamp >(Arena* arena) {
+  return Arena::CreateInternal< ::vision::Timestamp >(arena);
+}
+template<> PROTOBUF_NOINLINE ::vision::Detectobject* Arena::CreateMaybeMessage< ::vision::Detectobject >(Arena* arena) {
+  return Arena::CreateInternal< ::vision::Detectobject >(arena);
+}
+template<> PROTOBUF_NOINLINE ::vision::Detectobjects* Arena::CreateMaybeMessage< ::vision::Detectobjects >(Arena* arena) {
+  return Arena::CreateInternal< ::vision::Detectobjects >(arena);
 }
 }  // namespace protobuf
 }  // namespace google
