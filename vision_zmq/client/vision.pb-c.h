@@ -30,14 +30,14 @@ typedef struct _Vision__AvailableAreas Vision__AvailableAreas;
 typedef struct _Vision__IllegalCarWarn Vision__IllegalCarWarn;
 typedef struct _Vision__Visibility Vision__Visibility;
 typedef struct _Vision__SmokeWarn Vision__SmokeWarn;
-typedef struct _Vision__Timestamp Vision__Timestamp;
-typedef struct _Vision__Detectobject Vision__Detectobject;
-typedef struct _Vision__Detectobjects Vision__Detectobjects;
 typedef struct _Vision__TrafficJam Vision__TrafficJam;
 typedef struct _Vision__TrafficFlow Vision__TrafficFlow;
 typedef struct _Vision__IceWarn Vision__IceWarn;
 typedef struct _Vision__LaneWare Vision__LaneWare;
 typedef struct _Vision__SpecialCarMsg Vision__SpecialCarMsg;
+typedef struct _Vision__Timestamp Vision__Timestamp;
+typedef struct _Vision__Detectobject Vision__Detectobject;
+typedef struct _Vision__Detectobjects Vision__Detectobjects;
 
 
 /* --- enums --- */
@@ -58,7 +58,11 @@ typedef enum _Vision__SpecialCar__SPECIALTYPE {
   /*
    * 消防车
    */
-  VISION__SPECIAL_CAR__SPECIALTYPE__FIREENGINE = 3
+  VISION__SPECIAL_CAR__SPECIALTYPE__FIREENGINE = 3,
+  /*
+   * 警车
+   */
+  VISION__SPECIAL_CAR__SPECIALTYPE__POLICECAR = 4
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(VISION__SPECIAL_CAR__SPECIALTYPE)
 } Vision__SpecialCar__SPECIALTYPE;
 typedef enum _Vision__FlowInfo__TrafficSig {
@@ -416,10 +420,14 @@ struct  _Vision__SpecialCar
   protobuf_c_boolean has_heading;
   int32_t heading;
   /*
-   * 1=主道，2=上匝道，3=下匝道
+   * lane_info 0xabcd
+   * bit 0~4 d : 摄像头监控区域类型 1：汇入 2：汇出：3 常规路段
+   * bit 5~8 c : 车道总数
+   * bit 9~12 b : 车道序号：行车方向从左到右累加，从1开始计数。
+   * bit 13~31 a : 保留
    */
-  protobuf_c_boolean has_lane_type;
-  int32_t lane_type;
+  protobuf_c_boolean has_lane_info;
+  int32_t lane_info;
 };
 #define VISION__SPECIAL_CAR__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&vision__special_car__descriptor) \
@@ -670,89 +678,6 @@ struct  _Vision__SmokeWarn
 
 
 /*
- *********** add for radar and vision fusion ***************
- *date: 2019-05-06
- *Author: she
- *version: V1.1
- *Description: add timestamp
- *history：2019-06-17 add velocity
- *************************************************************
- */
-struct  _Vision__Timestamp
-{
-  ProtobufCMessage base;
-  /*
-   * 秒
-   */
-  int64_t seconds;
-  /*
-   * 纳秒
-   */
-  int32_t nanos;
-};
-#define VISION__TIMESTAMP__INIT \
- { PROTOBUF_C_MESSAGE_INIT (&vision__timestamp__descriptor) \
-    , 0, 0 }
-
-
-struct  _Vision__Detectobject
-{
-  ProtobufCMessage base;
-  int32_t object_id;
-  Vision__TYPE object_type;
-  /*
-   * 融合：纵向距离 普通：经度
-   */
-  int32_t longitudinalx;
-  /*
-   * 融合：横向距离 普通：纬度
-   */
-  int32_t lateraly;
-  /*
-   * 融合：速度 km/h 小数点右移两位，0.01的精度 如：10.01km/h  传入1001	
-   */
-  int32_t velocity;
-  /*
-   * 哪个相机（1,2,3,4）
-   */
-  int32_t camera;
-  /*
-   * 是否在车道
-   */
-  protobuf_c_boolean has_if_at_lane;
-  int32_t if_at_lane;
-  /*
-   * 车道id(从右至左1,2，…)
-   */
-  protobuf_c_boolean has_lane_id;
-  int32_t lane_id;
-  protobuf_c_boolean has_heading;
-  int32_t heading;
-  /*
-   * 1=主道，2=上匝道，3=下匝道
-   */
-  protobuf_c_boolean has_lane_type;
-  int32_t lane_type;
-};
-#define VISION__DETECTOBJECT__INIT \
- { PROTOBUF_C_MESSAGE_INIT (&vision__detectobject__descriptor) \
-    , 0, VISION__TYPE__OTHERS, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
-
-
-struct  _Vision__Detectobjects
-{
-  ProtobufCMessage base;
-  Vision__ID id;
-  size_t n_object;
-  Vision__Detectobject **object;
-  Vision__Timestamp *time;
-};
-#define VISION__DETECTOBJECTS__INIT \
- { PROTOBUF_C_MESSAGE_INIT (&vision__detectobjects__descriptor) \
-    , VISION__ID__DEFAULT, 0,NULL, NULL }
-
-
-/*
  * 前方拥堵提醒
  */
 struct  _Vision__TrafficJam
@@ -847,6 +772,101 @@ struct  _Vision__SpecialCarMsg
 };
 #define VISION__SPECIAL_CAR_MSG__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&vision__special_car_msg__descriptor) \
+    , VISION__ID__DEFAULT, 0,NULL, NULL }
+
+
+/*
+ *********** add for radar and vision fusion ***************
+ *date: 2019-05-06
+ *Author: she
+ *version: V1.1
+ *Description: add timestamp
+ *history：2019-06-17 add velocity
+ *************************************************************
+ */
+struct  _Vision__Timestamp
+{
+  ProtobufCMessage base;
+  /*
+   * Represents seconds of UTC time since Unix epoch
+   * 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to
+   * 9999-12-31T23:59:59Z inclusive.
+   */
+  int64_t seconds;
+  /*
+   * Non-negative fractions of a second at nanosecond resolution. Negative
+   * second values with fractions must still have non-negative nanos values
+   * that count forward in time. Must be from 0 to 999,999,999
+   * inclusive.
+   */
+  int32_t nanos;
+};
+#define VISION__TIMESTAMP__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&vision__timestamp__descriptor) \
+    , 0, 0 }
+
+
+struct  _Vision__Detectobject
+{
+  ProtobufCMessage base;
+  int32_t object_id;
+  Vision__TYPE object_type;
+  /*
+   * 融合：纵向距离 普通：经度
+   */
+  int32_t longitudinalx;
+  /*
+   * 融合：横向距离 普通：纬度
+   */
+  int32_t lateraly;
+  /*
+   * 融合：速度 km/h 小数点右移两位，0.01的精度 如：10.01km/h  传入1001	
+   */
+  int32_t velocity;
+  /*
+   * 哪个相机（1,2,3,4）
+   */
+  int32_t camera;
+  /*
+   * 是否在车道
+   */
+  protobuf_c_boolean has_if_at_lane;
+  int32_t if_at_lane;
+  /*
+   * 车道id(从右至左1,2，…)
+   */
+  protobuf_c_boolean has_lane_id;
+  int32_t lane_id;
+  protobuf_c_boolean has_heading;
+  int32_t heading;
+  /*
+   * lane_info 0xabcd
+   * bit 0~4 d : 摄像头监控区域类型 1：汇入 2：汇出：3 常规路段
+   * bit 5~8 c : 车道总数
+   * bit 9~12 b : 车道序号：行车方向从左到右累加，从1开始计数。
+   * bit 13~31 a : 保留
+   */
+  protobuf_c_boolean has_lane_info;
+  int32_t lane_info;
+};
+#define VISION__DETECTOBJECT__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&vision__detectobject__descriptor) \
+    , 0, VISION__TYPE__OTHERS, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+
+
+/*
+ * 发给融合程序的检测目标
+ */
+struct  _Vision__Detectobjects
+{
+  ProtobufCMessage base;
+  Vision__ID id;
+  size_t n_object;
+  Vision__Detectobject **object;
+  Vision__Timestamp *time;
+};
+#define VISION__DETECTOBJECTS__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&vision__detectobjects__descriptor) \
     , VISION__ID__DEFAULT, 0,NULL, NULL }
 
 
@@ -1135,63 +1155,6 @@ Vision__SmokeWarn *
 void   vision__smoke_warn__free_unpacked
                      (Vision__SmokeWarn *message,
                       ProtobufCAllocator *allocator);
-/* Vision__Timestamp methods */
-void   vision__timestamp__init
-                     (Vision__Timestamp         *message);
-size_t vision__timestamp__get_packed_size
-                     (const Vision__Timestamp   *message);
-size_t vision__timestamp__pack
-                     (const Vision__Timestamp   *message,
-                      uint8_t             *out);
-size_t vision__timestamp__pack_to_buffer
-                     (const Vision__Timestamp   *message,
-                      ProtobufCBuffer     *buffer);
-Vision__Timestamp *
-       vision__timestamp__unpack
-                     (ProtobufCAllocator  *allocator,
-                      size_t               len,
-                      const uint8_t       *data);
-void   vision__timestamp__free_unpacked
-                     (Vision__Timestamp *message,
-                      ProtobufCAllocator *allocator);
-/* Vision__Detectobject methods */
-void   vision__detectobject__init
-                     (Vision__Detectobject         *message);
-size_t vision__detectobject__get_packed_size
-                     (const Vision__Detectobject   *message);
-size_t vision__detectobject__pack
-                     (const Vision__Detectobject   *message,
-                      uint8_t             *out);
-size_t vision__detectobject__pack_to_buffer
-                     (const Vision__Detectobject   *message,
-                      ProtobufCBuffer     *buffer);
-Vision__Detectobject *
-       vision__detectobject__unpack
-                     (ProtobufCAllocator  *allocator,
-                      size_t               len,
-                      const uint8_t       *data);
-void   vision__detectobject__free_unpacked
-                     (Vision__Detectobject *message,
-                      ProtobufCAllocator *allocator);
-/* Vision__Detectobjects methods */
-void   vision__detectobjects__init
-                     (Vision__Detectobjects         *message);
-size_t vision__detectobjects__get_packed_size
-                     (const Vision__Detectobjects   *message);
-size_t vision__detectobjects__pack
-                     (const Vision__Detectobjects   *message,
-                      uint8_t             *out);
-size_t vision__detectobjects__pack_to_buffer
-                     (const Vision__Detectobjects   *message,
-                      ProtobufCBuffer     *buffer);
-Vision__Detectobjects *
-       vision__detectobjects__unpack
-                     (ProtobufCAllocator  *allocator,
-                      size_t               len,
-                      const uint8_t       *data);
-void   vision__detectobjects__free_unpacked
-                     (Vision__Detectobjects *message,
-                      ProtobufCAllocator *allocator);
 /* Vision__TrafficJam methods */
 void   vision__traffic_jam__init
                      (Vision__TrafficJam         *message);
@@ -1287,6 +1250,63 @@ Vision__SpecialCarMsg *
 void   vision__special_car_msg__free_unpacked
                      (Vision__SpecialCarMsg *message,
                       ProtobufCAllocator *allocator);
+/* Vision__Timestamp methods */
+void   vision__timestamp__init
+                     (Vision__Timestamp         *message);
+size_t vision__timestamp__get_packed_size
+                     (const Vision__Timestamp   *message);
+size_t vision__timestamp__pack
+                     (const Vision__Timestamp   *message,
+                      uint8_t             *out);
+size_t vision__timestamp__pack_to_buffer
+                     (const Vision__Timestamp   *message,
+                      ProtobufCBuffer     *buffer);
+Vision__Timestamp *
+       vision__timestamp__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   vision__timestamp__free_unpacked
+                     (Vision__Timestamp *message,
+                      ProtobufCAllocator *allocator);
+/* Vision__Detectobject methods */
+void   vision__detectobject__init
+                     (Vision__Detectobject         *message);
+size_t vision__detectobject__get_packed_size
+                     (const Vision__Detectobject   *message);
+size_t vision__detectobject__pack
+                     (const Vision__Detectobject   *message,
+                      uint8_t             *out);
+size_t vision__detectobject__pack_to_buffer
+                     (const Vision__Detectobject   *message,
+                      ProtobufCBuffer     *buffer);
+Vision__Detectobject *
+       vision__detectobject__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   vision__detectobject__free_unpacked
+                     (Vision__Detectobject *message,
+                      ProtobufCAllocator *allocator);
+/* Vision__Detectobjects methods */
+void   vision__detectobjects__init
+                     (Vision__Detectobjects         *message);
+size_t vision__detectobjects__get_packed_size
+                     (const Vision__Detectobjects   *message);
+size_t vision__detectobjects__pack
+                     (const Vision__Detectobjects   *message,
+                      uint8_t             *out);
+size_t vision__detectobjects__pack_to_buffer
+                     (const Vision__Detectobjects   *message,
+                      ProtobufCBuffer     *buffer);
+Vision__Detectobjects *
+       vision__detectobjects__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   vision__detectobjects__free_unpacked
+                     (Vision__Detectobjects *message,
+                      ProtobufCAllocator *allocator);
 /* --- per-message closures --- */
 
 typedef void (*Vision__DataTime_Closure)
@@ -1334,15 +1354,6 @@ typedef void (*Vision__Visibility_Closure)
 typedef void (*Vision__SmokeWarn_Closure)
                  (const Vision__SmokeWarn *message,
                   void *closure_data);
-typedef void (*Vision__Timestamp_Closure)
-                 (const Vision__Timestamp *message,
-                  void *closure_data);
-typedef void (*Vision__Detectobject_Closure)
-                 (const Vision__Detectobject *message,
-                  void *closure_data);
-typedef void (*Vision__Detectobjects_Closure)
-                 (const Vision__Detectobjects *message,
-                  void *closure_data);
 typedef void (*Vision__TrafficJam_Closure)
                  (const Vision__TrafficJam *message,
                   void *closure_data);
@@ -1357,6 +1368,15 @@ typedef void (*Vision__LaneWare_Closure)
                   void *closure_data);
 typedef void (*Vision__SpecialCarMsg_Closure)
                  (const Vision__SpecialCarMsg *message,
+                  void *closure_data);
+typedef void (*Vision__Timestamp_Closure)
+                 (const Vision__Timestamp *message,
+                  void *closure_data);
+typedef void (*Vision__Detectobject_Closure)
+                 (const Vision__Detectobject *message,
+                  void *closure_data);
+typedef void (*Vision__Detectobjects_Closure)
+                 (const Vision__Detectobjects *message,
                   void *closure_data);
 
 /* --- services --- */
@@ -1384,15 +1404,15 @@ extern const ProtobufCMessageDescriptor vision__available_areas__descriptor;
 extern const ProtobufCMessageDescriptor vision__illegal_car_warn__descriptor;
 extern const ProtobufCMessageDescriptor vision__visibility__descriptor;
 extern const ProtobufCMessageDescriptor vision__smoke_warn__descriptor;
-extern const ProtobufCMessageDescriptor vision__timestamp__descriptor;
-extern const ProtobufCMessageDescriptor vision__detectobject__descriptor;
-extern const ProtobufCMessageDescriptor vision__detectobjects__descriptor;
 extern const ProtobufCMessageDescriptor vision__traffic_jam__descriptor;
 extern const ProtobufCMessageDescriptor vision__traffic_flow__descriptor;
 extern const ProtobufCMessageDescriptor vision__ice_warn__descriptor;
 extern const ProtobufCMessageDescriptor vision__lane_ware__descriptor;
 extern const ProtobufCEnumDescriptor    vision__lane_ware__waretype__descriptor;
 extern const ProtobufCMessageDescriptor vision__special_car_msg__descriptor;
+extern const ProtobufCMessageDescriptor vision__timestamp__descriptor;
+extern const ProtobufCMessageDescriptor vision__detectobject__descriptor;
+extern const ProtobufCMessageDescriptor vision__detectobjects__descriptor;
 
 PROTOBUF_C__END_DECLS
 

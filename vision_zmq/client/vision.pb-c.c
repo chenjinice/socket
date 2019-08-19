@@ -682,141 +682,6 @@ void   vision__smoke_warn__free_unpacked
   assert(message->base.descriptor == &vision__smoke_warn__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-void   vision__timestamp__init
-                     (Vision__Timestamp         *message)
-{
-  static const Vision__Timestamp init_value = VISION__TIMESTAMP__INIT;
-  *message = init_value;
-}
-size_t vision__timestamp__get_packed_size
-                     (const Vision__Timestamp *message)
-{
-  assert(message->base.descriptor == &vision__timestamp__descriptor);
-  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
-}
-size_t vision__timestamp__pack
-                     (const Vision__Timestamp *message,
-                      uint8_t       *out)
-{
-  assert(message->base.descriptor == &vision__timestamp__descriptor);
-  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
-}
-size_t vision__timestamp__pack_to_buffer
-                     (const Vision__Timestamp *message,
-                      ProtobufCBuffer *buffer)
-{
-  assert(message->base.descriptor == &vision__timestamp__descriptor);
-  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
-}
-Vision__Timestamp *
-       vision__timestamp__unpack
-                     (ProtobufCAllocator  *allocator,
-                      size_t               len,
-                      const uint8_t       *data)
-{
-  return (Vision__Timestamp *)
-     protobuf_c_message_unpack (&vision__timestamp__descriptor,
-                                allocator, len, data);
-}
-void   vision__timestamp__free_unpacked
-                     (Vision__Timestamp *message,
-                      ProtobufCAllocator *allocator)
-{
-  if(!message)
-    return;
-  assert(message->base.descriptor == &vision__timestamp__descriptor);
-  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
-}
-void   vision__detectobject__init
-                     (Vision__Detectobject         *message)
-{
-  static const Vision__Detectobject init_value = VISION__DETECTOBJECT__INIT;
-  *message = init_value;
-}
-size_t vision__detectobject__get_packed_size
-                     (const Vision__Detectobject *message)
-{
-  assert(message->base.descriptor == &vision__detectobject__descriptor);
-  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
-}
-size_t vision__detectobject__pack
-                     (const Vision__Detectobject *message,
-                      uint8_t       *out)
-{
-  assert(message->base.descriptor == &vision__detectobject__descriptor);
-  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
-}
-size_t vision__detectobject__pack_to_buffer
-                     (const Vision__Detectobject *message,
-                      ProtobufCBuffer *buffer)
-{
-  assert(message->base.descriptor == &vision__detectobject__descriptor);
-  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
-}
-Vision__Detectobject *
-       vision__detectobject__unpack
-                     (ProtobufCAllocator  *allocator,
-                      size_t               len,
-                      const uint8_t       *data)
-{
-  return (Vision__Detectobject *)
-     protobuf_c_message_unpack (&vision__detectobject__descriptor,
-                                allocator, len, data);
-}
-void   vision__detectobject__free_unpacked
-                     (Vision__Detectobject *message,
-                      ProtobufCAllocator *allocator)
-{
-  if(!message)
-    return;
-  assert(message->base.descriptor == &vision__detectobject__descriptor);
-  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
-}
-void   vision__detectobjects__init
-                     (Vision__Detectobjects         *message)
-{
-  static const Vision__Detectobjects init_value = VISION__DETECTOBJECTS__INIT;
-  *message = init_value;
-}
-size_t vision__detectobjects__get_packed_size
-                     (const Vision__Detectobjects *message)
-{
-  assert(message->base.descriptor == &vision__detectobjects__descriptor);
-  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
-}
-size_t vision__detectobjects__pack
-                     (const Vision__Detectobjects *message,
-                      uint8_t       *out)
-{
-  assert(message->base.descriptor == &vision__detectobjects__descriptor);
-  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
-}
-size_t vision__detectobjects__pack_to_buffer
-                     (const Vision__Detectobjects *message,
-                      ProtobufCBuffer *buffer)
-{
-  assert(message->base.descriptor == &vision__detectobjects__descriptor);
-  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
-}
-Vision__Detectobjects *
-       vision__detectobjects__unpack
-                     (ProtobufCAllocator  *allocator,
-                      size_t               len,
-                      const uint8_t       *data)
-{
-  return (Vision__Detectobjects *)
-     protobuf_c_message_unpack (&vision__detectobjects__descriptor,
-                                allocator, len, data);
-}
-void   vision__detectobjects__free_unpacked
-                     (Vision__Detectobjects *message,
-                      ProtobufCAllocator *allocator)
-{
-  if(!message)
-    return;
-  assert(message->base.descriptor == &vision__detectobjects__descriptor);
-  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
-}
 void   vision__traffic_jam__init
                      (Vision__TrafficJam         *message)
 {
@@ -1040,6 +905,141 @@ void   vision__special_car_msg__free_unpacked
   if(!message)
     return;
   assert(message->base.descriptor == &vision__special_car_msg__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   vision__timestamp__init
+                     (Vision__Timestamp         *message)
+{
+  static const Vision__Timestamp init_value = VISION__TIMESTAMP__INIT;
+  *message = init_value;
+}
+size_t vision__timestamp__get_packed_size
+                     (const Vision__Timestamp *message)
+{
+  assert(message->base.descriptor == &vision__timestamp__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t vision__timestamp__pack
+                     (const Vision__Timestamp *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &vision__timestamp__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t vision__timestamp__pack_to_buffer
+                     (const Vision__Timestamp *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &vision__timestamp__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Vision__Timestamp *
+       vision__timestamp__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Vision__Timestamp *)
+     protobuf_c_message_unpack (&vision__timestamp__descriptor,
+                                allocator, len, data);
+}
+void   vision__timestamp__free_unpacked
+                     (Vision__Timestamp *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &vision__timestamp__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   vision__detectobject__init
+                     (Vision__Detectobject         *message)
+{
+  static const Vision__Detectobject init_value = VISION__DETECTOBJECT__INIT;
+  *message = init_value;
+}
+size_t vision__detectobject__get_packed_size
+                     (const Vision__Detectobject *message)
+{
+  assert(message->base.descriptor == &vision__detectobject__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t vision__detectobject__pack
+                     (const Vision__Detectobject *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &vision__detectobject__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t vision__detectobject__pack_to_buffer
+                     (const Vision__Detectobject *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &vision__detectobject__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Vision__Detectobject *
+       vision__detectobject__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Vision__Detectobject *)
+     protobuf_c_message_unpack (&vision__detectobject__descriptor,
+                                allocator, len, data);
+}
+void   vision__detectobject__free_unpacked
+                     (Vision__Detectobject *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &vision__detectobject__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   vision__detectobjects__init
+                     (Vision__Detectobjects         *message)
+{
+  static const Vision__Detectobjects init_value = VISION__DETECTOBJECTS__INIT;
+  *message = init_value;
+}
+size_t vision__detectobjects__get_packed_size
+                     (const Vision__Detectobjects *message)
+{
+  assert(message->base.descriptor == &vision__detectobjects__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t vision__detectobjects__pack
+                     (const Vision__Detectobjects *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &vision__detectobjects__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t vision__detectobjects__pack_to_buffer
+                     (const Vision__Detectobjects *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &vision__detectobjects__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Vision__Detectobjects *
+       vision__detectobjects__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Vision__Detectobjects *)
+     protobuf_c_message_unpack (&vision__detectobjects__descriptor,
+                                allocator, len, data);
+}
+void   vision__detectobjects__free_unpacked
+                     (Vision__Detectobjects *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &vision__detectobjects__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
 static const ProtobufCFieldDescriptor vision__data_time__field_descriptors[2] =
@@ -1532,22 +1532,24 @@ const ProtobufCMessageDescriptor vision__abnormal_car__descriptor =
   (ProtobufCMessageInit) vision__abnormal_car__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCEnumValue vision__special_car__specialtype__enum_values_by_number[4] =
+static const ProtobufCEnumValue vision__special_car__specialtype__enum_values_by_number[5] =
 {
   { "NORMAL", "VISION__SPECIAL_CAR__SPECIALTYPE__NORMAL", 0 },
   { "AMBULANCE", "VISION__SPECIAL_CAR__SPECIALTYPE__AMBULANCE", 1 },
   { "DANGERCAR", "VISION__SPECIAL_CAR__SPECIALTYPE__DANGERCAR", 2 },
   { "FIREENGINE", "VISION__SPECIAL_CAR__SPECIALTYPE__FIREENGINE", 3 },
+  { "POLICECAR", "VISION__SPECIAL_CAR__SPECIALTYPE__POLICECAR", 4 },
 };
 static const ProtobufCIntRange vision__special_car__specialtype__value_ranges[] = {
-{0, 0},{0, 4}
+{0, 0},{0, 5}
 };
-static const ProtobufCEnumValueIndex vision__special_car__specialtype__enum_values_by_name[4] =
+static const ProtobufCEnumValueIndex vision__special_car__specialtype__enum_values_by_name[5] =
 {
   { "AMBULANCE", 1 },
   { "DANGERCAR", 2 },
   { "FIREENGINE", 3 },
   { "NORMAL", 0 },
+  { "POLICECAR", 4 },
 };
 const ProtobufCEnumDescriptor vision__special_car__specialtype__descriptor =
 {
@@ -1556,9 +1558,9 @@ const ProtobufCEnumDescriptor vision__special_car__specialtype__descriptor =
   "SPECIALTYPE",
   "Vision__SpecialCar__SPECIALTYPE",
   "vision",
-  4,
+  5,
   vision__special_car__specialtype__enum_values_by_number,
-  4,
+  5,
   vision__special_car__specialtype__enum_values_by_name,
   1,
   vision__special_car__specialtype__value_ranges,
@@ -1651,12 +1653,12 @@ static const ProtobufCFieldDescriptor vision__special_car__field_descriptors[8] 
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "lane_type",
+    "lane_info",
     8,
     PROTOBUF_C_LABEL_OPTIONAL,
     PROTOBUF_C_TYPE_INT32,
-    offsetof(Vision__SpecialCar, has_lane_type),
-    offsetof(Vision__SpecialCar, lane_type),
+    offsetof(Vision__SpecialCar, has_lane_info),
+    offsetof(Vision__SpecialCar, lane_info),
     NULL,
     NULL,
     0,             /* flags */
@@ -1667,7 +1669,7 @@ static const unsigned vision__special_car__field_indices_by_name[] = {
   4,   /* field[4] = camera */
   6,   /* field[6] = heading */
   5,   /* field[5] = lane_id */
-  7,   /* field[7] = lane_type */
+  7,   /* field[7] = lane_info */
   3,   /* field[3] = lat */
   2,   /* field[2] = lng */
   0,   /* field[0] = object_id */
@@ -2480,276 +2482,6 @@ const ProtobufCMessageDescriptor vision__smoke_warn__descriptor =
   (ProtobufCMessageInit) vision__smoke_warn__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor vision__timestamp__field_descriptors[2] =
-{
-  {
-    "seconds",
-    1,
-    PROTOBUF_C_LABEL_REQUIRED,
-    PROTOBUF_C_TYPE_INT64,
-    0,   /* quantifier_offset */
-    offsetof(Vision__Timestamp, seconds),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "nanos",
-    2,
-    PROTOBUF_C_LABEL_REQUIRED,
-    PROTOBUF_C_TYPE_INT32,
-    0,   /* quantifier_offset */
-    offsetof(Vision__Timestamp, nanos),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-};
-static const unsigned vision__timestamp__field_indices_by_name[] = {
-  1,   /* field[1] = nanos */
-  0,   /* field[0] = seconds */
-};
-static const ProtobufCIntRange vision__timestamp__number_ranges[1 + 1] =
-{
-  { 1, 0 },
-  { 0, 2 }
-};
-const ProtobufCMessageDescriptor vision__timestamp__descriptor =
-{
-  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "vision.Timestamp",
-  "Timestamp",
-  "Vision__Timestamp",
-  "vision",
-  sizeof(Vision__Timestamp),
-  2,
-  vision__timestamp__field_descriptors,
-  vision__timestamp__field_indices_by_name,
-  1,  vision__timestamp__number_ranges,
-  (ProtobufCMessageInit) vision__timestamp__init,
-  NULL,NULL,NULL    /* reserved[123] */
-};
-static const ProtobufCFieldDescriptor vision__detectobject__field_descriptors[10] =
-{
-  {
-    "object_id",
-    1,
-    PROTOBUF_C_LABEL_REQUIRED,
-    PROTOBUF_C_TYPE_INT32,
-    0,   /* quantifier_offset */
-    offsetof(Vision__Detectobject, object_id),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "object_type",
-    2,
-    PROTOBUF_C_LABEL_REQUIRED,
-    PROTOBUF_C_TYPE_ENUM,
-    0,   /* quantifier_offset */
-    offsetof(Vision__Detectobject, object_type),
-    &vision__type__descriptor,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "longitudinalX",
-    3,
-    PROTOBUF_C_LABEL_REQUIRED,
-    PROTOBUF_C_TYPE_INT32,
-    0,   /* quantifier_offset */
-    offsetof(Vision__Detectobject, longitudinalx),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "lateralY",
-    4,
-    PROTOBUF_C_LABEL_REQUIRED,
-    PROTOBUF_C_TYPE_INT32,
-    0,   /* quantifier_offset */
-    offsetof(Vision__Detectobject, lateraly),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "velocity",
-    5,
-    PROTOBUF_C_LABEL_REQUIRED,
-    PROTOBUF_C_TYPE_INT32,
-    0,   /* quantifier_offset */
-    offsetof(Vision__Detectobject, velocity),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "camera",
-    6,
-    PROTOBUF_C_LABEL_REQUIRED,
-    PROTOBUF_C_TYPE_INT32,
-    0,   /* quantifier_offset */
-    offsetof(Vision__Detectobject, camera),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "if_at_lane",
-    7,
-    PROTOBUF_C_LABEL_OPTIONAL,
-    PROTOBUF_C_TYPE_INT32,
-    offsetof(Vision__Detectobject, has_if_at_lane),
-    offsetof(Vision__Detectobject, if_at_lane),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "lane_id",
-    8,
-    PROTOBUF_C_LABEL_OPTIONAL,
-    PROTOBUF_C_TYPE_INT32,
-    offsetof(Vision__Detectobject, has_lane_id),
-    offsetof(Vision__Detectobject, lane_id),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "heading",
-    9,
-    PROTOBUF_C_LABEL_OPTIONAL,
-    PROTOBUF_C_TYPE_INT32,
-    offsetof(Vision__Detectobject, has_heading),
-    offsetof(Vision__Detectobject, heading),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "lane_type",
-    10,
-    PROTOBUF_C_LABEL_OPTIONAL,
-    PROTOBUF_C_TYPE_INT32,
-    offsetof(Vision__Detectobject, has_lane_type),
-    offsetof(Vision__Detectobject, lane_type),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-};
-static const unsigned vision__detectobject__field_indices_by_name[] = {
-  5,   /* field[5] = camera */
-  8,   /* field[8] = heading */
-  6,   /* field[6] = if_at_lane */
-  7,   /* field[7] = lane_id */
-  9,   /* field[9] = lane_type */
-  3,   /* field[3] = lateralY */
-  2,   /* field[2] = longitudinalX */
-  0,   /* field[0] = object_id */
-  1,   /* field[1] = object_type */
-  4,   /* field[4] = velocity */
-};
-static const ProtobufCIntRange vision__detectobject__number_ranges[1 + 1] =
-{
-  { 1, 0 },
-  { 0, 10 }
-};
-const ProtobufCMessageDescriptor vision__detectobject__descriptor =
-{
-  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "vision.Detectobject",
-  "Detectobject",
-  "Vision__Detectobject",
-  "vision",
-  sizeof(Vision__Detectobject),
-  10,
-  vision__detectobject__field_descriptors,
-  vision__detectobject__field_indices_by_name,
-  1,  vision__detectobject__number_ranges,
-  (ProtobufCMessageInit) vision__detectobject__init,
-  NULL,NULL,NULL    /* reserved[123] */
-};
-static const ProtobufCFieldDescriptor vision__detectobjects__field_descriptors[3] =
-{
-  {
-    "id",
-    1,
-    PROTOBUF_C_LABEL_REQUIRED,
-    PROTOBUF_C_TYPE_ENUM,
-    0,   /* quantifier_offset */
-    offsetof(Vision__Detectobjects, id),
-    &vision__id__descriptor,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "object",
-    2,
-    PROTOBUF_C_LABEL_REPEATED,
-    PROTOBUF_C_TYPE_MESSAGE,
-    offsetof(Vision__Detectobjects, n_object),
-    offsetof(Vision__Detectobjects, object),
-    &vision__detectobject__descriptor,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "time",
-    3,
-    PROTOBUF_C_LABEL_OPTIONAL,
-    PROTOBUF_C_TYPE_MESSAGE,
-    0,   /* quantifier_offset */
-    offsetof(Vision__Detectobjects, time),
-    &vision__timestamp__descriptor,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-};
-static const unsigned vision__detectobjects__field_indices_by_name[] = {
-  0,   /* field[0] = id */
-  1,   /* field[1] = object */
-  2,   /* field[2] = time */
-};
-static const ProtobufCIntRange vision__detectobjects__number_ranges[1 + 1] =
-{
-  { 1, 0 },
-  { 0, 3 }
-};
-const ProtobufCMessageDescriptor vision__detectobjects__descriptor =
-{
-  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "vision.Detectobjects",
-  "Detectobjects",
-  "Vision__Detectobjects",
-  "vision",
-  sizeof(Vision__Detectobjects),
-  3,
-  vision__detectobjects__field_descriptors,
-  vision__detectobjects__field_indices_by_name,
-  1,  vision__detectobjects__number_ranges,
-  (ProtobufCMessageInit) vision__detectobjects__init,
-  NULL,NULL,NULL    /* reserved[123] */
-};
 static const ProtobufCFieldDescriptor vision__traffic_jam__field_descriptors[3] =
 {
   {
@@ -3152,6 +2884,276 @@ const ProtobufCMessageDescriptor vision__special_car_msg__descriptor =
   vision__special_car_msg__field_indices_by_name,
   1,  vision__special_car_msg__number_ranges,
   (ProtobufCMessageInit) vision__special_car_msg__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor vision__timestamp__field_descriptors[2] =
+{
+  {
+    "seconds",
+    1,
+    PROTOBUF_C_LABEL_REQUIRED,
+    PROTOBUF_C_TYPE_INT64,
+    0,   /* quantifier_offset */
+    offsetof(Vision__Timestamp, seconds),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "nanos",
+    2,
+    PROTOBUF_C_LABEL_REQUIRED,
+    PROTOBUF_C_TYPE_INT32,
+    0,   /* quantifier_offset */
+    offsetof(Vision__Timestamp, nanos),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned vision__timestamp__field_indices_by_name[] = {
+  1,   /* field[1] = nanos */
+  0,   /* field[0] = seconds */
+};
+static const ProtobufCIntRange vision__timestamp__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor vision__timestamp__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "vision.Timestamp",
+  "Timestamp",
+  "Vision__Timestamp",
+  "vision",
+  sizeof(Vision__Timestamp),
+  2,
+  vision__timestamp__field_descriptors,
+  vision__timestamp__field_indices_by_name,
+  1,  vision__timestamp__number_ranges,
+  (ProtobufCMessageInit) vision__timestamp__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor vision__detectobject__field_descriptors[10] =
+{
+  {
+    "object_id",
+    1,
+    PROTOBUF_C_LABEL_REQUIRED,
+    PROTOBUF_C_TYPE_INT32,
+    0,   /* quantifier_offset */
+    offsetof(Vision__Detectobject, object_id),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "object_type",
+    2,
+    PROTOBUF_C_LABEL_REQUIRED,
+    PROTOBUF_C_TYPE_ENUM,
+    0,   /* quantifier_offset */
+    offsetof(Vision__Detectobject, object_type),
+    &vision__type__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "longitudinalX",
+    3,
+    PROTOBUF_C_LABEL_REQUIRED,
+    PROTOBUF_C_TYPE_INT32,
+    0,   /* quantifier_offset */
+    offsetof(Vision__Detectobject, longitudinalx),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "lateralY",
+    4,
+    PROTOBUF_C_LABEL_REQUIRED,
+    PROTOBUF_C_TYPE_INT32,
+    0,   /* quantifier_offset */
+    offsetof(Vision__Detectobject, lateraly),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "velocity",
+    5,
+    PROTOBUF_C_LABEL_REQUIRED,
+    PROTOBUF_C_TYPE_INT32,
+    0,   /* quantifier_offset */
+    offsetof(Vision__Detectobject, velocity),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "camera",
+    6,
+    PROTOBUF_C_LABEL_REQUIRED,
+    PROTOBUF_C_TYPE_INT32,
+    0,   /* quantifier_offset */
+    offsetof(Vision__Detectobject, camera),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "if_at_lane",
+    7,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_INT32,
+    offsetof(Vision__Detectobject, has_if_at_lane),
+    offsetof(Vision__Detectobject, if_at_lane),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "lane_id",
+    8,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_INT32,
+    offsetof(Vision__Detectobject, has_lane_id),
+    offsetof(Vision__Detectobject, lane_id),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "heading",
+    9,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_INT32,
+    offsetof(Vision__Detectobject, has_heading),
+    offsetof(Vision__Detectobject, heading),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "lane_info",
+    10,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_INT32,
+    offsetof(Vision__Detectobject, has_lane_info),
+    offsetof(Vision__Detectobject, lane_info),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned vision__detectobject__field_indices_by_name[] = {
+  5,   /* field[5] = camera */
+  8,   /* field[8] = heading */
+  6,   /* field[6] = if_at_lane */
+  7,   /* field[7] = lane_id */
+  9,   /* field[9] = lane_info */
+  3,   /* field[3] = lateralY */
+  2,   /* field[2] = longitudinalX */
+  0,   /* field[0] = object_id */
+  1,   /* field[1] = object_type */
+  4,   /* field[4] = velocity */
+};
+static const ProtobufCIntRange vision__detectobject__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 10 }
+};
+const ProtobufCMessageDescriptor vision__detectobject__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "vision.Detectobject",
+  "Detectobject",
+  "Vision__Detectobject",
+  "vision",
+  sizeof(Vision__Detectobject),
+  10,
+  vision__detectobject__field_descriptors,
+  vision__detectobject__field_indices_by_name,
+  1,  vision__detectobject__number_ranges,
+  (ProtobufCMessageInit) vision__detectobject__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor vision__detectobjects__field_descriptors[3] =
+{
+  {
+    "id",
+    1,
+    PROTOBUF_C_LABEL_REQUIRED,
+    PROTOBUF_C_TYPE_ENUM,
+    0,   /* quantifier_offset */
+    offsetof(Vision__Detectobjects, id),
+    &vision__id__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "object",
+    2,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Vision__Detectobjects, n_object),
+    offsetof(Vision__Detectobjects, object),
+    &vision__detectobject__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "time",
+    3,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Vision__Detectobjects, time),
+    &vision__timestamp__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned vision__detectobjects__field_indices_by_name[] = {
+  0,   /* field[0] = id */
+  1,   /* field[1] = object */
+  2,   /* field[2] = time */
+};
+static const ProtobufCIntRange vision__detectobjects__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 3 }
+};
+const ProtobufCMessageDescriptor vision__detectobjects__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "vision.Detectobjects",
+  "Detectobjects",
+  "Vision__Detectobjects",
+  "vision",
+  sizeof(Vision__Detectobjects),
+  3,
+  vision__detectobjects__field_descriptors,
+  vision__detectobjects__field_indices_by_name,
+  1,  vision__detectobjects__number_ranges,
+  (ProtobufCMessageInit) vision__detectobjects__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
 static const ProtobufCEnumValue vision__id__enum_values_by_number[18] =

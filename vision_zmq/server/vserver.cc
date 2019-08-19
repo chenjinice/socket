@@ -358,8 +358,23 @@ void Vserver::send_data(vision::SpecialCarMsg &msg,struct timeval *tv, int ms)
 }
 
 // 车道线磨损
-void Vserver::send_data(vision::LaneWare &msg, timeval *tv, int ms)
+void Vserver::send_data(vision::LaneWare &msg, struct timeval *tv, int ms)
 {
+    // 限制一下发送频率
+    if(tv != NULL){
+        if(check_interval(tv,ms))return;
+    }
+    int len = 0;
+    uint8_t buffer[BUFFER_SIZE];
+    len = msg.ByteSize();
+    msg.SerializeToArray(buffer,len);
+    this->server_send(buffer,len);
+}
+
+// 发给融合程序的
+void Vserver::send_data(vision::Detectobjects &msg, struct timeval *tv, int ms)
+{
+    if(msg.object_size() == 0)return;
     // 限制一下发送频率
     if(tv != NULL){
         if(check_interval(tv,ms))return;

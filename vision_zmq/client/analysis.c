@@ -3,6 +3,23 @@
 #include "analysis.h"
 #include "vision.pb-c.h"
 
+
+// 发给融合程序的，rsu里边不需要这段代码
+static void detect_obj_fun(uint8_t *buffer,int length)
+{
+    int i;
+    Vision__Detectobjects *c = vision__detectobjects__unpack(NULL,length,buffer);
+    if(c == NULL){
+        printf("vclient : detect object unpack failed \n");
+        return;
+    }
+    for(i=0;i<c->n_object;i++){
+        Vision__Detectobject *p = c->object[i];
+        printf("vclient : object[%d],lng=%d,lat=%d,v=%d,type=%d\n",i,p->longitudinalx,p->lateraly,p->velocity,p->object_type);
+    }
+    vision__detectobjects__free_unpacked(c,NULL);
+}
+
 // 行人与动物闯入检测
 static void pedestrian_fun(uint8_t *buffer,int length)
 {
@@ -194,7 +211,6 @@ static void jam_fun(uint8_t *buffer,int length)
         }
         printf("\n");
     }
-
     vision__traffic_jam__free_unpacked(c,NULL);
 }
 
@@ -222,7 +238,6 @@ static void traffic_flow_fun(uint8_t *buffer,int length)
         }
         printf("]\n");
     }
-
     vision__traffic_flow__free_unpacked(c,NULL);
 }
 
@@ -298,6 +313,9 @@ void analysis(uint8_t *buffer,int len)
 
     switch(id)
     {
+        case VISION__ID__DETECTOBJECTS:     // 发给融合程序的，rsu里边不需要这段代码
+            detect_obj_fun(buffer,len);
+            break;
         case VISION__ID__PEDESTRIAN_D:      // 行人与动物闯入检测
             pedestrian_fun(buffer,len);
             break;

@@ -3,6 +3,26 @@
 
 using namespace vision;
 
+
+// 发给融合程序的
+void send_detect_object(Vserver &s)
+{
+    Detectobjects a;
+    Detectobject *p;
+    static struct timeval tv = {0};    // 时间结构体,用于限制发送频率
+    a.set_id(DETECTOBJECTS);
+    for(int i=0;i<1;i++){
+        p = a.add_object();
+        p->set_object_id(i);
+        p->set_object_type(ANIMAL);
+        p->set_longitudinalx(111111);
+        p->set_lateraly(222222);
+        p->set_velocity(333333);
+        p->set_camera(4);
+    }
+    s.send_data(a,&tv);
+}
+
 // 逆向行驶告警
 void send_backward_car(Vserver &s)	
 {	
@@ -284,25 +304,28 @@ void send_lane_ware(Vserver &s)
 }
 
 
+
+// ---------------------------- main -------------------------------------
+
 int main(int argc ,char **argv)
 {
     int this_port = 12347;
     char *remote_ip = (char *)"127.0.0.1";
     int   remote_port = 12348;
-
     if(argc >= 2)this_port = atoi(argv[1]);
     if(argc >= 3)remote_ip = argv[2];
     if(argc >= 4)remote_port = atoi(argv[3]);
 
 
-//    Vserver s(this_port);
-    //涉及到交互的初始化
-    Vserver s(this_port,remote_ip,remote_port);
-
+//    Vserver s(this_port); // 不用交互的初始化
+    Vserver s(this_port,remote_ip,remote_port); //涉及到交互的初始化
     s.start();
+
 
     while(1)
     {
+        send_detect_object(s);  // 发给融合程序的 ----------
+
         send_backward_car(s);   // 逆向行驶告警
         send_status(s);         // 交通态势感知
         send_abnormal_car(s);   // 异常车辆（静止）
