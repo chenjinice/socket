@@ -29,7 +29,7 @@ $(target):$(obj)
 	$(CXX) -o $(target) $(obj) $(inc_dir) $(lib_dir) $(lib)
 
 %.o:%.cc
-	$(CXX) -std=c++11 -c -o $@ $<
+	$(CXX) -std=c++11 -c -o $@ $< $(inc_dir)
 
 proto:vision.proto
 	protoc --cpp_out=. $<
