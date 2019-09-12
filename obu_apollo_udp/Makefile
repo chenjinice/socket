@@ -26,8 +26,8 @@ $(PROTO_SRC):obu_apollo.proto gps.proto
 
 clean:
 	-rm send.out recv.out send_arm.out recv_arm.out 
-	-rm obu_apollo.pb-c.c obu_apollo.pb-c.h
-	-rm gps.pb-c.c gps.pb-c.h
+#	-rm obu_apollo.pb-c.c obu_apollo.pb-c.h
+#	-rm gps.pb-c.c gps.pb-c.h
 	
 .PHONY: clean
 
