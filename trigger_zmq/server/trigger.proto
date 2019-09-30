@@ -1,0 +1,56 @@
+/*
+	雷达相关场景,与rsu通信协议 : V2019.09.30
+	修改log : 
+    	2019.09.30 : 初始版本   
+*/
+
+syntax = "proto2";
+
+
+package trigger;
+
+
+// 场景ID
+enum ID{
+	DEFAULT				= 0;  // 无用
+	SNAP				= 1;  // 抓拍物
+}
+
+
+// 单个抓拍物
+message SnapObj {
+    required int32 lng = 1;		//GPS_lon*1e7
+    required int32 lat = 2;		//GPS_lat*1e7
+    required int32 speed = 3;	//speed * 100 km/h	
+	required int32 camera = 4;	// 哪个相机（1,2,3,4） 
+	required int32 type = 5;	// 抓拍类型
+}
+
+// 时间戳
+message Timestamp {
+  required int64 seconds = 1;   // 秒
+  required int32 nanos = 2;		// 纳秒
+}
+
+
+message Base {
+	required ID id = 1;
+} 
+
+
+
+
+
+
+// ---------------------- to rsu ---------------------
+
+message SnapMsg {
+	required ID id = 1;
+	repeated SnapObj array = 2; 
+    required Timestamp time = 3;
+    
+}
+
+
+
+
