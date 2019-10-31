@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+
+package obuFaw;
+
+
+// 车辆实时状态信息 (obuMotion)
+message ObuMotion{
+	uint32 msgcount  = 1; // 累加的一个数，可以用来统计丢包数
+	int32  longitude = 2; // 经度*1e7
+	int32  latitude  = 3; // 纬度*1e7
+	uint32 heading   = 4; // 航线角度数*100
+	uint32 speed     = 5; // 速度(km/h)*100
+	double acc       = 6; // 加速度(m/s*s)
+	string devID     = 7; // 设备编号
+	uint64 gpsTime   = 8; // 时间戳(毫秒)
+	double altitude  = 9; // 高度
+}
+
+// 车辆CAN数据
+message CanInfo{
+	uint32 msgcount    =  1; // 累加的一个数，可以用来统计丢包数
+	string devID       =  2; // 设备编号
+	string trunLight   =  3; // 转向灯状态：左转，右转，关闭
+	string hazardLight =  4; // 危险灯状态：开启，关闭
+	string brakeState  =  5; // 刹车状态
+	string gasStatus   =  6; // 油门状态
+	string gearState   =  7; // 档位状态：P，D，N，R
+	double wheelAngle  =  8; // 方向盘转角
+	string driveState  =  9; // 驾驶状态：自动驾驶，人工驾驶
+	string abnormalState = 10;// 异常状态
+	uint64 gpsTime     = 11; // 时间戳(毫秒)
+	int32  longitude   = 12; // 经度*1e7
+	int32  latitude    = 13; // 纬度*1e7
+	double altitude    = 14; // 高度	
+	uint32 speed       = 15; // 速度(km/h)*10
+	uint32 heading     = 16; // 航线角度数*100
+}	
+
+
+
+// 要发送的数据
+message Msg{
+	// 发送其中一个
+  	oneof m{
+		ObuMotion motion = 1;
+		CanInfo   can    = 2;
+	}
+}
+
+
+
+

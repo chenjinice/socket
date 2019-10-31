@@ -9,7 +9,6 @@
 #*.pb.h
 *.txt.user
 radar/build
-ltev_tool/build
 
 
 
