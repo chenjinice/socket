@@ -9,6 +9,6 @@
 #*.pb.h
 *.txt.user
 radar/build
-*/build/
+send_to_other/obu_faw/build/
 
 
