@@ -9,6 +9,6 @@
 #*.pb.h
 *.txt.user
 radar/build
-
+*/build/
 
 
