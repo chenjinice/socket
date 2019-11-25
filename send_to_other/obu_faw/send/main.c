@@ -12,6 +12,7 @@ int setMotionMsg(uint8_t *buffer ,int buff_size)
     ObuFaw__ObuMotion motion = OBU_FAW__OBU_MOTION__INIT;
     msg.m_case = OBU_FAW__MSG__M_MOTION;
     msg.motion = &motion;
+
     motion.msgcount  = msg_count++;
     motion.longitude = 112.2345678*1e7;
     motion.latitude  = 24.1234567*1e7;
@@ -21,6 +22,7 @@ int setMotionMsg(uint8_t *buffer ,int buff_size)
     motion.devid     = "100001";
     motion.gpstime   = 1234567890123;
     motion.altitude  = 63.11;
+
     int len = obu_faw__msg__get_packed_size(&msg);
     if(len > buff_size){
         return -1;
@@ -37,6 +39,7 @@ int setCanMsg(uint8_t *buffer ,int buff_size)
     ObuFaw__Msg msg = OBU_FAW__MSG__INIT;
     ObuFaw__CanInfo can = OBU_FAW__CAN_INFO__INIT;
     msg.m_case = OBU_FAW__MSG__M_CAN;
+
     msg.can = &can;
     can.msgcount    = msg_count++;
     can.devid       = "100001";
