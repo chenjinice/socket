@@ -15,7 +15,8 @@ using namespace std;
 
 class Vserver
 {	
-public:	
+public:
+    Vserver();
     // port为socket端口
     Vserver(uint16_t host_port);
     /*  需要交互的初始化函数
@@ -26,6 +27,7 @@ public:
     Vserver(uint16_t host_port,char *remote_ip,uint16_t remote_port);
     ~Vserver();
 
+    void set_param(uint16_t host_port,char *remote_ip,uint16_t remote_port);
     void start();
     void stop();
     /* 下面是发送数据函数 ，

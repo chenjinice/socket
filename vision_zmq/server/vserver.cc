@@ -36,6 +36,11 @@ void Vserver::init()
     pthread_mutex_init(&m_mutex,NULL);
 }
 
+Vserver::Vserver()
+{
+    this->init();
+}
+
 Vserver::Vserver(uint16_t host_port)
 {	
     this->init();
@@ -55,8 +60,15 @@ Vserver::~Vserver()
     this->stop();
     pthread_mutex_destroy(&m_mutex);
     google::protobuf::ShutdownProtobufLibrary();
-	printf("~~~vserver~~~~~~~end~~~~ \n");
-}	
+    printf("~~~vserver~~~~~~~end~~~~ \n");
+}
+
+void Vserver::set_param(uint16_t host_port,char *remote_ip,uint16_t remote_port)
+{
+    m_host_port = host_port;
+    m_remote_ip = remote_ip;
+    m_remote_port = remote_port;
+}
 
 void Vserver::start()
 {	

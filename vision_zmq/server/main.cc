@@ -317,8 +317,9 @@ int main(int argc ,char **argv)
     if(argc >= 4)remote_port = atoi(argv[3]);
 
 
-//    Vserver s(this_port); // 不用交互的初始化
-    Vserver s(this_port,remote_ip,remote_port); //涉及到交互的初始化
+    Vserver s;  // 初始化,默认绑定本机发送端口12347
+    s.set_param(this_port,remote_ip,remote_port); // 设置本机发送端口，要订阅的远程ip和端口
+
     s.start();
 
 
