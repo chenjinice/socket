@@ -49,7 +49,7 @@ struct TableStruct_perception_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::google::protobuf::internal::ParseTable schema[14]
+  static const ::google::protobuf::internal::ParseTable schema[15]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
@@ -99,6 +99,9 @@ extern TimestampDefaultTypeInternal _Timestamp_default_instance_;
 class VisibilityMsg;
 class VisibilityMsgDefaultTypeInternal;
 extern VisibilityMsgDefaultTypeInternal _VisibilityMsg_default_instance_;
+class WarnMsg;
+class WarnMsgDefaultTypeInternal;
+extern WarnMsgDefaultTypeInternal _WarnMsg_default_instance_;
 }  // namespace perception
 namespace google {
 namespace protobuf {
@@ -116,6 +119,7 @@ template<> ::perception::Target* Arena::CreateMaybeMessage<::perception::Target>
 template<> ::perception::TargetMsg* Arena::CreateMaybeMessage<::perception::TargetMsg>(Arena*);
 template<> ::perception::Timestamp* Arena::CreateMaybeMessage<::perception::Timestamp>(Arena*);
 template<> ::perception::VisibilityMsg* Arena::CreateMaybeMessage<::perception::VisibilityMsg>(Arena*);
+template<> ::perception::WarnMsg* Arena::CreateMaybeMessage<::perception::WarnMsg>(Arena*);
 }  // namespace protobuf
 }  // namespace google
 namespace perception {
@@ -267,11 +271,15 @@ enum CarStatus {
   RETROGRADE = 1,
   OVER_SPEEDING = 2,
   LOW_SPEEDING = 3,
-  ILLEGAL_PARKING = 4
+  ILLEGAL_PARKING = 4,
+  LANE_PARKING = 5,
+  AREA_PARKING = 6,
+  CONTINUOUS_DIVERSION = 7,
+  LINE_PRESSING = 8
 };
 bool CarStatus_IsValid(int value);
 constexpr CarStatus CarStatus_MIN = STATUS_NORMAL;
-constexpr CarStatus CarStatus_MAX = ILLEGAL_PARKING;
+constexpr CarStatus CarStatus_MAX = LINE_PRESSING;
 constexpr int CarStatus_ARRAYSIZE = CarStatus_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* CarStatus_descriptor();
@@ -2362,6 +2370,130 @@ class TargetMsg final :
 };
 // -------------------------------------------------------------------
 
+class WarnMsg final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:perception.WarnMsg) */ {
+ public:
+  WarnMsg();
+  virtual ~WarnMsg();
+
+  WarnMsg(const WarnMsg& from);
+
+  inline WarnMsg& operator=(const WarnMsg& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  WarnMsg(WarnMsg&& from) noexcept
+    : WarnMsg() {
+    *this = ::std::move(from);
+  }
+
+  inline WarnMsg& operator=(WarnMsg&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const WarnMsg& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const WarnMsg* internal_default_instance() {
+    return reinterpret_cast<const WarnMsg*>(
+               &_WarnMsg_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    13;
+
+  void Swap(WarnMsg* other);
+  friend void swap(WarnMsg& a, WarnMsg& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline WarnMsg* New() const final {
+    return CreateMaybeMessage<WarnMsg>(nullptr);
+  }
+
+  WarnMsg* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<WarnMsg>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const WarnMsg& from);
+  void MergeFrom(const WarnMsg& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(WarnMsg* other);
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::google::protobuf::StringPiece FullMessageName() {
+    return "perception.WarnMsg";
+  }
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required bool warn = 1;
+  bool has_warn() const;
+  void clear_warn();
+  static const int kWarnFieldNumber = 1;
+  bool warn() const;
+  void set_warn(bool value);
+
+  // @@protoc_insertion_point(class_scope:perception.WarnMsg)
+ private:
+  class HasBitSetters;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::HasBits<1> _has_bits_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  bool warn_;
+  friend struct ::TableStruct_perception_2eproto;
+};
+// -------------------------------------------------------------------
+
 class PerceptionMsg final :
     public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:perception.PerceptionMsg) */ {
  public:
@@ -2417,7 +2549,7 @@ class PerceptionMsg final :
                &_PerceptionMsg_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    14;
 
   void Swap(PerceptionMsg* other);
   friend void swap(PerceptionMsg& a, PerceptionMsg& b) {
@@ -2493,12 +2625,14 @@ class PerceptionMsg final :
   ::perception::EventId event() const;
   void set_event(::perception::EventId value);
 
-  // optional bool warn_msg = 2;
+  // optional .perception.WarnMsg warn_msg = 2;
   bool has_warn_msg() const;
   void clear_warn_msg();
   static const int kWarnMsgFieldNumber = 2;
-  bool warn_msg() const;
-  void set_warn_msg(bool value);
+  const ::perception::WarnMsg& warn_msg() const;
+  ::perception::WarnMsg* release_warn_msg();
+  ::perception::WarnMsg* mutable_warn_msg();
+  void set_allocated_warn_msg(::perception::WarnMsg* warn_msg);
 
   // optional .perception.VisibilityMsg visibility_msg = 3;
   bool has_visibility_msg() const;
@@ -2567,7 +2701,7 @@ class PerceptionMsg final :
   int event_;
   union MsgTypeUnion {
     MsgTypeUnion() {}
-    bool warn_msg_;
+    ::perception::WarnMsg* warn_msg_;
     ::perception::VisibilityMsg* visibility_msg_;
     ::perception::LaneAreaMsg* lane_area_msg_;
     ::perception::JamMsg* jam_msg_;
@@ -3928,6 +4062,28 @@ TargetMsg::target() const {
 
 // -------------------------------------------------------------------
 
+// WarnMsg
+
+// required bool warn = 1;
+inline bool WarnMsg::has_warn() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void WarnMsg::clear_warn() {
+  warn_ = false;
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline bool WarnMsg::warn() const {
+  // @@protoc_insertion_point(field_get:perception.WarnMsg.warn)
+  return warn_;
+}
+inline void WarnMsg::set_warn(bool value) {
+  _has_bits_[0] |= 0x00000001u;
+  warn_ = value;
+  // @@protoc_insertion_point(field_set:perception.WarnMsg.warn)
+}
+
+// -------------------------------------------------------------------
+
 // PerceptionMsg
 
 // required .perception.EventId event = 1;
@@ -3949,7 +4105,7 @@ inline void PerceptionMsg::set_event(::perception::EventId value) {
   // @@protoc_insertion_point(field_set:perception.PerceptionMsg.event)
 }
 
-// optional bool warn_msg = 2;
+// optional .perception.WarnMsg warn_msg = 2;
 inline bool PerceptionMsg::has_warn_msg() const {
   return MsgType_case() == kWarnMsg;
 }
@@ -3958,24 +4114,36 @@ inline void PerceptionMsg::set_has_warn_msg() {
 }
 inline void PerceptionMsg::clear_warn_msg() {
   if (has_warn_msg()) {
-    MsgType_.warn_msg_ = false;
+    delete MsgType_.warn_msg_;
     clear_has_MsgType();
   }
 }
-inline bool PerceptionMsg::warn_msg() const {
-  // @@protoc_insertion_point(field_get:perception.PerceptionMsg.warn_msg)
+inline ::perception::WarnMsg* PerceptionMsg::release_warn_msg() {
+  // @@protoc_insertion_point(field_release:perception.PerceptionMsg.warn_msg)
   if (has_warn_msg()) {
-    return MsgType_.warn_msg_;
+    clear_has_MsgType();
+      ::perception::WarnMsg* temp = MsgType_.warn_msg_;
+    MsgType_.warn_msg_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
   }
-  return false;
 }
-inline void PerceptionMsg::set_warn_msg(bool value) {
+inline const ::perception::WarnMsg& PerceptionMsg::warn_msg() const {
+  // @@protoc_insertion_point(field_get:perception.PerceptionMsg.warn_msg)
+  return has_warn_msg()
+      ? *MsgType_.warn_msg_
+      : *reinterpret_cast< ::perception::WarnMsg*>(&::perception::_WarnMsg_default_instance_);
+}
+inline ::perception::WarnMsg* PerceptionMsg::mutable_warn_msg() {
   if (!has_warn_msg()) {
     clear_MsgType();
     set_has_warn_msg();
+    MsgType_.warn_msg_ = CreateMaybeMessage< ::perception::WarnMsg >(
+        GetArenaNoVirtual());
   }
-  MsgType_.warn_msg_ = value;
-  // @@protoc_insertion_point(field_set:perception.PerceptionMsg.warn_msg)
+  // @@protoc_insertion_point(field_mutable:perception.PerceptionMsg.warn_msg)
+  return MsgType_.warn_msg_;
 }
 
 // optional .perception.VisibilityMsg visibility_msg = 3;
@@ -4244,6 +4412,8 @@ inline PerceptionMsg::MsgTypeCase PerceptionMsg::MsgType_case() const {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

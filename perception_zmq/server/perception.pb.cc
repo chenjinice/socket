@@ -23,6 +23,7 @@ extern PROTOBUF_INTERNAL_EXPORT_perception_2eproto ::google::protobuf::internal:
 extern PROTOBUF_INTERNAL_EXPORT_perception_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Size_perception_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_perception_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Timestamp_perception_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_perception_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_VisibilityMsg_perception_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_perception_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_WarnMsg_perception_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_perception_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_JamMsg_perception_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_perception_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_LaneAreaMsg_perception_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_perception_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_LaneArea_perception_2eproto;
@@ -82,10 +83,14 @@ class TargetMsgDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<TargetMsg> _instance;
 } _TargetMsg_default_instance_;
+class WarnMsgDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<WarnMsg> _instance;
+} _WarnMsg_default_instance_;
 class PerceptionMsgDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<PerceptionMsg> _instance;
-  bool warn_msg_;
+  const ::perception::WarnMsg* warn_msg_;
   const ::perception::VisibilityMsg* visibility_msg_;
   const ::perception::LaneAreaMsg* lane_area_msg_;
   const ::perception::JamMsg* jam_msg_;
@@ -284,6 +289,20 @@ static void InitDefaultsTargetMsg_perception_2eproto() {
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsTargetMsg_perception_2eproto}, {
       &scc_info_Target_perception_2eproto.base,}};
 
+static void InitDefaultsWarnMsg_perception_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::perception::_WarnMsg_default_instance_;
+    new (ptr) ::perception::WarnMsg();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::perception::WarnMsg::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_WarnMsg_perception_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsWarnMsg_perception_2eproto}, {}};
+
 static void InitDefaultsPerceptionMsg_perception_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -295,8 +314,9 @@ static void InitDefaultsPerceptionMsg_perception_2eproto() {
   ::perception::PerceptionMsg::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<6> scc_info_PerceptionMsg_perception_2eproto =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 6, InitDefaultsPerceptionMsg_perception_2eproto}, {
+::google::protobuf::internal::SCCInfo<7> scc_info_PerceptionMsg_perception_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 7, InitDefaultsPerceptionMsg_perception_2eproto}, {
+      &scc_info_WarnMsg_perception_2eproto.base,
       &scc_info_VisibilityMsg_perception_2eproto.base,
       &scc_info_LaneAreaMsg_perception_2eproto.base,
       &scc_info_JamMsg_perception_2eproto.base,
@@ -318,10 +338,11 @@ void InitDefaults_perception_2eproto() {
   ::google::protobuf::internal::InitSCC(&scc_info_JamMsg_perception_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_FlowMsg_perception_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_TargetMsg_perception_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_WarnMsg_perception_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_PerceptionMsg_perception_2eproto.base);
 }
 
-static ::google::protobuf::Metadata file_level_metadata_perception_2eproto[14];
+static ::google::protobuf::Metadata file_level_metadata_perception_2eproto[15];
 static const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors_perception_2eproto[8];
 static constexpr ::google::protobuf::ServiceDescriptor const** file_level_service_descriptors_perception_2eproto = nullptr;
 
@@ -501,6 +522,13 @@ const ::google::protobuf::uint32 TableStruct_perception_2eproto::offsets[] PROTO
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::perception::TargetMsg, target_),
   ~0u,
+  PROTOBUF_FIELD_OFFSET(::perception::WarnMsg, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::perception::WarnMsg, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::perception::WarnMsg, warn_),
+  0,
   PROTOBUF_FIELD_OFFSET(::perception::PerceptionMsg, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::perception::PerceptionMsg, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -538,7 +566,8 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] PROTOBUF_SE
   { 150, 156, sizeof(::perception::JamMsg)},
   { 157, 165, sizeof(::perception::FlowMsg)},
   { 168, 174, sizeof(::perception::TargetMsg)},
-  { 175, 189, sizeof(::perception::PerceptionMsg)},
+  { 175, 181, sizeof(::perception::WarnMsg)},
+  { 182, 196, sizeof(::perception::PerceptionMsg)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -555,13 +584,14 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::perception::_JamMsg_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::perception::_FlowMsg_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::perception::_TargetMsg_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::perception::_WarnMsg_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::perception::_PerceptionMsg_default_instance_),
 };
 
 static ::google::protobuf::internal::AssignDescriptorsTable assign_descriptors_table_perception_2eproto = {
   {}, AddDescriptors_perception_2eproto, "perception.proto", schemas,
   file_default_instances, TableStruct_perception_2eproto::offsets,
-  file_level_metadata_perception_2eproto, 14, file_level_enum_descriptors_perception_2eproto, file_level_service_descriptors_perception_2eproto,
+  file_level_metadata_perception_2eproto, 15, file_level_enum_descriptors_perception_2eproto, file_level_service_descriptors_perception_2eproto,
 };
 
 const char descriptor_table_protodef_perception_2eproto[] =
@@ -603,41 +633,44 @@ const char descriptor_table_protodef_perception_2eproto[] =
   "low\022)\n\ntime_begin\030\002 \001(\0132\025.perception.Tim"
   "estamp\022\'\n\010time_end\030\003 \001(\0132\025.perception.Ti"
   "mestamp\"/\n\tTargetMsg\022\"\n\006target\030\002 \003(\0132\022.p"
-  "erception.Target\"\333\002\n\rPerceptionMsg\022\"\n\005ev"
-  "ent\030\001 \002(\0162\023.perception.EventId\022\022\n\010warn_m"
-  "sg\030\002 \001(\010H\000\0223\n\016visibility_msg\030\003 \001(\0132\031.per"
-  "ception.VisibilityMsgH\000\0220\n\rlane_area_msg"
-  "\030\004 \001(\0132\027.perception.LaneAreaMsgH\000\022%\n\007jam"
-  "_msg\030\005 \001(\0132\022.perception.JamMsgH\000\022\'\n\010flow"
-  "_msg\030\006 \001(\0132\023.perception.FlowMsgH\000\022+\n\ntar"
-  "get_msg\030\007 \001(\0132\025.perception.TargetMsgH\000\022#"
-  "\n\004time\030\010 \001(\0132\025.perception.TimestampB\t\n\007M"
-  "sgType*\031\n\007Version\022\016\n\007VERSION\020\232\371\320\t*\325\002\n\007Ev"
-  "entId\022\016\n\nEVENT_NONE\020\000\022\016\n\nPEDESTRIAN\020\001\022\016\n"
-  "\nILLEGAL_V1\020\002\022\016\n\nVISIBILITY\020\003\022\022\n\016AVAILAB"
-  "LE_AREA\020\004\022\020\n\014ABNORMAL_CAR\020\005\022\016\n\nILLEGAL_V"
-  "2\020\006\022\022\n\016TRAFFIC_STATUS\020\007\022\024\n\020BACKWARD_DRIV"
-  "ING\020\010\022\017\n\013ROAD_DANGER\020\t\022\016\n\nFIRE_SMOKE\020\n\022\024"
-  "\n\020TARGET_TO_FUSION\020\013\022\017\n\013TRAFFIC_JAM\020\014\022\020\n"
-  "\014TRAFFIC_FLOW\020\r\022\016\n\nSPECIALCAR\020\016\022\014\n\010ACCID"
-  "ENT\020\017\022\013\n\007ICEWARN\020\020\022\r\n\tLANE_WARE\020\021\022\014\n\010SPE"
-  "EDING\020\022\022\010\n\004SNAP\020\023*=\n\006Source\022\010\n\004None\020\000\022\t\n"
-  "\005RADAR\020\001\022\n\n\006VISION\020\002\022\t\n\005LIDAR\020\003\022\007\n\003V2X\020\004"
-  "*J\n\nTargetType\022\n\n\006OTHERS\020\000\022\t\n\005HUMAN\020\001\022\013\n"
-  "\007VEHICLE\020\002\022\n\n\006ANIMAL\020\003\022\014\n\010OBSTACLE\020\004*b\n\007"
-  "CarType\022\n\n\006NORMAL\020\000\022\016\n\nMOTORCYCLE\020\001\022\r\n\tA"
-  "MBULANCE\020\002\022\r\n\tDANGERCAR\020\003\022\016\n\nFIREENGINE\020"
-  "\004\022\r\n\tPOLICECAR\020\005*h\n\tCarStatus\022\021\n\rSTATUS_"
-  "NORMAL\020\000\022\016\n\nRETROGRADE\020\001\022\021\n\rOVER_SPEEDIN"
-  "G\020\002\022\020\n\014LOW_SPEEDING\020\003\022\023\n\017ILLEGAL_PARKING"
-  "\020\004*M\n\010WareType\022\r\n\tWARE_NONE\020\000\022\014\n\010FULLLIN"
-  "E\020\001\022\016\n\nDOTTEDLINE\020\002\022\024\n\020DOUBLEYELLOWLINE\020"
-  "\003"
+  "erception.Target\"\027\n\007WarnMsg\022\014\n\004warn\030\001 \002("
+  "\010\"\360\002\n\rPerceptionMsg\022\"\n\005event\030\001 \002(\0162\023.per"
+  "ception.EventId\022\'\n\010warn_msg\030\002 \001(\0132\023.perc"
+  "eption.WarnMsgH\000\0223\n\016visibility_msg\030\003 \001(\013"
+  "2\031.perception.VisibilityMsgH\000\0220\n\rlane_ar"
+  "ea_msg\030\004 \001(\0132\027.perception.LaneAreaMsgH\000\022"
+  "%\n\007jam_msg\030\005 \001(\0132\022.perception.JamMsgH\000\022\'"
+  "\n\010flow_msg\030\006 \001(\0132\023.perception.FlowMsgH\000\022"
+  "+\n\ntarget_msg\030\007 \001(\0132\025.perception.TargetM"
+  "sgH\000\022#\n\004time\030\010 \001(\0132\025.perception.Timestam"
+  "pB\t\n\007MsgType*\031\n\007Version\022\016\n\007VERSION\020\232\371\320\t*"
+  "\325\002\n\007EventId\022\016\n\nEVENT_NONE\020\000\022\016\n\nPEDESTRIA"
+  "N\020\001\022\016\n\nILLEGAL_V1\020\002\022\016\n\nVISIBILITY\020\003\022\022\n\016A"
+  "VAILABLE_AREA\020\004\022\020\n\014ABNORMAL_CAR\020\005\022\016\n\nILL"
+  "EGAL_V2\020\006\022\022\n\016TRAFFIC_STATUS\020\007\022\024\n\020BACKWAR"
+  "D_DRIVING\020\010\022\017\n\013ROAD_DANGER\020\t\022\016\n\nFIRE_SMO"
+  "KE\020\n\022\024\n\020TARGET_TO_FUSION\020\013\022\017\n\013TRAFFIC_JA"
+  "M\020\014\022\020\n\014TRAFFIC_FLOW\020\r\022\016\n\nSPECIALCAR\020\016\022\014\n"
+  "\010ACCIDENT\020\017\022\013\n\007ICEWARN\020\020\022\r\n\tLANE_WARE\020\021\022"
+  "\014\n\010SPEEDING\020\022\022\010\n\004SNAP\020\023*=\n\006Source\022\010\n\004Non"
+  "e\020\000\022\t\n\005RADAR\020\001\022\n\n\006VISION\020\002\022\t\n\005LIDAR\020\003\022\007\n"
+  "\003V2X\020\004*J\n\nTargetType\022\n\n\006OTHERS\020\000\022\t\n\005HUMA"
+  "N\020\001\022\013\n\007VEHICLE\020\002\022\n\n\006ANIMAL\020\003\022\014\n\010OBSTACLE"
+  "\020\004*b\n\007CarType\022\n\n\006NORMAL\020\000\022\016\n\nMOTORCYCLE\020"
+  "\001\022\r\n\tAMBULANCE\020\002\022\r\n\tDANGERCAR\020\003\022\016\n\nFIREE"
+  "NGINE\020\004\022\r\n\tPOLICECAR\020\005*\271\001\n\tCarStatus\022\021\n\r"
+  "STATUS_NORMAL\020\000\022\016\n\nRETROGRADE\020\001\022\021\n\rOVER_"
+  "SPEEDING\020\002\022\020\n\014LOW_SPEEDING\020\003\022\023\n\017ILLEGAL_"
+  "PARKING\020\004\022\020\n\014LANE_PARKING\020\005\022\020\n\014AREA_PARK"
+  "ING\020\006\022\030\n\024CONTINUOUS_DIVERSION\020\007\022\021\n\rLINE_"
+  "PRESSING\020\010*M\n\010WareType\022\r\n\tWARE_NONE\020\000\022\014\n"
+  "\010FULLLINE\020\001\022\016\n\nDOTTEDLINE\020\002\022\024\n\020DOUBLEYEL"
+  "LOWLINE\020\003"
   ;
 static ::google::protobuf::internal::DescriptorTable descriptor_table_perception_2eproto = {
   false, InitDefaults_perception_2eproto, 
   descriptor_table_protodef_perception_2eproto,
-  "perception.proto", &assign_descriptors_table_perception_2eproto, 2681,
+  "perception.proto", &assign_descriptors_table_perception_2eproto, 2809,
 };
 
 void AddDescriptors_perception_2eproto() {
@@ -781,6 +814,10 @@ bool CarStatus_IsValid(int value) {
     case 2:
     case 3:
     case 4:
+    case 5:
+    case 6:
+    case 7:
+    case 8:
       return true;
     default:
       return false;
@@ -6649,8 +6686,268 @@ void TargetMsg::InternalSwap(TargetMsg* other) {
 
 // ===================================================================
 
+void WarnMsg::InitAsDefaultInstance() {
+}
+class WarnMsg::HasBitSetters {
+ public:
+  static void set_has_warn(WarnMsg* msg) {
+    msg->_has_bits_[0] |= 0x00000001u;
+  }
+};
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int WarnMsg::kWarnFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+WarnMsg::WarnMsg()
+  : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:perception.WarnMsg)
+}
+WarnMsg::WarnMsg(const WarnMsg& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(nullptr),
+      _has_bits_(from._has_bits_) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  warn_ = from.warn_;
+  // @@protoc_insertion_point(copy_constructor:perception.WarnMsg)
+}
+
+void WarnMsg::SharedCtor() {
+  warn_ = false;
+}
+
+WarnMsg::~WarnMsg() {
+  // @@protoc_insertion_point(destructor:perception.WarnMsg)
+  SharedDtor();
+}
+
+void WarnMsg::SharedDtor() {
+}
+
+void WarnMsg::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const WarnMsg& WarnMsg::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_WarnMsg_perception_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void WarnMsg::Clear() {
+// @@protoc_insertion_point(message_clear_start:perception.WarnMsg)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  warn_ = false;
+  _has_bits_.Clear();
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* WarnMsg::_InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) {
+  while (!ctx->Done(&ptr)) {
+    ::google::protobuf::uint32 tag;
+    ptr = ::google::protobuf::internal::ReadTag(ptr, &tag);
+    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+    switch (tag >> 3) {
+      // required bool warn = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
+        set_warn(::google::protobuf::internal::ReadVarint(&ptr));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          return ptr;
+        }
+        ptr = UnknownFieldParse(tag,
+          _internal_metadata_.mutable_unknown_fields(), ptr, ctx);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr != nullptr);
+        break;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool WarnMsg::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:perception.WarnMsg)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required bool warn = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
+          HasBitSetters::set_has_warn(this);
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &warn_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:perception.WarnMsg)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:perception.WarnMsg)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void WarnMsg::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:perception.WarnMsg)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  // required bool warn = 1;
+  if (cached_has_bits & 0x00000001u) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->warn(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:perception.WarnMsg)
+}
+
+::google::protobuf::uint8* WarnMsg::InternalSerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:perception.WarnMsg)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  // required bool warn = 1;
+  if (cached_has_bits & 0x00000001u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->warn(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:perception.WarnMsg)
+  return target;
+}
+
+size_t WarnMsg::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:perception.WarnMsg)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  // required bool warn = 1;
+  if (has_warn()) {
+    total_size += 1 + 1;
+  }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void WarnMsg::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:perception.WarnMsg)
+  GOOGLE_DCHECK_NE(&from, this);
+  const WarnMsg* source =
+      ::google::protobuf::DynamicCastToGenerated<WarnMsg>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:perception.WarnMsg)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:perception.WarnMsg)
+    MergeFrom(*source);
+  }
+}
+
+void WarnMsg::MergeFrom(const WarnMsg& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:perception.WarnMsg)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.has_warn()) {
+    set_warn(from.warn());
+  }
+}
+
+void WarnMsg::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:perception.WarnMsg)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void WarnMsg::CopyFrom(const WarnMsg& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:perception.WarnMsg)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool WarnMsg::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+  return true;
+}
+
+void WarnMsg::Swap(WarnMsg* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void WarnMsg::InternalSwap(WarnMsg* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
+  swap(warn_, other->warn_);
+}
+
+::google::protobuf::Metadata WarnMsg::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_perception_2eproto);
+  return ::file_level_metadata_perception_2eproto[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
 void PerceptionMsg::InitAsDefaultInstance() {
-  ::perception::_PerceptionMsg_default_instance_.warn_msg_ = false;
+  ::perception::_PerceptionMsg_default_instance_.warn_msg_ = const_cast< ::perception::WarnMsg*>(
+      ::perception::WarnMsg::internal_default_instance());
   ::perception::_PerceptionMsg_default_instance_.visibility_msg_ = const_cast< ::perception::VisibilityMsg*>(
       ::perception::VisibilityMsg::internal_default_instance());
   ::perception::_PerceptionMsg_default_instance_.lane_area_msg_ = const_cast< ::perception::LaneAreaMsg*>(
@@ -6669,6 +6966,7 @@ class PerceptionMsg::HasBitSetters {
   static void set_has_event(PerceptionMsg* msg) {
     msg->_has_bits_[0] |= 0x00000002u;
   }
+  static const ::perception::WarnMsg& warn_msg(const PerceptionMsg* msg);
   static const ::perception::VisibilityMsg& visibility_msg(const PerceptionMsg* msg);
   static const ::perception::LaneAreaMsg& lane_area_msg(const PerceptionMsg* msg);
   static const ::perception::JamMsg& jam_msg(const PerceptionMsg* msg);
@@ -6680,6 +6978,10 @@ class PerceptionMsg::HasBitSetters {
   }
 };
 
+const ::perception::WarnMsg&
+PerceptionMsg::HasBitSetters::warn_msg(const PerceptionMsg* msg) {
+  return *msg->MsgType_.warn_msg_;
+}
 const ::perception::VisibilityMsg&
 PerceptionMsg::HasBitSetters::visibility_msg(const PerceptionMsg* msg) {
   return *msg->MsgType_.visibility_msg_;
@@ -6703,6 +7005,20 @@ PerceptionMsg::HasBitSetters::target_msg(const PerceptionMsg* msg) {
 const ::perception::Timestamp&
 PerceptionMsg::HasBitSetters::time(const PerceptionMsg* msg) {
   return *msg->time_;
+}
+void PerceptionMsg::set_allocated_warn_msg(::perception::WarnMsg* warn_msg) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  clear_MsgType();
+  if (warn_msg) {
+    ::google::protobuf::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      warn_msg = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, warn_msg, submessage_arena);
+    }
+    set_has_warn_msg();
+    MsgType_.warn_msg_ = warn_msg;
+  }
+  // @@protoc_insertion_point(field_set_allocated:perception.PerceptionMsg.warn_msg)
 }
 void PerceptionMsg::set_allocated_visibility_msg(::perception::VisibilityMsg* visibility_msg) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
@@ -6804,7 +7120,7 @@ PerceptionMsg::PerceptionMsg(const PerceptionMsg& from)
   clear_has_MsgType();
   switch (from.MsgType_case()) {
     case kWarnMsg: {
-      set_warn_msg(from.warn_msg());
+      mutable_warn_msg()->::perception::WarnMsg::MergeFrom(from.warn_msg());
       break;
     }
     case kVisibilityMsg: {
@@ -6868,7 +7184,7 @@ void PerceptionMsg::clear_MsgType() {
 // @@protoc_insertion_point(one_of_clear_start:perception.PerceptionMsg)
   switch (MsgType_case()) {
     case kWarnMsg: {
-      // No need to clear
+      delete MsgType_.warn_msg_;
       break;
     }
     case kVisibilityMsg: {
@@ -6935,10 +7251,10 @@ const char* PerceptionMsg::_InternalParse(const char* ptr, ::google::protobuf::i
         set_event(static_cast<::perception::EventId>(val));
         break;
       }
-      // optional bool warn_msg = 2;
+      // optional .perception.WarnMsg warn_msg = 2;
       case 2: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
-        set_warn_msg(::google::protobuf::internal::ReadVarint(&ptr));
+        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
+        ptr = ctx->ParseMessage(mutable_warn_msg(), ptr);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
@@ -7029,14 +7345,11 @@ bool PerceptionMsg::MergePartialFromCodedStream(
         break;
       }
 
-      // optional bool warn_msg = 2;
+      // optional .perception.WarnMsg warn_msg = 2;
       case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
-          clear_MsgType();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &MsgType_.warn_msg_)));
-          set_has_warn_msg();
+        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+               input, mutable_warn_msg()));
         } else {
           goto handle_unusual;
         }
@@ -7145,7 +7458,8 @@ void PerceptionMsg::SerializeWithCachedSizes(
 
   switch (MsgType_case()) {
     case kWarnMsg:
-      ::google::protobuf::internal::WireFormatLite::WriteBool(2, this->warn_msg(), output);
+      ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+        2, HasBitSetters::warn_msg(this), output);
       break;
     case kVisibilityMsg:
       ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
@@ -7197,7 +7511,9 @@ void PerceptionMsg::SerializeWithCachedSizes(
 
   switch (MsgType_case()) {
     case kWarnMsg:
-      target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(2, this->warn_msg(), target);
+      target = ::google::protobuf::internal::WireFormatLite::
+        InternalWriteMessageToArray(
+          2, HasBitSetters::warn_msg(this), target);
       break;
     case kVisibilityMsg:
       target = ::google::protobuf::internal::WireFormatLite::
@@ -7268,9 +7584,11 @@ size_t PerceptionMsg::ByteSizeLong() const {
   }
 
   switch (MsgType_case()) {
-    // optional bool warn_msg = 2;
+    // optional .perception.WarnMsg warn_msg = 2;
     case kWarnMsg: {
-      total_size += 1 + 1;
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          *MsgType_.warn_msg_);
       break;
     }
     // optional .perception.VisibilityMsg visibility_msg = 3;
@@ -7351,7 +7669,7 @@ void PerceptionMsg::MergeFrom(const PerceptionMsg& from) {
   }
   switch (from.MsgType_case()) {
     case kWarnMsg: {
-      set_warn_msg(from.warn_msg());
+      mutable_warn_msg()->::perception::WarnMsg::MergeFrom(from.warn_msg());
       break;
     }
     case kVisibilityMsg: {
@@ -7401,6 +7719,9 @@ bool PerceptionMsg::IsInitialized() const {
   }
   switch (MsgType_case()) {
     case kWarnMsg: {
+      if (has_warn_msg()) {
+        if (!this->warn_msg().IsInitialized()) return false;
+      }
       break;
     }
     case kVisibilityMsg: {
@@ -7502,6 +7823,9 @@ template<> PROTOBUF_NOINLINE ::perception::FlowMsg* Arena::CreateMaybeMessage< :
 }
 template<> PROTOBUF_NOINLINE ::perception::TargetMsg* Arena::CreateMaybeMessage< ::perception::TargetMsg >(Arena* arena) {
   return Arena::CreateInternal< ::perception::TargetMsg >(arena);
+}
+template<> PROTOBUF_NOINLINE ::perception::WarnMsg* Arena::CreateMaybeMessage< ::perception::WarnMsg >(Arena* arena) {
+  return Arena::CreateInternal< ::perception::WarnMsg >(arena);
 }
 template<> PROTOBUF_NOINLINE ::perception::PerceptionMsg* Arena::CreateMaybeMessage< ::perception::PerceptionMsg >(Arena* arena) {
   return Arena::CreateInternal< ::perception::PerceptionMsg >(arena);

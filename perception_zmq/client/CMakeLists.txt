@@ -21,7 +21,7 @@ add_executable(${TARGET}
 target_link_libraries (${TARGET}
     pthread
     zmq
-    protobuf
+    protobuf-c
 )
 
 

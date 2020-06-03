@@ -101,12 +101,10 @@ void Vserver::stop()
 
 void Vserver::run()
 {
-    uint8_t filter[40] = {0};
     uint8_t buffer[BUFFER_SIZE];
     int len;
     while (m_ready){
         memset(buffer,0,sizeof(buffer));
-        len = zmq_recv(m_subscriber,filter,sizeof(filter),0);
         len = zmq_recv(m_subscriber,buffer,sizeof(buffer),0);
         if(len == -1)continue;
         if(len > BUFFER_SIZE){

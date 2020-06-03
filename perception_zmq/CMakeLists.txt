@@ -19,10 +19,9 @@ link_directories(
 )
 
 
-
 # 执行子目录的cmake
 add_subdirectory(server)
-#add_subdirectory(client)
+add_subdirectory(client)
 #add_subdirectory(client_c)
 
 
