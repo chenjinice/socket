@@ -225,8 +225,9 @@ enum TargetType {
   OTHERS = 0,
   HUMAN = 1,
   VEHICLE = 2,
-  ANIMAL = 3,
-  OBSTACLE = 4
+  MOTORCYCLE = 3,
+  ANIMAL = 4,
+  OBSTACLE = 5
 };
 bool TargetType_IsValid(int value);
 constexpr TargetType TargetType_MIN = OTHERS;
@@ -245,11 +246,10 @@ inline bool TargetType_Parse(
 }
 enum CarType {
   NORMAL = 0,
-  MOTORCYCLE = 1,
-  AMBULANCE = 2,
-  DANGERCAR = 3,
-  FIREENGINE = 4,
-  POLICECAR = 5
+  AMBULANCE = 1,
+  DANGERCAR = 2,
+  FIREENGINE = 3,
+  POLICECAR = 4
 };
 bool CarType_IsValid(int value);
 constexpr CarType CarType_MIN = NORMAL;

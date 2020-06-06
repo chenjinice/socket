@@ -2043,22 +2043,24 @@ const ProtobufCEnumDescriptor perception__source__descriptor =
   perception__source__value_ranges,
   NULL,NULL,NULL,NULL   /* reserved[1234] */
 };
-static const ProtobufCEnumValue perception__target_type__enum_values_by_number[5] =
+static const ProtobufCEnumValue perception__target_type__enum_values_by_number[6] =
 {
   { "OTHERS", "PERCEPTION__TARGET_TYPE__OTHERS", 0 },
   { "HUMAN", "PERCEPTION__TARGET_TYPE__HUMAN", 1 },
   { "VEHICLE", "PERCEPTION__TARGET_TYPE__VEHICLE", 2 },
-  { "ANIMAL", "PERCEPTION__TARGET_TYPE__ANIMAL", 3 },
-  { "OBSTACLE", "PERCEPTION__TARGET_TYPE__OBSTACLE", 4 },
+  { "MOTORCYCLE", "PERCEPTION__TARGET_TYPE__MOTORCYCLE", 3 },
+  { "ANIMAL", "PERCEPTION__TARGET_TYPE__ANIMAL", 4 },
+  { "OBSTACLE", "PERCEPTION__TARGET_TYPE__OBSTACLE", 5 },
 };
 static const ProtobufCIntRange perception__target_type__value_ranges[] = {
-{0, 0},{0, 5}
+{0, 0},{0, 6}
 };
-static const ProtobufCEnumValueIndex perception__target_type__enum_values_by_name[5] =
+static const ProtobufCEnumValueIndex perception__target_type__enum_values_by_name[6] =
 {
-  { "ANIMAL", 3 },
+  { "ANIMAL", 4 },
   { "HUMAN", 1 },
-  { "OBSTACLE", 4 },
+  { "MOTORCYCLE", 3 },
+  { "OBSTACLE", 5 },
   { "OTHERS", 0 },
   { "VEHICLE", 2 },
 };
@@ -2069,34 +2071,32 @@ const ProtobufCEnumDescriptor perception__target_type__descriptor =
   "TargetType",
   "Perception__TargetType",
   "perception",
-  5,
+  6,
   perception__target_type__enum_values_by_number,
-  5,
+  6,
   perception__target_type__enum_values_by_name,
   1,
   perception__target_type__value_ranges,
   NULL,NULL,NULL,NULL   /* reserved[1234] */
 };
-static const ProtobufCEnumValue perception__car_type__enum_values_by_number[6] =
+static const ProtobufCEnumValue perception__car_type__enum_values_by_number[5] =
 {
   { "NORMAL", "PERCEPTION__CAR_TYPE__NORMAL", 0 },
-  { "MOTORCYCLE", "PERCEPTION__CAR_TYPE__MOTORCYCLE", 1 },
-  { "AMBULANCE", "PERCEPTION__CAR_TYPE__AMBULANCE", 2 },
-  { "DANGERCAR", "PERCEPTION__CAR_TYPE__DANGERCAR", 3 },
-  { "FIREENGINE", "PERCEPTION__CAR_TYPE__FIREENGINE", 4 },
-  { "POLICECAR", "PERCEPTION__CAR_TYPE__POLICECAR", 5 },
+  { "AMBULANCE", "PERCEPTION__CAR_TYPE__AMBULANCE", 1 },
+  { "DANGERCAR", "PERCEPTION__CAR_TYPE__DANGERCAR", 2 },
+  { "FIREENGINE", "PERCEPTION__CAR_TYPE__FIREENGINE", 3 },
+  { "POLICECAR", "PERCEPTION__CAR_TYPE__POLICECAR", 4 },
 };
 static const ProtobufCIntRange perception__car_type__value_ranges[] = {
-{0, 0},{0, 6}
+{0, 0},{0, 5}
 };
-static const ProtobufCEnumValueIndex perception__car_type__enum_values_by_name[6] =
+static const ProtobufCEnumValueIndex perception__car_type__enum_values_by_name[5] =
 {
-  { "AMBULANCE", 2 },
-  { "DANGERCAR", 3 },
-  { "FIREENGINE", 4 },
-  { "MOTORCYCLE", 1 },
+  { "AMBULANCE", 1 },
+  { "DANGERCAR", 2 },
+  { "FIREENGINE", 3 },
   { "NORMAL", 0 },
-  { "POLICECAR", 5 },
+  { "POLICECAR", 4 },
 };
 const ProtobufCEnumDescriptor perception__car_type__descriptor =
 {
@@ -2105,9 +2105,9 @@ const ProtobufCEnumDescriptor perception__car_type__descriptor =
   "CarType",
   "Perception__CarType",
   "perception",
-  6,
+  5,
   perception__car_type__enum_values_by_number,
-  6,
+  5,
   perception__car_type__enum_values_by_name,
   1,
   perception__car_type__value_ranges,

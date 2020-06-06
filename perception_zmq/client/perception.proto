@@ -53,18 +53,18 @@ enum TargetType{
     OTHERS                                      = 0;        // 其他
     HUMAN                                       = 1;        // 人
     VEHICLE                                     = 2;        // 车
-    ANIMAL                                      = 3;        // 动物
-    OBSTACLE                                    = 4;        // 障碍物
+    MOTORCYCLE                                  = 3;        // 摩托车    
+    ANIMAL                                      = 4;        // 动物
+    OBSTACLE                                    = 5;        // 障碍物
 }                                                           
                                                             
 // 车的类型                                                 
 enum CarType{                                               
     NORMAL                                      = 0;        // 普通
-    MOTORCYCLE                                  = 1;        // 摩托车
-    AMBULANCE                                   = 2;        // 救护车
-    DANGERCAR                                   = 3;        // 危险品车辆
-    FIREENGINE                                  = 4;        // 消防车
-    POLICECAR                                   = 5;        // 警车
+    AMBULANCE                                   = 1;        // 救护车
+    DANGERCAR                                   = 2;        // 危险品车辆
+    FIREENGINE                                  = 3;        // 消防车
+    POLICECAR                                   = 4;        // 警车
 }              
 
 // 车的状态

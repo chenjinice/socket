@@ -182,13 +182,17 @@ typedef enum _Perception__TargetType {
    */
   PERCEPTION__TARGET_TYPE__VEHICLE = 2,
   /*
+   * 摩托车    
+   */
+  PERCEPTION__TARGET_TYPE__MOTORCYCLE = 3,
+  /*
    * 动物
    */
-  PERCEPTION__TARGET_TYPE__ANIMAL = 3,
+  PERCEPTION__TARGET_TYPE__ANIMAL = 4,
   /*
    * 障碍物
    */
-  PERCEPTION__TARGET_TYPE__OBSTACLE = 4
+  PERCEPTION__TARGET_TYPE__OBSTACLE = 5
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(PERCEPTION__TARGET_TYPE)
 } Perception__TargetType;
 /*
@@ -200,25 +204,21 @@ typedef enum _Perception__CarType {
    */
   PERCEPTION__CAR_TYPE__NORMAL = 0,
   /*
-   * 摩托车
-   */
-  PERCEPTION__CAR_TYPE__MOTORCYCLE = 1,
-  /*
    * 救护车
    */
-  PERCEPTION__CAR_TYPE__AMBULANCE = 2,
+  PERCEPTION__CAR_TYPE__AMBULANCE = 1,
   /*
    * 危险品车辆
    */
-  PERCEPTION__CAR_TYPE__DANGERCAR = 3,
+  PERCEPTION__CAR_TYPE__DANGERCAR = 2,
   /*
    * 消防车
    */
-  PERCEPTION__CAR_TYPE__FIREENGINE = 4,
+  PERCEPTION__CAR_TYPE__FIREENGINE = 3,
   /*
    * 警车
    */
-  PERCEPTION__CAR_TYPE__POLICECAR = 5
+  PERCEPTION__CAR_TYPE__POLICECAR = 4
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(PERCEPTION__CAR_TYPE)
 } Perception__CarType;
 /*
