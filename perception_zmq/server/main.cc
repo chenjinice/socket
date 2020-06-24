@@ -2,7 +2,10 @@
 #include "vserver.h"	
 
 
-
+void process_signal(Flow_TrafficSig sig,int camera_id)
+{
+    printf("traffic sig = %d,camera = %d\n",sig,camera_id);
+}
 
 // 发给融合程序的
 void send_to_fusion(Vserver &s)
