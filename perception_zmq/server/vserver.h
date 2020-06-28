@@ -14,6 +14,8 @@
 using namespace std;
 using namespace perception;
 
+typedef void (*VCallBack)(uint8_t *buffer,int len);
+
 class Vserver
 {	
 public:
@@ -21,6 +23,7 @@ public:
     ~Vserver();
     // host_port : 本机服务端绑定端口 ,remote_ip : 需要连接的对方ip , remote_port : 对方端口
     void setParam(uint16_t host_port,char *remote_ip,uint16_t remote_port);
+    void setCallBack(VCallBack fun);
     void start();
     void stop();
     /* tv 用于保存时间，最好是全局的变量,发送成功时函数内部会更新tv的值,ms 为毫秒，
@@ -28,21 +31,21 @@ public:
     void send(PerceptionMsg &msg,timeval *tv=nullptr,int ms=1000);
 
 private:
-    pthread_mutex_t m_mutex;
-    bool         m_ready;
-    uint16_t 	 m_host_port;       // 本机端口
-    void        *m_context;
-    void        *m_publisher;
-    uint16_t     m_remote_port;     // 远程端口
-    char        *m_remote_ip;       // 远程ip
-    void        *m_subscriber;
-
+    static void *readThread(void *param);
     void    init();
     void    run();
     int     checkInterval(timeval *tv,int ms);
-    // 友元函数，pthread 创建线程时需要
-    friend  void *vserver_read_fun(void *param);
 
+    pthread_mutex_t m_mutex;
+    bool         m_ready;
+    uint16_t     m_host_port;       // 本机端口
+    void *       m_context;
+    void *       m_publisher;
+    void *       m_ipc_publisher;
+    uint16_t     m_remote_port;     // 远程端口
+    char *       m_remote_ip;       // 远程ip
+    void *       m_subscriber;
+    VCallBack    m_callback;
 };
 
 #endif

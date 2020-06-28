@@ -2,10 +2,37 @@
 #include "vserver.h"	
 
 
+//
+extern void process_signal(Flow_TrafficSig sig,int camera_id);
+
+// 收到消息回调函数
+void callback(uint8_t *buffer,int len)
+{
+    PerceptionMsg msg;
+    if(!msg.ParseFromArray(buffer,len)){
+        printf("vserver : PerceptionMsg parse failed\n");
+        return;
+    }
+    if(msg.event() != TRAFFIC_FLOW)return;
+    if(!msg.has_flow_msg())return;
+
+    const FlowMsg &flow_msg = msg.flow_msg();
+    for(int i=0;i<flow_msg.flow_size();i++){
+        const Flow & f = flow_msg.flow(i);
+        if(!f.has_camera())continue;
+        if(!f.has_signal())continue;
+        process_signal(f.signal(),f.camera());
+    }
+}
+
+// 李旺的动态配时场景，收到消息的处理函数
 void process_signal(Flow_TrafficSig sig,int camera_id)
 {
     printf("traffic sig = %d,camera = %d\n",sig,camera_id);
 }
+
+
+
 
 // 发给融合程序的
 void send_to_fusion(Vserver &s)
@@ -385,6 +412,9 @@ int main(int argc ,char **argv)
     // 设置本机端口，远程ip和端口
     s.setParam(this_port,remote_ip,remote_port);
     s.start();
+
+    // 李旺的动态配时场景要接收数据 ， 需要设置回调函数
+    s.setCallBack(callback);
 
     // 打印协议版本号
     printf("perception version = %d\n",VERSION);

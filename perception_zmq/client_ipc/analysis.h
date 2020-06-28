@@ -3,10 +3,9 @@
 
 
 #include <stdint.h>
+#include "perception.pb-c.h"
 
 void analysis(uint8_t *buffer,int len);
-
-
 
 #endif
 
