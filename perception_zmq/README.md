@@ -12,3 +12,8 @@ proto生成c++文件:
 
 proto生成c文件:
     protoc-c --c_out=. perception.proto
+
+
+
+修改 :
+    2020.06.28 : server端增加一个ipc发送，去掉 analysis.cc ，替换为设置回调函数的方式，例子写在main.cc，
