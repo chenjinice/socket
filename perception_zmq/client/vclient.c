@@ -22,9 +22,12 @@ static int   m_remote_port  = 12347;
 static void *m_publisher    = NULL;
 static int   m_host_port    = 12348;
 
+static char *m_filter       = "vision";
+
 static void *m_context      = NULL;
 static int   m_ready        = 0;
 static int   m_loop         = 0;
+static int   m_has_filter   = 0;
 
 //
 void vclient_start(char *remote_ip , uint16_t remote_port, uint16_t host_port)
@@ -36,6 +39,7 @@ void vclient_start(char *remote_ip , uint16_t remote_port, uint16_t host_port)
         printf("vclient : error , remote ip = NULL \n");
         return;
     }
+    if( (m_filter != NULL) && (strlen(m_filter) > 0) )m_has_filter = 1;
     m_remote_ip = remote_ip;
     m_remote_port = remote_port;
     m_host_port = host_port;
@@ -51,7 +55,11 @@ void vclient_start(char *remote_ip , uint16_t remote_port, uint16_t host_port)
         perror("vclient : zmq connect error");
         return;
     }
-    zmq_setsockopt(m_subscriber,ZMQ_SUBSCRIBE,"",0);
+    if(m_has_filter){
+        zmq_setsockopt(m_subscriber,ZMQ_SUBSCRIBE,m_filter,strlen(m_filter));
+    }else{
+        zmq_setsockopt(m_subscriber,ZMQ_SUBSCRIBE,"",0);
+    }
 
     // 创建PUB模式的服务端，用于发布数据
     char pub_endpoint[50] = {0};
@@ -86,10 +94,12 @@ static void *readThread(void *arg)
 
     m_loop = 1;
 
+    uint8_t filter[100];
     uint8_t buffer[BUFFER_SIZE];
     int len ;
     while(m_loop){
         memset(buffer,0,sizeof(buffer));
+        if( m_has_filter > 0 )len = zmq_recv(m_subscriber,filter,sizeof(filter),ZMQ_SNDMORE);
         len = zmq_recv(m_subscriber,buffer,sizeof(buffer),0);
         if(len == -1)continue;
         if(len > BUFFER_SIZE){
@@ -108,6 +118,7 @@ static void *readThread(void *arg)
 // zmq 发送函数
 static void vclient_send(uint8_t *buffer,int len){
     if(m_ready == 0 )return;
+    if(m_has_filter > 0)zmq_send(m_publisher,m_filter,strlen(m_filter),ZMQ_SNDMORE);
     zmq_send(m_publisher,buffer,len,0);
 }
 

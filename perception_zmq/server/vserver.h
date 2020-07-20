@@ -22,7 +22,7 @@ public:
     Vserver();
     ~Vserver();
     // host_port : 本机服务端绑定端口 ,remote_ip : 需要连接的对方ip , remote_port : 对方端口
-    void setParam(uint16_t host_port,char *remote_ip,uint16_t remote_port);
+    void setParam(uint16_t host_port,char *remote_ip,uint16_t remote_port,char *filter=(char *)"vision",char *ipc =(char *)"crss");
     void setCallBack(VCallBack fun);
     void start();
     void stop();
@@ -38,6 +38,7 @@ private:
 
     pthread_mutex_t m_mutex;
     bool         m_ready;
+    bool         m_has_filter;
     uint16_t     m_host_port;       // 本机端口
     void *       m_context;
     void *       m_publisher;
@@ -45,6 +46,8 @@ private:
     uint16_t     m_remote_port;     // 远程端口
     char *       m_remote_ip;       // 远程ip
     void *       m_subscriber;
+    char *       m_filter;
+    char *       m_ipc;
     VCallBack    m_callback;
 };
 

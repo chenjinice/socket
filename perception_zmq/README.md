@@ -16,4 +16,5 @@ proto生成c文件:
 
 
 修改 :
+    2020.07.20 : server和client都增加filter
     2020.06.28 : server端增加一个ipc发送，去掉 analysis.cc ，替换为设置回调函数的方式，例子写在main.cc，

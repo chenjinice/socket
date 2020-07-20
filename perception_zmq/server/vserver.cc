@@ -21,9 +21,12 @@ void Vserver::init()
     m_remote_port   = 12348;
     m_remote_ip     = nullptr;
     m_subscriber    = nullptr;
+    m_ipc           = nullptr;
+    m_filter        = nullptr;
     m_callback      = nullptr;
 
     m_ready         = false;
+    m_has_filter    = false;
     pthread_mutex_init(&m_mutex,nullptr);
 }
 
@@ -40,11 +43,15 @@ Vserver::~Vserver()
     printf("~~~vserver~~~~~~~end~~~~ \n");
 }
 
-void Vserver::setParam(uint16_t host_port,char *remote_ip,uint16_t remote_port)
+void Vserver::setParam(uint16_t host_port,char *remote_ip,uint16_t remote_port,char *filter,char *ipc)
 {
     m_host_port     = host_port;
     m_remote_ip     = remote_ip;
     m_remote_port   = remote_port;
+    m_filter        = filter;
+    m_ipc           = ipc;
+
+    if( (m_filter != nullptr) && (strlen(m_filter) > 0) ) m_has_filter = true;
 }
 
 void Vserver::setCallBack(VCallBack fun)
@@ -60,38 +67,44 @@ void Vserver::start()
 	// 创建服务端，用于发布消息
     char pub_endpoint[50] = {0};
     sprintf(pub_endpoint,"tcp://*:%d",m_host_port);
-    printf("vserver : zmq pub = %s\n",pub_endpoint);
+    printf("vserver : zmq pub = %s , filter = %s\n",pub_endpoint,m_filter);
     m_context = zmq_ctx_new();
     m_publisher = zmq_socket(m_context,ZMQ_PUB);
     ret = zmq_bind(m_publisher,pub_endpoint);
     if(ret != 0){
         printf("vserver : zmq bind %s error : %s\n",pub_endpoint,strerror(errno));
-        exit(-1);
+        exit(1);
     }
 
     // IPC 发布端,crss.ipc
-    m_ipc_publisher = zmq_socket(m_context,ZMQ_PUB);
-    char ipc_endpoint[50]={0};
-    sprintf(ipc_endpoint,"ipc:///tmp/crss.ipc");
-    printf("vserver : zmq pub = %s\n", ipc_endpoint);
-    ret = zmq_bind(m_ipc_publisher,ipc_endpoint);
-    if(ret != 0){
-        printf("vserver : zmq bind %s error : file in use\n",ipc_endpoint);
-        exit(-1);
+    if( (m_ipc != nullptr) && (strlen(m_ipc) > 0) ){
+        m_ipc_publisher = zmq_socket(m_context,ZMQ_PUB);
+        char ipc_endpoint[50]={0};
+        sprintf(ipc_endpoint,"ipc:///tmp/%s.ipc",m_ipc);
+        printf("vserver : zmq pub = %s, filter = %s\n", ipc_endpoint,m_filter);
+        ret = zmq_bind(m_ipc_publisher,ipc_endpoint);
+        if(ret != 0){
+            printf("vserver : zmq bind %s error : file in use\n",ipc_endpoint);
+            exit(1);
+        }
     }
 
-    if(m_remote_ip){
+    if(m_remote_ip != nullptr){
 		// 创建客户端，用于订阅消息，接收消息
         char sub_endpoint[50] = {0};
         sprintf(sub_endpoint,"tcp://%s:%d",m_remote_ip,m_remote_port);
-        printf("vserver : zmq sub to %s\n",sub_endpoint);
+        printf("vserver : zmq sub to %s ,filter = %s\n",sub_endpoint,m_filter);
         m_subscriber = zmq_socket(m_context,ZMQ_SUB);
         ret = zmq_connect(m_subscriber,sub_endpoint);
         if(ret != 0){
             perror("vserver : zmq tcp connect error");
-            exit(-1);
+            exit(1);
         }
-        ret = zmq_setsockopt(m_subscriber,ZMQ_SUBSCRIBE,"",0);
+        if(m_has_filter){
+            zmq_setsockopt(m_subscriber,ZMQ_SUBSCRIBE,m_filter,strlen(m_filter));
+        }else{
+            zmq_setsockopt(m_subscriber,ZMQ_SUBSCRIBE,"",0);
+        }
         pthread_t thread;
         pthread_create(&thread,nullptr,readThread,this);
     }
@@ -119,10 +132,14 @@ void *Vserver::readThread(void *param)
 
 void Vserver::run()
 {
+    uint8_t filter[100];
     uint8_t buffer[BUFFER_SIZE];
     int len;
     while (m_ready){
         memset(buffer,0,sizeof(buffer));
+        if(m_has_filter){
+            len = zmq_recv(m_subscriber,filter,sizeof(filter),ZMQ_SNDMORE);
+        }
         len = zmq_recv(m_subscriber,buffer,sizeof(buffer),0);
         if(len == -1)continue;
         if(len > BUFFER_SIZE){
@@ -180,6 +197,9 @@ void Vserver::send(PerceptionMsg &msg,timeval *tv,int ms)
     msg.SerializeToArray(buffer,len);
     // zmq 发送数据,加线程锁
     pthread_mutex_lock(&m_mutex);
+    if(m_has_filter){
+        zmq_send(m_publisher,m_filter,strlen(m_filter),ZMQ_SNDMORE);
+    }
     zmq_send(m_publisher,buffer,len,0);
     zmq_send(m_ipc_publisher,buffer,len,0);
     pthread_mutex_unlock(&m_mutex);
