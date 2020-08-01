@@ -145,7 +145,7 @@ inline bool Flow_TrafficSig_Parse(
     Flow_TrafficSig_descriptor(), name, value);
 }
 enum Version {
-  VERSION = 20200602
+  VERSION = 20200801
 };
 bool Version_IsValid(int value);
 constexpr Version Version_MIN = VERSION;
@@ -182,11 +182,12 @@ enum EventId {
   ICEWARN = 16,
   LANE_WARE = 17,
   SPEEDING = 18,
-  SNAP = 19
+  SNAP = 19,
+  FUSION_TO_RSU = 20
 };
 bool EventId_IsValid(int value);
 constexpr EventId EventId_MIN = EVENT_NONE;
-constexpr EventId EventId_MAX = SNAP;
+constexpr EventId EventId_MAX = FUSION_TO_RSU;
 constexpr int EventId_ARRAYSIZE = EventId_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* EventId_descriptor();
@@ -200,14 +201,14 @@ inline bool EventId_Parse(
     EventId_descriptor(), name, value);
 }
 enum Source {
-  None = 0,
+  OTHER_SOURCE = 0,
   RADAR = 1,
   VISION = 2,
   LIDAR = 3,
   V2X = 4
 };
 bool Source_IsValid(int value);
-constexpr Source Source_MIN = None;
+constexpr Source Source_MIN = OTHER_SOURCE;
 constexpr Source Source_MAX = V2X;
 constexpr int Source_ARRAYSIZE = Source_MAX + 1;
 
@@ -1804,17 +1805,17 @@ class VisibilityMsg final :
 
   // accessors -------------------------------------------------------
 
-  // required float distance = 2;
+  // required float distance = 1;
   bool has_distance() const;
   void clear_distance();
-  static const int kDistanceFieldNumber = 2;
+  static const int kDistanceFieldNumber = 1;
   float distance() const;
   void set_distance(float value);
 
-  // required int32 level = 3;
+  // required int32 level = 2;
   bool has_level() const;
   void clear_level();
-  static const int kLevelFieldNumber = 3;
+  static const int kLevelFieldNumber = 2;
   ::google::protobuf::int32 level() const;
   void set_level(::google::protobuf::int32 value);
 
@@ -2346,10 +2347,10 @@ class TargetMsg final :
 
   // accessors -------------------------------------------------------
 
-  // repeated .perception.Target target = 2;
+  // repeated .perception.Target target = 1;
   int target_size() const;
   void clear_target();
-  static const int kTargetFieldNumber = 2;
+  static const int kTargetFieldNumber = 1;
   ::perception::Target* mutable_target(int index);
   ::google::protobuf::RepeatedPtrField< ::perception::Target >*
       mutable_target();
@@ -3790,7 +3791,7 @@ inline void Target::set_rcs(float value) {
 
 // VisibilityMsg
 
-// required float distance = 2;
+// required float distance = 1;
 inline bool VisibilityMsg::has_distance() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -3808,7 +3809,7 @@ inline void VisibilityMsg::set_distance(float value) {
   // @@protoc_insertion_point(field_set:perception.VisibilityMsg.distance)
 }
 
-// required int32 level = 3;
+// required int32 level = 2;
 inline bool VisibilityMsg::has_level() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -4030,7 +4031,7 @@ inline void FlowMsg::set_allocated_time_end(::perception::Timestamp* time_end) {
 
 // TargetMsg
 
-// repeated .perception.Target target = 2;
+// repeated .perception.Target target = 1;
 inline int TargetMsg::target_size() const {
   return target_.size();
 }

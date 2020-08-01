@@ -1527,7 +1527,7 @@ static const ProtobufCFieldDescriptor perception__visibility_msg__field_descript
 {
   {
     "distance",
-    2,
+    1,
     PROTOBUF_C_LABEL_REQUIRED,
     PROTOBUF_C_TYPE_FLOAT,
     0,   /* quantifier_offset */
@@ -1539,7 +1539,7 @@ static const ProtobufCFieldDescriptor perception__visibility_msg__field_descript
   },
   {
     "level",
-    3,
+    2,
     PROTOBUF_C_LABEL_REQUIRED,
     PROTOBUF_C_TYPE_INT32,
     0,   /* quantifier_offset */
@@ -1556,7 +1556,7 @@ static const unsigned perception__visibility_msg__field_indices_by_name[] = {
 };
 static const ProtobufCIntRange perception__visibility_msg__number_ranges[1 + 1] =
 {
-  { 2, 0 },
+  { 1, 0 },
   { 0, 2 }
 };
 const ProtobufCMessageDescriptor perception__visibility_msg__descriptor =
@@ -1718,7 +1718,7 @@ static const ProtobufCFieldDescriptor perception__target_msg__field_descriptors[
 {
   {
     "target",
-    2,
+    1,
     PROTOBUF_C_LABEL_REPEATED,
     PROTOBUF_C_TYPE_MESSAGE,
     offsetof(Perception__TargetMsg, n_target),
@@ -1734,7 +1734,7 @@ static const unsigned perception__target_msg__field_indices_by_name[] = {
 };
 static const ProtobufCIntRange perception__target_msg__number_ranges[1 + 1] =
 {
-  { 2, 0 },
+  { 1, 0 },
   { 0, 1 }
 };
 const ProtobufCMessageDescriptor perception__target_msg__descriptor =
@@ -1921,10 +1921,10 @@ const ProtobufCMessageDescriptor perception__perception_msg__descriptor =
 };
 static const ProtobufCEnumValue perception__version__enum_values_by_number[1] =
 {
-  { "VERSION", "PERCEPTION__VERSION__VERSION", 20200602 },
+  { "VERSION", "PERCEPTION__VERSION__VERSION", 20200801 },
 };
 static const ProtobufCIntRange perception__version__value_ranges[] = {
-{20200602, 0},{0, 1}
+{20200801, 0},{0, 1}
 };
 static const ProtobufCEnumValueIndex perception__version__enum_values_by_name[1] =
 {
@@ -1945,7 +1945,7 @@ const ProtobufCEnumDescriptor perception__version__descriptor =
   perception__version__value_ranges,
   NULL,NULL,NULL,NULL   /* reserved[1234] */
 };
-static const ProtobufCEnumValue perception__event_id__enum_values_by_number[20] =
+static const ProtobufCEnumValue perception__event_id__enum_values_by_number[21] =
 {
   { "EVENT_NONE", "PERCEPTION__EVENT_ID__EVENT_NONE", 0 },
   { "PEDESTRIAN", "PERCEPTION__EVENT_ID__PEDESTRIAN", 1 },
@@ -1967,11 +1967,12 @@ static const ProtobufCEnumValue perception__event_id__enum_values_by_number[20] 
   { "LANE_WARE", "PERCEPTION__EVENT_ID__LANE_WARE", 17 },
   { "SPEEDING", "PERCEPTION__EVENT_ID__SPEEDING", 18 },
   { "SNAP", "PERCEPTION__EVENT_ID__SNAP", 19 },
+  { "FUSION_TO_RSU", "PERCEPTION__EVENT_ID__FUSION_TO_RSU", 20 },
 };
 static const ProtobufCIntRange perception__event_id__value_ranges[] = {
-{0, 0},{0, 20}
+{0, 0},{0, 21}
 };
-static const ProtobufCEnumValueIndex perception__event_id__enum_values_by_name[20] =
+static const ProtobufCEnumValueIndex perception__event_id__enum_values_by_name[21] =
 {
   { "ABNORMAL_CAR", 5 },
   { "ACCIDENT", 15 },
@@ -1979,6 +1980,7 @@ static const ProtobufCEnumValueIndex perception__event_id__enum_values_by_name[2
   { "BACKWARD_DRIVING", 8 },
   { "EVENT_NONE", 0 },
   { "FIRE_SMOKE", 10 },
+  { "FUSION_TO_RSU", 20 },
   { "ICEWARN", 16 },
   { "ILLEGAL_V1", 2 },
   { "ILLEGAL_V2", 6 },
@@ -2001,9 +2003,9 @@ const ProtobufCEnumDescriptor perception__event_id__descriptor =
   "EventId",
   "Perception__EventId",
   "perception",
-  20,
+  21,
   perception__event_id__enum_values_by_number,
-  20,
+  21,
   perception__event_id__enum_values_by_name,
   1,
   perception__event_id__value_ranges,
@@ -2011,7 +2013,7 @@ const ProtobufCEnumDescriptor perception__event_id__descriptor =
 };
 static const ProtobufCEnumValue perception__source__enum_values_by_number[5] =
 {
-  { "None", "PERCEPTION__SOURCE__None", 0 },
+  { "OTHER_SOURCE", "PERCEPTION__SOURCE__OTHER_SOURCE", 0 },
   { "RADAR", "PERCEPTION__SOURCE__RADAR", 1 },
   { "VISION", "PERCEPTION__SOURCE__VISION", 2 },
   { "LIDAR", "PERCEPTION__SOURCE__LIDAR", 3 },
@@ -2023,7 +2025,7 @@ static const ProtobufCIntRange perception__source__value_ranges[] = {
 static const ProtobufCEnumValueIndex perception__source__enum_values_by_name[5] =
 {
   { "LIDAR", 3 },
-  { "None", 0 },
+  { "OTHER_SOURCE", 0 },
   { "RADAR", 1 },
   { "V2X", 4 },
   { "VISION", 2 },

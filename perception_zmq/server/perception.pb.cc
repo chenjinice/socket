@@ -626,13 +626,13 @@ const char descriptor_table_protodef_perception_2eproto[] =
   "(\0162\023.perception.CarType\022)\n\ncar_status\030\023 "
   "\001(\0162\025.perception.CarStatus\022\022\n\nconfidence"
   "\030\024 \001(\002\022\013\n\003rcs\030\025 \001(\002\"0\n\rVisibilityMsg\022\020\n\010"
-  "distance\030\002 \002(\002\022\r\n\005level\030\003 \002(\005\"1\n\013LaneAre"
+  "distance\030\001 \002(\002\022\r\n\005level\030\002 \002(\005\"1\n\013LaneAre"
   "aMsg\022\"\n\004area\030\001 \003(\0132\024.perception.LaneArea"
   "\"&\n\006JamMsg\022\034\n\003jam\030\001 \003(\0132\017.perception.Jam"
   "\"}\n\007FlowMsg\022\036\n\004flow\030\001 \003(\0132\020.perception.F"
   "low\022)\n\ntime_begin\030\002 \001(\0132\025.perception.Tim"
   "estamp\022\'\n\010time_end\030\003 \001(\0132\025.perception.Ti"
-  "mestamp\"/\n\tTargetMsg\022\"\n\006target\030\002 \003(\0132\022.p"
+  "mestamp\"/\n\tTargetMsg\022\"\n\006target\030\001 \003(\0132\022.p"
   "erception.Target\"\027\n\007WarnMsg\022\014\n\004warn\030\001 \002("
   "\010\"\360\002\n\rPerceptionMsg\022\"\n\005event\030\001 \002(\0162\023.per"
   "ception.EventId\022\'\n\010warn_msg\030\002 \001(\0132\023.perc"
@@ -643,8 +643,8 @@ const char descriptor_table_protodef_perception_2eproto[] =
   "\n\010flow_msg\030\006 \001(\0132\023.perception.FlowMsgH\000\022"
   "+\n\ntarget_msg\030\007 \001(\0132\025.perception.TargetM"
   "sgH\000\022#\n\004time\030\010 \001(\0132\025.perception.Timestam"
-  "pB\t\n\007MsgType*\031\n\007Version\022\016\n\007VERSION\020\232\371\320\t*"
-  "\325\002\n\007EventId\022\016\n\nEVENT_NONE\020\000\022\016\n\nPEDESTRIA"
+  "pB\t\n\007MsgType*\031\n\007Version\022\016\n\007VERSION\020\341\372\320\t*"
+  "\350\002\n\007EventId\022\016\n\nEVENT_NONE\020\000\022\016\n\nPEDESTRIA"
   "N\020\001\022\016\n\nILLEGAL_V1\020\002\022\016\n\nVISIBILITY\020\003\022\022\n\016A"
   "VAILABLE_AREA\020\004\022\020\n\014ABNORMAL_CAR\020\005\022\016\n\nILL"
   "EGAL_V2\020\006\022\022\n\016TRAFFIC_STATUS\020\007\022\024\n\020BACKWAR"
@@ -652,25 +652,25 @@ const char descriptor_table_protodef_perception_2eproto[] =
   "KE\020\n\022\024\n\020TARGET_TO_FUSION\020\013\022\017\n\013TRAFFIC_JA"
   "M\020\014\022\020\n\014TRAFFIC_FLOW\020\r\022\016\n\nSPECIALCAR\020\016\022\014\n"
   "\010ACCIDENT\020\017\022\013\n\007ICEWARN\020\020\022\r\n\tLANE_WARE\020\021\022"
-  "\014\n\010SPEEDING\020\022\022\010\n\004SNAP\020\023*=\n\006Source\022\010\n\004Non"
-  "e\020\000\022\t\n\005RADAR\020\001\022\n\n\006VISION\020\002\022\t\n\005LIDAR\020\003\022\007\n"
-  "\003V2X\020\004*Z\n\nTargetType\022\n\n\006OTHERS\020\000\022\t\n\005HUMA"
-  "N\020\001\022\013\n\007VEHICLE\020\002\022\016\n\nMOTORCYCLE\020\003\022\n\n\006ANIM"
-  "AL\020\004\022\014\n\010OBSTACLE\020\005*R\n\007CarType\022\n\n\006NORMAL\020"
-  "\000\022\r\n\tAMBULANCE\020\001\022\r\n\tDANGERCAR\020\002\022\016\n\nFIREE"
-  "NGINE\020\003\022\r\n\tPOLICECAR\020\004*\271\001\n\tCarStatus\022\021\n\r"
-  "STATUS_NORMAL\020\000\022\016\n\nRETROGRADE\020\001\022\021\n\rOVER_"
-  "SPEEDING\020\002\022\020\n\014LOW_SPEEDING\020\003\022\023\n\017ILLEGAL_"
-  "PARKING\020\004\022\020\n\014LANE_PARKING\020\005\022\020\n\014AREA_PARK"
-  "ING\020\006\022\030\n\024CONTINUOUS_DIVERSION\020\007\022\021\n\rLINE_"
-  "PRESSING\020\010*M\n\010WareType\022\r\n\tWARE_NONE\020\000\022\014\n"
-  "\010FULLLINE\020\001\022\016\n\nDOTTEDLINE\020\002\022\024\n\020DOUBLEYEL"
-  "LOWLINE\020\003"
+  "\014\n\010SPEEDING\020\022\022\010\n\004SNAP\020\023\022\021\n\rFUSION_TO_RSU"
+  "\020\024*E\n\006Source\022\020\n\014OTHER_SOURCE\020\000\022\t\n\005RADAR\020"
+  "\001\022\n\n\006VISION\020\002\022\t\n\005LIDAR\020\003\022\007\n\003V2X\020\004*Z\n\nTar"
+  "getType\022\n\n\006OTHERS\020\000\022\t\n\005HUMAN\020\001\022\013\n\007VEHICL"
+  "E\020\002\022\016\n\nMOTORCYCLE\020\003\022\n\n\006ANIMAL\020\004\022\014\n\010OBSTA"
+  "CLE\020\005*R\n\007CarType\022\n\n\006NORMAL\020\000\022\r\n\tAMBULANC"
+  "E\020\001\022\r\n\tDANGERCAR\020\002\022\016\n\nFIREENGINE\020\003\022\r\n\tPO"
+  "LICECAR\020\004*\271\001\n\tCarStatus\022\021\n\rSTATUS_NORMAL"
+  "\020\000\022\016\n\nRETROGRADE\020\001\022\021\n\rOVER_SPEEDING\020\002\022\020\n"
+  "\014LOW_SPEEDING\020\003\022\023\n\017ILLEGAL_PARKING\020\004\022\020\n\014"
+  "LANE_PARKING\020\005\022\020\n\014AREA_PARKING\020\006\022\030\n\024CONT"
+  "INUOUS_DIVERSION\020\007\022\021\n\rLINE_PRESSING\020\010*M\n"
+  "\010WareType\022\r\n\tWARE_NONE\020\000\022\014\n\010FULLLINE\020\001\022\016"
+  "\n\nDOTTEDLINE\020\002\022\024\n\020DOUBLEYELLOWLINE\020\003"
   ;
 static ::google::protobuf::internal::DescriptorTable descriptor_table_perception_2eproto = {
   false, InitDefaults_perception_2eproto, 
   descriptor_table_protodef_perception_2eproto,
-  "perception.proto", &assign_descriptors_table_perception_2eproto, 2809,
+  "perception.proto", &assign_descriptors_table_perception_2eproto, 2836,
 };
 
 void AddDescriptors_perception_2eproto() {
@@ -712,7 +712,7 @@ const ::google::protobuf::EnumDescriptor* Version_descriptor() {
 }
 bool Version_IsValid(int value) {
   switch (value) {
-    case 20200602:
+    case 20200801:
       return true;
     default:
       return false;
@@ -745,6 +745,7 @@ bool EventId_IsValid(int value) {
     case 17:
     case 18:
     case 19:
+    case 20:
       return true;
     default:
       return false;
@@ -5212,16 +5213,16 @@ const char* VisibilityMsg::_InternalParse(const char* ptr, ::google::protobuf::i
     ptr = ::google::protobuf::internal::ReadTag(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
-      // required float distance = 2;
-      case 2: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 21) goto handle_unusual;
+      // required float distance = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 13) goto handle_unusual;
         set_distance(::google::protobuf::internal::UnalignedLoad<float>(ptr));
         ptr += sizeof(float);
         break;
       }
-      // required int32 level = 3;
-      case 3: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 24) goto handle_unusual;
+      // required int32 level = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
         set_level(::google::protobuf::internal::ReadVarint(&ptr));
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
@@ -5252,9 +5253,9 @@ bool VisibilityMsg::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required float distance = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (21 & 0xFF)) {
+      // required float distance = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (13 & 0xFF)) {
           HasBitSetters::set_has_distance(this);
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
@@ -5265,9 +5266,9 @@ bool VisibilityMsg::MergePartialFromCodedStream(
         break;
       }
 
-      // required int32 level = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (24 & 0xFF)) {
+      // required int32 level = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
           HasBitSetters::set_has_level(this);
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -5306,14 +5307,14 @@ void VisibilityMsg::SerializeWithCachedSizes(
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  // required float distance = 2;
+  // required float distance = 1;
   if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(2, this->distance(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(1, this->distance(), output);
   }
 
-  // required int32 level = 3;
+  // required int32 level = 2;
   if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->level(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->level(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -5330,14 +5331,14 @@ void VisibilityMsg::SerializeWithCachedSizes(
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  // required float distance = 2;
+  // required float distance = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(2, this->distance(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(1, this->distance(), target);
   }
 
-  // required int32 level = 3;
+  // required int32 level = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->level(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->level(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -5353,12 +5354,12 @@ size_t VisibilityMsg::RequiredFieldsByteSizeFallback() const {
   size_t total_size = 0;
 
   if (has_distance()) {
-    // required float distance = 2;
+    // required float distance = 1;
     total_size += 1 + 4;
   }
 
   if (has_level()) {
-    // required int32 level = 3;
+    // required int32 level = 2;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->level());
@@ -5376,10 +5377,10 @@ size_t VisibilityMsg::ByteSizeLong() const {
         _internal_metadata_.unknown_fields());
   }
   if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
-    // required float distance = 2;
+    // required float distance = 1;
     total_size += 1 + 4;
 
-    // required int32 level = 3;
+    // required int32 level = 2;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->level());
@@ -6482,14 +6483,14 @@ const char* TargetMsg::_InternalParse(const char* ptr, ::google::protobuf::inter
     ptr = ::google::protobuf::internal::ReadTag(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
-      // repeated .perception.Target target = 2;
-      case 2: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
+      // repeated .perception.Target target = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
         do {
           ptr = ctx->ParseMessage(add_target(), ptr);
           GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
           if (ctx->Done(&ptr)) return ptr;
-        } while ((::google::protobuf::internal::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 18 && (ptr += 1));
+        } while ((::google::protobuf::internal::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 10 && (ptr += 1));
         break;
       }
       default: {
@@ -6518,9 +6519,9 @@ bool TargetMsg::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .perception.Target target = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
+      // repeated .perception.Target target = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                 input, add_target()));
         } else {
@@ -6556,11 +6557,11 @@ void TargetMsg::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .perception.Target target = 2;
+  // repeated .perception.Target target = 1;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->target_size()); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2,
+      1,
       this->target(static_cast<int>(i)),
       output);
   }
@@ -6578,12 +6579,12 @@ void TargetMsg::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .perception.Target target = 2;
+  // repeated .perception.Target target = 1;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->target_size()); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        2, this->target(static_cast<int>(i)), target);
+        1, this->target(static_cast<int>(i)), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -6607,7 +6608,7 @@ size_t TargetMsg::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .perception.Target target = 2;
+  // repeated .perception.Target target = 1;
   {
     unsigned int count = static_cast<unsigned int>(this->target_size());
     total_size += 1UL * count;

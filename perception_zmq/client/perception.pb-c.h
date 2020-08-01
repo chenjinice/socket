@@ -53,7 +53,7 @@ typedef enum _Perception__Version {
   /*
    * 版本号
    */
-  PERCEPTION__VERSION__VERSION = 20200602
+  PERCEPTION__VERSION__VERSION = 20200801
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(PERCEPTION__VERSION)
 } Perception__Version;
 /*
@@ -139,14 +139,21 @@ typedef enum _Perception__EventId {
   /*
    * 抓拍物
    */
-  PERCEPTION__EVENT_ID__SNAP = 19
+  PERCEPTION__EVENT_ID__SNAP = 19,
+  /*
+   * 融合发给rsu的
+   */
+  PERCEPTION__EVENT_ID__FUSION_TO_RSU = 20
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(PERCEPTION__EVENT_ID)
 } Perception__EventId;
 /*
  * 检测数据来源                                             
  */
 typedef enum _Perception__Source {
-  PERCEPTION__SOURCE__None = 0,
+  /*
+   * 其他
+   */
+  PERCEPTION__SOURCE__OTHER_SOURCE = 0,
   /*
    * 毫米波雷达
    */
@@ -433,7 +440,7 @@ struct  _Perception__Jam
    */
   uint32_t vehicle_num;
   /*
-   * 车辆平均速度，km/h
+   * 车辆平均速度，km/h 
    */
   float vehicle_velocity;
   /*
@@ -596,7 +603,7 @@ struct  _Perception__Target
 };
 #define PERCEPTION__TARGET__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&perception__target__descriptor) \
-    , 0, PERCEPTION__TARGET_TYPE__OTHERS, NULL, 0, 0, 0, 0, 0, 0, 0, 0, NULL, 0, 0, 0, PERCEPTION__SOURCE__None, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, PERCEPTION__CAR_TYPE__NORMAL, 0, PERCEPTION__CAR_STATUS__STATUS_NORMAL, 0, 0, 0, 0 }
+    , 0, PERCEPTION__TARGET_TYPE__OTHERS, NULL, 0, 0, 0, 0, 0, 0, 0, 0, NULL, 0, 0, 0, PERCEPTION__SOURCE__OTHER_SOURCE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, PERCEPTION__CAR_TYPE__NORMAL, 0, PERCEPTION__CAR_STATUS__STATUS_NORMAL, 0, 0, 0, 0 }
 
 
 /*
