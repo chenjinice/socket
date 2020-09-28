@@ -129,7 +129,7 @@ void vclient_send_signal(TrafficSignal signal, uint32_t camera)
     if(m_ready == 0 )return;
 
     static Perception__PerceptionMsg *msg      = NULL;
-    static Perception__FlowMsg       *flow_msg = NULL;
+    static Perception__DynamicTimingMsg       *d_msg = NULL;
     static Perception__Flow         **flow     = NULL;
 
     if(flow == NULL){
@@ -137,18 +137,18 @@ void vclient_send_signal(TrafficSignal signal, uint32_t camera)
         flow[0] = calloc(1,sizeof(Perception__Flow ));
         perception__flow__init(flow[0]);
     }
-    if(flow_msg == NULL){
-        flow_msg = calloc(1,sizeof(Perception__FlowMsg));
-        perception__flow_msg__init(flow_msg);
-        flow_msg->n_flow = 1;
-        flow_msg->flow = flow;
+    if(d_msg == NULL){
+        d_msg = calloc(1,sizeof(Perception__DynamicTimingMsg));
+        perception__dynamic_timing_msg__init(d_msg);
+        d_msg->n_flow = 1;
+        d_msg->flow = flow;
     }
     if(msg == NULL){
         msg = calloc(1,sizeof(Perception__PerceptionMsg));
         perception__perception_msg__init(msg);
         msg->event = PERCEPTION__EVENT_ID__TRAFFIC_FLOW;
-        msg->msg_type_case = PERCEPTION__PERCEPTION_MSG__MSG_TYPE_FLOW_MSG;
-        msg->flow_msg = flow_msg;
+        msg->msg_type_case = PERCEPTION__PERCEPTION_MSG__MSG_TYPE_DYNAMIC_MSG;
+        msg->dynamic_msg = d_msg;
     }
     flow[0]->has_camera = 1;
     flow[0]->camera = camera;

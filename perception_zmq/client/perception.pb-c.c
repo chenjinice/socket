@@ -322,6 +322,51 @@ void   perception__flow__free_unpacked
   assert(message->base.descriptor == &perception__flow__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   perception__traffic_flow__init
+                     (Perception__TrafficFlow         *message)
+{
+  static const Perception__TrafficFlow init_value = PERCEPTION__TRAFFIC_FLOW__INIT;
+  *message = init_value;
+}
+size_t perception__traffic_flow__get_packed_size
+                     (const Perception__TrafficFlow *message)
+{
+  assert(message->base.descriptor == &perception__traffic_flow__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t perception__traffic_flow__pack
+                     (const Perception__TrafficFlow *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &perception__traffic_flow__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t perception__traffic_flow__pack_to_buffer
+                     (const Perception__TrafficFlow *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &perception__traffic_flow__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Perception__TrafficFlow *
+       perception__traffic_flow__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Perception__TrafficFlow *)
+     protobuf_c_message_unpack (&perception__traffic_flow__descriptor,
+                                allocator, len, data);
+}
+void   perception__traffic_flow__free_unpacked
+                     (Perception__TrafficFlow *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &perception__traffic_flow__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 void   perception__target__init
                      (Perception__Target         *message)
 {
@@ -502,49 +547,49 @@ void   perception__jam_msg__free_unpacked
   assert(message->base.descriptor == &perception__jam_msg__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-void   perception__flow_msg__init
-                     (Perception__FlowMsg         *message)
+void   perception__dynamic_timing_msg__init
+                     (Perception__DynamicTimingMsg         *message)
 {
-  static const Perception__FlowMsg init_value = PERCEPTION__FLOW_MSG__INIT;
+  static const Perception__DynamicTimingMsg init_value = PERCEPTION__DYNAMIC_TIMING_MSG__INIT;
   *message = init_value;
 }
-size_t perception__flow_msg__get_packed_size
-                     (const Perception__FlowMsg *message)
+size_t perception__dynamic_timing_msg__get_packed_size
+                     (const Perception__DynamicTimingMsg *message)
 {
-  assert(message->base.descriptor == &perception__flow_msg__descriptor);
+  assert(message->base.descriptor == &perception__dynamic_timing_msg__descriptor);
   return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
 }
-size_t perception__flow_msg__pack
-                     (const Perception__FlowMsg *message,
+size_t perception__dynamic_timing_msg__pack
+                     (const Perception__DynamicTimingMsg *message,
                       uint8_t       *out)
 {
-  assert(message->base.descriptor == &perception__flow_msg__descriptor);
+  assert(message->base.descriptor == &perception__dynamic_timing_msg__descriptor);
   return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
 }
-size_t perception__flow_msg__pack_to_buffer
-                     (const Perception__FlowMsg *message,
+size_t perception__dynamic_timing_msg__pack_to_buffer
+                     (const Perception__DynamicTimingMsg *message,
                       ProtobufCBuffer *buffer)
 {
-  assert(message->base.descriptor == &perception__flow_msg__descriptor);
+  assert(message->base.descriptor == &perception__dynamic_timing_msg__descriptor);
   return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
 }
-Perception__FlowMsg *
-       perception__flow_msg__unpack
+Perception__DynamicTimingMsg *
+       perception__dynamic_timing_msg__unpack
                      (ProtobufCAllocator  *allocator,
                       size_t               len,
                       const uint8_t       *data)
 {
-  return (Perception__FlowMsg *)
-     protobuf_c_message_unpack (&perception__flow_msg__descriptor,
+  return (Perception__DynamicTimingMsg *)
+     protobuf_c_message_unpack (&perception__dynamic_timing_msg__descriptor,
                                 allocator, len, data);
 }
-void   perception__flow_msg__free_unpacked
-                     (Perception__FlowMsg *message,
+void   perception__dynamic_timing_msg__free_unpacked
+                     (Perception__DynamicTimingMsg *message,
                       ProtobufCAllocator *allocator)
 {
   if(!message)
     return;
-  assert(message->base.descriptor == &perception__flow_msg__descriptor);
+  assert(message->base.descriptor == &perception__dynamic_timing_msg__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
 void   perception__target_msg__init
@@ -635,6 +680,51 @@ void   perception__warn_msg__free_unpacked
   if(!message)
     return;
   assert(message->base.descriptor == &perception__warn_msg__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   perception__traffic_flow_msg__init
+                     (Perception__TrafficFlowMsg         *message)
+{
+  static const Perception__TrafficFlowMsg init_value = PERCEPTION__TRAFFIC_FLOW_MSG__INIT;
+  *message = init_value;
+}
+size_t perception__traffic_flow_msg__get_packed_size
+                     (const Perception__TrafficFlowMsg *message)
+{
+  assert(message->base.descriptor == &perception__traffic_flow_msg__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t perception__traffic_flow_msg__pack
+                     (const Perception__TrafficFlowMsg *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &perception__traffic_flow_msg__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t perception__traffic_flow_msg__pack_to_buffer
+                     (const Perception__TrafficFlowMsg *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &perception__traffic_flow_msg__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Perception__TrafficFlowMsg *
+       perception__traffic_flow_msg__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Perception__TrafficFlowMsg *)
+     protobuf_c_message_unpack (&perception__traffic_flow_msg__descriptor,
+                                allocator, len, data);
+}
+void   perception__traffic_flow_msg__free_unpacked
+                     (Perception__TrafficFlowMsg *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &perception__traffic_flow_msg__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
 void   perception__perception_msg__init
@@ -1225,6 +1315,96 @@ const ProtobufCMessageDescriptor perception__flow__descriptor =
   (ProtobufCMessageInit) perception__flow__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
+static const ProtobufCFieldDescriptor perception__traffic_flow__field_descriptors[5] =
+{
+  {
+    "node_id",
+    1,
+    PROTOBUF_C_LABEL_REQUIRED,
+    PROTOBUF_C_TYPE_INT32,
+    0,   /* quantifier_offset */
+    offsetof(Perception__TrafficFlow, node_id),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "link_id",
+    2,
+    PROTOBUF_C_LABEL_REQUIRED,
+    PROTOBUF_C_TYPE_INT32,
+    0,   /* quantifier_offset */
+    offsetof(Perception__TrafficFlow, link_id),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "vehicle_num",
+    3,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_INT32,
+    offsetof(Perception__TrafficFlow, n_vehicle_num),
+    offsetof(Perception__TrafficFlow, vehicle_num),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "maneuvers",
+    4,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_INT32,
+    offsetof(Perception__TrafficFlow, n_maneuvers),
+    offsetof(Perception__TrafficFlow, maneuvers),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "pass_num",
+    5,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_INT32,
+    offsetof(Perception__TrafficFlow, n_pass_num),
+    offsetof(Perception__TrafficFlow, pass_num),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned perception__traffic_flow__field_indices_by_name[] = {
+  1,   /* field[1] = link_id */
+  3,   /* field[3] = maneuvers */
+  0,   /* field[0] = node_id */
+  4,   /* field[4] = pass_num */
+  2,   /* field[2] = vehicle_num */
+};
+static const ProtobufCIntRange perception__traffic_flow__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 5 }
+};
+const ProtobufCMessageDescriptor perception__traffic_flow__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "perception.TrafficFlow",
+  "TrafficFlow",
+  "Perception__TrafficFlow",
+  "perception",
+  sizeof(Perception__TrafficFlow),
+  5,
+  perception__traffic_flow__field_descriptors,
+  perception__traffic_flow__field_indices_by_name,
+  1,  perception__traffic_flow__number_ranges,
+  (ProtobufCMessageInit) perception__traffic_flow__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
 static const ProtobufCFieldDescriptor perception__target__field_descriptors[21] =
 {
   {
@@ -1526,20 +1706,8 @@ const ProtobufCMessageDescriptor perception__target__descriptor =
 static const ProtobufCFieldDescriptor perception__visibility_msg__field_descriptors[2] =
 {
   {
-    "distance",
-    1,
-    PROTOBUF_C_LABEL_REQUIRED,
-    PROTOBUF_C_TYPE_FLOAT,
-    0,   /* quantifier_offset */
-    offsetof(Perception__VisibilityMsg, distance),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
     "level",
-    2,
+    1,
     PROTOBUF_C_LABEL_REQUIRED,
     PROTOBUF_C_TYPE_INT32,
     0,   /* quantifier_offset */
@@ -1549,10 +1717,22 @@ static const ProtobufCFieldDescriptor perception__visibility_msg__field_descript
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "camera_pos",
+    2,
+    PROTOBUF_C_LABEL_REQUIRED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Perception__VisibilityMsg, camera_pos),
+    &perception__position__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned perception__visibility_msg__field_indices_by_name[] = {
-  0,   /* field[0] = distance */
-  1,   /* field[1] = level */
+  1,   /* field[1] = camera_pos */
+  0,   /* field[0] = level */
 };
 static const ProtobufCIntRange perception__visibility_msg__number_ranges[1 + 1] =
 {
@@ -1650,15 +1830,15 @@ const ProtobufCMessageDescriptor perception__jam_msg__descriptor =
   (ProtobufCMessageInit) perception__jam_msg__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor perception__flow_msg__field_descriptors[3] =
+static const ProtobufCFieldDescriptor perception__dynamic_timing_msg__field_descriptors[3] =
 {
   {
     "flow",
     1,
     PROTOBUF_C_LABEL_REPEATED,
     PROTOBUF_C_TYPE_MESSAGE,
-    offsetof(Perception__FlowMsg, n_flow),
-    offsetof(Perception__FlowMsg, flow),
+    offsetof(Perception__DynamicTimingMsg, n_flow),
+    offsetof(Perception__DynamicTimingMsg, flow),
     &perception__flow__descriptor,
     NULL,
     0,             /* flags */
@@ -1670,7 +1850,7 @@ static const ProtobufCFieldDescriptor perception__flow_msg__field_descriptors[3]
     PROTOBUF_C_LABEL_OPTIONAL,
     PROTOBUF_C_TYPE_MESSAGE,
     0,   /* quantifier_offset */
-    offsetof(Perception__FlowMsg, time_begin),
+    offsetof(Perception__DynamicTimingMsg, time_begin),
     &perception__timestamp__descriptor,
     NULL,
     0,             /* flags */
@@ -1682,36 +1862,36 @@ static const ProtobufCFieldDescriptor perception__flow_msg__field_descriptors[3]
     PROTOBUF_C_LABEL_OPTIONAL,
     PROTOBUF_C_TYPE_MESSAGE,
     0,   /* quantifier_offset */
-    offsetof(Perception__FlowMsg, time_end),
+    offsetof(Perception__DynamicTimingMsg, time_end),
     &perception__timestamp__descriptor,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
-static const unsigned perception__flow_msg__field_indices_by_name[] = {
+static const unsigned perception__dynamic_timing_msg__field_indices_by_name[] = {
   0,   /* field[0] = flow */
   1,   /* field[1] = time_begin */
   2,   /* field[2] = time_end */
 };
-static const ProtobufCIntRange perception__flow_msg__number_ranges[1 + 1] =
+static const ProtobufCIntRange perception__dynamic_timing_msg__number_ranges[1 + 1] =
 {
   { 1, 0 },
   { 0, 3 }
 };
-const ProtobufCMessageDescriptor perception__flow_msg__descriptor =
+const ProtobufCMessageDescriptor perception__dynamic_timing_msg__descriptor =
 {
   PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "perception.FlowMsg",
-  "FlowMsg",
-  "Perception__FlowMsg",
+  "perception.DynamicTimingMsg",
+  "DynamicTimingMsg",
+  "Perception__DynamicTimingMsg",
   "perception",
-  sizeof(Perception__FlowMsg),
+  sizeof(Perception__DynamicTimingMsg),
   3,
-  perception__flow_msg__field_descriptors,
-  perception__flow_msg__field_indices_by_name,
-  1,  perception__flow_msg__number_ranges,
-  (ProtobufCMessageInit) perception__flow_msg__init,
+  perception__dynamic_timing_msg__field_descriptors,
+  perception__dynamic_timing_msg__field_indices_by_name,
+  1,  perception__dynamic_timing_msg__number_ranges,
+  (ProtobufCMessageInit) perception__dynamic_timing_msg__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
 static const ProtobufCFieldDescriptor perception__target_msg__field_descriptors[1] =
@@ -1790,7 +1970,71 @@ const ProtobufCMessageDescriptor perception__warn_msg__descriptor =
   (ProtobufCMessageInit) perception__warn_msg__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor perception__perception_msg__field_descriptors[8] =
+static const ProtobufCFieldDescriptor perception__traffic_flow_msg__field_descriptors[3] =
+{
+  {
+    "flow",
+    1,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Perception__TrafficFlowMsg, n_flow),
+    offsetof(Perception__TrafficFlowMsg, flow),
+    &perception__traffic_flow__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "time_begin",
+    2,
+    PROTOBUF_C_LABEL_REQUIRED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Perception__TrafficFlowMsg, time_begin),
+    &perception__timestamp__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "time_end",
+    3,
+    PROTOBUF_C_LABEL_REQUIRED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Perception__TrafficFlowMsg, time_end),
+    &perception__timestamp__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned perception__traffic_flow_msg__field_indices_by_name[] = {
+  0,   /* field[0] = flow */
+  1,   /* field[1] = time_begin */
+  2,   /* field[2] = time_end */
+};
+static const ProtobufCIntRange perception__traffic_flow_msg__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 3 }
+};
+const ProtobufCMessageDescriptor perception__traffic_flow_msg__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "perception.TrafficFlowMsg",
+  "TrafficFlowMsg",
+  "Perception__TrafficFlowMsg",
+  "perception",
+  sizeof(Perception__TrafficFlowMsg),
+  3,
+  perception__traffic_flow_msg__field_descriptors,
+  perception__traffic_flow_msg__field_indices_by_name,
+  1,  perception__traffic_flow_msg__number_ranges,
+  (ProtobufCMessageInit) perception__traffic_flow_msg__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor perception__perception_msg__field_descriptors[9] =
 {
   {
     "event",
@@ -1853,13 +2097,13 @@ static const ProtobufCFieldDescriptor perception__perception_msg__field_descript
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "flow_msg",
+    "dynamic_msg",
     6,
     PROTOBUF_C_LABEL_OPTIONAL,
     PROTOBUF_C_TYPE_MESSAGE,
     offsetof(Perception__PerceptionMsg, msg_type_case),
-    offsetof(Perception__PerceptionMsg, flow_msg),
-    &perception__flow_msg__descriptor,
+    offsetof(Perception__PerceptionMsg, dynamic_msg),
+    &perception__dynamic_timing_msg__descriptor,
     NULL,
     0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
@@ -1877,8 +2121,20 @@ static const ProtobufCFieldDescriptor perception__perception_msg__field_descript
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "time",
+    "traffic_flow_msg",
     8,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Perception__PerceptionMsg, msg_type_case),
+    offsetof(Perception__PerceptionMsg, traffic_flow_msg),
+    &perception__traffic_flow_msg__descriptor,
+    NULL,
+    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "time",
+    9,
     PROTOBUF_C_LABEL_OPTIONAL,
     PROTOBUF_C_TYPE_MESSAGE,
     0,   /* quantifier_offset */
@@ -1890,19 +2146,20 @@ static const ProtobufCFieldDescriptor perception__perception_msg__field_descript
   },
 };
 static const unsigned perception__perception_msg__field_indices_by_name[] = {
+  5,   /* field[5] = dynamic_msg */
   0,   /* field[0] = event */
-  5,   /* field[5] = flow_msg */
   4,   /* field[4] = jam_msg */
   3,   /* field[3] = lane_area_msg */
   6,   /* field[6] = target_msg */
-  7,   /* field[7] = time */
+  8,   /* field[8] = time */
+  7,   /* field[7] = traffic_flow_msg */
   2,   /* field[2] = visibility_msg */
   1,   /* field[1] = warn_msg */
 };
 static const ProtobufCIntRange perception__perception_msg__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 8 }
+  { 0, 9 }
 };
 const ProtobufCMessageDescriptor perception__perception_msg__descriptor =
 {
@@ -1912,7 +2169,7 @@ const ProtobufCMessageDescriptor perception__perception_msg__descriptor =
   "Perception__PerceptionMsg",
   "perception",
   sizeof(Perception__PerceptionMsg),
-  8,
+  9,
   perception__perception_msg__field_descriptors,
   perception__perception_msg__field_indices_by_name,
   1,  perception__perception_msg__number_ranges,
@@ -1921,10 +2178,10 @@ const ProtobufCMessageDescriptor perception__perception_msg__descriptor =
 };
 static const ProtobufCEnumValue perception__version__enum_values_by_number[1] =
 {
-  { "VERSION", "PERCEPTION__VERSION__VERSION", 20200801 },
+  { "VERSION", "PERCEPTION__VERSION__VERSION", 20200929 },
 };
 static const ProtobufCIntRange perception__version__value_ranges[] = {
-{20200801, 0},{0, 1}
+{20200929, 0},{0, 1}
 };
 static const ProtobufCEnumValueIndex perception__version__enum_values_by_name[1] =
 {
@@ -1945,7 +2202,7 @@ const ProtobufCEnumDescriptor perception__version__descriptor =
   perception__version__value_ranges,
   NULL,NULL,NULL,NULL   /* reserved[1234] */
 };
-static const ProtobufCEnumValue perception__event_id__enum_values_by_number[21] =
+static const ProtobufCEnumValue perception__event_id__enum_values_by_number[22] =
 {
   { "EVENT_NONE", "PERCEPTION__EVENT_ID__EVENT_NONE", 0 },
   { "PEDESTRIAN", "PERCEPTION__EVENT_ID__PEDESTRIAN", 1 },
@@ -1968,16 +2225,18 @@ static const ProtobufCEnumValue perception__event_id__enum_values_by_number[21] 
   { "SPEEDING", "PERCEPTION__EVENT_ID__SPEEDING", 18 },
   { "SNAP", "PERCEPTION__EVENT_ID__SNAP", 19 },
   { "FUSION_TO_RSU", "PERCEPTION__EVENT_ID__FUSION_TO_RSU", 20 },
+  { "DYNAMIC_TIMING", "PERCEPTION__EVENT_ID__DYNAMIC_TIMING", 21 },
 };
 static const ProtobufCIntRange perception__event_id__value_ranges[] = {
-{0, 0},{0, 21}
+{0, 0},{0, 22}
 };
-static const ProtobufCEnumValueIndex perception__event_id__enum_values_by_name[21] =
+static const ProtobufCEnumValueIndex perception__event_id__enum_values_by_name[22] =
 {
   { "ABNORMAL_CAR", 5 },
   { "ACCIDENT", 15 },
   { "AVAILABLE_AREA", 4 },
   { "BACKWARD_DRIVING", 8 },
+  { "DYNAMIC_TIMING", 21 },
   { "EVENT_NONE", 0 },
   { "FIRE_SMOKE", 10 },
   { "FUSION_TO_RSU", 20 },
@@ -2003,9 +2262,9 @@ const ProtobufCEnumDescriptor perception__event_id__descriptor =
   "EventId",
   "Perception__EventId",
   "perception",
-  21,
+  22,
   perception__event_id__enum_values_by_number,
-  21,
+  22,
   perception__event_id__enum_values_by_name,
   1,
   perception__event_id__value_ranges,

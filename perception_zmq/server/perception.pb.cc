@@ -22,13 +22,15 @@ extern PROTOBUF_INTERNAL_EXPORT_perception_2eproto ::google::protobuf::internal:
 extern PROTOBUF_INTERNAL_EXPORT_perception_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Position_perception_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_perception_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Size_perception_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_perception_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Timestamp_perception_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_perception_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_VisibilityMsg_perception_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_perception_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_TrafficFlow_perception_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_perception_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_WarnMsg_perception_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_perception_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_JamMsg_perception_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_perception_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_LaneAreaMsg_perception_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_perception_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_LaneArea_perception_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_perception_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_TargetMsg_perception_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_perception_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_FlowMsg_perception_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_perception_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_VisibilityMsg_perception_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_perception_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_DynamicTimingMsg_perception_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_perception_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_TrafficFlowMsg_perception_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_perception_2eproto ::google::protobuf::internal::SCCInfo<3> scc_info_Target_perception_2eproto;
 namespace perception {
 class PositionDefaultTypeInternal {
@@ -59,6 +61,10 @@ class FlowDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<Flow> _instance;
 } _Flow_default_instance_;
+class TrafficFlowDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<TrafficFlow> _instance;
+} _TrafficFlow_default_instance_;
 class TargetDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<Target> _instance;
@@ -75,10 +81,10 @@ class JamMsgDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<JamMsg> _instance;
 } _JamMsg_default_instance_;
-class FlowMsgDefaultTypeInternal {
+class DynamicTimingMsgDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<FlowMsg> _instance;
-} _FlowMsg_default_instance_;
+  ::google::protobuf::internal::ExplicitlyConstructed<DynamicTimingMsg> _instance;
+} _DynamicTimingMsg_default_instance_;
 class TargetMsgDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<TargetMsg> _instance;
@@ -87,6 +93,10 @@ class WarnMsgDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<WarnMsg> _instance;
 } _WarnMsg_default_instance_;
+class TrafficFlowMsgDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<TrafficFlowMsg> _instance;
+} _TrafficFlowMsg_default_instance_;
 class PerceptionMsgDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<PerceptionMsg> _instance;
@@ -94,8 +104,9 @@ class PerceptionMsgDefaultTypeInternal {
   const ::perception::VisibilityMsg* visibility_msg_;
   const ::perception::LaneAreaMsg* lane_area_msg_;
   const ::perception::JamMsg* jam_msg_;
-  const ::perception::FlowMsg* flow_msg_;
+  const ::perception::DynamicTimingMsg* dynamic_msg_;
   const ::perception::TargetMsg* target_msg_;
+  const ::perception::TrafficFlowMsg* traffic_flow_msg_;
 } _PerceptionMsg_default_instance_;
 }  // namespace perception
 static void InitDefaultsPosition_perception_2eproto() {
@@ -197,6 +208,20 @@ static void InitDefaultsFlow_perception_2eproto() {
 ::google::protobuf::internal::SCCInfo<0> scc_info_Flow_perception_2eproto =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsFlow_perception_2eproto}, {}};
 
+static void InitDefaultsTrafficFlow_perception_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::perception::_TrafficFlow_default_instance_;
+    new (ptr) ::perception::TrafficFlow();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::perception::TrafficFlow::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_TrafficFlow_perception_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsTrafficFlow_perception_2eproto}, {}};
+
 static void InitDefaultsTarget_perception_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -225,8 +250,9 @@ static void InitDefaultsVisibilityMsg_perception_2eproto() {
   ::perception::VisibilityMsg::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_VisibilityMsg_perception_2eproto =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsVisibilityMsg_perception_2eproto}, {}};
+::google::protobuf::internal::SCCInfo<1> scc_info_VisibilityMsg_perception_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsVisibilityMsg_perception_2eproto}, {
+      &scc_info_Position_perception_2eproto.base,}};
 
 static void InitDefaultsLaneAreaMsg_perception_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -258,19 +284,19 @@ static void InitDefaultsJamMsg_perception_2eproto() {
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsJamMsg_perception_2eproto}, {
       &scc_info_Jam_perception_2eproto.base,}};
 
-static void InitDefaultsFlowMsg_perception_2eproto() {
+static void InitDefaultsDynamicTimingMsg_perception_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::perception::_FlowMsg_default_instance_;
-    new (ptr) ::perception::FlowMsg();
+    void* ptr = &::perception::_DynamicTimingMsg_default_instance_;
+    new (ptr) ::perception::DynamicTimingMsg();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::perception::FlowMsg::InitAsDefaultInstance();
+  ::perception::DynamicTimingMsg::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<2> scc_info_FlowMsg_perception_2eproto =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsFlowMsg_perception_2eproto}, {
+::google::protobuf::internal::SCCInfo<2> scc_info_DynamicTimingMsg_perception_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsDynamicTimingMsg_perception_2eproto}, {
       &scc_info_Flow_perception_2eproto.base,
       &scc_info_Timestamp_perception_2eproto.base,}};
 
@@ -303,6 +329,22 @@ static void InitDefaultsWarnMsg_perception_2eproto() {
 ::google::protobuf::internal::SCCInfo<0> scc_info_WarnMsg_perception_2eproto =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsWarnMsg_perception_2eproto}, {}};
 
+static void InitDefaultsTrafficFlowMsg_perception_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::perception::_TrafficFlowMsg_default_instance_;
+    new (ptr) ::perception::TrafficFlowMsg();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::perception::TrafficFlowMsg::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<2> scc_info_TrafficFlowMsg_perception_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsTrafficFlowMsg_perception_2eproto}, {
+      &scc_info_TrafficFlow_perception_2eproto.base,
+      &scc_info_Timestamp_perception_2eproto.base,}};
+
 static void InitDefaultsPerceptionMsg_perception_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -314,14 +356,15 @@ static void InitDefaultsPerceptionMsg_perception_2eproto() {
   ::perception::PerceptionMsg::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<7> scc_info_PerceptionMsg_perception_2eproto =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 7, InitDefaultsPerceptionMsg_perception_2eproto}, {
+::google::protobuf::internal::SCCInfo<8> scc_info_PerceptionMsg_perception_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 8, InitDefaultsPerceptionMsg_perception_2eproto}, {
       &scc_info_WarnMsg_perception_2eproto.base,
       &scc_info_VisibilityMsg_perception_2eproto.base,
       &scc_info_LaneAreaMsg_perception_2eproto.base,
       &scc_info_JamMsg_perception_2eproto.base,
-      &scc_info_FlowMsg_perception_2eproto.base,
+      &scc_info_DynamicTimingMsg_perception_2eproto.base,
       &scc_info_TargetMsg_perception_2eproto.base,
+      &scc_info_TrafficFlowMsg_perception_2eproto.base,
       &scc_info_Timestamp_perception_2eproto.base,}};
 
 void InitDefaults_perception_2eproto() {
@@ -332,17 +375,19 @@ void InitDefaults_perception_2eproto() {
   ::google::protobuf::internal::InitSCC(&scc_info_LaneArea_perception_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_Jam_perception_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_Flow_perception_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_TrafficFlow_perception_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_Target_perception_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_VisibilityMsg_perception_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_LaneAreaMsg_perception_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_JamMsg_perception_2eproto.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_FlowMsg_perception_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_DynamicTimingMsg_perception_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_TargetMsg_perception_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_WarnMsg_perception_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_TrafficFlowMsg_perception_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_PerceptionMsg_perception_2eproto.base);
 }
 
-static ::google::protobuf::Metadata file_level_metadata_perception_2eproto[15];
+static ::google::protobuf::Metadata file_level_metadata_perception_2eproto[17];
 static const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors_perception_2eproto[8];
 static constexpr ::google::protobuf::ServiceDescriptor const** file_level_service_descriptors_perception_2eproto = nullptr;
 
@@ -434,6 +479,21 @@ const ::google::protobuf::uint32 TableStruct_perception_2eproto::offsets[] PROTO
   ~0u,
   ~0u,
   1,
+  PROTOBUF_FIELD_OFFSET(::perception::TrafficFlow, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::perception::TrafficFlow, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::perception::TrafficFlow, node_id_),
+  PROTOBUF_FIELD_OFFSET(::perception::TrafficFlow, link_id_),
+  PROTOBUF_FIELD_OFFSET(::perception::TrafficFlow, vehicle_num_),
+  PROTOBUF_FIELD_OFFSET(::perception::TrafficFlow, maneuvers_),
+  PROTOBUF_FIELD_OFFSET(::perception::TrafficFlow, pass_num_),
+  0,
+  1,
+  ~0u,
+  ~0u,
+  ~0u,
   PROTOBUF_FIELD_OFFSET(::perception::Target, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::perception::Target, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -486,10 +546,10 @@ const ::google::protobuf::uint32 TableStruct_perception_2eproto::offsets[] PROTO
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::perception::VisibilityMsg, distance_),
   PROTOBUF_FIELD_OFFSET(::perception::VisibilityMsg, level_),
-  0,
+  PROTOBUF_FIELD_OFFSET(::perception::VisibilityMsg, camera_pos_),
   1,
+  0,
   PROTOBUF_FIELD_OFFSET(::perception::LaneAreaMsg, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::perception::LaneAreaMsg, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -504,14 +564,14 @@ const ::google::protobuf::uint32 TableStruct_perception_2eproto::offsets[] PROTO
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::perception::JamMsg, jam_),
   ~0u,
-  PROTOBUF_FIELD_OFFSET(::perception::FlowMsg, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::perception::FlowMsg, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::perception::DynamicTimingMsg, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::perception::DynamicTimingMsg, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::perception::FlowMsg, flow_),
-  PROTOBUF_FIELD_OFFSET(::perception::FlowMsg, time_begin_),
-  PROTOBUF_FIELD_OFFSET(::perception::FlowMsg, time_end_),
+  PROTOBUF_FIELD_OFFSET(::perception::DynamicTimingMsg, flow_),
+  PROTOBUF_FIELD_OFFSET(::perception::DynamicTimingMsg, time_begin_),
+  PROTOBUF_FIELD_OFFSET(::perception::DynamicTimingMsg, time_end_),
   ~0u,
   0,
   1,
@@ -529,6 +589,17 @@ const ::google::protobuf::uint32 TableStruct_perception_2eproto::offsets[] PROTO
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::perception::WarnMsg, warn_),
   0,
+  PROTOBUF_FIELD_OFFSET(::perception::TrafficFlowMsg, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::perception::TrafficFlowMsg, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::perception::TrafficFlowMsg, flow_),
+  PROTOBUF_FIELD_OFFSET(::perception::TrafficFlowMsg, time_begin_),
+  PROTOBUF_FIELD_OFFSET(::perception::TrafficFlowMsg, time_end_),
+  ~0u,
+  0,
+  1,
   PROTOBUF_FIELD_OFFSET(::perception::PerceptionMsg, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::perception::PerceptionMsg, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -539,11 +610,13 @@ const ::google::protobuf::uint32 TableStruct_perception_2eproto::offsets[] PROTO
   offsetof(::perception::PerceptionMsgDefaultTypeInternal, visibility_msg_),
   offsetof(::perception::PerceptionMsgDefaultTypeInternal, lane_area_msg_),
   offsetof(::perception::PerceptionMsgDefaultTypeInternal, jam_msg_),
-  offsetof(::perception::PerceptionMsgDefaultTypeInternal, flow_msg_),
+  offsetof(::perception::PerceptionMsgDefaultTypeInternal, dynamic_msg_),
   offsetof(::perception::PerceptionMsgDefaultTypeInternal, target_msg_),
+  offsetof(::perception::PerceptionMsgDefaultTypeInternal, traffic_flow_msg_),
   PROTOBUF_FIELD_OFFSET(::perception::PerceptionMsg, time_),
   PROTOBUF_FIELD_OFFSET(::perception::PerceptionMsg, MsgType_),
   1,
+  ~0u,
   ~0u,
   ~0u,
   ~0u,
@@ -560,14 +633,16 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] PROTOBUF_SE
   { 44, 54, sizeof(::perception::LaneArea)},
   { 59, 69, sizeof(::perception::Jam)},
   { 74, 83, sizeof(::perception::Flow)},
-  { 87, 113, sizeof(::perception::Target)},
-  { 134, 141, sizeof(::perception::VisibilityMsg)},
-  { 143, 149, sizeof(::perception::LaneAreaMsg)},
-  { 150, 156, sizeof(::perception::JamMsg)},
-  { 157, 165, sizeof(::perception::FlowMsg)},
-  { 168, 174, sizeof(::perception::TargetMsg)},
-  { 175, 181, sizeof(::perception::WarnMsg)},
-  { 182, 196, sizeof(::perception::PerceptionMsg)},
+  { 87, 97, sizeof(::perception::TrafficFlow)},
+  { 102, 128, sizeof(::perception::Target)},
+  { 149, 156, sizeof(::perception::VisibilityMsg)},
+  { 158, 164, sizeof(::perception::LaneAreaMsg)},
+  { 165, 171, sizeof(::perception::JamMsg)},
+  { 172, 180, sizeof(::perception::DynamicTimingMsg)},
+  { 183, 189, sizeof(::perception::TargetMsg)},
+  { 190, 196, sizeof(::perception::WarnMsg)},
+  { 197, 205, sizeof(::perception::TrafficFlowMsg)},
+  { 208, 223, sizeof(::perception::PerceptionMsg)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -578,20 +653,22 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::perception::_LaneArea_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::perception::_Jam_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::perception::_Flow_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::perception::_TrafficFlow_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::perception::_Target_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::perception::_VisibilityMsg_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::perception::_LaneAreaMsg_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::perception::_JamMsg_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::perception::_FlowMsg_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::perception::_DynamicTimingMsg_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::perception::_TargetMsg_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::perception::_WarnMsg_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::perception::_TrafficFlowMsg_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::perception::_PerceptionMsg_default_instance_),
 };
 
 static ::google::protobuf::internal::AssignDescriptorsTable assign_descriptors_table_perception_2eproto = {
   {}, AddDescriptors_perception_2eproto, "perception.proto", schemas,
   file_default_instances, TableStruct_perception_2eproto::offsets,
-  file_level_metadata_perception_2eproto, 15, file_level_enum_descriptors_perception_2eproto, file_level_service_descriptors_perception_2eproto,
+  file_level_metadata_perception_2eproto, 17, file_level_enum_descriptors_perception_2eproto, file_level_service_descriptors_perception_2eproto,
 };
 
 const char descriptor_table_protodef_perception_2eproto[] =
@@ -612,65 +689,75 @@ const char descriptor_table_protodef_perception_2eproto[] =
   "\n\013vehicle_num\030\002 \003(\005\022\020\n\010pass_num\030\003 \003(\005\022+\n"
   "\006signal\030\004 \001(\0162\033.perception.Flow.TrafficS"
   "ig\",\n\nTrafficSig\022\013\n\007UNKNOWN\020\000\022\007\n\003Y2G\020\001\022\010"
-  "\n\004OVER\020\002\"\220\004\n\006Target\022\n\n\002id\030\001 \002(\005\022$\n\004type\030"
-  "\002 \002(\0162\026.perception.TargetType\022!\n\003pos\030\003 \002"
-  "(\0132\024.perception.Position\022\016\n\006camera\030\004 \001(\005"
-  "\022\020\n\010velocity\030\005 \001(\002\022\017\n\007heading\030\006 \001(\002\022\020\n\010d"
-  "istance\030\007 \001(\002\022\036\n\004size\030\010 \001(\0132\020.perception"
-  ".Size\022\026\n\016approach_judge\030\t \001(\005\022\"\n\006source\030"
-  "\n \001(\0162\022.perception.Source\022\022\n\ncapture_id\030"
-  "\013 \001(\005\022\017\n\007in_lane\030\014 \001(\010\022\017\n\007lane_id\030\r \001(\005\022"
-  "\024\n\014lane_heading\030\016 \001(\002\022\021\n\tlane_type\030\017 \001(\005"
-  "\022\'\n\007lane_ex\030\020 \001(\0132\026.perception.LaneInfoE"
-  "x\022\025\n\rlicense_plate\030\021 \001(\t\022%\n\010car_type\030\022 \001"
-  "(\0162\023.perception.CarType\022)\n\ncar_status\030\023 "
-  "\001(\0162\025.perception.CarStatus\022\022\n\nconfidence"
-  "\030\024 \001(\002\022\013\n\003rcs\030\025 \001(\002\"0\n\rVisibilityMsg\022\020\n\010"
-  "distance\030\001 \002(\002\022\r\n\005level\030\002 \002(\005\"1\n\013LaneAre"
-  "aMsg\022\"\n\004area\030\001 \003(\0132\024.perception.LaneArea"
-  "\"&\n\006JamMsg\022\034\n\003jam\030\001 \003(\0132\017.perception.Jam"
-  "\"}\n\007FlowMsg\022\036\n\004flow\030\001 \003(\0132\020.perception.F"
-  "low\022)\n\ntime_begin\030\002 \001(\0132\025.perception.Tim"
-  "estamp\022\'\n\010time_end\030\003 \001(\0132\025.perception.Ti"
-  "mestamp\"/\n\tTargetMsg\022\"\n\006target\030\001 \003(\0132\022.p"
-  "erception.Target\"\027\n\007WarnMsg\022\014\n\004warn\030\001 \002("
-  "\010\"\360\002\n\rPerceptionMsg\022\"\n\005event\030\001 \002(\0162\023.per"
-  "ception.EventId\022\'\n\010warn_msg\030\002 \001(\0132\023.perc"
-  "eption.WarnMsgH\000\0223\n\016visibility_msg\030\003 \001(\013"
-  "2\031.perception.VisibilityMsgH\000\0220\n\rlane_ar"
-  "ea_msg\030\004 \001(\0132\027.perception.LaneAreaMsgH\000\022"
-  "%\n\007jam_msg\030\005 \001(\0132\022.perception.JamMsgH\000\022\'"
-  "\n\010flow_msg\030\006 \001(\0132\023.perception.FlowMsgH\000\022"
-  "+\n\ntarget_msg\030\007 \001(\0132\025.perception.TargetM"
-  "sgH\000\022#\n\004time\030\010 \001(\0132\025.perception.Timestam"
-  "pB\t\n\007MsgType*\031\n\007Version\022\016\n\007VERSION\020\341\372\320\t*"
-  "\350\002\n\007EventId\022\016\n\nEVENT_NONE\020\000\022\016\n\nPEDESTRIA"
-  "N\020\001\022\016\n\nILLEGAL_V1\020\002\022\016\n\nVISIBILITY\020\003\022\022\n\016A"
-  "VAILABLE_AREA\020\004\022\020\n\014ABNORMAL_CAR\020\005\022\016\n\nILL"
-  "EGAL_V2\020\006\022\022\n\016TRAFFIC_STATUS\020\007\022\024\n\020BACKWAR"
-  "D_DRIVING\020\010\022\017\n\013ROAD_DANGER\020\t\022\016\n\nFIRE_SMO"
-  "KE\020\n\022\024\n\020TARGET_TO_FUSION\020\013\022\017\n\013TRAFFIC_JA"
-  "M\020\014\022\020\n\014TRAFFIC_FLOW\020\r\022\016\n\nSPECIALCAR\020\016\022\014\n"
-  "\010ACCIDENT\020\017\022\013\n\007ICEWARN\020\020\022\r\n\tLANE_WARE\020\021\022"
-  "\014\n\010SPEEDING\020\022\022\010\n\004SNAP\020\023\022\021\n\rFUSION_TO_RSU"
-  "\020\024*E\n\006Source\022\020\n\014OTHER_SOURCE\020\000\022\t\n\005RADAR\020"
-  "\001\022\n\n\006VISION\020\002\022\t\n\005LIDAR\020\003\022\007\n\003V2X\020\004*Z\n\nTar"
-  "getType\022\n\n\006OTHERS\020\000\022\t\n\005HUMAN\020\001\022\013\n\007VEHICL"
-  "E\020\002\022\016\n\nMOTORCYCLE\020\003\022\n\n\006ANIMAL\020\004\022\014\n\010OBSTA"
-  "CLE\020\005*R\n\007CarType\022\n\n\006NORMAL\020\000\022\r\n\tAMBULANC"
-  "E\020\001\022\r\n\tDANGERCAR\020\002\022\016\n\nFIREENGINE\020\003\022\r\n\tPO"
-  "LICECAR\020\004*\271\001\n\tCarStatus\022\021\n\rSTATUS_NORMAL"
-  "\020\000\022\016\n\nRETROGRADE\020\001\022\021\n\rOVER_SPEEDING\020\002\022\020\n"
-  "\014LOW_SPEEDING\020\003\022\023\n\017ILLEGAL_PARKING\020\004\022\020\n\014"
-  "LANE_PARKING\020\005\022\020\n\014AREA_PARKING\020\006\022\030\n\024CONT"
-  "INUOUS_DIVERSION\020\007\022\021\n\rLINE_PRESSING\020\010*M\n"
-  "\010WareType\022\r\n\tWARE_NONE\020\000\022\014\n\010FULLLINE\020\001\022\016"
-  "\n\nDOTTEDLINE\020\002\022\024\n\020DOUBLEYELLOWLINE\020\003"
+  "\n\004OVER\020\002\"i\n\013TrafficFlow\022\017\n\007node_id\030\001 \002(\005"
+  "\022\017\n\007link_id\030\002 \002(\005\022\023\n\013vehicle_num\030\003 \003(\005\022\021"
+  "\n\tmaneuvers\030\004 \003(\005\022\020\n\010pass_num\030\005 \003(\005\"\220\004\n\006"
+  "Target\022\n\n\002id\030\001 \002(\005\022$\n\004type\030\002 \002(\0162\026.perce"
+  "ption.TargetType\022!\n\003pos\030\003 \002(\0132\024.percepti"
+  "on.Position\022\016\n\006camera\030\004 \001(\005\022\020\n\010velocity\030"
+  "\005 \001(\002\022\017\n\007heading\030\006 \001(\002\022\020\n\010distance\030\007 \001(\002"
+  "\022\036\n\004size\030\010 \001(\0132\020.perception.Size\022\026\n\016appr"
+  "oach_judge\030\t \001(\005\022\"\n\006source\030\n \001(\0162\022.perce"
+  "ption.Source\022\022\n\ncapture_id\030\013 \001(\005\022\017\n\007in_l"
+  "ane\030\014 \001(\010\022\017\n\007lane_id\030\r \001(\005\022\024\n\014lane_headi"
+  "ng\030\016 \001(\002\022\021\n\tlane_type\030\017 \001(\005\022\'\n\007lane_ex\030\020"
+  " \001(\0132\026.perception.LaneInfoEx\022\025\n\rlicense_"
+  "plate\030\021 \001(\t\022%\n\010car_type\030\022 \001(\0162\023.percepti"
+  "on.CarType\022)\n\ncar_status\030\023 \001(\0162\025.percept"
+  "ion.CarStatus\022\022\n\nconfidence\030\024 \001(\002\022\013\n\003rcs"
+  "\030\025 \001(\002\"H\n\rVisibilityMsg\022\r\n\005level\030\001 \002(\005\022("
+  "\n\ncamera_pos\030\002 \002(\0132\024.perception.Position"
+  "\"1\n\013LaneAreaMsg\022\"\n\004area\030\001 \003(\0132\024.percepti"
+  "on.LaneArea\"&\n\006JamMsg\022\034\n\003jam\030\001 \003(\0132\017.per"
+  "ception.Jam\"\206\001\n\020DynamicTimingMsg\022\036\n\004flow"
+  "\030\001 \003(\0132\020.perception.Flow\022)\n\ntime_begin\030\002"
+  " \001(\0132\025.perception.Timestamp\022\'\n\010time_end\030"
+  "\003 \001(\0132\025.perception.Timestamp\"/\n\tTargetMs"
+  "g\022\"\n\006target\030\001 \003(\0132\022.perception.Target\"\027\n"
+  "\007WarnMsg\022\014\n\004warn\030\001 \002(\010\"\213\001\n\016TrafficFlowMs"
+  "g\022%\n\004flow\030\001 \003(\0132\027.perception.TrafficFlow"
+  "\022)\n\ntime_begin\030\002 \002(\0132\025.perception.Timest"
+  "amp\022\'\n\010time_end\030\003 \002(\0132\025.perception.Times"
+  "tamp\"\264\003\n\rPerceptionMsg\022\"\n\005event\030\001 \002(\0162\023."
+  "perception.EventId\022\'\n\010warn_msg\030\002 \001(\0132\023.p"
+  "erception.WarnMsgH\000\0223\n\016visibility_msg\030\003 "
+  "\001(\0132\031.perception.VisibilityMsgH\000\0220\n\rlane"
+  "_area_msg\030\004 \001(\0132\027.perception.LaneAreaMsg"
+  "H\000\022%\n\007jam_msg\030\005 \001(\0132\022.perception.JamMsgH"
+  "\000\0223\n\013dynamic_msg\030\006 \001(\0132\034.perception.Dyna"
+  "micTimingMsgH\000\022+\n\ntarget_msg\030\007 \001(\0132\025.per"
+  "ception.TargetMsgH\000\0226\n\020traffic_flow_msg\030"
+  "\010 \001(\0132\032.perception.TrafficFlowMsgH\000\022#\n\004t"
+  "ime\030\t \001(\0132\025.perception.TimestampB\t\n\007MsgT"
+  "ype*\031\n\007Version\022\016\n\007VERSION\020\341\373\320\t*\374\002\n\007Event"
+  "Id\022\016\n\nEVENT_NONE\020\000\022\016\n\nPEDESTRIAN\020\001\022\016\n\nIL"
+  "LEGAL_V1\020\002\022\016\n\nVISIBILITY\020\003\022\022\n\016AVAILABLE_"
+  "AREA\020\004\022\020\n\014ABNORMAL_CAR\020\005\022\016\n\nILLEGAL_V2\020\006"
+  "\022\022\n\016TRAFFIC_STATUS\020\007\022\024\n\020BACKWARD_DRIVING"
+  "\020\010\022\017\n\013ROAD_DANGER\020\t\022\016\n\nFIRE_SMOKE\020\n\022\024\n\020T"
+  "ARGET_TO_FUSION\020\013\022\017\n\013TRAFFIC_JAM\020\014\022\020\n\014TR"
+  "AFFIC_FLOW\020\r\022\016\n\nSPECIALCAR\020\016\022\014\n\010ACCIDENT"
+  "\020\017\022\013\n\007ICEWARN\020\020\022\r\n\tLANE_WARE\020\021\022\014\n\010SPEEDI"
+  "NG\020\022\022\010\n\004SNAP\020\023\022\021\n\rFUSION_TO_RSU\020\024\022\022\n\016DYN"
+  "AMIC_TIMING\020\025*E\n\006Source\022\020\n\014OTHER_SOURCE\020"
+  "\000\022\t\n\005RADAR\020\001\022\n\n\006VISION\020\002\022\t\n\005LIDAR\020\003\022\007\n\003V"
+  "2X\020\004*Z\n\nTargetType\022\n\n\006OTHERS\020\000\022\t\n\005HUMAN\020"
+  "\001\022\013\n\007VEHICLE\020\002\022\016\n\nMOTORCYCLE\020\003\022\n\n\006ANIMAL"
+  "\020\004\022\014\n\010OBSTACLE\020\005*R\n\007CarType\022\n\n\006NORMAL\020\000\022"
+  "\r\n\tAMBULANCE\020\001\022\r\n\tDANGERCAR\020\002\022\016\n\nFIREENG"
+  "INE\020\003\022\r\n\tPOLICECAR\020\004*\271\001\n\tCarStatus\022\021\n\rST"
+  "ATUS_NORMAL\020\000\022\016\n\nRETROGRADE\020\001\022\021\n\rOVER_SP"
+  "EEDING\020\002\022\020\n\014LOW_SPEEDING\020\003\022\023\n\017ILLEGAL_PA"
+  "RKING\020\004\022\020\n\014LANE_PARKING\020\005\022\020\n\014AREA_PARKIN"
+  "G\020\006\022\030\n\024CONTINUOUS_DIVERSION\020\007\022\021\n\rLINE_PR"
+  "ESSING\020\010*M\n\010WareType\022\r\n\tWARE_NONE\020\000\022\014\n\010F"
+  "ULLLINE\020\001\022\016\n\nDOTTEDLINE\020\002\022\024\n\020DOUBLEYELLO"
+  "WLINE\020\003"
   ;
 static ::google::protobuf::internal::DescriptorTable descriptor_table_perception_2eproto = {
   false, InitDefaults_perception_2eproto, 
   descriptor_table_protodef_perception_2eproto,
-  "perception.proto", &assign_descriptors_table_perception_2eproto, 2836,
+  "perception.proto", &assign_descriptors_table_perception_2eproto, 3207,
 };
 
 void AddDescriptors_perception_2eproto() {
@@ -712,7 +799,7 @@ const ::google::protobuf::EnumDescriptor* Version_descriptor() {
 }
 bool Version_IsValid(int value) {
   switch (value) {
-    case 20200801:
+    case 20200929:
       return true;
     default:
       return false;
@@ -746,6 +833,7 @@ bool EventId_IsValid(int value) {
     case 18:
     case 19:
     case 20:
+    case 21:
       return true;
     default:
       return false;
@@ -3785,6 +3873,508 @@ void Flow::InternalSwap(Flow* other) {
 
 // ===================================================================
 
+void TrafficFlow::InitAsDefaultInstance() {
+}
+class TrafficFlow::HasBitSetters {
+ public:
+  static void set_has_node_id(TrafficFlow* msg) {
+    msg->_has_bits_[0] |= 0x00000001u;
+  }
+  static void set_has_link_id(TrafficFlow* msg) {
+    msg->_has_bits_[0] |= 0x00000002u;
+  }
+};
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int TrafficFlow::kNodeIdFieldNumber;
+const int TrafficFlow::kLinkIdFieldNumber;
+const int TrafficFlow::kVehicleNumFieldNumber;
+const int TrafficFlow::kManeuversFieldNumber;
+const int TrafficFlow::kPassNumFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+TrafficFlow::TrafficFlow()
+  : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:perception.TrafficFlow)
+}
+TrafficFlow::TrafficFlow(const TrafficFlow& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(nullptr),
+      _has_bits_(from._has_bits_),
+      vehicle_num_(from.vehicle_num_),
+      maneuvers_(from.maneuvers_),
+      pass_num_(from.pass_num_) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::memcpy(&node_id_, &from.node_id_,
+    static_cast<size_t>(reinterpret_cast<char*>(&link_id_) -
+    reinterpret_cast<char*>(&node_id_)) + sizeof(link_id_));
+  // @@protoc_insertion_point(copy_constructor:perception.TrafficFlow)
+}
+
+void TrafficFlow::SharedCtor() {
+  ::memset(&node_id_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&link_id_) -
+      reinterpret_cast<char*>(&node_id_)) + sizeof(link_id_));
+}
+
+TrafficFlow::~TrafficFlow() {
+  // @@protoc_insertion_point(destructor:perception.TrafficFlow)
+  SharedDtor();
+}
+
+void TrafficFlow::SharedDtor() {
+}
+
+void TrafficFlow::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const TrafficFlow& TrafficFlow::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_TrafficFlow_perception_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void TrafficFlow::Clear() {
+// @@protoc_insertion_point(message_clear_start:perception.TrafficFlow)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  vehicle_num_.Clear();
+  maneuvers_.Clear();
+  pass_num_.Clear();
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    ::memset(&node_id_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&link_id_) -
+        reinterpret_cast<char*>(&node_id_)) + sizeof(link_id_));
+  }
+  _has_bits_.Clear();
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* TrafficFlow::_InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) {
+  while (!ctx->Done(&ptr)) {
+    ::google::protobuf::uint32 tag;
+    ptr = ::google::protobuf::internal::ReadTag(ptr, &tag);
+    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+    switch (tag >> 3) {
+      // required int32 node_id = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
+        set_node_id(::google::protobuf::internal::ReadVarint(&ptr));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      // required int32 link_id = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
+        set_link_id(::google::protobuf::internal::ReadVarint(&ptr));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      // repeated int32 vehicle_num = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) == 24) {
+          do {
+            add_vehicle_num(::google::protobuf::internal::ReadVarint(&ptr));
+            GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+            if (ctx->Done(&ptr)) return ptr;
+          } while ((::google::protobuf::internal::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 24 && (ptr += 1));
+          break;
+        } else if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
+        ptr = ::google::protobuf::internal::PackedInt32Parser(mutable_vehicle_num(), ptr, ctx);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      // repeated int32 maneuvers = 4;
+      case 4: {
+        if (static_cast<::google::protobuf::uint8>(tag) == 32) {
+          do {
+            add_maneuvers(::google::protobuf::internal::ReadVarint(&ptr));
+            GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+            if (ctx->Done(&ptr)) return ptr;
+          } while ((::google::protobuf::internal::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 32 && (ptr += 1));
+          break;
+        } else if (static_cast<::google::protobuf::uint8>(tag) != 34) goto handle_unusual;
+        ptr = ::google::protobuf::internal::PackedInt32Parser(mutable_maneuvers(), ptr, ctx);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      // repeated int32 pass_num = 5;
+      case 5: {
+        if (static_cast<::google::protobuf::uint8>(tag) == 40) {
+          do {
+            add_pass_num(::google::protobuf::internal::ReadVarint(&ptr));
+            GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+            if (ctx->Done(&ptr)) return ptr;
+          } while ((::google::protobuf::internal::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 40 && (ptr += 1));
+          break;
+        } else if (static_cast<::google::protobuf::uint8>(tag) != 42) goto handle_unusual;
+        ptr = ::google::protobuf::internal::PackedInt32Parser(mutable_pass_num(), ptr, ctx);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          return ptr;
+        }
+        ptr = UnknownFieldParse(tag,
+          _internal_metadata_.mutable_unknown_fields(), ptr, ctx);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr != nullptr);
+        break;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool TrafficFlow::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:perception.TrafficFlow)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required int32 node_id = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
+          HasBitSetters::set_has_node_id(this);
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &node_id_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // required int32 link_id = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
+          HasBitSetters::set_has_link_id(this);
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &link_id_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // repeated int32 vehicle_num = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (24 & 0xFF)) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 1, 24u, input, this->mutable_vehicle_num())));
+        } else if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, this->mutable_vehicle_num())));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // repeated int32 maneuvers = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (32 & 0xFF)) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 1, 32u, input, this->mutable_maneuvers())));
+        } else if (static_cast< ::google::protobuf::uint8>(tag) == (34 & 0xFF)) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, this->mutable_maneuvers())));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // repeated int32 pass_num = 5;
+      case 5: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (40 & 0xFF)) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 1, 40u, input, this->mutable_pass_num())));
+        } else if (static_cast< ::google::protobuf::uint8>(tag) == (42 & 0xFF)) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, this->mutable_pass_num())));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:perception.TrafficFlow)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:perception.TrafficFlow)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void TrafficFlow::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:perception.TrafficFlow)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  // required int32 node_id = 1;
+  if (cached_has_bits & 0x00000001u) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->node_id(), output);
+  }
+
+  // required int32 link_id = 2;
+  if (cached_has_bits & 0x00000002u) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->link_id(), output);
+  }
+
+  // repeated int32 vehicle_num = 3;
+  for (int i = 0, n = this->vehicle_num_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(
+      3, this->vehicle_num(i), output);
+  }
+
+  // repeated int32 maneuvers = 4;
+  for (int i = 0, n = this->maneuvers_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(
+      4, this->maneuvers(i), output);
+  }
+
+  // repeated int32 pass_num = 5;
+  for (int i = 0, n = this->pass_num_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(
+      5, this->pass_num(i), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:perception.TrafficFlow)
+}
+
+::google::protobuf::uint8* TrafficFlow::InternalSerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:perception.TrafficFlow)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  // required int32 node_id = 1;
+  if (cached_has_bits & 0x00000001u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->node_id(), target);
+  }
+
+  // required int32 link_id = 2;
+  if (cached_has_bits & 0x00000002u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->link_id(), target);
+  }
+
+  // repeated int32 vehicle_num = 3;
+  target = ::google::protobuf::internal::WireFormatLite::
+    WriteInt32ToArray(3, this->vehicle_num_, target);
+
+  // repeated int32 maneuvers = 4;
+  target = ::google::protobuf::internal::WireFormatLite::
+    WriteInt32ToArray(4, this->maneuvers_, target);
+
+  // repeated int32 pass_num = 5;
+  target = ::google::protobuf::internal::WireFormatLite::
+    WriteInt32ToArray(5, this->pass_num_, target);
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:perception.TrafficFlow)
+  return target;
+}
+
+size_t TrafficFlow::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:perception.TrafficFlow)
+  size_t total_size = 0;
+
+  if (has_node_id()) {
+    // required int32 node_id = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->node_id());
+  }
+
+  if (has_link_id()) {
+    // required int32 link_id = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->link_id());
+  }
+
+  return total_size;
+}
+size_t TrafficFlow::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:perception.TrafficFlow)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+    // required int32 node_id = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->node_id());
+
+    // required int32 link_id = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->link_id());
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
+  }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated int32 vehicle_num = 3;
+  {
+    size_t data_size = ::google::protobuf::internal::WireFormatLite::
+      Int32Size(this->vehicle_num_);
+    total_size += 1 *
+                  ::google::protobuf::internal::FromIntSize(this->vehicle_num_size());
+    total_size += data_size;
+  }
+
+  // repeated int32 maneuvers = 4;
+  {
+    size_t data_size = ::google::protobuf::internal::WireFormatLite::
+      Int32Size(this->maneuvers_);
+    total_size += 1 *
+                  ::google::protobuf::internal::FromIntSize(this->maneuvers_size());
+    total_size += data_size;
+  }
+
+  // repeated int32 pass_num = 5;
+  {
+    size_t data_size = ::google::protobuf::internal::WireFormatLite::
+      Int32Size(this->pass_num_);
+    total_size += 1 *
+                  ::google::protobuf::internal::FromIntSize(this->pass_num_size());
+    total_size += data_size;
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void TrafficFlow::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:perception.TrafficFlow)
+  GOOGLE_DCHECK_NE(&from, this);
+  const TrafficFlow* source =
+      ::google::protobuf::DynamicCastToGenerated<TrafficFlow>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:perception.TrafficFlow)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:perception.TrafficFlow)
+    MergeFrom(*source);
+  }
+}
+
+void TrafficFlow::MergeFrom(const TrafficFlow& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:perception.TrafficFlow)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  vehicle_num_.MergeFrom(from.vehicle_num_);
+  maneuvers_.MergeFrom(from.maneuvers_);
+  pass_num_.MergeFrom(from.pass_num_);
+  cached_has_bits = from._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      node_id_ = from.node_id_;
+    }
+    if (cached_has_bits & 0x00000002u) {
+      link_id_ = from.link_id_;
+    }
+    _has_bits_[0] |= cached_has_bits;
+  }
+}
+
+void TrafficFlow::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:perception.TrafficFlow)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void TrafficFlow::CopyFrom(const TrafficFlow& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:perception.TrafficFlow)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool TrafficFlow::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+  return true;
+}
+
+void TrafficFlow::Swap(TrafficFlow* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void TrafficFlow::InternalSwap(TrafficFlow* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
+  vehicle_num_.InternalSwap(&other->vehicle_num_);
+  maneuvers_.InternalSwap(&other->maneuvers_);
+  pass_num_.InternalSwap(&other->pass_num_);
+  swap(node_id_, other->node_id_);
+  swap(link_id_, other->link_id_);
+}
+
+::google::protobuf::Metadata TrafficFlow::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_perception_2eproto);
+  return ::file_level_metadata_perception_2eproto[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
 void Target::InitAsDefaultInstance() {
   ::perception::_Target_default_instance_._instance.get_mutable()->pos_ = const_cast< ::perception::Position*>(
       ::perception::Position::internal_default_instance());
@@ -5135,20 +5725,27 @@ void Target::InternalSwap(Target* other) {
 // ===================================================================
 
 void VisibilityMsg::InitAsDefaultInstance() {
+  ::perception::_VisibilityMsg_default_instance_._instance.get_mutable()->camera_pos_ = const_cast< ::perception::Position*>(
+      ::perception::Position::internal_default_instance());
 }
 class VisibilityMsg::HasBitSetters {
  public:
-  static void set_has_distance(VisibilityMsg* msg) {
-    msg->_has_bits_[0] |= 0x00000001u;
-  }
   static void set_has_level(VisibilityMsg* msg) {
     msg->_has_bits_[0] |= 0x00000002u;
   }
+  static const ::perception::Position& camera_pos(const VisibilityMsg* msg);
+  static void set_has_camera_pos(VisibilityMsg* msg) {
+    msg->_has_bits_[0] |= 0x00000001u;
+  }
 };
 
+const ::perception::Position&
+VisibilityMsg::HasBitSetters::camera_pos(const VisibilityMsg* msg) {
+  return *msg->camera_pos_;
+}
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int VisibilityMsg::kDistanceFieldNumber;
 const int VisibilityMsg::kLevelFieldNumber;
+const int VisibilityMsg::kCameraPosFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 VisibilityMsg::VisibilityMsg()
@@ -5161,16 +5758,21 @@ VisibilityMsg::VisibilityMsg(const VisibilityMsg& from)
       _internal_metadata_(nullptr),
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::memcpy(&distance_, &from.distance_,
-    static_cast<size_t>(reinterpret_cast<char*>(&level_) -
-    reinterpret_cast<char*>(&distance_)) + sizeof(level_));
+  if (from.has_camera_pos()) {
+    camera_pos_ = new ::perception::Position(*from.camera_pos_);
+  } else {
+    camera_pos_ = nullptr;
+  }
+  level_ = from.level_;
   // @@protoc_insertion_point(copy_constructor:perception.VisibilityMsg)
 }
 
 void VisibilityMsg::SharedCtor() {
-  ::memset(&distance_, 0, static_cast<size_t>(
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_VisibilityMsg_perception_2eproto.base);
+  ::memset(&camera_pos_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&level_) -
-      reinterpret_cast<char*>(&distance_)) + sizeof(level_));
+      reinterpret_cast<char*>(&camera_pos_)) + sizeof(level_));
 }
 
 VisibilityMsg::~VisibilityMsg() {
@@ -5179,6 +5781,7 @@ VisibilityMsg::~VisibilityMsg() {
 }
 
 void VisibilityMsg::SharedDtor() {
+  if (this != internal_default_instance()) delete camera_pos_;
 }
 
 void VisibilityMsg::SetCachedSize(int size) const {
@@ -5197,11 +5800,11 @@ void VisibilityMsg::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    ::memset(&distance_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&level_) -
-        reinterpret_cast<char*>(&distance_)) + sizeof(level_));
+  if (cached_has_bits & 0x00000001u) {
+    GOOGLE_DCHECK(camera_pos_ != nullptr);
+    camera_pos_->Clear();
   }
+  level_ = 0;
   _has_bits_.Clear();
   _internal_metadata_.Clear();
 }
@@ -5213,17 +5816,17 @@ const char* VisibilityMsg::_InternalParse(const char* ptr, ::google::protobuf::i
     ptr = ::google::protobuf::internal::ReadTag(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
-      // required float distance = 1;
+      // required int32 level = 1;
       case 1: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 13) goto handle_unusual;
-        set_distance(::google::protobuf::internal::UnalignedLoad<float>(ptr));
-        ptr += sizeof(float);
+        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
+        set_level(::google::protobuf::internal::ReadVarint(&ptr));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
-      // required int32 level = 2;
+      // required .perception.Position camera_pos = 2;
       case 2: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
-        set_level(::google::protobuf::internal::ReadVarint(&ptr));
+        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
+        ptr = ctx->ParseMessage(mutable_camera_pos(), ptr);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
@@ -5253,26 +5856,24 @@ bool VisibilityMsg::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required float distance = 1;
+      // required int32 level = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (13 & 0xFF)) {
-          HasBitSetters::set_has_distance(this);
+        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
+          HasBitSetters::set_has_level(this);
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &distance_)));
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &level_)));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // required int32 level = 2;
+      // required .perception.Position camera_pos = 2;
       case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
-          HasBitSetters::set_has_level(this);
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &level_)));
+        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+               input, mutable_camera_pos()));
         } else {
           goto handle_unusual;
         }
@@ -5307,14 +5908,15 @@ void VisibilityMsg::SerializeWithCachedSizes(
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  // required float distance = 1;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(1, this->distance(), output);
+  // required int32 level = 1;
+  if (cached_has_bits & 0x00000002u) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->level(), output);
   }
 
-  // required int32 level = 2;
-  if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->level(), output);
+  // required .perception.Position camera_pos = 2;
+  if (cached_has_bits & 0x00000001u) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, HasBitSetters::camera_pos(this), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -5331,14 +5933,16 @@ void VisibilityMsg::SerializeWithCachedSizes(
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  // required float distance = 1;
-  if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(1, this->distance(), target);
+  // required int32 level = 1;
+  if (cached_has_bits & 0x00000002u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->level(), target);
   }
 
-  // required int32 level = 2;
-  if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->level(), target);
+  // required .perception.Position camera_pos = 2;
+  if (cached_has_bits & 0x00000001u) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        2, HasBitSetters::camera_pos(this), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -5353,13 +5957,15 @@ size_t VisibilityMsg::RequiredFieldsByteSizeFallback() const {
 // @@protoc_insertion_point(required_fields_byte_size_fallback_start:perception.VisibilityMsg)
   size_t total_size = 0;
 
-  if (has_distance()) {
-    // required float distance = 1;
-    total_size += 1 + 4;
+  if (has_camera_pos()) {
+    // required .perception.Position camera_pos = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *camera_pos_);
   }
 
   if (has_level()) {
-    // required int32 level = 2;
+    // required int32 level = 1;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->level());
@@ -5377,10 +5983,12 @@ size_t VisibilityMsg::ByteSizeLong() const {
         _internal_metadata_.unknown_fields());
   }
   if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
-    // required float distance = 1;
-    total_size += 1 + 4;
+    // required .perception.Position camera_pos = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *camera_pos_);
 
-    // required int32 level = 2;
+    // required int32 level = 1;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->level());
@@ -5422,7 +6030,7 @@ void VisibilityMsg::MergeFrom(const VisibilityMsg& from) {
   cached_has_bits = from._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
-      distance_ = from.distance_;
+      mutable_camera_pos()->::perception::Position::MergeFrom(from.camera_pos());
     }
     if (cached_has_bits & 0x00000002u) {
       level_ = from.level_;
@@ -5447,6 +6055,9 @@ void VisibilityMsg::CopyFrom(const VisibilityMsg& from) {
 
 bool VisibilityMsg::IsInitialized() const {
   if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+  if (has_camera_pos()) {
+    if (!this->camera_pos_->IsInitialized()) return false;
+  }
   return true;
 }
 
@@ -5458,7 +6069,7 @@ void VisibilityMsg::InternalSwap(VisibilityMsg* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
-  swap(distance_, other->distance_);
+  swap(camera_pos_, other->camera_pos_);
   swap(level_, other->level_);
 }
 
@@ -6006,44 +6617,44 @@ void JamMsg::InternalSwap(JamMsg* other) {
 
 // ===================================================================
 
-void FlowMsg::InitAsDefaultInstance() {
-  ::perception::_FlowMsg_default_instance_._instance.get_mutable()->time_begin_ = const_cast< ::perception::Timestamp*>(
+void DynamicTimingMsg::InitAsDefaultInstance() {
+  ::perception::_DynamicTimingMsg_default_instance_._instance.get_mutable()->time_begin_ = const_cast< ::perception::Timestamp*>(
       ::perception::Timestamp::internal_default_instance());
-  ::perception::_FlowMsg_default_instance_._instance.get_mutable()->time_end_ = const_cast< ::perception::Timestamp*>(
+  ::perception::_DynamicTimingMsg_default_instance_._instance.get_mutable()->time_end_ = const_cast< ::perception::Timestamp*>(
       ::perception::Timestamp::internal_default_instance());
 }
-class FlowMsg::HasBitSetters {
+class DynamicTimingMsg::HasBitSetters {
  public:
-  static const ::perception::Timestamp& time_begin(const FlowMsg* msg);
-  static void set_has_time_begin(FlowMsg* msg) {
+  static const ::perception::Timestamp& time_begin(const DynamicTimingMsg* msg);
+  static void set_has_time_begin(DynamicTimingMsg* msg) {
     msg->_has_bits_[0] |= 0x00000001u;
   }
-  static const ::perception::Timestamp& time_end(const FlowMsg* msg);
-  static void set_has_time_end(FlowMsg* msg) {
+  static const ::perception::Timestamp& time_end(const DynamicTimingMsg* msg);
+  static void set_has_time_end(DynamicTimingMsg* msg) {
     msg->_has_bits_[0] |= 0x00000002u;
   }
 };
 
 const ::perception::Timestamp&
-FlowMsg::HasBitSetters::time_begin(const FlowMsg* msg) {
+DynamicTimingMsg::HasBitSetters::time_begin(const DynamicTimingMsg* msg) {
   return *msg->time_begin_;
 }
 const ::perception::Timestamp&
-FlowMsg::HasBitSetters::time_end(const FlowMsg* msg) {
+DynamicTimingMsg::HasBitSetters::time_end(const DynamicTimingMsg* msg) {
   return *msg->time_end_;
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int FlowMsg::kFlowFieldNumber;
-const int FlowMsg::kTimeBeginFieldNumber;
-const int FlowMsg::kTimeEndFieldNumber;
+const int DynamicTimingMsg::kFlowFieldNumber;
+const int DynamicTimingMsg::kTimeBeginFieldNumber;
+const int DynamicTimingMsg::kTimeEndFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-FlowMsg::FlowMsg()
+DynamicTimingMsg::DynamicTimingMsg()
   : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:perception.FlowMsg)
+  // @@protoc_insertion_point(constructor:perception.DynamicTimingMsg)
 }
-FlowMsg::FlowMsg(const FlowMsg& from)
+DynamicTimingMsg::DynamicTimingMsg(const DynamicTimingMsg& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(nullptr),
       _has_bits_(from._has_bits_),
@@ -6059,38 +6670,38 @@ FlowMsg::FlowMsg(const FlowMsg& from)
   } else {
     time_end_ = nullptr;
   }
-  // @@protoc_insertion_point(copy_constructor:perception.FlowMsg)
+  // @@protoc_insertion_point(copy_constructor:perception.DynamicTimingMsg)
 }
 
-void FlowMsg::SharedCtor() {
+void DynamicTimingMsg::SharedCtor() {
   ::google::protobuf::internal::InitSCC(
-      &scc_info_FlowMsg_perception_2eproto.base);
+      &scc_info_DynamicTimingMsg_perception_2eproto.base);
   ::memset(&time_begin_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&time_end_) -
       reinterpret_cast<char*>(&time_begin_)) + sizeof(time_end_));
 }
 
-FlowMsg::~FlowMsg() {
-  // @@protoc_insertion_point(destructor:perception.FlowMsg)
+DynamicTimingMsg::~DynamicTimingMsg() {
+  // @@protoc_insertion_point(destructor:perception.DynamicTimingMsg)
   SharedDtor();
 }
 
-void FlowMsg::SharedDtor() {
+void DynamicTimingMsg::SharedDtor() {
   if (this != internal_default_instance()) delete time_begin_;
   if (this != internal_default_instance()) delete time_end_;
 }
 
-void FlowMsg::SetCachedSize(int size) const {
+void DynamicTimingMsg::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const FlowMsg& FlowMsg::default_instance() {
-  ::google::protobuf::internal::InitSCC(&::scc_info_FlowMsg_perception_2eproto.base);
+const DynamicTimingMsg& DynamicTimingMsg::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_DynamicTimingMsg_perception_2eproto.base);
   return *internal_default_instance();
 }
 
 
-void FlowMsg::Clear() {
-// @@protoc_insertion_point(message_clear_start:perception.FlowMsg)
+void DynamicTimingMsg::Clear() {
+// @@protoc_insertion_point(message_clear_start:perception.DynamicTimingMsg)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -6112,7 +6723,7 @@ void FlowMsg::Clear() {
 }
 
 #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-const char* FlowMsg::_InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) {
+const char* DynamicTimingMsg::_InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) {
   while (!ctx->Done(&ptr)) {
     ::google::protobuf::uint32 tag;
     ptr = ::google::protobuf::internal::ReadTag(ptr, &tag);
@@ -6158,11 +6769,11 @@ const char* FlowMsg::_InternalParse(const char* ptr, ::google::protobuf::interna
   return ptr;
 }
 #else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool FlowMsg::MergePartialFromCodedStream(
+bool DynamicTimingMsg::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:perception.FlowMsg)
+  // @@protoc_insertion_point(parse_start:perception.DynamicTimingMsg)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -6213,18 +6824,18 @@ bool FlowMsg::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:perception.FlowMsg)
+  // @@protoc_insertion_point(parse_success:perception.DynamicTimingMsg)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:perception.FlowMsg)
+  // @@protoc_insertion_point(parse_failure:perception.DynamicTimingMsg)
   return false;
 #undef DO_
 }
 #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
-void FlowMsg::SerializeWithCachedSizes(
+void DynamicTimingMsg::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:perception.FlowMsg)
+  // @@protoc_insertion_point(serialize_start:perception.DynamicTimingMsg)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -6254,12 +6865,12 @@ void FlowMsg::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:perception.FlowMsg)
+  // @@protoc_insertion_point(serialize_end:perception.DynamicTimingMsg)
 }
 
-::google::protobuf::uint8* FlowMsg::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* DynamicTimingMsg::InternalSerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:perception.FlowMsg)
+  // @@protoc_insertion_point(serialize_to_array_start:perception.DynamicTimingMsg)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -6290,12 +6901,12 @@ void FlowMsg::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:perception.FlowMsg)
+  // @@protoc_insertion_point(serialize_to_array_end:perception.DynamicTimingMsg)
   return target;
 }
 
-size_t FlowMsg::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:perception.FlowMsg)
+size_t DynamicTimingMsg::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:perception.DynamicTimingMsg)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -6340,23 +6951,23 @@ size_t FlowMsg::ByteSizeLong() const {
   return total_size;
 }
 
-void FlowMsg::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:perception.FlowMsg)
+void DynamicTimingMsg::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:perception.DynamicTimingMsg)
   GOOGLE_DCHECK_NE(&from, this);
-  const FlowMsg* source =
-      ::google::protobuf::DynamicCastToGenerated<FlowMsg>(
+  const DynamicTimingMsg* source =
+      ::google::protobuf::DynamicCastToGenerated<DynamicTimingMsg>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:perception.FlowMsg)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:perception.DynamicTimingMsg)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:perception.FlowMsg)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:perception.DynamicTimingMsg)
     MergeFrom(*source);
   }
 }
 
-void FlowMsg::MergeFrom(const FlowMsg& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:perception.FlowMsg)
+void DynamicTimingMsg::MergeFrom(const DynamicTimingMsg& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:perception.DynamicTimingMsg)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -6374,21 +6985,21 @@ void FlowMsg::MergeFrom(const FlowMsg& from) {
   }
 }
 
-void FlowMsg::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:perception.FlowMsg)
+void DynamicTimingMsg::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:perception.DynamicTimingMsg)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void FlowMsg::CopyFrom(const FlowMsg& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:perception.FlowMsg)
+void DynamicTimingMsg::CopyFrom(const DynamicTimingMsg& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:perception.DynamicTimingMsg)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool FlowMsg::IsInitialized() const {
+bool DynamicTimingMsg::IsInitialized() const {
   if (has_time_begin()) {
     if (!this->time_begin_->IsInitialized()) return false;
   }
@@ -6398,11 +7009,11 @@ bool FlowMsg::IsInitialized() const {
   return true;
 }
 
-void FlowMsg::Swap(FlowMsg* other) {
+void DynamicTimingMsg::Swap(DynamicTimingMsg* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void FlowMsg::InternalSwap(FlowMsg* other) {
+void DynamicTimingMsg::InternalSwap(DynamicTimingMsg* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
@@ -6411,7 +7022,7 @@ void FlowMsg::InternalSwap(FlowMsg* other) {
   swap(time_end_, other->time_end_);
 }
 
-::google::protobuf::Metadata FlowMsg::GetMetadata() const {
+::google::protobuf::Metadata DynamicTimingMsg::GetMetadata() const {
   ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_perception_2eproto);
   return ::file_level_metadata_perception_2eproto[kIndexInFileMessages];
 }
@@ -6946,6 +7557,438 @@ void WarnMsg::InternalSwap(WarnMsg* other) {
 
 // ===================================================================
 
+void TrafficFlowMsg::InitAsDefaultInstance() {
+  ::perception::_TrafficFlowMsg_default_instance_._instance.get_mutable()->time_begin_ = const_cast< ::perception::Timestamp*>(
+      ::perception::Timestamp::internal_default_instance());
+  ::perception::_TrafficFlowMsg_default_instance_._instance.get_mutable()->time_end_ = const_cast< ::perception::Timestamp*>(
+      ::perception::Timestamp::internal_default_instance());
+}
+class TrafficFlowMsg::HasBitSetters {
+ public:
+  static const ::perception::Timestamp& time_begin(const TrafficFlowMsg* msg);
+  static void set_has_time_begin(TrafficFlowMsg* msg) {
+    msg->_has_bits_[0] |= 0x00000001u;
+  }
+  static const ::perception::Timestamp& time_end(const TrafficFlowMsg* msg);
+  static void set_has_time_end(TrafficFlowMsg* msg) {
+    msg->_has_bits_[0] |= 0x00000002u;
+  }
+};
+
+const ::perception::Timestamp&
+TrafficFlowMsg::HasBitSetters::time_begin(const TrafficFlowMsg* msg) {
+  return *msg->time_begin_;
+}
+const ::perception::Timestamp&
+TrafficFlowMsg::HasBitSetters::time_end(const TrafficFlowMsg* msg) {
+  return *msg->time_end_;
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int TrafficFlowMsg::kFlowFieldNumber;
+const int TrafficFlowMsg::kTimeBeginFieldNumber;
+const int TrafficFlowMsg::kTimeEndFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+TrafficFlowMsg::TrafficFlowMsg()
+  : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:perception.TrafficFlowMsg)
+}
+TrafficFlowMsg::TrafficFlowMsg(const TrafficFlowMsg& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(nullptr),
+      _has_bits_(from._has_bits_),
+      flow_(from.flow_) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  if (from.has_time_begin()) {
+    time_begin_ = new ::perception::Timestamp(*from.time_begin_);
+  } else {
+    time_begin_ = nullptr;
+  }
+  if (from.has_time_end()) {
+    time_end_ = new ::perception::Timestamp(*from.time_end_);
+  } else {
+    time_end_ = nullptr;
+  }
+  // @@protoc_insertion_point(copy_constructor:perception.TrafficFlowMsg)
+}
+
+void TrafficFlowMsg::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_TrafficFlowMsg_perception_2eproto.base);
+  ::memset(&time_begin_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&time_end_) -
+      reinterpret_cast<char*>(&time_begin_)) + sizeof(time_end_));
+}
+
+TrafficFlowMsg::~TrafficFlowMsg() {
+  // @@protoc_insertion_point(destructor:perception.TrafficFlowMsg)
+  SharedDtor();
+}
+
+void TrafficFlowMsg::SharedDtor() {
+  if (this != internal_default_instance()) delete time_begin_;
+  if (this != internal_default_instance()) delete time_end_;
+}
+
+void TrafficFlowMsg::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const TrafficFlowMsg& TrafficFlowMsg::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_TrafficFlowMsg_perception_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void TrafficFlowMsg::Clear() {
+// @@protoc_insertion_point(message_clear_start:perception.TrafficFlowMsg)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  flow_.Clear();
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      GOOGLE_DCHECK(time_begin_ != nullptr);
+      time_begin_->Clear();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      GOOGLE_DCHECK(time_end_ != nullptr);
+      time_end_->Clear();
+    }
+  }
+  _has_bits_.Clear();
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* TrafficFlowMsg::_InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) {
+  while (!ctx->Done(&ptr)) {
+    ::google::protobuf::uint32 tag;
+    ptr = ::google::protobuf::internal::ReadTag(ptr, &tag);
+    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+    switch (tag >> 3) {
+      // repeated .perception.TrafficFlow flow = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        do {
+          ptr = ctx->ParseMessage(add_flow(), ptr);
+          GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+          if (ctx->Done(&ptr)) return ptr;
+        } while ((::google::protobuf::internal::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 10 && (ptr += 1));
+        break;
+      }
+      // required .perception.Timestamp time_begin = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
+        ptr = ctx->ParseMessage(mutable_time_begin(), ptr);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      // required .perception.Timestamp time_end = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
+        ptr = ctx->ParseMessage(mutable_time_end(), ptr);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          return ptr;
+        }
+        ptr = UnknownFieldParse(tag,
+          _internal_metadata_.mutable_unknown_fields(), ptr, ctx);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr != nullptr);
+        break;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool TrafficFlowMsg::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:perception.TrafficFlowMsg)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // repeated .perception.TrafficFlow flow = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+                input, add_flow()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // required .perception.Timestamp time_begin = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+               input, mutable_time_begin()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // required .perception.Timestamp time_end = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+               input, mutable_time_end()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:perception.TrafficFlowMsg)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:perception.TrafficFlowMsg)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void TrafficFlowMsg::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:perception.TrafficFlowMsg)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated .perception.TrafficFlow flow = 1;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->flow_size()); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1,
+      this->flow(static_cast<int>(i)),
+      output);
+  }
+
+  cached_has_bits = _has_bits_[0];
+  // required .perception.Timestamp time_begin = 2;
+  if (cached_has_bits & 0x00000001u) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, HasBitSetters::time_begin(this), output);
+  }
+
+  // required .perception.Timestamp time_end = 3;
+  if (cached_has_bits & 0x00000002u) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, HasBitSetters::time_end(this), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:perception.TrafficFlowMsg)
+}
+
+::google::protobuf::uint8* TrafficFlowMsg::InternalSerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:perception.TrafficFlowMsg)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated .perception.TrafficFlow flow = 1;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->flow_size()); i < n; i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        1, this->flow(static_cast<int>(i)), target);
+  }
+
+  cached_has_bits = _has_bits_[0];
+  // required .perception.Timestamp time_begin = 2;
+  if (cached_has_bits & 0x00000001u) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        2, HasBitSetters::time_begin(this), target);
+  }
+
+  // required .perception.Timestamp time_end = 3;
+  if (cached_has_bits & 0x00000002u) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        3, HasBitSetters::time_end(this), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:perception.TrafficFlowMsg)
+  return target;
+}
+
+size_t TrafficFlowMsg::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:perception.TrafficFlowMsg)
+  size_t total_size = 0;
+
+  if (has_time_begin()) {
+    // required .perception.Timestamp time_begin = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *time_begin_);
+  }
+
+  if (has_time_end()) {
+    // required .perception.Timestamp time_end = 3;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *time_end_);
+  }
+
+  return total_size;
+}
+size_t TrafficFlowMsg::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:perception.TrafficFlowMsg)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+    // required .perception.Timestamp time_begin = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *time_begin_);
+
+    // required .perception.Timestamp time_end = 3;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *time_end_);
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
+  }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .perception.TrafficFlow flow = 1;
+  {
+    unsigned int count = static_cast<unsigned int>(this->flow_size());
+    total_size += 1UL * count;
+    for (unsigned int i = 0; i < count; i++) {
+      total_size +=
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          this->flow(static_cast<int>(i)));
+    }
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void TrafficFlowMsg::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:perception.TrafficFlowMsg)
+  GOOGLE_DCHECK_NE(&from, this);
+  const TrafficFlowMsg* source =
+      ::google::protobuf::DynamicCastToGenerated<TrafficFlowMsg>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:perception.TrafficFlowMsg)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:perception.TrafficFlowMsg)
+    MergeFrom(*source);
+  }
+}
+
+void TrafficFlowMsg::MergeFrom(const TrafficFlowMsg& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:perception.TrafficFlowMsg)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  flow_.MergeFrom(from.flow_);
+  cached_has_bits = from._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      mutable_time_begin()->::perception::Timestamp::MergeFrom(from.time_begin());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      mutable_time_end()->::perception::Timestamp::MergeFrom(from.time_end());
+    }
+  }
+}
+
+void TrafficFlowMsg::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:perception.TrafficFlowMsg)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void TrafficFlowMsg::CopyFrom(const TrafficFlowMsg& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:perception.TrafficFlowMsg)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool TrafficFlowMsg::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+  if (!::google::protobuf::internal::AllAreInitialized(this->flow())) return false;
+  if (has_time_begin()) {
+    if (!this->time_begin_->IsInitialized()) return false;
+  }
+  if (has_time_end()) {
+    if (!this->time_end_->IsInitialized()) return false;
+  }
+  return true;
+}
+
+void TrafficFlowMsg::Swap(TrafficFlowMsg* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void TrafficFlowMsg::InternalSwap(TrafficFlowMsg* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
+  CastToBase(&flow_)->InternalSwap(CastToBase(&other->flow_));
+  swap(time_begin_, other->time_begin_);
+  swap(time_end_, other->time_end_);
+}
+
+::google::protobuf::Metadata TrafficFlowMsg::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_perception_2eproto);
+  return ::file_level_metadata_perception_2eproto[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
 void PerceptionMsg::InitAsDefaultInstance() {
   ::perception::_PerceptionMsg_default_instance_.warn_msg_ = const_cast< ::perception::WarnMsg*>(
       ::perception::WarnMsg::internal_default_instance());
@@ -6955,10 +7998,12 @@ void PerceptionMsg::InitAsDefaultInstance() {
       ::perception::LaneAreaMsg::internal_default_instance());
   ::perception::_PerceptionMsg_default_instance_.jam_msg_ = const_cast< ::perception::JamMsg*>(
       ::perception::JamMsg::internal_default_instance());
-  ::perception::_PerceptionMsg_default_instance_.flow_msg_ = const_cast< ::perception::FlowMsg*>(
-      ::perception::FlowMsg::internal_default_instance());
+  ::perception::_PerceptionMsg_default_instance_.dynamic_msg_ = const_cast< ::perception::DynamicTimingMsg*>(
+      ::perception::DynamicTimingMsg::internal_default_instance());
   ::perception::_PerceptionMsg_default_instance_.target_msg_ = const_cast< ::perception::TargetMsg*>(
       ::perception::TargetMsg::internal_default_instance());
+  ::perception::_PerceptionMsg_default_instance_.traffic_flow_msg_ = const_cast< ::perception::TrafficFlowMsg*>(
+      ::perception::TrafficFlowMsg::internal_default_instance());
   ::perception::_PerceptionMsg_default_instance_._instance.get_mutable()->time_ = const_cast< ::perception::Timestamp*>(
       ::perception::Timestamp::internal_default_instance());
 }
@@ -6971,8 +8016,9 @@ class PerceptionMsg::HasBitSetters {
   static const ::perception::VisibilityMsg& visibility_msg(const PerceptionMsg* msg);
   static const ::perception::LaneAreaMsg& lane_area_msg(const PerceptionMsg* msg);
   static const ::perception::JamMsg& jam_msg(const PerceptionMsg* msg);
-  static const ::perception::FlowMsg& flow_msg(const PerceptionMsg* msg);
+  static const ::perception::DynamicTimingMsg& dynamic_msg(const PerceptionMsg* msg);
   static const ::perception::TargetMsg& target_msg(const PerceptionMsg* msg);
+  static const ::perception::TrafficFlowMsg& traffic_flow_msg(const PerceptionMsg* msg);
   static const ::perception::Timestamp& time(const PerceptionMsg* msg);
   static void set_has_time(PerceptionMsg* msg) {
     msg->_has_bits_[0] |= 0x00000001u;
@@ -6995,13 +8041,17 @@ const ::perception::JamMsg&
 PerceptionMsg::HasBitSetters::jam_msg(const PerceptionMsg* msg) {
   return *msg->MsgType_.jam_msg_;
 }
-const ::perception::FlowMsg&
-PerceptionMsg::HasBitSetters::flow_msg(const PerceptionMsg* msg) {
-  return *msg->MsgType_.flow_msg_;
+const ::perception::DynamicTimingMsg&
+PerceptionMsg::HasBitSetters::dynamic_msg(const PerceptionMsg* msg) {
+  return *msg->MsgType_.dynamic_msg_;
 }
 const ::perception::TargetMsg&
 PerceptionMsg::HasBitSetters::target_msg(const PerceptionMsg* msg) {
   return *msg->MsgType_.target_msg_;
+}
+const ::perception::TrafficFlowMsg&
+PerceptionMsg::HasBitSetters::traffic_flow_msg(const PerceptionMsg* msg) {
+  return *msg->MsgType_.traffic_flow_msg_;
 }
 const ::perception::Timestamp&
 PerceptionMsg::HasBitSetters::time(const PerceptionMsg* msg) {
@@ -7063,19 +8113,19 @@ void PerceptionMsg::set_allocated_jam_msg(::perception::JamMsg* jam_msg) {
   }
   // @@protoc_insertion_point(field_set_allocated:perception.PerceptionMsg.jam_msg)
 }
-void PerceptionMsg::set_allocated_flow_msg(::perception::FlowMsg* flow_msg) {
+void PerceptionMsg::set_allocated_dynamic_msg(::perception::DynamicTimingMsg* dynamic_msg) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
   clear_MsgType();
-  if (flow_msg) {
+  if (dynamic_msg) {
     ::google::protobuf::Arena* submessage_arena = nullptr;
     if (message_arena != submessage_arena) {
-      flow_msg = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, flow_msg, submessage_arena);
+      dynamic_msg = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, dynamic_msg, submessage_arena);
     }
-    set_has_flow_msg();
-    MsgType_.flow_msg_ = flow_msg;
+    set_has_dynamic_msg();
+    MsgType_.dynamic_msg_ = dynamic_msg;
   }
-  // @@protoc_insertion_point(field_set_allocated:perception.PerceptionMsg.flow_msg)
+  // @@protoc_insertion_point(field_set_allocated:perception.PerceptionMsg.dynamic_msg)
 }
 void PerceptionMsg::set_allocated_target_msg(::perception::TargetMsg* target_msg) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
@@ -7091,14 +8141,29 @@ void PerceptionMsg::set_allocated_target_msg(::perception::TargetMsg* target_msg
   }
   // @@protoc_insertion_point(field_set_allocated:perception.PerceptionMsg.target_msg)
 }
+void PerceptionMsg::set_allocated_traffic_flow_msg(::perception::TrafficFlowMsg* traffic_flow_msg) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  clear_MsgType();
+  if (traffic_flow_msg) {
+    ::google::protobuf::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      traffic_flow_msg = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, traffic_flow_msg, submessage_arena);
+    }
+    set_has_traffic_flow_msg();
+    MsgType_.traffic_flow_msg_ = traffic_flow_msg;
+  }
+  // @@protoc_insertion_point(field_set_allocated:perception.PerceptionMsg.traffic_flow_msg)
+}
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int PerceptionMsg::kEventFieldNumber;
 const int PerceptionMsg::kWarnMsgFieldNumber;
 const int PerceptionMsg::kVisibilityMsgFieldNumber;
 const int PerceptionMsg::kLaneAreaMsgFieldNumber;
 const int PerceptionMsg::kJamMsgFieldNumber;
-const int PerceptionMsg::kFlowMsgFieldNumber;
+const int PerceptionMsg::kDynamicMsgFieldNumber;
 const int PerceptionMsg::kTargetMsgFieldNumber;
+const int PerceptionMsg::kTrafficFlowMsgFieldNumber;
 const int PerceptionMsg::kTimeFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -7136,12 +8201,16 @@ PerceptionMsg::PerceptionMsg(const PerceptionMsg& from)
       mutable_jam_msg()->::perception::JamMsg::MergeFrom(from.jam_msg());
       break;
     }
-    case kFlowMsg: {
-      mutable_flow_msg()->::perception::FlowMsg::MergeFrom(from.flow_msg());
+    case kDynamicMsg: {
+      mutable_dynamic_msg()->::perception::DynamicTimingMsg::MergeFrom(from.dynamic_msg());
       break;
     }
     case kTargetMsg: {
       mutable_target_msg()->::perception::TargetMsg::MergeFrom(from.target_msg());
+      break;
+    }
+    case kTrafficFlowMsg: {
+      mutable_traffic_flow_msg()->::perception::TrafficFlowMsg::MergeFrom(from.traffic_flow_msg());
       break;
     }
     case MSGTYPE_NOT_SET: {
@@ -7200,12 +8269,16 @@ void PerceptionMsg::clear_MsgType() {
       delete MsgType_.jam_msg_;
       break;
     }
-    case kFlowMsg: {
-      delete MsgType_.flow_msg_;
+    case kDynamicMsg: {
+      delete MsgType_.dynamic_msg_;
       break;
     }
     case kTargetMsg: {
       delete MsgType_.target_msg_;
+      break;
+    }
+    case kTrafficFlowMsg: {
+      delete MsgType_.traffic_flow_msg_;
       break;
     }
     case MSGTYPE_NOT_SET: {
@@ -7280,10 +8353,10 @@ const char* PerceptionMsg::_InternalParse(const char* ptr, ::google::protobuf::i
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
-      // optional .perception.FlowMsg flow_msg = 6;
+      // optional .perception.DynamicTimingMsg dynamic_msg = 6;
       case 6: {
         if (static_cast<::google::protobuf::uint8>(tag) != 50) goto handle_unusual;
-        ptr = ctx->ParseMessage(mutable_flow_msg(), ptr);
+        ptr = ctx->ParseMessage(mutable_dynamic_msg(), ptr);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
@@ -7294,9 +8367,16 @@ const char* PerceptionMsg::_InternalParse(const char* ptr, ::google::protobuf::i
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
-      // optional .perception.Timestamp time = 8;
+      // optional .perception.TrafficFlowMsg traffic_flow_msg = 8;
       case 8: {
         if (static_cast<::google::protobuf::uint8>(tag) != 66) goto handle_unusual;
+        ptr = ctx->ParseMessage(mutable_traffic_flow_msg(), ptr);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      // optional .perception.Timestamp time = 9;
+      case 9: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 74) goto handle_unusual;
         ptr = ctx->ParseMessage(mutable_time(), ptr);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
@@ -7390,11 +8470,11 @@ bool PerceptionMsg::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .perception.FlowMsg flow_msg = 6;
+      // optional .perception.DynamicTimingMsg dynamic_msg = 6;
       case 6: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (50 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_flow_msg()));
+               input, mutable_dynamic_msg()));
         } else {
           goto handle_unusual;
         }
@@ -7412,9 +8492,20 @@ bool PerceptionMsg::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .perception.Timestamp time = 8;
+      // optional .perception.TrafficFlowMsg traffic_flow_msg = 8;
       case 8: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (66 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+               input, mutable_traffic_flow_msg()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // optional .perception.Timestamp time = 9;
+      case 9: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (74 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_time()));
         } else {
@@ -7474,20 +8565,24 @@ void PerceptionMsg::SerializeWithCachedSizes(
       ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
         5, HasBitSetters::jam_msg(this), output);
       break;
-    case kFlowMsg:
+    case kDynamicMsg:
       ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-        6, HasBitSetters::flow_msg(this), output);
+        6, HasBitSetters::dynamic_msg(this), output);
       break;
     case kTargetMsg:
       ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
         7, HasBitSetters::target_msg(this), output);
       break;
+    case kTrafficFlowMsg:
+      ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+        8, HasBitSetters::traffic_flow_msg(this), output);
+      break;
     default: ;
   }
-  // optional .perception.Timestamp time = 8;
+  // optional .perception.Timestamp time = 9;
   if (cached_has_bits & 0x00000001u) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      8, HasBitSetters::time(this), output);
+      9, HasBitSetters::time(this), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -7531,23 +8626,28 @@ void PerceptionMsg::SerializeWithCachedSizes(
         InternalWriteMessageToArray(
           5, HasBitSetters::jam_msg(this), target);
       break;
-    case kFlowMsg:
+    case kDynamicMsg:
       target = ::google::protobuf::internal::WireFormatLite::
         InternalWriteMessageToArray(
-          6, HasBitSetters::flow_msg(this), target);
+          6, HasBitSetters::dynamic_msg(this), target);
       break;
     case kTargetMsg:
       target = ::google::protobuf::internal::WireFormatLite::
         InternalWriteMessageToArray(
           7, HasBitSetters::target_msg(this), target);
       break;
+    case kTrafficFlowMsg:
+      target = ::google::protobuf::internal::WireFormatLite::
+        InternalWriteMessageToArray(
+          8, HasBitSetters::traffic_flow_msg(this), target);
+      break;
     default: ;
   }
-  // optional .perception.Timestamp time = 8;
+  // optional .perception.Timestamp time = 9;
   if (cached_has_bits & 0x00000001u) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        8, HasBitSetters::time(this), target);
+        9, HasBitSetters::time(this), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -7576,7 +8676,7 @@ size_t PerceptionMsg::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // optional .perception.Timestamp time = 8;
+  // optional .perception.Timestamp time = 9;
   cached_has_bits = _has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
@@ -7613,11 +8713,11 @@ size_t PerceptionMsg::ByteSizeLong() const {
           *MsgType_.jam_msg_);
       break;
     }
-    // optional .perception.FlowMsg flow_msg = 6;
-    case kFlowMsg: {
+    // optional .perception.DynamicTimingMsg dynamic_msg = 6;
+    case kDynamicMsg: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *MsgType_.flow_msg_);
+          *MsgType_.dynamic_msg_);
       break;
     }
     // optional .perception.TargetMsg target_msg = 7;
@@ -7625,6 +8725,13 @@ size_t PerceptionMsg::ByteSizeLong() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSize(
           *MsgType_.target_msg_);
+      break;
+    }
+    // optional .perception.TrafficFlowMsg traffic_flow_msg = 8;
+    case kTrafficFlowMsg: {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          *MsgType_.traffic_flow_msg_);
       break;
     }
     case MSGTYPE_NOT_SET: {
@@ -7685,12 +8792,16 @@ void PerceptionMsg::MergeFrom(const PerceptionMsg& from) {
       mutable_jam_msg()->::perception::JamMsg::MergeFrom(from.jam_msg());
       break;
     }
-    case kFlowMsg: {
-      mutable_flow_msg()->::perception::FlowMsg::MergeFrom(from.flow_msg());
+    case kDynamicMsg: {
+      mutable_dynamic_msg()->::perception::DynamicTimingMsg::MergeFrom(from.dynamic_msg());
       break;
     }
     case kTargetMsg: {
       mutable_target_msg()->::perception::TargetMsg::MergeFrom(from.target_msg());
+      break;
+    }
+    case kTrafficFlowMsg: {
+      mutable_traffic_flow_msg()->::perception::TrafficFlowMsg::MergeFrom(from.traffic_flow_msg());
       break;
     }
     case MSGTYPE_NOT_SET: {
@@ -7743,15 +8854,21 @@ bool PerceptionMsg::IsInitialized() const {
       }
       break;
     }
-    case kFlowMsg: {
-      if (has_flow_msg()) {
-        if (!this->flow_msg().IsInitialized()) return false;
+    case kDynamicMsg: {
+      if (has_dynamic_msg()) {
+        if (!this->dynamic_msg().IsInitialized()) return false;
       }
       break;
     }
     case kTargetMsg: {
       if (has_target_msg()) {
         if (!this->target_msg().IsInitialized()) return false;
+      }
+      break;
+    }
+    case kTrafficFlowMsg: {
+      if (has_traffic_flow_msg()) {
+        if (!this->traffic_flow_msg().IsInitialized()) return false;
       }
       break;
     }
@@ -7807,6 +8924,9 @@ template<> PROTOBUF_NOINLINE ::perception::Jam* Arena::CreateMaybeMessage< ::per
 template<> PROTOBUF_NOINLINE ::perception::Flow* Arena::CreateMaybeMessage< ::perception::Flow >(Arena* arena) {
   return Arena::CreateInternal< ::perception::Flow >(arena);
 }
+template<> PROTOBUF_NOINLINE ::perception::TrafficFlow* Arena::CreateMaybeMessage< ::perception::TrafficFlow >(Arena* arena) {
+  return Arena::CreateInternal< ::perception::TrafficFlow >(arena);
+}
 template<> PROTOBUF_NOINLINE ::perception::Target* Arena::CreateMaybeMessage< ::perception::Target >(Arena* arena) {
   return Arena::CreateInternal< ::perception::Target >(arena);
 }
@@ -7819,14 +8939,17 @@ template<> PROTOBUF_NOINLINE ::perception::LaneAreaMsg* Arena::CreateMaybeMessag
 template<> PROTOBUF_NOINLINE ::perception::JamMsg* Arena::CreateMaybeMessage< ::perception::JamMsg >(Arena* arena) {
   return Arena::CreateInternal< ::perception::JamMsg >(arena);
 }
-template<> PROTOBUF_NOINLINE ::perception::FlowMsg* Arena::CreateMaybeMessage< ::perception::FlowMsg >(Arena* arena) {
-  return Arena::CreateInternal< ::perception::FlowMsg >(arena);
+template<> PROTOBUF_NOINLINE ::perception::DynamicTimingMsg* Arena::CreateMaybeMessage< ::perception::DynamicTimingMsg >(Arena* arena) {
+  return Arena::CreateInternal< ::perception::DynamicTimingMsg >(arena);
 }
 template<> PROTOBUF_NOINLINE ::perception::TargetMsg* Arena::CreateMaybeMessage< ::perception::TargetMsg >(Arena* arena) {
   return Arena::CreateInternal< ::perception::TargetMsg >(arena);
 }
 template<> PROTOBUF_NOINLINE ::perception::WarnMsg* Arena::CreateMaybeMessage< ::perception::WarnMsg >(Arena* arena) {
   return Arena::CreateInternal< ::perception::WarnMsg >(arena);
+}
+template<> PROTOBUF_NOINLINE ::perception::TrafficFlowMsg* Arena::CreateMaybeMessage< ::perception::TrafficFlowMsg >(Arena* arena) {
+  return Arena::CreateInternal< ::perception::TrafficFlowMsg >(arena);
 }
 template<> PROTOBUF_NOINLINE ::perception::PerceptionMsg* Arena::CreateMaybeMessage< ::perception::PerceptionMsg >(Arena* arena) {
   return Arena::CreateInternal< ::perception::PerceptionMsg >(arena);

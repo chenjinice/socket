@@ -49,7 +49,7 @@ struct TableStruct_perception_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::google::protobuf::internal::ParseTable schema[15]
+  static const ::google::protobuf::internal::ParseTable schema[17]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
@@ -57,12 +57,12 @@ struct TableStruct_perception_2eproto {
 };
 void AddDescriptors_perception_2eproto();
 namespace perception {
+class DynamicTimingMsg;
+class DynamicTimingMsgDefaultTypeInternal;
+extern DynamicTimingMsgDefaultTypeInternal _DynamicTimingMsg_default_instance_;
 class Flow;
 class FlowDefaultTypeInternal;
 extern FlowDefaultTypeInternal _Flow_default_instance_;
-class FlowMsg;
-class FlowMsgDefaultTypeInternal;
-extern FlowMsgDefaultTypeInternal _FlowMsg_default_instance_;
 class Jam;
 class JamDefaultTypeInternal;
 extern JamDefaultTypeInternal _Jam_default_instance_;
@@ -96,6 +96,12 @@ extern TargetMsgDefaultTypeInternal _TargetMsg_default_instance_;
 class Timestamp;
 class TimestampDefaultTypeInternal;
 extern TimestampDefaultTypeInternal _Timestamp_default_instance_;
+class TrafficFlow;
+class TrafficFlowDefaultTypeInternal;
+extern TrafficFlowDefaultTypeInternal _TrafficFlow_default_instance_;
+class TrafficFlowMsg;
+class TrafficFlowMsgDefaultTypeInternal;
+extern TrafficFlowMsgDefaultTypeInternal _TrafficFlowMsg_default_instance_;
 class VisibilityMsg;
 class VisibilityMsgDefaultTypeInternal;
 extern VisibilityMsgDefaultTypeInternal _VisibilityMsg_default_instance_;
@@ -105,8 +111,8 @@ extern WarnMsgDefaultTypeInternal _WarnMsg_default_instance_;
 }  // namespace perception
 namespace google {
 namespace protobuf {
+template<> ::perception::DynamicTimingMsg* Arena::CreateMaybeMessage<::perception::DynamicTimingMsg>(Arena*);
 template<> ::perception::Flow* Arena::CreateMaybeMessage<::perception::Flow>(Arena*);
-template<> ::perception::FlowMsg* Arena::CreateMaybeMessage<::perception::FlowMsg>(Arena*);
 template<> ::perception::Jam* Arena::CreateMaybeMessage<::perception::Jam>(Arena*);
 template<> ::perception::JamMsg* Arena::CreateMaybeMessage<::perception::JamMsg>(Arena*);
 template<> ::perception::LaneArea* Arena::CreateMaybeMessage<::perception::LaneArea>(Arena*);
@@ -118,6 +124,8 @@ template<> ::perception::Size* Arena::CreateMaybeMessage<::perception::Size>(Are
 template<> ::perception::Target* Arena::CreateMaybeMessage<::perception::Target>(Arena*);
 template<> ::perception::TargetMsg* Arena::CreateMaybeMessage<::perception::TargetMsg>(Arena*);
 template<> ::perception::Timestamp* Arena::CreateMaybeMessage<::perception::Timestamp>(Arena*);
+template<> ::perception::TrafficFlow* Arena::CreateMaybeMessage<::perception::TrafficFlow>(Arena*);
+template<> ::perception::TrafficFlowMsg* Arena::CreateMaybeMessage<::perception::TrafficFlowMsg>(Arena*);
 template<> ::perception::VisibilityMsg* Arena::CreateMaybeMessage<::perception::VisibilityMsg>(Arena*);
 template<> ::perception::WarnMsg* Arena::CreateMaybeMessage<::perception::WarnMsg>(Arena*);
 }  // namespace protobuf
@@ -145,7 +153,7 @@ inline bool Flow_TrafficSig_Parse(
     Flow_TrafficSig_descriptor(), name, value);
 }
 enum Version {
-  VERSION = 20200801
+  VERSION = 20200929
 };
 bool Version_IsValid(int value);
 constexpr Version Version_MIN = VERSION;
@@ -183,11 +191,12 @@ enum EventId {
   LANE_WARE = 17,
   SPEEDING = 18,
   SNAP = 19,
-  FUSION_TO_RSU = 20
+  FUSION_TO_RSU = 20,
+  DYNAMIC_TIMING = 21
 };
 bool EventId_IsValid(int value);
 constexpr EventId EventId_MIN = EVENT_NONE;
-constexpr EventId EventId_MAX = FUSION_TO_RSU;
+constexpr EventId EventId_MAX = DYNAMIC_TIMING;
 constexpr int EventId_ARRAYSIZE = EventId_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* EventId_descriptor();
@@ -1399,6 +1408,180 @@ class Flow final :
 };
 // -------------------------------------------------------------------
 
+class TrafficFlow final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:perception.TrafficFlow) */ {
+ public:
+  TrafficFlow();
+  virtual ~TrafficFlow();
+
+  TrafficFlow(const TrafficFlow& from);
+
+  inline TrafficFlow& operator=(const TrafficFlow& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  TrafficFlow(TrafficFlow&& from) noexcept
+    : TrafficFlow() {
+    *this = ::std::move(from);
+  }
+
+  inline TrafficFlow& operator=(TrafficFlow&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const TrafficFlow& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const TrafficFlow* internal_default_instance() {
+    return reinterpret_cast<const TrafficFlow*>(
+               &_TrafficFlow_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    7;
+
+  void Swap(TrafficFlow* other);
+  friend void swap(TrafficFlow& a, TrafficFlow& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline TrafficFlow* New() const final {
+    return CreateMaybeMessage<TrafficFlow>(nullptr);
+  }
+
+  TrafficFlow* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<TrafficFlow>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const TrafficFlow& from);
+  void MergeFrom(const TrafficFlow& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TrafficFlow* other);
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::google::protobuf::StringPiece FullMessageName() {
+    return "perception.TrafficFlow";
+  }
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated int32 vehicle_num = 3;
+  int vehicle_num_size() const;
+  void clear_vehicle_num();
+  static const int kVehicleNumFieldNumber = 3;
+  ::google::protobuf::int32 vehicle_num(int index) const;
+  void set_vehicle_num(int index, ::google::protobuf::int32 value);
+  void add_vehicle_num(::google::protobuf::int32 value);
+  const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+      vehicle_num() const;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+      mutable_vehicle_num();
+
+  // repeated int32 maneuvers = 4;
+  int maneuvers_size() const;
+  void clear_maneuvers();
+  static const int kManeuversFieldNumber = 4;
+  ::google::protobuf::int32 maneuvers(int index) const;
+  void set_maneuvers(int index, ::google::protobuf::int32 value);
+  void add_maneuvers(::google::protobuf::int32 value);
+  const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+      maneuvers() const;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+      mutable_maneuvers();
+
+  // repeated int32 pass_num = 5;
+  int pass_num_size() const;
+  void clear_pass_num();
+  static const int kPassNumFieldNumber = 5;
+  ::google::protobuf::int32 pass_num(int index) const;
+  void set_pass_num(int index, ::google::protobuf::int32 value);
+  void add_pass_num(::google::protobuf::int32 value);
+  const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+      pass_num() const;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+      mutable_pass_num();
+
+  // required int32 node_id = 1;
+  bool has_node_id() const;
+  void clear_node_id();
+  static const int kNodeIdFieldNumber = 1;
+  ::google::protobuf::int32 node_id() const;
+  void set_node_id(::google::protobuf::int32 value);
+
+  // required int32 link_id = 2;
+  bool has_link_id() const;
+  void clear_link_id();
+  static const int kLinkIdFieldNumber = 2;
+  ::google::protobuf::int32 link_id() const;
+  void set_link_id(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:perception.TrafficFlow)
+ private:
+  class HasBitSetters;
+
+  // helper for ByteSizeLong()
+  size_t RequiredFieldsByteSizeFallback() const;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::HasBits<1> _has_bits_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > vehicle_num_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > maneuvers_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > pass_num_;
+  ::google::protobuf::int32 node_id_;
+  ::google::protobuf::int32 link_id_;
+  friend struct ::TableStruct_perception_2eproto;
+};
+// -------------------------------------------------------------------
+
 class Target final :
     public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:perception.Target) */ {
  public:
@@ -1444,7 +1627,7 @@ class Target final :
                &_Target_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    8;
 
   void Swap(Target* other);
   friend void swap(Target& a, Target& b) {
@@ -1745,7 +1928,7 @@ class VisibilityMsg final :
                &_VisibilityMsg_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    9;
 
   void Swap(VisibilityMsg* other);
   friend void swap(VisibilityMsg& a, VisibilityMsg& b) {
@@ -1805,17 +1988,19 @@ class VisibilityMsg final :
 
   // accessors -------------------------------------------------------
 
-  // required float distance = 1;
-  bool has_distance() const;
-  void clear_distance();
-  static const int kDistanceFieldNumber = 1;
-  float distance() const;
-  void set_distance(float value);
+  // required .perception.Position camera_pos = 2;
+  bool has_camera_pos() const;
+  void clear_camera_pos();
+  static const int kCameraPosFieldNumber = 2;
+  const ::perception::Position& camera_pos() const;
+  ::perception::Position* release_camera_pos();
+  ::perception::Position* mutable_camera_pos();
+  void set_allocated_camera_pos(::perception::Position* camera_pos);
 
-  // required int32 level = 2;
+  // required int32 level = 1;
   bool has_level() const;
   void clear_level();
-  static const int kLevelFieldNumber = 2;
+  static const int kLevelFieldNumber = 1;
   ::google::protobuf::int32 level() const;
   void set_level(::google::protobuf::int32 value);
 
@@ -1829,7 +2014,7 @@ class VisibilityMsg final :
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
-  float distance_;
+  ::perception::Position* camera_pos_;
   ::google::protobuf::int32 level_;
   friend struct ::TableStruct_perception_2eproto;
 };
@@ -1880,7 +2065,7 @@ class LaneAreaMsg final :
                &_LaneAreaMsg_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    10;
 
   void Swap(LaneAreaMsg* other);
   friend void swap(LaneAreaMsg& a, LaneAreaMsg& b) {
@@ -2009,7 +2194,7 @@ class JamMsg final :
                &_JamMsg_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    11;
 
   void Swap(JamMsg* other);
   friend void swap(JamMsg& a, JamMsg& b) {
@@ -2093,25 +2278,25 @@ class JamMsg final :
 };
 // -------------------------------------------------------------------
 
-class FlowMsg final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:perception.FlowMsg) */ {
+class DynamicTimingMsg final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:perception.DynamicTimingMsg) */ {
  public:
-  FlowMsg();
-  virtual ~FlowMsg();
+  DynamicTimingMsg();
+  virtual ~DynamicTimingMsg();
 
-  FlowMsg(const FlowMsg& from);
+  DynamicTimingMsg(const DynamicTimingMsg& from);
 
-  inline FlowMsg& operator=(const FlowMsg& from) {
+  inline DynamicTimingMsg& operator=(const DynamicTimingMsg& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  FlowMsg(FlowMsg&& from) noexcept
-    : FlowMsg() {
+  DynamicTimingMsg(DynamicTimingMsg&& from) noexcept
+    : DynamicTimingMsg() {
     *this = ::std::move(from);
   }
 
-  inline FlowMsg& operator=(FlowMsg&& from) noexcept {
+  inline DynamicTimingMsg& operator=(DynamicTimingMsg&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -2130,34 +2315,34 @@ class FlowMsg final :
   static const ::google::protobuf::Descriptor* descriptor() {
     return default_instance().GetDescriptor();
   }
-  static const FlowMsg& default_instance();
+  static const DynamicTimingMsg& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const FlowMsg* internal_default_instance() {
-    return reinterpret_cast<const FlowMsg*>(
-               &_FlowMsg_default_instance_);
+  static inline const DynamicTimingMsg* internal_default_instance() {
+    return reinterpret_cast<const DynamicTimingMsg*>(
+               &_DynamicTimingMsg_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    12;
 
-  void Swap(FlowMsg* other);
-  friend void swap(FlowMsg& a, FlowMsg& b) {
+  void Swap(DynamicTimingMsg* other);
+  friend void swap(DynamicTimingMsg& a, DynamicTimingMsg& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline FlowMsg* New() const final {
-    return CreateMaybeMessage<FlowMsg>(nullptr);
+  inline DynamicTimingMsg* New() const final {
+    return CreateMaybeMessage<DynamicTimingMsg>(nullptr);
   }
 
-  FlowMsg* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<FlowMsg>(arena);
+  DynamicTimingMsg* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<DynamicTimingMsg>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const FlowMsg& from);
-  void MergeFrom(const FlowMsg& from);
+  void CopyFrom(const DynamicTimingMsg& from);
+  void MergeFrom(const DynamicTimingMsg& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -2178,10 +2363,10 @@ class FlowMsg final :
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(FlowMsg* other);
+  void InternalSwap(DynamicTimingMsg* other);
   friend class ::google::protobuf::internal::AnyMetadata;
   static ::google::protobuf::StringPiece FullMessageName() {
-    return "perception.FlowMsg";
+    return "perception.DynamicTimingMsg";
   }
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
@@ -2228,7 +2413,7 @@ class FlowMsg final :
   ::perception::Timestamp* mutable_time_end();
   void set_allocated_time_end(::perception::Timestamp* time_end);
 
-  // @@protoc_insertion_point(class_scope:perception.FlowMsg)
+  // @@protoc_insertion_point(class_scope:perception.DynamicTimingMsg)
  private:
   class HasBitSetters;
 
@@ -2287,7 +2472,7 @@ class TargetMsg final :
                &_TargetMsg_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    13;
 
   void Swap(TargetMsg* other);
   friend void swap(TargetMsg& a, TargetMsg& b) {
@@ -2416,7 +2601,7 @@ class WarnMsg final :
                &_WarnMsg_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    14;
 
   void Swap(WarnMsg* other);
   friend void swap(WarnMsg& a, WarnMsg& b) {
@@ -2495,6 +2680,158 @@ class WarnMsg final :
 };
 // -------------------------------------------------------------------
 
+class TrafficFlowMsg final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:perception.TrafficFlowMsg) */ {
+ public:
+  TrafficFlowMsg();
+  virtual ~TrafficFlowMsg();
+
+  TrafficFlowMsg(const TrafficFlowMsg& from);
+
+  inline TrafficFlowMsg& operator=(const TrafficFlowMsg& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  TrafficFlowMsg(TrafficFlowMsg&& from) noexcept
+    : TrafficFlowMsg() {
+    *this = ::std::move(from);
+  }
+
+  inline TrafficFlowMsg& operator=(TrafficFlowMsg&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const TrafficFlowMsg& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const TrafficFlowMsg* internal_default_instance() {
+    return reinterpret_cast<const TrafficFlowMsg*>(
+               &_TrafficFlowMsg_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    15;
+
+  void Swap(TrafficFlowMsg* other);
+  friend void swap(TrafficFlowMsg& a, TrafficFlowMsg& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline TrafficFlowMsg* New() const final {
+    return CreateMaybeMessage<TrafficFlowMsg>(nullptr);
+  }
+
+  TrafficFlowMsg* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<TrafficFlowMsg>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const TrafficFlowMsg& from);
+  void MergeFrom(const TrafficFlowMsg& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TrafficFlowMsg* other);
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::google::protobuf::StringPiece FullMessageName() {
+    return "perception.TrafficFlowMsg";
+  }
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .perception.TrafficFlow flow = 1;
+  int flow_size() const;
+  void clear_flow();
+  static const int kFlowFieldNumber = 1;
+  ::perception::TrafficFlow* mutable_flow(int index);
+  ::google::protobuf::RepeatedPtrField< ::perception::TrafficFlow >*
+      mutable_flow();
+  const ::perception::TrafficFlow& flow(int index) const;
+  ::perception::TrafficFlow* add_flow();
+  const ::google::protobuf::RepeatedPtrField< ::perception::TrafficFlow >&
+      flow() const;
+
+  // required .perception.Timestamp time_begin = 2;
+  bool has_time_begin() const;
+  void clear_time_begin();
+  static const int kTimeBeginFieldNumber = 2;
+  const ::perception::Timestamp& time_begin() const;
+  ::perception::Timestamp* release_time_begin();
+  ::perception::Timestamp* mutable_time_begin();
+  void set_allocated_time_begin(::perception::Timestamp* time_begin);
+
+  // required .perception.Timestamp time_end = 3;
+  bool has_time_end() const;
+  void clear_time_end();
+  static const int kTimeEndFieldNumber = 3;
+  const ::perception::Timestamp& time_end() const;
+  ::perception::Timestamp* release_time_end();
+  ::perception::Timestamp* mutable_time_end();
+  void set_allocated_time_end(::perception::Timestamp* time_end);
+
+  // @@protoc_insertion_point(class_scope:perception.TrafficFlowMsg)
+ private:
+  class HasBitSetters;
+
+  // helper for ByteSizeLong()
+  size_t RequiredFieldsByteSizeFallback() const;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::HasBits<1> _has_bits_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::perception::TrafficFlow > flow_;
+  ::perception::Timestamp* time_begin_;
+  ::perception::Timestamp* time_end_;
+  friend struct ::TableStruct_perception_2eproto;
+};
+// -------------------------------------------------------------------
+
 class PerceptionMsg final :
     public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:perception.PerceptionMsg) */ {
  public:
@@ -2539,8 +2876,9 @@ class PerceptionMsg final :
     kVisibilityMsg = 3,
     kLaneAreaMsg = 4,
     kJamMsg = 5,
-    kFlowMsg = 6,
+    kDynamicMsg = 6,
     kTargetMsg = 7,
+    kTrafficFlowMsg = 8,
     MSGTYPE_NOT_SET = 0,
   };
 
@@ -2550,7 +2888,7 @@ class PerceptionMsg final :
                &_PerceptionMsg_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    16;
 
   void Swap(PerceptionMsg* other);
   friend void swap(PerceptionMsg& a, PerceptionMsg& b) {
@@ -2610,10 +2948,10 @@ class PerceptionMsg final :
 
   // accessors -------------------------------------------------------
 
-  // optional .perception.Timestamp time = 8;
+  // optional .perception.Timestamp time = 9;
   bool has_time() const;
   void clear_time();
-  static const int kTimeFieldNumber = 8;
+  static const int kTimeFieldNumber = 9;
   const ::perception::Timestamp& time() const;
   ::perception::Timestamp* release_time();
   ::perception::Timestamp* mutable_time();
@@ -2662,14 +3000,14 @@ class PerceptionMsg final :
   ::perception::JamMsg* mutable_jam_msg();
   void set_allocated_jam_msg(::perception::JamMsg* jam_msg);
 
-  // optional .perception.FlowMsg flow_msg = 6;
-  bool has_flow_msg() const;
-  void clear_flow_msg();
-  static const int kFlowMsgFieldNumber = 6;
-  const ::perception::FlowMsg& flow_msg() const;
-  ::perception::FlowMsg* release_flow_msg();
-  ::perception::FlowMsg* mutable_flow_msg();
-  void set_allocated_flow_msg(::perception::FlowMsg* flow_msg);
+  // optional .perception.DynamicTimingMsg dynamic_msg = 6;
+  bool has_dynamic_msg() const;
+  void clear_dynamic_msg();
+  static const int kDynamicMsgFieldNumber = 6;
+  const ::perception::DynamicTimingMsg& dynamic_msg() const;
+  ::perception::DynamicTimingMsg* release_dynamic_msg();
+  ::perception::DynamicTimingMsg* mutable_dynamic_msg();
+  void set_allocated_dynamic_msg(::perception::DynamicTimingMsg* dynamic_msg);
 
   // optional .perception.TargetMsg target_msg = 7;
   bool has_target_msg() const;
@@ -2680,6 +3018,15 @@ class PerceptionMsg final :
   ::perception::TargetMsg* mutable_target_msg();
   void set_allocated_target_msg(::perception::TargetMsg* target_msg);
 
+  // optional .perception.TrafficFlowMsg traffic_flow_msg = 8;
+  bool has_traffic_flow_msg() const;
+  void clear_traffic_flow_msg();
+  static const int kTrafficFlowMsgFieldNumber = 8;
+  const ::perception::TrafficFlowMsg& traffic_flow_msg() const;
+  ::perception::TrafficFlowMsg* release_traffic_flow_msg();
+  ::perception::TrafficFlowMsg* mutable_traffic_flow_msg();
+  void set_allocated_traffic_flow_msg(::perception::TrafficFlowMsg* traffic_flow_msg);
+
   void clear_MsgType();
   MsgTypeCase MsgType_case() const;
   // @@protoc_insertion_point(class_scope:perception.PerceptionMsg)
@@ -2689,8 +3036,9 @@ class PerceptionMsg final :
   void set_has_visibility_msg();
   void set_has_lane_area_msg();
   void set_has_jam_msg();
-  void set_has_flow_msg();
+  void set_has_dynamic_msg();
   void set_has_target_msg();
+  void set_has_traffic_flow_msg();
 
   inline bool has_MsgType() const;
   inline void clear_has_MsgType();
@@ -2706,8 +3054,9 @@ class PerceptionMsg final :
     ::perception::VisibilityMsg* visibility_msg_;
     ::perception::LaneAreaMsg* lane_area_msg_;
     ::perception::JamMsg* jam_msg_;
-    ::perception::FlowMsg* flow_msg_;
+    ::perception::DynamicTimingMsg* dynamic_msg_;
     ::perception::TargetMsg* target_msg_;
+    ::perception::TrafficFlowMsg* traffic_flow_msg_;
   } MsgType_;
   ::google::protobuf::uint32 _oneof_case_[1];
 
@@ -3268,6 +3617,136 @@ inline void Flow::set_signal(::perception::Flow_TrafficSig value) {
 
 // -------------------------------------------------------------------
 
+// TrafficFlow
+
+// required int32 node_id = 1;
+inline bool TrafficFlow::has_node_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TrafficFlow::clear_node_id() {
+  node_id_ = 0;
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline ::google::protobuf::int32 TrafficFlow::node_id() const {
+  // @@protoc_insertion_point(field_get:perception.TrafficFlow.node_id)
+  return node_id_;
+}
+inline void TrafficFlow::set_node_id(::google::protobuf::int32 value) {
+  _has_bits_[0] |= 0x00000001u;
+  node_id_ = value;
+  // @@protoc_insertion_point(field_set:perception.TrafficFlow.node_id)
+}
+
+// required int32 link_id = 2;
+inline bool TrafficFlow::has_link_id() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void TrafficFlow::clear_link_id() {
+  link_id_ = 0;
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline ::google::protobuf::int32 TrafficFlow::link_id() const {
+  // @@protoc_insertion_point(field_get:perception.TrafficFlow.link_id)
+  return link_id_;
+}
+inline void TrafficFlow::set_link_id(::google::protobuf::int32 value) {
+  _has_bits_[0] |= 0x00000002u;
+  link_id_ = value;
+  // @@protoc_insertion_point(field_set:perception.TrafficFlow.link_id)
+}
+
+// repeated int32 vehicle_num = 3;
+inline int TrafficFlow::vehicle_num_size() const {
+  return vehicle_num_.size();
+}
+inline void TrafficFlow::clear_vehicle_num() {
+  vehicle_num_.Clear();
+}
+inline ::google::protobuf::int32 TrafficFlow::vehicle_num(int index) const {
+  // @@protoc_insertion_point(field_get:perception.TrafficFlow.vehicle_num)
+  return vehicle_num_.Get(index);
+}
+inline void TrafficFlow::set_vehicle_num(int index, ::google::protobuf::int32 value) {
+  vehicle_num_.Set(index, value);
+  // @@protoc_insertion_point(field_set:perception.TrafficFlow.vehicle_num)
+}
+inline void TrafficFlow::add_vehicle_num(::google::protobuf::int32 value) {
+  vehicle_num_.Add(value);
+  // @@protoc_insertion_point(field_add:perception.TrafficFlow.vehicle_num)
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+TrafficFlow::vehicle_num() const {
+  // @@protoc_insertion_point(field_list:perception.TrafficFlow.vehicle_num)
+  return vehicle_num_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+TrafficFlow::mutable_vehicle_num() {
+  // @@protoc_insertion_point(field_mutable_list:perception.TrafficFlow.vehicle_num)
+  return &vehicle_num_;
+}
+
+// repeated int32 maneuvers = 4;
+inline int TrafficFlow::maneuvers_size() const {
+  return maneuvers_.size();
+}
+inline void TrafficFlow::clear_maneuvers() {
+  maneuvers_.Clear();
+}
+inline ::google::protobuf::int32 TrafficFlow::maneuvers(int index) const {
+  // @@protoc_insertion_point(field_get:perception.TrafficFlow.maneuvers)
+  return maneuvers_.Get(index);
+}
+inline void TrafficFlow::set_maneuvers(int index, ::google::protobuf::int32 value) {
+  maneuvers_.Set(index, value);
+  // @@protoc_insertion_point(field_set:perception.TrafficFlow.maneuvers)
+}
+inline void TrafficFlow::add_maneuvers(::google::protobuf::int32 value) {
+  maneuvers_.Add(value);
+  // @@protoc_insertion_point(field_add:perception.TrafficFlow.maneuvers)
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+TrafficFlow::maneuvers() const {
+  // @@protoc_insertion_point(field_list:perception.TrafficFlow.maneuvers)
+  return maneuvers_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+TrafficFlow::mutable_maneuvers() {
+  // @@protoc_insertion_point(field_mutable_list:perception.TrafficFlow.maneuvers)
+  return &maneuvers_;
+}
+
+// repeated int32 pass_num = 5;
+inline int TrafficFlow::pass_num_size() const {
+  return pass_num_.size();
+}
+inline void TrafficFlow::clear_pass_num() {
+  pass_num_.Clear();
+}
+inline ::google::protobuf::int32 TrafficFlow::pass_num(int index) const {
+  // @@protoc_insertion_point(field_get:perception.TrafficFlow.pass_num)
+  return pass_num_.Get(index);
+}
+inline void TrafficFlow::set_pass_num(int index, ::google::protobuf::int32 value) {
+  pass_num_.Set(index, value);
+  // @@protoc_insertion_point(field_set:perception.TrafficFlow.pass_num)
+}
+inline void TrafficFlow::add_pass_num(::google::protobuf::int32 value) {
+  pass_num_.Add(value);
+  // @@protoc_insertion_point(field_add:perception.TrafficFlow.pass_num)
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+TrafficFlow::pass_num() const {
+  // @@protoc_insertion_point(field_list:perception.TrafficFlow.pass_num)
+  return pass_num_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+TrafficFlow::mutable_pass_num() {
+  // @@protoc_insertion_point(field_mutable_list:perception.TrafficFlow.pass_num)
+  return &pass_num_;
+}
+
+// -------------------------------------------------------------------
+
 // Target
 
 // required int32 id = 1;
@@ -3791,25 +4270,7 @@ inline void Target::set_rcs(float value) {
 
 // VisibilityMsg
 
-// required float distance = 1;
-inline bool VisibilityMsg::has_distance() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void VisibilityMsg::clear_distance() {
-  distance_ = 0;
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline float VisibilityMsg::distance() const {
-  // @@protoc_insertion_point(field_get:perception.VisibilityMsg.distance)
-  return distance_;
-}
-inline void VisibilityMsg::set_distance(float value) {
-  _has_bits_[0] |= 0x00000001u;
-  distance_ = value;
-  // @@protoc_insertion_point(field_set:perception.VisibilityMsg.distance)
-}
-
-// required int32 level = 2;
+// required int32 level = 1;
 inline bool VisibilityMsg::has_level() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -3825,6 +4286,55 @@ inline void VisibilityMsg::set_level(::google::protobuf::int32 value) {
   _has_bits_[0] |= 0x00000002u;
   level_ = value;
   // @@protoc_insertion_point(field_set:perception.VisibilityMsg.level)
+}
+
+// required .perception.Position camera_pos = 2;
+inline bool VisibilityMsg::has_camera_pos() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void VisibilityMsg::clear_camera_pos() {
+  if (camera_pos_ != nullptr) camera_pos_->Clear();
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const ::perception::Position& VisibilityMsg::camera_pos() const {
+  const ::perception::Position* p = camera_pos_;
+  // @@protoc_insertion_point(field_get:perception.VisibilityMsg.camera_pos)
+  return p != nullptr ? *p : *reinterpret_cast<const ::perception::Position*>(
+      &::perception::_Position_default_instance_);
+}
+inline ::perception::Position* VisibilityMsg::release_camera_pos() {
+  // @@protoc_insertion_point(field_release:perception.VisibilityMsg.camera_pos)
+  _has_bits_[0] &= ~0x00000001u;
+  ::perception::Position* temp = camera_pos_;
+  camera_pos_ = nullptr;
+  return temp;
+}
+inline ::perception::Position* VisibilityMsg::mutable_camera_pos() {
+  _has_bits_[0] |= 0x00000001u;
+  if (camera_pos_ == nullptr) {
+    auto* p = CreateMaybeMessage<::perception::Position>(GetArenaNoVirtual());
+    camera_pos_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:perception.VisibilityMsg.camera_pos)
+  return camera_pos_;
+}
+inline void VisibilityMsg::set_allocated_camera_pos(::perception::Position* camera_pos) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete camera_pos_;
+  }
+  if (camera_pos) {
+    ::google::protobuf::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      camera_pos = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, camera_pos, submessage_arena);
+    }
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  camera_pos_ = camera_pos;
+  // @@protoc_insertion_point(field_set_allocated:perception.VisibilityMsg.camera_pos)
 }
 
 // -------------------------------------------------------------------
@@ -3897,69 +4407,69 @@ JamMsg::jam() const {
 
 // -------------------------------------------------------------------
 
-// FlowMsg
+// DynamicTimingMsg
 
 // repeated .perception.Flow flow = 1;
-inline int FlowMsg::flow_size() const {
+inline int DynamicTimingMsg::flow_size() const {
   return flow_.size();
 }
-inline void FlowMsg::clear_flow() {
+inline void DynamicTimingMsg::clear_flow() {
   flow_.Clear();
 }
-inline ::perception::Flow* FlowMsg::mutable_flow(int index) {
-  // @@protoc_insertion_point(field_mutable:perception.FlowMsg.flow)
+inline ::perception::Flow* DynamicTimingMsg::mutable_flow(int index) {
+  // @@protoc_insertion_point(field_mutable:perception.DynamicTimingMsg.flow)
   return flow_.Mutable(index);
 }
 inline ::google::protobuf::RepeatedPtrField< ::perception::Flow >*
-FlowMsg::mutable_flow() {
-  // @@protoc_insertion_point(field_mutable_list:perception.FlowMsg.flow)
+DynamicTimingMsg::mutable_flow() {
+  // @@protoc_insertion_point(field_mutable_list:perception.DynamicTimingMsg.flow)
   return &flow_;
 }
-inline const ::perception::Flow& FlowMsg::flow(int index) const {
-  // @@protoc_insertion_point(field_get:perception.FlowMsg.flow)
+inline const ::perception::Flow& DynamicTimingMsg::flow(int index) const {
+  // @@protoc_insertion_point(field_get:perception.DynamicTimingMsg.flow)
   return flow_.Get(index);
 }
-inline ::perception::Flow* FlowMsg::add_flow() {
-  // @@protoc_insertion_point(field_add:perception.FlowMsg.flow)
+inline ::perception::Flow* DynamicTimingMsg::add_flow() {
+  // @@protoc_insertion_point(field_add:perception.DynamicTimingMsg.flow)
   return flow_.Add();
 }
 inline const ::google::protobuf::RepeatedPtrField< ::perception::Flow >&
-FlowMsg::flow() const {
-  // @@protoc_insertion_point(field_list:perception.FlowMsg.flow)
+DynamicTimingMsg::flow() const {
+  // @@protoc_insertion_point(field_list:perception.DynamicTimingMsg.flow)
   return flow_;
 }
 
 // optional .perception.Timestamp time_begin = 2;
-inline bool FlowMsg::has_time_begin() const {
+inline bool DynamicTimingMsg::has_time_begin() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void FlowMsg::clear_time_begin() {
+inline void DynamicTimingMsg::clear_time_begin() {
   if (time_begin_ != nullptr) time_begin_->Clear();
   _has_bits_[0] &= ~0x00000001u;
 }
-inline const ::perception::Timestamp& FlowMsg::time_begin() const {
+inline const ::perception::Timestamp& DynamicTimingMsg::time_begin() const {
   const ::perception::Timestamp* p = time_begin_;
-  // @@protoc_insertion_point(field_get:perception.FlowMsg.time_begin)
+  // @@protoc_insertion_point(field_get:perception.DynamicTimingMsg.time_begin)
   return p != nullptr ? *p : *reinterpret_cast<const ::perception::Timestamp*>(
       &::perception::_Timestamp_default_instance_);
 }
-inline ::perception::Timestamp* FlowMsg::release_time_begin() {
-  // @@protoc_insertion_point(field_release:perception.FlowMsg.time_begin)
+inline ::perception::Timestamp* DynamicTimingMsg::release_time_begin() {
+  // @@protoc_insertion_point(field_release:perception.DynamicTimingMsg.time_begin)
   _has_bits_[0] &= ~0x00000001u;
   ::perception::Timestamp* temp = time_begin_;
   time_begin_ = nullptr;
   return temp;
 }
-inline ::perception::Timestamp* FlowMsg::mutable_time_begin() {
+inline ::perception::Timestamp* DynamicTimingMsg::mutable_time_begin() {
   _has_bits_[0] |= 0x00000001u;
   if (time_begin_ == nullptr) {
     auto* p = CreateMaybeMessage<::perception::Timestamp>(GetArenaNoVirtual());
     time_begin_ = p;
   }
-  // @@protoc_insertion_point(field_mutable:perception.FlowMsg.time_begin)
+  // @@protoc_insertion_point(field_mutable:perception.DynamicTimingMsg.time_begin)
   return time_begin_;
 }
-inline void FlowMsg::set_allocated_time_begin(::perception::Timestamp* time_begin) {
+inline void DynamicTimingMsg::set_allocated_time_begin(::perception::Timestamp* time_begin) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == nullptr) {
     delete time_begin_;
@@ -3975,40 +4485,40 @@ inline void FlowMsg::set_allocated_time_begin(::perception::Timestamp* time_begi
     _has_bits_[0] &= ~0x00000001u;
   }
   time_begin_ = time_begin;
-  // @@protoc_insertion_point(field_set_allocated:perception.FlowMsg.time_begin)
+  // @@protoc_insertion_point(field_set_allocated:perception.DynamicTimingMsg.time_begin)
 }
 
 // optional .perception.Timestamp time_end = 3;
-inline bool FlowMsg::has_time_end() const {
+inline bool DynamicTimingMsg::has_time_end() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void FlowMsg::clear_time_end() {
+inline void DynamicTimingMsg::clear_time_end() {
   if (time_end_ != nullptr) time_end_->Clear();
   _has_bits_[0] &= ~0x00000002u;
 }
-inline const ::perception::Timestamp& FlowMsg::time_end() const {
+inline const ::perception::Timestamp& DynamicTimingMsg::time_end() const {
   const ::perception::Timestamp* p = time_end_;
-  // @@protoc_insertion_point(field_get:perception.FlowMsg.time_end)
+  // @@protoc_insertion_point(field_get:perception.DynamicTimingMsg.time_end)
   return p != nullptr ? *p : *reinterpret_cast<const ::perception::Timestamp*>(
       &::perception::_Timestamp_default_instance_);
 }
-inline ::perception::Timestamp* FlowMsg::release_time_end() {
-  // @@protoc_insertion_point(field_release:perception.FlowMsg.time_end)
+inline ::perception::Timestamp* DynamicTimingMsg::release_time_end() {
+  // @@protoc_insertion_point(field_release:perception.DynamicTimingMsg.time_end)
   _has_bits_[0] &= ~0x00000002u;
   ::perception::Timestamp* temp = time_end_;
   time_end_ = nullptr;
   return temp;
 }
-inline ::perception::Timestamp* FlowMsg::mutable_time_end() {
+inline ::perception::Timestamp* DynamicTimingMsg::mutable_time_end() {
   _has_bits_[0] |= 0x00000002u;
   if (time_end_ == nullptr) {
     auto* p = CreateMaybeMessage<::perception::Timestamp>(GetArenaNoVirtual());
     time_end_ = p;
   }
-  // @@protoc_insertion_point(field_mutable:perception.FlowMsg.time_end)
+  // @@protoc_insertion_point(field_mutable:perception.DynamicTimingMsg.time_end)
   return time_end_;
 }
-inline void FlowMsg::set_allocated_time_end(::perception::Timestamp* time_end) {
+inline void DynamicTimingMsg::set_allocated_time_end(::perception::Timestamp* time_end) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == nullptr) {
     delete time_end_;
@@ -4024,7 +4534,7 @@ inline void FlowMsg::set_allocated_time_end(::perception::Timestamp* time_end) {
     _has_bits_[0] &= ~0x00000002u;
   }
   time_end_ = time_end;
-  // @@protoc_insertion_point(field_set_allocated:perception.FlowMsg.time_end)
+  // @@protoc_insertion_point(field_set_allocated:perception.DynamicTimingMsg.time_end)
 }
 
 // -------------------------------------------------------------------
@@ -4081,6 +4591,138 @@ inline void WarnMsg::set_warn(bool value) {
   _has_bits_[0] |= 0x00000001u;
   warn_ = value;
   // @@protoc_insertion_point(field_set:perception.WarnMsg.warn)
+}
+
+// -------------------------------------------------------------------
+
+// TrafficFlowMsg
+
+// repeated .perception.TrafficFlow flow = 1;
+inline int TrafficFlowMsg::flow_size() const {
+  return flow_.size();
+}
+inline void TrafficFlowMsg::clear_flow() {
+  flow_.Clear();
+}
+inline ::perception::TrafficFlow* TrafficFlowMsg::mutable_flow(int index) {
+  // @@protoc_insertion_point(field_mutable:perception.TrafficFlowMsg.flow)
+  return flow_.Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField< ::perception::TrafficFlow >*
+TrafficFlowMsg::mutable_flow() {
+  // @@protoc_insertion_point(field_mutable_list:perception.TrafficFlowMsg.flow)
+  return &flow_;
+}
+inline const ::perception::TrafficFlow& TrafficFlowMsg::flow(int index) const {
+  // @@protoc_insertion_point(field_get:perception.TrafficFlowMsg.flow)
+  return flow_.Get(index);
+}
+inline ::perception::TrafficFlow* TrafficFlowMsg::add_flow() {
+  // @@protoc_insertion_point(field_add:perception.TrafficFlowMsg.flow)
+  return flow_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::perception::TrafficFlow >&
+TrafficFlowMsg::flow() const {
+  // @@protoc_insertion_point(field_list:perception.TrafficFlowMsg.flow)
+  return flow_;
+}
+
+// required .perception.Timestamp time_begin = 2;
+inline bool TrafficFlowMsg::has_time_begin() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TrafficFlowMsg::clear_time_begin() {
+  if (time_begin_ != nullptr) time_begin_->Clear();
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const ::perception::Timestamp& TrafficFlowMsg::time_begin() const {
+  const ::perception::Timestamp* p = time_begin_;
+  // @@protoc_insertion_point(field_get:perception.TrafficFlowMsg.time_begin)
+  return p != nullptr ? *p : *reinterpret_cast<const ::perception::Timestamp*>(
+      &::perception::_Timestamp_default_instance_);
+}
+inline ::perception::Timestamp* TrafficFlowMsg::release_time_begin() {
+  // @@protoc_insertion_point(field_release:perception.TrafficFlowMsg.time_begin)
+  _has_bits_[0] &= ~0x00000001u;
+  ::perception::Timestamp* temp = time_begin_;
+  time_begin_ = nullptr;
+  return temp;
+}
+inline ::perception::Timestamp* TrafficFlowMsg::mutable_time_begin() {
+  _has_bits_[0] |= 0x00000001u;
+  if (time_begin_ == nullptr) {
+    auto* p = CreateMaybeMessage<::perception::Timestamp>(GetArenaNoVirtual());
+    time_begin_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:perception.TrafficFlowMsg.time_begin)
+  return time_begin_;
+}
+inline void TrafficFlowMsg::set_allocated_time_begin(::perception::Timestamp* time_begin) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete time_begin_;
+  }
+  if (time_begin) {
+    ::google::protobuf::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      time_begin = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, time_begin, submessage_arena);
+    }
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  time_begin_ = time_begin;
+  // @@protoc_insertion_point(field_set_allocated:perception.TrafficFlowMsg.time_begin)
+}
+
+// required .perception.Timestamp time_end = 3;
+inline bool TrafficFlowMsg::has_time_end() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void TrafficFlowMsg::clear_time_end() {
+  if (time_end_ != nullptr) time_end_->Clear();
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline const ::perception::Timestamp& TrafficFlowMsg::time_end() const {
+  const ::perception::Timestamp* p = time_end_;
+  // @@protoc_insertion_point(field_get:perception.TrafficFlowMsg.time_end)
+  return p != nullptr ? *p : *reinterpret_cast<const ::perception::Timestamp*>(
+      &::perception::_Timestamp_default_instance_);
+}
+inline ::perception::Timestamp* TrafficFlowMsg::release_time_end() {
+  // @@protoc_insertion_point(field_release:perception.TrafficFlowMsg.time_end)
+  _has_bits_[0] &= ~0x00000002u;
+  ::perception::Timestamp* temp = time_end_;
+  time_end_ = nullptr;
+  return temp;
+}
+inline ::perception::Timestamp* TrafficFlowMsg::mutable_time_end() {
+  _has_bits_[0] |= 0x00000002u;
+  if (time_end_ == nullptr) {
+    auto* p = CreateMaybeMessage<::perception::Timestamp>(GetArenaNoVirtual());
+    time_end_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:perception.TrafficFlowMsg.time_end)
+  return time_end_;
+}
+inline void TrafficFlowMsg::set_allocated_time_end(::perception::Timestamp* time_end) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete time_end_;
+  }
+  if (time_end) {
+    ::google::protobuf::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      time_end = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, time_end, submessage_arena);
+    }
+    _has_bits_[0] |= 0x00000002u;
+  } else {
+    _has_bits_[0] &= ~0x00000002u;
+  }
+  time_end_ = time_end;
+  // @@protoc_insertion_point(field_set_allocated:perception.TrafficFlowMsg.time_end)
 }
 
 // -------------------------------------------------------------------
@@ -4270,45 +4912,45 @@ inline ::perception::JamMsg* PerceptionMsg::mutable_jam_msg() {
   return MsgType_.jam_msg_;
 }
 
-// optional .perception.FlowMsg flow_msg = 6;
-inline bool PerceptionMsg::has_flow_msg() const {
-  return MsgType_case() == kFlowMsg;
+// optional .perception.DynamicTimingMsg dynamic_msg = 6;
+inline bool PerceptionMsg::has_dynamic_msg() const {
+  return MsgType_case() == kDynamicMsg;
 }
-inline void PerceptionMsg::set_has_flow_msg() {
-  _oneof_case_[0] = kFlowMsg;
+inline void PerceptionMsg::set_has_dynamic_msg() {
+  _oneof_case_[0] = kDynamicMsg;
 }
-inline void PerceptionMsg::clear_flow_msg() {
-  if (has_flow_msg()) {
-    delete MsgType_.flow_msg_;
+inline void PerceptionMsg::clear_dynamic_msg() {
+  if (has_dynamic_msg()) {
+    delete MsgType_.dynamic_msg_;
     clear_has_MsgType();
   }
 }
-inline ::perception::FlowMsg* PerceptionMsg::release_flow_msg() {
-  // @@protoc_insertion_point(field_release:perception.PerceptionMsg.flow_msg)
-  if (has_flow_msg()) {
+inline ::perception::DynamicTimingMsg* PerceptionMsg::release_dynamic_msg() {
+  // @@protoc_insertion_point(field_release:perception.PerceptionMsg.dynamic_msg)
+  if (has_dynamic_msg()) {
     clear_has_MsgType();
-      ::perception::FlowMsg* temp = MsgType_.flow_msg_;
-    MsgType_.flow_msg_ = nullptr;
+      ::perception::DynamicTimingMsg* temp = MsgType_.dynamic_msg_;
+    MsgType_.dynamic_msg_ = nullptr;
     return temp;
   } else {
     return nullptr;
   }
 }
-inline const ::perception::FlowMsg& PerceptionMsg::flow_msg() const {
-  // @@protoc_insertion_point(field_get:perception.PerceptionMsg.flow_msg)
-  return has_flow_msg()
-      ? *MsgType_.flow_msg_
-      : *reinterpret_cast< ::perception::FlowMsg*>(&::perception::_FlowMsg_default_instance_);
+inline const ::perception::DynamicTimingMsg& PerceptionMsg::dynamic_msg() const {
+  // @@protoc_insertion_point(field_get:perception.PerceptionMsg.dynamic_msg)
+  return has_dynamic_msg()
+      ? *MsgType_.dynamic_msg_
+      : *reinterpret_cast< ::perception::DynamicTimingMsg*>(&::perception::_DynamicTimingMsg_default_instance_);
 }
-inline ::perception::FlowMsg* PerceptionMsg::mutable_flow_msg() {
-  if (!has_flow_msg()) {
+inline ::perception::DynamicTimingMsg* PerceptionMsg::mutable_dynamic_msg() {
+  if (!has_dynamic_msg()) {
     clear_MsgType();
-    set_has_flow_msg();
-    MsgType_.flow_msg_ = CreateMaybeMessage< ::perception::FlowMsg >(
+    set_has_dynamic_msg();
+    MsgType_.dynamic_msg_ = CreateMaybeMessage< ::perception::DynamicTimingMsg >(
         GetArenaNoVirtual());
   }
-  // @@protoc_insertion_point(field_mutable:perception.PerceptionMsg.flow_msg)
-  return MsgType_.flow_msg_;
+  // @@protoc_insertion_point(field_mutable:perception.PerceptionMsg.dynamic_msg)
+  return MsgType_.dynamic_msg_;
 }
 
 // optional .perception.TargetMsg target_msg = 7;
@@ -4352,7 +4994,48 @@ inline ::perception::TargetMsg* PerceptionMsg::mutable_target_msg() {
   return MsgType_.target_msg_;
 }
 
-// optional .perception.Timestamp time = 8;
+// optional .perception.TrafficFlowMsg traffic_flow_msg = 8;
+inline bool PerceptionMsg::has_traffic_flow_msg() const {
+  return MsgType_case() == kTrafficFlowMsg;
+}
+inline void PerceptionMsg::set_has_traffic_flow_msg() {
+  _oneof_case_[0] = kTrafficFlowMsg;
+}
+inline void PerceptionMsg::clear_traffic_flow_msg() {
+  if (has_traffic_flow_msg()) {
+    delete MsgType_.traffic_flow_msg_;
+    clear_has_MsgType();
+  }
+}
+inline ::perception::TrafficFlowMsg* PerceptionMsg::release_traffic_flow_msg() {
+  // @@protoc_insertion_point(field_release:perception.PerceptionMsg.traffic_flow_msg)
+  if (has_traffic_flow_msg()) {
+    clear_has_MsgType();
+      ::perception::TrafficFlowMsg* temp = MsgType_.traffic_flow_msg_;
+    MsgType_.traffic_flow_msg_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perception::TrafficFlowMsg& PerceptionMsg::traffic_flow_msg() const {
+  // @@protoc_insertion_point(field_get:perception.PerceptionMsg.traffic_flow_msg)
+  return has_traffic_flow_msg()
+      ? *MsgType_.traffic_flow_msg_
+      : *reinterpret_cast< ::perception::TrafficFlowMsg*>(&::perception::_TrafficFlowMsg_default_instance_);
+}
+inline ::perception::TrafficFlowMsg* PerceptionMsg::mutable_traffic_flow_msg() {
+  if (!has_traffic_flow_msg()) {
+    clear_MsgType();
+    set_has_traffic_flow_msg();
+    MsgType_.traffic_flow_msg_ = CreateMaybeMessage< ::perception::TrafficFlowMsg >(
+        GetArenaNoVirtual());
+  }
+  // @@protoc_insertion_point(field_mutable:perception.PerceptionMsg.traffic_flow_msg)
+  return MsgType_.traffic_flow_msg_;
+}
+
+// optional .perception.Timestamp time = 9;
 inline bool PerceptionMsg::has_time() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -4413,6 +5096,10 @@ inline PerceptionMsg::MsgTypeCase PerceptionMsg::MsgType_case() const {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

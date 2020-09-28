@@ -14,11 +14,11 @@ void callback(uint8_t *buffer,int len)
         return;
     }
     if(msg.event() != TRAFFIC_FLOW)return;
-    if(!msg.has_flow_msg())return;
+    if(!msg.has_dynamic_msg())return;
 
-    const FlowMsg &flow_msg = msg.flow_msg();
-    for(int i=0;i<flow_msg.flow_size();i++){
-        const Flow & f = flow_msg.flow(i);
+    const DynamicTimingMsg &d_msg = msg.dynamic_msg();
+    for(int i=0;i<d_msg.flow_size();i++){
+        const Flow & f = d_msg.flow(i);
         if(!f.has_camera())continue;
         if(!f.has_signal())continue;
         process_signal(f.signal(),f.camera());
@@ -197,8 +197,11 @@ void send_visibility(Vserver &s)
     VisibilityMsg *v_msg = new VisibilityMsg;
     static timeval tv = {0};                  // 时间结构体,用于限制发送频率
     msg.set_event(VISIBILITY);
-    v_msg->set_distance(88.888);              // 能见度距离 米
+    Position *pos = new Position;
+    pos->set_lon(8);
+    pos->set_lat(88);
     v_msg->set_level(8);                      // 能见度等级
+    v_msg->set_allocated_camera_pos(pos);
     msg.set_allocated_visibility_msg(v_msg);
     s.send(msg,&tv);
 }
@@ -286,12 +289,12 @@ void send_jam(Vserver &s)
 void send_flow(Vserver &s)
 {
     PerceptionMsg msg;
-    FlowMsg     * flow_msg = new FlowMsg;
-    Flow        * flow;
+    DynamicTimingMsg * d_msg = new DynamicTimingMsg;
+    Flow             * flow;
 //    static timeval tv = {0};                // 时间结构体,用于限制发送频率
-    msg.set_event(TRAFFIC_FLOW);
+    msg.set_event(DYNAMIC_TIMING);
     for(int i=0;i<1;i++){
-        flow = flow_msg->add_flow();
+        flow = d_msg->add_flow();
         flow->set_camera(1);
         for(int m=0;m<3;m++){
             flow->add_vehicle_num(1200+m);  // 每个车道车辆数
@@ -306,9 +309,9 @@ void send_flow(Vserver &s)
     gettimeofday(&tv_now,nullptr);
     time_begin->set_seconds(tv_now.tv_sec);         // 秒
     time_begin->set_nanos(tv_now.tv_usec*1000);     // 纳秒
-    flow_msg->set_allocated_time_begin(time_begin);
+    d_msg->set_allocated_time_begin(time_begin);
 
-    msg.set_allocated_flow_msg(flow_msg);
+    msg.set_allocated_dynamic_msg(d_msg);
     s.send(msg,nullptr);
 }
 
@@ -391,8 +394,46 @@ void send_lane_ware(Vserver &s)
     s.send(msg,&tv);
 }
 
+// 车流量检测
+void send_traffic_flow(Vserver &s)
+{
+    PerceptionMsg    msg;
+    TrafficFlowMsg * t_msg = new TrafficFlowMsg;
+    TrafficFlow    * flow;
+//    static timeval tv = {0};                // 时间结构体,用于限制发送频率
+    msg.set_event(TRAFFIC_FLOW);
+    for(int i=0;i<1;i++){
+        flow = t_msg->add_flow();
+        flow->set_node_id(15);
+        flow->set_link_id(150);
+        for(int m=0;m<3;m++){
+            flow->add_vehicle_num(1500+m);  // 每个车道车辆数
+        }
+        for(int n=0;n<3;n++){
+            flow->add_maneuvers(15000+n);    // 车道属性
+        }
+        for(int n=0;n<3;n++){
+            flow->add_pass_num(150000+n);    // 每个车道消散时间内通过车辆数
+        }
+    }
+//     设置开始时间
+    Timestamp *time_begin = new Timestamp;
+    timeval tv_now = {0};
+    gettimeofday(&tv_now,nullptr);
+    time_begin->set_seconds(tv_now.tv_sec);         // 秒
+    time_begin->set_nanos(tv_now.tv_usec*1000);     // 纳秒
+    t_msg->set_allocated_time_begin(time_begin);
+//     设置结束时间
+    Timestamp *time_end = new Timestamp;
+    timeval tv_end = {0};
+    gettimeofday(&tv_end,nullptr);
+    time_end->set_seconds(tv_end.tv_sec);         // 秒
+    time_end->set_nanos(tv_end.tv_usec*1000);     // 纳秒
+    t_msg->set_allocated_time_end(time_end);
 
-
+    msg.set_allocated_traffic_flow_msg(t_msg);
+    s.send(msg,nullptr);
+}
 
 
 
@@ -438,6 +479,7 @@ int main(int argc ,char **argv)
         send_accident_area(s);      // 交通事故
         send_ice_warn(s);           // 结冰
         send_lane_ware(s);          // 车道线磨损
+        send_traffic_flow(s);       // 车流量检测
 
         usleep(1000000);
     }

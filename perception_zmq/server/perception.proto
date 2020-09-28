@@ -1,6 +1,10 @@
 /*
-    通信协议 : 2020-08-01
+    通信协议 : 2020-09-29
     修改log : 
+        2020-09-29 :
+            1.修改动态配时场景id 和 消息名
+            2.修改能见度场景数据内容
+            3.增加车流量统计场景数据
         2020-08-01 : 
             1.加一个场景 id ： FUSION_TO_RSU
             2.枚举的Source里的None 改名成 OTHER_SOURCE ，因为None是Python的关键字     
@@ -17,7 +21,7 @@ package perception;
 
 // 版本号
 enum Version{
-    VERSION                                     = 20200801; // 版本号
+    VERSION                                     = 20200929; // 版本号
 }                                                           
                                                             
 // 场景ID                                                   
@@ -35,7 +39,7 @@ enum EventId{
     FIRE_SMOKE                                  = 10;       // 隧道内火焰与烟雾预警
     TARGET_TO_FUSION                            = 11;       // 发给融合程序的检测目标
     TRAFFIC_JAM                                 = 12;       // 前方拥堵提醒
-    TRAFFIC_FLOW                                = 13;       // 动态配时场景
+    TRAFFIC_FLOW                                = 13;       // 车流量检测
     SPECIALCAR                                  = 14;       // 特殊车辆
     ACCIDENT                                    = 15;       // 交通事故
     ICEWARN                                     = 16;       // 结冰报警
@@ -43,6 +47,7 @@ enum EventId{
     SPEEDING                                    = 18;       // 超速
     SNAP                                        = 19;       // 抓拍物
     FUSION_TO_RSU                               = 20;       // 融合发给rsu的
+    DYNAMIC_TIMING                              = 21;       // 动态配时场景
 }                                                           
                                                             
 // 检测数据来源                                             
@@ -146,7 +151,7 @@ message Jam{
     optional int32          lane_id             = 5;        // 车道id
 }                                                           
                                                             
-// 单个道路流量情况                                         
+// 动态配时场景需要数据，单个道路流量情况                                         
 message Flow{                                               
     enum TrafficSig{                                        
         UNKNOWN                                 = 0;        
@@ -157,8 +162,19 @@ message Flow{
     repeated int32          vehicle_num         = 2;        // 每个车道车辆数
     repeated int32          pass_num            = 3;        // 每个车道消散时间内通过车辆数
     optional TrafficSig     signal              = 4;        // 黄灯切换到绿灯信号
-}                                                           
-                                                            
+}
+
+//  单个相机车流量检测                                     
+message TrafficFlow {                             
+    required int32          node_id             = 1;        // 地图node的ID号
+    required int32          link_id             = 2;        // 地图link_id的ID号
+    repeated int32          vehicle_num         = 3;        // 每个车道车辆数
+    repeated int32          maneuvers           = 4;        // 车道属性，直行、左转等   
+    repeated int32          pass_num            = 5;        // 每个车道在固定时间内通过车辆数
+//    required Timestamp      time_begin          = 6;        // 统计开始时间
+//    required Timestamp      time_end            = 7;        // 统计结束时间
+}      
+                                                                                                                       
 // 单个检测到的目标                                         
 message Target {                                            
     required int32          id                  = 1;        
@@ -193,8 +209,8 @@ message Target {
                                                             
 // 能见度检测相关场景数据                                   
 message VisibilityMsg{                                      
-    required float          distance            = 1;        // 能见度距离，米
-    required int32          level               = 2;        // 能见度等级，0：大于500，1：200~500，2：100~200，3：50~100，4：0-50
+    required int32          level               = 1;        // 能见度等级，0：大于500，1：200~500，2：100~200，3：50~100，4：0-50
+    required Position       camera_pos          = 2;        // 相机所在GPS位置
 }                                                           
                                                             
 // 道路可行使区域等相关场景数据                             
@@ -208,7 +224,7 @@ message JamMsg{
 }                                                           
                                                             
 // 动态配时场景数据                                         
-message FlowMsg{                                            
+message DynamicTimingMsg{                                            
     repeated Flow           flow                = 1;        
     optional Timestamp      time_begin          = 2;        
     optional Timestamp      time_end            = 3;        
@@ -222,10 +238,14 @@ message TargetMsg{
 // 报警相关场景需要数据
 message WarnMsg{
     required bool           warn                = 1;
-}              
-                                                            
-                                                            
-                                                            
+}                                                                      
+
+//  车流量检测需要数据                                     
+message TrafficFlowMsg{
+    repeated TrafficFlow    flow                = 1;
+    required Timestamp      time_begin          = 2;        // 统计开始时间
+    required Timestamp      time_end            = 3;        // 统计结束时间
+}    
                                                             
                                                             
 //  ---------------- 要发送的数据包 -----------------------------------------------------
@@ -236,9 +256,10 @@ message PerceptionMsg{
         VisibilityMsg       visibility_msg      = 3;        
         LaneAreaMsg         lane_area_msg       = 4;        
         JamMsg              jam_msg             = 5;        
-        FlowMsg             flow_msg            = 6;        
-        TargetMsg           target_msg          = 7;        
+        DynamicTimingMsg    dynamic_msg         = 6;        
+        TargetMsg           target_msg          = 7;   
+        TrafficFlowMsg      traffic_flow_msg    = 8;
     }                                                       
-    optional Timestamp      time                = 8;        // 时间戳
+    optional Timestamp      time                = 9;        // 时间戳
 }                                                           
 

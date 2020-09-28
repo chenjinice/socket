@@ -47,7 +47,7 @@ static void visibility_fun(Perception__PerceptionMsg *p)
 {
     Perception__VisibilityMsg * msg = p->visibility_msg;
     if(msg == NULL)return;
-    printf("=%02d=: visibility distance = %f,level = %d\n",p->event,msg->distance,msg->level);
+    printf("=%02d=: visibility ,pos(lng:%d,lat:%d),level = %d\n",p->event,msg->camera_pos->lon,msg->camera_pos->lat,msg->level);
 }
 
 // 可行驶区域检测
@@ -152,10 +152,10 @@ static void jam_fun(Perception__PerceptionMsg *p)
 }
 
 // 动态配时场景
-static void traffic_flow_fun(Perception__PerceptionMsg *p)
+static void danymic_timing_fun(Perception__PerceptionMsg *p)
 {
     int i , m;
-    Perception__FlowMsg * msg = p->flow_msg;
+    Perception__DynamicTimingMsg * msg = p->dynamic_msg;
     if(msg == NULL)return;
     for(i=0;i<msg->n_flow;i++){
         Perception__Flow * f = msg->flow[i];
@@ -218,6 +218,24 @@ static void lane_ware_fun(Perception__PerceptionMsg *p)
     }
 }
 
+// 车流量检测场景
+static void tf_flow_fun(Perception__PerceptionMsg *p)
+{
+    int i , m;
+    Perception__TrafficFlowMsg * msg = p->traffic_flow_msg;
+    if(msg == NULL)return;
+    for(i=0;i<msg->n_flow;i++){
+        Perception__TrafficFlow * f = msg->flow[i];
+        printf("=%02d=:flow[%d]num=",p->event,i);
+        for(m=0;m<f->n_vehicle_num;m++)printf("%d,",f->vehicle_num[m]);
+        printf("pass=");
+        for(m=0;m<f->n_pass_num;m++)printf("%d,",f->pass_num[m]);
+        printf("maneuvers=");
+        for(m=0;m<f->n_maneuvers;m++)printf("%d,",f->maneuvers[m]);
+        printf("\n");
+    }
+}
+
 
 #include <stdlib.h>
 // 解析
@@ -267,8 +285,8 @@ void analysis(uint8_t *buffer,int len)
         case PERCEPTION__EVENT_ID__TRAFFIC_JAM:       // 前方拥堵提醒
             jam_fun(p);
             break;
-        case PERCEPTION__EVENT_ID__TRAFFIC_FLOW:      // 动态配时场景
-            traffic_flow_fun(p);
+        case PERCEPTION__EVENT_ID__TRAFFIC_FLOW:      // 车流量检测
+            tf_flow_fun(p);
             break;
         case PERCEPTION__EVENT_ID__SPECIALCAR:        // 特殊车辆
             special_car_fun(p);
@@ -281,6 +299,9 @@ void analysis(uint8_t *buffer,int len)
             break;
         case PERCEPTION__EVENT_ID__LANE_WARE:         // 车道线磨损
             lane_ware_fun(p);
+            break;
+        case PERCEPTION__EVENT_ID__DYNAMIC_TIMING:    // 动态配时场景
+            danymic_timing_fun(p);
             break;
         default:
             break;
