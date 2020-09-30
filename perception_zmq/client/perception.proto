@@ -171,8 +171,6 @@ message TrafficFlow {
     repeated int32          vehicle_num         = 3;        // 每个车道车辆数
     repeated int32          maneuvers           = 4;        // 车道属性，直行、左转等   
     repeated int32          pass_num            = 5;        // 每个车道在固定时间内通过车辆数
-//    required Timestamp      time_begin          = 6;        // 统计开始时间
-//    required Timestamp      time_end            = 7;        // 统计结束时间
 }      
                                                                                                                        
 // 单个检测到的目标                                         
@@ -240,7 +238,7 @@ message WarnMsg{
     required bool           warn                = 1;
 }                                                                      
 
-//  车流量检测需要数据                                     
+// 车流量检测需要数据                                     
 message TrafficFlowMsg{
     repeated TrafficFlow    flow                = 1;
     required Timestamp      time_begin          = 2;        // 统计开始时间

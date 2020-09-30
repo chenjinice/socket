@@ -404,16 +404,16 @@ void send_traffic_flow(Vserver &s)
     msg.set_event(TRAFFIC_FLOW);
     for(int i=0;i<1;i++){
         flow = t_msg->add_flow();
-        flow->set_node_id(15);
-        flow->set_link_id(150);
+        flow->set_node_id(16);
+        flow->set_link_id(160);
         for(int m=0;m<3;m++){
-            flow->add_vehicle_num(1500+m);  // 每个车道车辆数
+            flow->add_vehicle_num(1600+m);  // 每个车道车辆数
         }
         for(int n=0;n<3;n++){
-            flow->add_maneuvers(15000+n);    // 车道属性
+            flow->add_maneuvers(16000+n);    // 车道属性
         }
         for(int n=0;n<3;n++){
-            flow->add_pass_num(150000+n);    // 每个车道消散时间内通过车辆数
+            flow->add_pass_num(160000+n);    // 每个车道消散时间内通过车辆数
         }
     }
 //     设置开始时间
