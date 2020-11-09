@@ -435,6 +435,29 @@ void send_traffic_flow(Vserver &s)
     s.send(msg,nullptr);
 }
 
+// 排队长度
+void send_queue_length(Vserver &s)
+{
+    PerceptionMsg    msg;
+    QueueMsg *       q_msg = new QueueMsg;
+    QueueLength    * queue;
+//    static timeval tv = {0};                // 时间结构体,用于限制发送频率
+    msg.set_event(QUEUE_LENGTH);
+    for(int i=0;i<1;i++){
+        queue = q_msg->add_queue();
+        queue->set_node_id(17);
+        queue->set_link_id(170);
+        for(int m=0;m<3;m++){
+            queue->add_vehicle_num(1700+m);   // 每个车道车辆数
+        }
+        for(int n=0;n<3;n++){
+            queue->add_maneuvers(17000+n);    // 车道属性
+        }
+    }
+    msg.set_allocated_queue_msg(q_msg);
+    s.send(msg,nullptr);
+}
+
 
 
 // ---------------------------- main -------------------------------------
@@ -480,6 +503,7 @@ int main(int argc ,char **argv)
         send_ice_warn(s);           // 结冰
         send_lane_ware(s);          // 车道线磨损
         send_traffic_flow(s);       // 车流量检测
+        send_queue_length(s);       // 排队长度
 
         usleep(1000000);
     }

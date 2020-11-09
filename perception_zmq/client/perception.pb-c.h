@@ -23,6 +23,7 @@ typedef struct _Perception__LaneArea Perception__LaneArea;
 typedef struct _Perception__Jam Perception__Jam;
 typedef struct _Perception__Flow Perception__Flow;
 typedef struct _Perception__TrafficFlow Perception__TrafficFlow;
+typedef struct _Perception__QueueLength Perception__QueueLength;
 typedef struct _Perception__Target Perception__Target;
 typedef struct _Perception__VisibilityMsg Perception__VisibilityMsg;
 typedef struct _Perception__LaneAreaMsg Perception__LaneAreaMsg;
@@ -31,6 +32,7 @@ typedef struct _Perception__DynamicTimingMsg Perception__DynamicTimingMsg;
 typedef struct _Perception__TargetMsg Perception__TargetMsg;
 typedef struct _Perception__WarnMsg Perception__WarnMsg;
 typedef struct _Perception__TrafficFlowMsg Perception__TrafficFlowMsg;
+typedef struct _Perception__QueueMsg Perception__QueueMsg;
 typedef struct _Perception__PerceptionMsg Perception__PerceptionMsg;
 
 
@@ -55,7 +57,7 @@ typedef enum _Perception__Version {
   /*
    * 版本号
    */
-  PERCEPTION__VERSION__VERSION = 20200929
+  PERCEPTION__VERSION__VERSION = 20201109
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(PERCEPTION__VERSION)
 } Perception__Version;
 /*
@@ -149,7 +151,11 @@ typedef enum _Perception__EventId {
   /*
    * 动态配时场景
    */
-  PERCEPTION__EVENT_ID__DYNAMIC_TIMING = 21
+  PERCEPTION__EVENT_ID__DYNAMIC_TIMING = 21,
+  /*
+   * 排队长度场景
+   */
+  PERCEPTION__EVENT_ID__QUEUE_LENGTH = 22
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(PERCEPTION__EVENT_ID)
 } Perception__EventId;
 /*
@@ -537,6 +543,36 @@ struct  _Perception__TrafficFlow
 
 
 /*
+ *  单个link排队长度                                                           
+ */
+struct  _Perception__QueueLength
+{
+  ProtobufCMessage base;
+  /*
+   * 地图 node 的 ID 号
+   */
+  int32_t node_id;
+  /*
+   * 地图 link_id 的 ID 号
+   */
+  int32_t link_id;
+  /*
+   * 每个车道车辆数
+   */
+  size_t n_vehicle_num;
+  int32_t *vehicle_num;
+  /*
+   * 车道属性，直行、左转等
+   */
+  size_t n_maneuvers;
+  int32_t *maneuvers;
+};
+#define PERCEPTION__QUEUE_LENGTH__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&perception__queue_length__descriptor) \
+    , 0, 0, 0,NULL, 0,NULL }
+
+
+/*
  * 单个检测到的目标                                         
  */
 struct  _Perception__Target
@@ -760,6 +796,20 @@ struct  _Perception__TrafficFlowMsg
     , 0,NULL, NULL, NULL }
 
 
+/*
+ * 排队长度场景需要数据     
+ */
+struct  _Perception__QueueMsg
+{
+  ProtobufCMessage base;
+  size_t n_queue;
+  Perception__QueueLength **queue;
+};
+#define PERCEPTION__QUEUE_MSG__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&perception__queue_msg__descriptor) \
+    , 0,NULL }
+
+
 typedef enum {
   PERCEPTION__PERCEPTION_MSG__MSG_TYPE__NOT_SET = 0,
   PERCEPTION__PERCEPTION_MSG__MSG_TYPE_WARN_MSG = 2,
@@ -768,7 +818,8 @@ typedef enum {
   PERCEPTION__PERCEPTION_MSG__MSG_TYPE_JAM_MSG = 5,
   PERCEPTION__PERCEPTION_MSG__MSG_TYPE_DYNAMIC_MSG = 6,
   PERCEPTION__PERCEPTION_MSG__MSG_TYPE_TARGET_MSG = 7,
-  PERCEPTION__PERCEPTION_MSG__MSG_TYPE_TRAFFIC_FLOW_MSG = 8
+  PERCEPTION__PERCEPTION_MSG__MSG_TYPE_TRAFFIC_FLOW_MSG = 8,
+  PERCEPTION__PERCEPTION_MSG__MSG_TYPE_QUEUE_MSG = 9
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(PERCEPTION__PERCEPTION_MSG__MSG_TYPE)
 } Perception__PerceptionMsg__MsgTypeCase;
 
@@ -795,6 +846,7 @@ struct  _Perception__PerceptionMsg
     Perception__DynamicTimingMsg *dynamic_msg;
     Perception__TargetMsg *target_msg;
     Perception__TrafficFlowMsg *traffic_flow_msg;
+    Perception__QueueMsg *queue_msg;
   };
 };
 #define PERCEPTION__PERCEPTION_MSG__INIT \
@@ -954,6 +1006,25 @@ Perception__TrafficFlow *
 void   perception__traffic_flow__free_unpacked
                      (Perception__TrafficFlow *message,
                       ProtobufCAllocator *allocator);
+/* Perception__QueueLength methods */
+void   perception__queue_length__init
+                     (Perception__QueueLength         *message);
+size_t perception__queue_length__get_packed_size
+                     (const Perception__QueueLength   *message);
+size_t perception__queue_length__pack
+                     (const Perception__QueueLength   *message,
+                      uint8_t             *out);
+size_t perception__queue_length__pack_to_buffer
+                     (const Perception__QueueLength   *message,
+                      ProtobufCBuffer     *buffer);
+Perception__QueueLength *
+       perception__queue_length__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   perception__queue_length__free_unpacked
+                     (Perception__QueueLength *message,
+                      ProtobufCAllocator *allocator);
 /* Perception__Target methods */
 void   perception__target__init
                      (Perception__Target         *message);
@@ -1106,6 +1177,25 @@ Perception__TrafficFlowMsg *
 void   perception__traffic_flow_msg__free_unpacked
                      (Perception__TrafficFlowMsg *message,
                       ProtobufCAllocator *allocator);
+/* Perception__QueueMsg methods */
+void   perception__queue_msg__init
+                     (Perception__QueueMsg         *message);
+size_t perception__queue_msg__get_packed_size
+                     (const Perception__QueueMsg   *message);
+size_t perception__queue_msg__pack
+                     (const Perception__QueueMsg   *message,
+                      uint8_t             *out);
+size_t perception__queue_msg__pack_to_buffer
+                     (const Perception__QueueMsg   *message,
+                      ProtobufCBuffer     *buffer);
+Perception__QueueMsg *
+       perception__queue_msg__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   perception__queue_msg__free_unpacked
+                     (Perception__QueueMsg *message,
+                      ProtobufCAllocator *allocator);
 /* Perception__PerceptionMsg methods */
 void   perception__perception_msg__init
                      (Perception__PerceptionMsg         *message);
@@ -1151,6 +1241,9 @@ typedef void (*Perception__Flow_Closure)
 typedef void (*Perception__TrafficFlow_Closure)
                  (const Perception__TrafficFlow *message,
                   void *closure_data);
+typedef void (*Perception__QueueLength_Closure)
+                 (const Perception__QueueLength *message,
+                  void *closure_data);
 typedef void (*Perception__Target_Closure)
                  (const Perception__Target *message,
                   void *closure_data);
@@ -1174,6 +1267,9 @@ typedef void (*Perception__WarnMsg_Closure)
                   void *closure_data);
 typedef void (*Perception__TrafficFlowMsg_Closure)
                  (const Perception__TrafficFlowMsg *message,
+                  void *closure_data);
+typedef void (*Perception__QueueMsg_Closure)
+                 (const Perception__QueueMsg *message,
                   void *closure_data);
 typedef void (*Perception__PerceptionMsg_Closure)
                  (const Perception__PerceptionMsg *message,
@@ -1200,6 +1296,7 @@ extern const ProtobufCMessageDescriptor perception__jam__descriptor;
 extern const ProtobufCMessageDescriptor perception__flow__descriptor;
 extern const ProtobufCEnumDescriptor    perception__flow__traffic_sig__descriptor;
 extern const ProtobufCMessageDescriptor perception__traffic_flow__descriptor;
+extern const ProtobufCMessageDescriptor perception__queue_length__descriptor;
 extern const ProtobufCMessageDescriptor perception__target__descriptor;
 extern const ProtobufCMessageDescriptor perception__visibility_msg__descriptor;
 extern const ProtobufCMessageDescriptor perception__lane_area_msg__descriptor;
@@ -1208,6 +1305,7 @@ extern const ProtobufCMessageDescriptor perception__dynamic_timing_msg__descript
 extern const ProtobufCMessageDescriptor perception__target_msg__descriptor;
 extern const ProtobufCMessageDescriptor perception__warn_msg__descriptor;
 extern const ProtobufCMessageDescriptor perception__traffic_flow_msg__descriptor;
+extern const ProtobufCMessageDescriptor perception__queue_msg__descriptor;
 extern const ProtobufCMessageDescriptor perception__perception_msg__descriptor;
 
 PROTOBUF_C__END_DECLS

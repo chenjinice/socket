@@ -49,7 +49,7 @@ struct TableStruct_perception_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::google::protobuf::internal::ParseTable schema[17]
+  static const ::google::protobuf::internal::ParseTable schema[19]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
@@ -84,6 +84,12 @@ extern PerceptionMsgDefaultTypeInternal _PerceptionMsg_default_instance_;
 class Position;
 class PositionDefaultTypeInternal;
 extern PositionDefaultTypeInternal _Position_default_instance_;
+class QueueLength;
+class QueueLengthDefaultTypeInternal;
+extern QueueLengthDefaultTypeInternal _QueueLength_default_instance_;
+class QueueMsg;
+class QueueMsgDefaultTypeInternal;
+extern QueueMsgDefaultTypeInternal _QueueMsg_default_instance_;
 class Size;
 class SizeDefaultTypeInternal;
 extern SizeDefaultTypeInternal _Size_default_instance_;
@@ -120,6 +126,8 @@ template<> ::perception::LaneAreaMsg* Arena::CreateMaybeMessage<::perception::La
 template<> ::perception::LaneInfoEx* Arena::CreateMaybeMessage<::perception::LaneInfoEx>(Arena*);
 template<> ::perception::PerceptionMsg* Arena::CreateMaybeMessage<::perception::PerceptionMsg>(Arena*);
 template<> ::perception::Position* Arena::CreateMaybeMessage<::perception::Position>(Arena*);
+template<> ::perception::QueueLength* Arena::CreateMaybeMessage<::perception::QueueLength>(Arena*);
+template<> ::perception::QueueMsg* Arena::CreateMaybeMessage<::perception::QueueMsg>(Arena*);
 template<> ::perception::Size* Arena::CreateMaybeMessage<::perception::Size>(Arena*);
 template<> ::perception::Target* Arena::CreateMaybeMessage<::perception::Target>(Arena*);
 template<> ::perception::TargetMsg* Arena::CreateMaybeMessage<::perception::TargetMsg>(Arena*);
@@ -153,7 +161,7 @@ inline bool Flow_TrafficSig_Parse(
     Flow_TrafficSig_descriptor(), name, value);
 }
 enum Version {
-  VERSION = 20200929
+  VERSION = 20201109
 };
 bool Version_IsValid(int value);
 constexpr Version Version_MIN = VERSION;
@@ -192,11 +200,12 @@ enum EventId {
   SPEEDING = 18,
   SNAP = 19,
   FUSION_TO_RSU = 20,
-  DYNAMIC_TIMING = 21
+  DYNAMIC_TIMING = 21,
+  QUEUE_LENGTH = 22
 };
 bool EventId_IsValid(int value);
 constexpr EventId EventId_MIN = EVENT_NONE;
-constexpr EventId EventId_MAX = DYNAMIC_TIMING;
+constexpr EventId EventId_MAX = QUEUE_LENGTH;
 constexpr int EventId_ARRAYSIZE = EventId_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* EventId_descriptor();
@@ -1582,6 +1591,167 @@ class TrafficFlow final :
 };
 // -------------------------------------------------------------------
 
+class QueueLength final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:perception.QueueLength) */ {
+ public:
+  QueueLength();
+  virtual ~QueueLength();
+
+  QueueLength(const QueueLength& from);
+
+  inline QueueLength& operator=(const QueueLength& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  QueueLength(QueueLength&& from) noexcept
+    : QueueLength() {
+    *this = ::std::move(from);
+  }
+
+  inline QueueLength& operator=(QueueLength&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const QueueLength& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const QueueLength* internal_default_instance() {
+    return reinterpret_cast<const QueueLength*>(
+               &_QueueLength_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    8;
+
+  void Swap(QueueLength* other);
+  friend void swap(QueueLength& a, QueueLength& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline QueueLength* New() const final {
+    return CreateMaybeMessage<QueueLength>(nullptr);
+  }
+
+  QueueLength* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<QueueLength>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const QueueLength& from);
+  void MergeFrom(const QueueLength& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(QueueLength* other);
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::google::protobuf::StringPiece FullMessageName() {
+    return "perception.QueueLength";
+  }
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated int32 vehicle_num = 3;
+  int vehicle_num_size() const;
+  void clear_vehicle_num();
+  static const int kVehicleNumFieldNumber = 3;
+  ::google::protobuf::int32 vehicle_num(int index) const;
+  void set_vehicle_num(int index, ::google::protobuf::int32 value);
+  void add_vehicle_num(::google::protobuf::int32 value);
+  const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+      vehicle_num() const;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+      mutable_vehicle_num();
+
+  // repeated int32 maneuvers = 4;
+  int maneuvers_size() const;
+  void clear_maneuvers();
+  static const int kManeuversFieldNumber = 4;
+  ::google::protobuf::int32 maneuvers(int index) const;
+  void set_maneuvers(int index, ::google::protobuf::int32 value);
+  void add_maneuvers(::google::protobuf::int32 value);
+  const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+      maneuvers() const;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+      mutable_maneuvers();
+
+  // required int32 node_id = 1;
+  bool has_node_id() const;
+  void clear_node_id();
+  static const int kNodeIdFieldNumber = 1;
+  ::google::protobuf::int32 node_id() const;
+  void set_node_id(::google::protobuf::int32 value);
+
+  // required int32 link_id = 2;
+  bool has_link_id() const;
+  void clear_link_id();
+  static const int kLinkIdFieldNumber = 2;
+  ::google::protobuf::int32 link_id() const;
+  void set_link_id(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:perception.QueueLength)
+ private:
+  class HasBitSetters;
+
+  // helper for ByteSizeLong()
+  size_t RequiredFieldsByteSizeFallback() const;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::HasBits<1> _has_bits_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > vehicle_num_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > maneuvers_;
+  ::google::protobuf::int32 node_id_;
+  ::google::protobuf::int32 link_id_;
+  friend struct ::TableStruct_perception_2eproto;
+};
+// -------------------------------------------------------------------
+
 class Target final :
     public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:perception.Target) */ {
  public:
@@ -1627,7 +1797,7 @@ class Target final :
                &_Target_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    9;
 
   void Swap(Target* other);
   friend void swap(Target& a, Target& b) {
@@ -1928,7 +2098,7 @@ class VisibilityMsg final :
                &_VisibilityMsg_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    10;
 
   void Swap(VisibilityMsg* other);
   friend void swap(VisibilityMsg& a, VisibilityMsg& b) {
@@ -2065,7 +2235,7 @@ class LaneAreaMsg final :
                &_LaneAreaMsg_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    11;
 
   void Swap(LaneAreaMsg* other);
   friend void swap(LaneAreaMsg& a, LaneAreaMsg& b) {
@@ -2194,7 +2364,7 @@ class JamMsg final :
                &_JamMsg_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    12;
 
   void Swap(JamMsg* other);
   friend void swap(JamMsg& a, JamMsg& b) {
@@ -2323,7 +2493,7 @@ class DynamicTimingMsg final :
                &_DynamicTimingMsg_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    13;
 
   void Swap(DynamicTimingMsg* other);
   friend void swap(DynamicTimingMsg& a, DynamicTimingMsg& b) {
@@ -2472,7 +2642,7 @@ class TargetMsg final :
                &_TargetMsg_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    14;
 
   void Swap(TargetMsg* other);
   friend void swap(TargetMsg& a, TargetMsg& b) {
@@ -2601,7 +2771,7 @@ class WarnMsg final :
                &_WarnMsg_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    15;
 
   void Swap(WarnMsg* other);
   friend void swap(WarnMsg& a, WarnMsg& b) {
@@ -2725,7 +2895,7 @@ class TrafficFlowMsg final :
                &_TrafficFlowMsg_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    16;
 
   void Swap(TrafficFlowMsg* other);
   friend void swap(TrafficFlowMsg& a, TrafficFlowMsg& b) {
@@ -2832,6 +3002,135 @@ class TrafficFlowMsg final :
 };
 // -------------------------------------------------------------------
 
+class QueueMsg final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:perception.QueueMsg) */ {
+ public:
+  QueueMsg();
+  virtual ~QueueMsg();
+
+  QueueMsg(const QueueMsg& from);
+
+  inline QueueMsg& operator=(const QueueMsg& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  QueueMsg(QueueMsg&& from) noexcept
+    : QueueMsg() {
+    *this = ::std::move(from);
+  }
+
+  inline QueueMsg& operator=(QueueMsg&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const QueueMsg& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const QueueMsg* internal_default_instance() {
+    return reinterpret_cast<const QueueMsg*>(
+               &_QueueMsg_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    17;
+
+  void Swap(QueueMsg* other);
+  friend void swap(QueueMsg& a, QueueMsg& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline QueueMsg* New() const final {
+    return CreateMaybeMessage<QueueMsg>(nullptr);
+  }
+
+  QueueMsg* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<QueueMsg>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const QueueMsg& from);
+  void MergeFrom(const QueueMsg& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(QueueMsg* other);
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::google::protobuf::StringPiece FullMessageName() {
+    return "perception.QueueMsg";
+  }
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .perception.QueueLength queue = 1;
+  int queue_size() const;
+  void clear_queue();
+  static const int kQueueFieldNumber = 1;
+  ::perception::QueueLength* mutable_queue(int index);
+  ::google::protobuf::RepeatedPtrField< ::perception::QueueLength >*
+      mutable_queue();
+  const ::perception::QueueLength& queue(int index) const;
+  ::perception::QueueLength* add_queue();
+  const ::google::protobuf::RepeatedPtrField< ::perception::QueueLength >&
+      queue() const;
+
+  // @@protoc_insertion_point(class_scope:perception.QueueMsg)
+ private:
+  class HasBitSetters;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::HasBits<1> _has_bits_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::perception::QueueLength > queue_;
+  friend struct ::TableStruct_perception_2eproto;
+};
+// -------------------------------------------------------------------
+
 class PerceptionMsg final :
     public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:perception.PerceptionMsg) */ {
  public:
@@ -2879,6 +3178,7 @@ class PerceptionMsg final :
     kDynamicMsg = 6,
     kTargetMsg = 7,
     kTrafficFlowMsg = 8,
+    kQueueMsg = 9,
     MSGTYPE_NOT_SET = 0,
   };
 
@@ -2888,7 +3188,7 @@ class PerceptionMsg final :
                &_PerceptionMsg_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    18;
 
   void Swap(PerceptionMsg* other);
   friend void swap(PerceptionMsg& a, PerceptionMsg& b) {
@@ -2948,10 +3248,10 @@ class PerceptionMsg final :
 
   // accessors -------------------------------------------------------
 
-  // optional .perception.Timestamp time = 9;
+  // optional .perception.Timestamp time = 20;
   bool has_time() const;
   void clear_time();
-  static const int kTimeFieldNumber = 9;
+  static const int kTimeFieldNumber = 20;
   const ::perception::Timestamp& time() const;
   ::perception::Timestamp* release_time();
   ::perception::Timestamp* mutable_time();
@@ -3027,6 +3327,15 @@ class PerceptionMsg final :
   ::perception::TrafficFlowMsg* mutable_traffic_flow_msg();
   void set_allocated_traffic_flow_msg(::perception::TrafficFlowMsg* traffic_flow_msg);
 
+  // optional .perception.QueueMsg queue_msg = 9;
+  bool has_queue_msg() const;
+  void clear_queue_msg();
+  static const int kQueueMsgFieldNumber = 9;
+  const ::perception::QueueMsg& queue_msg() const;
+  ::perception::QueueMsg* release_queue_msg();
+  ::perception::QueueMsg* mutable_queue_msg();
+  void set_allocated_queue_msg(::perception::QueueMsg* queue_msg);
+
   void clear_MsgType();
   MsgTypeCase MsgType_case() const;
   // @@protoc_insertion_point(class_scope:perception.PerceptionMsg)
@@ -3039,6 +3348,7 @@ class PerceptionMsg final :
   void set_has_dynamic_msg();
   void set_has_target_msg();
   void set_has_traffic_flow_msg();
+  void set_has_queue_msg();
 
   inline bool has_MsgType() const;
   inline void clear_has_MsgType();
@@ -3057,6 +3367,7 @@ class PerceptionMsg final :
     ::perception::DynamicTimingMsg* dynamic_msg_;
     ::perception::TargetMsg* target_msg_;
     ::perception::TrafficFlowMsg* traffic_flow_msg_;
+    ::perception::QueueMsg* queue_msg_;
   } MsgType_;
   ::google::protobuf::uint32 _oneof_case_[1];
 
@@ -3743,6 +4054,106 @@ inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
 TrafficFlow::mutable_pass_num() {
   // @@protoc_insertion_point(field_mutable_list:perception.TrafficFlow.pass_num)
   return &pass_num_;
+}
+
+// -------------------------------------------------------------------
+
+// QueueLength
+
+// required int32 node_id = 1;
+inline bool QueueLength::has_node_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void QueueLength::clear_node_id() {
+  node_id_ = 0;
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline ::google::protobuf::int32 QueueLength::node_id() const {
+  // @@protoc_insertion_point(field_get:perception.QueueLength.node_id)
+  return node_id_;
+}
+inline void QueueLength::set_node_id(::google::protobuf::int32 value) {
+  _has_bits_[0] |= 0x00000001u;
+  node_id_ = value;
+  // @@protoc_insertion_point(field_set:perception.QueueLength.node_id)
+}
+
+// required int32 link_id = 2;
+inline bool QueueLength::has_link_id() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void QueueLength::clear_link_id() {
+  link_id_ = 0;
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline ::google::protobuf::int32 QueueLength::link_id() const {
+  // @@protoc_insertion_point(field_get:perception.QueueLength.link_id)
+  return link_id_;
+}
+inline void QueueLength::set_link_id(::google::protobuf::int32 value) {
+  _has_bits_[0] |= 0x00000002u;
+  link_id_ = value;
+  // @@protoc_insertion_point(field_set:perception.QueueLength.link_id)
+}
+
+// repeated int32 vehicle_num = 3;
+inline int QueueLength::vehicle_num_size() const {
+  return vehicle_num_.size();
+}
+inline void QueueLength::clear_vehicle_num() {
+  vehicle_num_.Clear();
+}
+inline ::google::protobuf::int32 QueueLength::vehicle_num(int index) const {
+  // @@protoc_insertion_point(field_get:perception.QueueLength.vehicle_num)
+  return vehicle_num_.Get(index);
+}
+inline void QueueLength::set_vehicle_num(int index, ::google::protobuf::int32 value) {
+  vehicle_num_.Set(index, value);
+  // @@protoc_insertion_point(field_set:perception.QueueLength.vehicle_num)
+}
+inline void QueueLength::add_vehicle_num(::google::protobuf::int32 value) {
+  vehicle_num_.Add(value);
+  // @@protoc_insertion_point(field_add:perception.QueueLength.vehicle_num)
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+QueueLength::vehicle_num() const {
+  // @@protoc_insertion_point(field_list:perception.QueueLength.vehicle_num)
+  return vehicle_num_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+QueueLength::mutable_vehicle_num() {
+  // @@protoc_insertion_point(field_mutable_list:perception.QueueLength.vehicle_num)
+  return &vehicle_num_;
+}
+
+// repeated int32 maneuvers = 4;
+inline int QueueLength::maneuvers_size() const {
+  return maneuvers_.size();
+}
+inline void QueueLength::clear_maneuvers() {
+  maneuvers_.Clear();
+}
+inline ::google::protobuf::int32 QueueLength::maneuvers(int index) const {
+  // @@protoc_insertion_point(field_get:perception.QueueLength.maneuvers)
+  return maneuvers_.Get(index);
+}
+inline void QueueLength::set_maneuvers(int index, ::google::protobuf::int32 value) {
+  maneuvers_.Set(index, value);
+  // @@protoc_insertion_point(field_set:perception.QueueLength.maneuvers)
+}
+inline void QueueLength::add_maneuvers(::google::protobuf::int32 value) {
+  maneuvers_.Add(value);
+  // @@protoc_insertion_point(field_add:perception.QueueLength.maneuvers)
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+QueueLength::maneuvers() const {
+  // @@protoc_insertion_point(field_list:perception.QueueLength.maneuvers)
+  return maneuvers_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+QueueLength::mutable_maneuvers() {
+  // @@protoc_insertion_point(field_mutable_list:perception.QueueLength.maneuvers)
+  return &maneuvers_;
 }
 
 // -------------------------------------------------------------------
@@ -4727,6 +5138,40 @@ inline void TrafficFlowMsg::set_allocated_time_end(::perception::Timestamp* time
 
 // -------------------------------------------------------------------
 
+// QueueMsg
+
+// repeated .perception.QueueLength queue = 1;
+inline int QueueMsg::queue_size() const {
+  return queue_.size();
+}
+inline void QueueMsg::clear_queue() {
+  queue_.Clear();
+}
+inline ::perception::QueueLength* QueueMsg::mutable_queue(int index) {
+  // @@protoc_insertion_point(field_mutable:perception.QueueMsg.queue)
+  return queue_.Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField< ::perception::QueueLength >*
+QueueMsg::mutable_queue() {
+  // @@protoc_insertion_point(field_mutable_list:perception.QueueMsg.queue)
+  return &queue_;
+}
+inline const ::perception::QueueLength& QueueMsg::queue(int index) const {
+  // @@protoc_insertion_point(field_get:perception.QueueMsg.queue)
+  return queue_.Get(index);
+}
+inline ::perception::QueueLength* QueueMsg::add_queue() {
+  // @@protoc_insertion_point(field_add:perception.QueueMsg.queue)
+  return queue_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::perception::QueueLength >&
+QueueMsg::queue() const {
+  // @@protoc_insertion_point(field_list:perception.QueueMsg.queue)
+  return queue_;
+}
+
+// -------------------------------------------------------------------
+
 // PerceptionMsg
 
 // required .perception.EventId event = 1;
@@ -5035,7 +5480,48 @@ inline ::perception::TrafficFlowMsg* PerceptionMsg::mutable_traffic_flow_msg() {
   return MsgType_.traffic_flow_msg_;
 }
 
-// optional .perception.Timestamp time = 9;
+// optional .perception.QueueMsg queue_msg = 9;
+inline bool PerceptionMsg::has_queue_msg() const {
+  return MsgType_case() == kQueueMsg;
+}
+inline void PerceptionMsg::set_has_queue_msg() {
+  _oneof_case_[0] = kQueueMsg;
+}
+inline void PerceptionMsg::clear_queue_msg() {
+  if (has_queue_msg()) {
+    delete MsgType_.queue_msg_;
+    clear_has_MsgType();
+  }
+}
+inline ::perception::QueueMsg* PerceptionMsg::release_queue_msg() {
+  // @@protoc_insertion_point(field_release:perception.PerceptionMsg.queue_msg)
+  if (has_queue_msg()) {
+    clear_has_MsgType();
+      ::perception::QueueMsg* temp = MsgType_.queue_msg_;
+    MsgType_.queue_msg_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perception::QueueMsg& PerceptionMsg::queue_msg() const {
+  // @@protoc_insertion_point(field_get:perception.PerceptionMsg.queue_msg)
+  return has_queue_msg()
+      ? *MsgType_.queue_msg_
+      : *reinterpret_cast< ::perception::QueueMsg*>(&::perception::_QueueMsg_default_instance_);
+}
+inline ::perception::QueueMsg* PerceptionMsg::mutable_queue_msg() {
+  if (!has_queue_msg()) {
+    clear_MsgType();
+    set_has_queue_msg();
+    MsgType_.queue_msg_ = CreateMaybeMessage< ::perception::QueueMsg >(
+        GetArenaNoVirtual());
+  }
+  // @@protoc_insertion_point(field_mutable:perception.PerceptionMsg.queue_msg)
+  return MsgType_.queue_msg_;
+}
+
+// optional .perception.Timestamp time = 20;
 inline bool PerceptionMsg::has_time() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -5096,6 +5582,10 @@ inline PerceptionMsg::MsgTypeCase PerceptionMsg::MsgType_case() const {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

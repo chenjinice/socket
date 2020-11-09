@@ -226,12 +226,28 @@ static void tf_flow_fun(Perception__PerceptionMsg *p)
     if(msg == NULL)return;
     for(i=0;i<msg->n_flow;i++){
         Perception__TrafficFlow * f = msg->flow[i];
-        printf("=%02d=:flow[%d]num=",p->event,i);
+        printf("=%02d=:flow[%d],node=%d,link=%d,num=",p->event,i,f->node_id,f->link_id);
         for(m=0;m<f->n_vehicle_num;m++)printf("%d,",f->vehicle_num[m]);
         printf("pass=");
         for(m=0;m<f->n_pass_num;m++)printf("%d,",f->pass_num[m]);
         printf("maneuvers=");
         for(m=0;m<f->n_maneuvers;m++)printf("%d,",f->maneuvers[m]);
+        printf("\n");
+    }
+}
+
+// 排队长度
+static void queue_length_fun(Perception__PerceptionMsg *p)
+{
+    int i , m;
+    Perception__QueueMsg * msg = p->queue_msg;
+    if(msg == NULL)return;
+    for(i=0;i<msg->n_queue;i++){
+        Perception__QueueLength * q = msg->queue[i];
+        printf("=%02d=:queue[%d],node=%d,link=%d,num=",p->event,i,q->node_id,q->link_id);
+        for(m=0;m<q->n_vehicle_num;m++)printf("%d,",q->vehicle_num[m]);
+        printf("maneuvers=");
+        for(m=0;m<q->n_maneuvers;m++)printf("%d,",q->maneuvers[m]);
         printf("\n");
     }
 }
@@ -302,6 +318,9 @@ void analysis(uint8_t *buffer,int len)
             break;
         case PERCEPTION__EVENT_ID__DYNAMIC_TIMING:    // 动态配时场景
             danymic_timing_fun(p);
+            break;
+        case PERCEPTION__EVENT_ID__QUEUE_LENGTH :    // 排队长度
+            queue_length_fun(p);
             break;
         default:
             break;

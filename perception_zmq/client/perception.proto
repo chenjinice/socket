@@ -1,6 +1,8 @@
 /*
-    通信协议 : 2020-09-29
+    通信协议 : 2020-11-09
     修改log : 
+        2020-11-09 :
+            1.添加排队长度消息
         2020-09-29 :
             1.修改动态配时场景id 和 消息名
             2.修改能见度场景数据内容
@@ -21,7 +23,7 @@ package perception;
 
 // 版本号
 enum Version{
-    VERSION                                     = 20200929; // 版本号
+    VERSION                                     = 20201109; // 版本号
 }                                                           
                                                             
 // 场景ID                                                   
@@ -48,6 +50,7 @@ enum EventId{
     SNAP                                        = 19;       // 抓拍物
     FUSION_TO_RSU                               = 20;       // 融合发给rsu的
     DYNAMIC_TIMING                              = 21;       // 动态配时场景
+    QUEUE_LENGTH                                = 22;       // 排队长度场景
 }                                                           
                                                             
 // 检测数据来源                                             
@@ -171,7 +174,17 @@ message TrafficFlow {
     repeated int32          vehicle_num         = 3;        // 每个车道车辆数
     repeated int32          maneuvers           = 4;        // 车道属性，直行、左转等   
     repeated int32          pass_num            = 5;        // 每个车道在固定时间内通过车辆数
-}      
+}
+
+//  单个link排队长度                                                           
+message QueueLength{
+    required int32          node_id             = 1;        // 地图 node 的 ID 号
+    required int32          link_id             = 2;        // 地图 link_id 的 ID 号
+    repeated int32          vehicle_num         = 3;        // 每个车道车辆数
+    repeated int32          maneuvers           = 4;        // 车道属性，直行、左转等
+}                                                            
+   
+      
                                                                                                                        
 // 单个检测到的目标                                         
 message Target {                                            
@@ -198,9 +211,7 @@ message Target {
     optional float          confidence          = 20;       // 置信度 
     optional float          rcs                 = 21;       // 雷达散射截面 
 }                                                           
-                                                            
-                                                            
-                                                            
+                                                         
                                                             
                                                             
                                                             
@@ -244,7 +255,14 @@ message TrafficFlowMsg{
     required Timestamp      time_begin          = 2;        // 统计开始时间
     required Timestamp      time_end            = 3;        // 统计结束时间
 }    
-                                                            
+
+// 排队长度场景需要数据     
+message QueueMsg{
+    repeated QueueLength    queue               = 1;
+}
+
+
+
                                                             
 //  ---------------- 要发送的数据包 -----------------------------------------------------
 message PerceptionMsg{                                      
@@ -257,7 +275,8 @@ message PerceptionMsg{
         DynamicTimingMsg    dynamic_msg         = 6;        
         TargetMsg           target_msg          = 7;   
         TrafficFlowMsg      traffic_flow_msg    = 8;
+        QueueMsg            queue_msg           = 9;
     }                                                       
-    optional Timestamp      time                = 9;        // 时间戳
+    optional Timestamp      time                = 20;       // 时间戳
 }                                                           
 

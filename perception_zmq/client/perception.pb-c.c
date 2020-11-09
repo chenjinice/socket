@@ -367,6 +367,51 @@ void   perception__traffic_flow__free_unpacked
   assert(message->base.descriptor == &perception__traffic_flow__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   perception__queue_length__init
+                     (Perception__QueueLength         *message)
+{
+  static const Perception__QueueLength init_value = PERCEPTION__QUEUE_LENGTH__INIT;
+  *message = init_value;
+}
+size_t perception__queue_length__get_packed_size
+                     (const Perception__QueueLength *message)
+{
+  assert(message->base.descriptor == &perception__queue_length__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t perception__queue_length__pack
+                     (const Perception__QueueLength *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &perception__queue_length__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t perception__queue_length__pack_to_buffer
+                     (const Perception__QueueLength *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &perception__queue_length__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Perception__QueueLength *
+       perception__queue_length__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Perception__QueueLength *)
+     protobuf_c_message_unpack (&perception__queue_length__descriptor,
+                                allocator, len, data);
+}
+void   perception__queue_length__free_unpacked
+                     (Perception__QueueLength *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &perception__queue_length__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 void   perception__target__init
                      (Perception__Target         *message)
 {
@@ -725,6 +770,51 @@ void   perception__traffic_flow_msg__free_unpacked
   if(!message)
     return;
   assert(message->base.descriptor == &perception__traffic_flow_msg__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   perception__queue_msg__init
+                     (Perception__QueueMsg         *message)
+{
+  static const Perception__QueueMsg init_value = PERCEPTION__QUEUE_MSG__INIT;
+  *message = init_value;
+}
+size_t perception__queue_msg__get_packed_size
+                     (const Perception__QueueMsg *message)
+{
+  assert(message->base.descriptor == &perception__queue_msg__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t perception__queue_msg__pack
+                     (const Perception__QueueMsg *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &perception__queue_msg__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t perception__queue_msg__pack_to_buffer
+                     (const Perception__QueueMsg *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &perception__queue_msg__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Perception__QueueMsg *
+       perception__queue_msg__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Perception__QueueMsg *)
+     protobuf_c_message_unpack (&perception__queue_msg__descriptor,
+                                allocator, len, data);
+}
+void   perception__queue_msg__free_unpacked
+                     (Perception__QueueMsg *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &perception__queue_msg__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
 void   perception__perception_msg__init
@@ -1405,6 +1495,83 @@ const ProtobufCMessageDescriptor perception__traffic_flow__descriptor =
   (ProtobufCMessageInit) perception__traffic_flow__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
+static const ProtobufCFieldDescriptor perception__queue_length__field_descriptors[4] =
+{
+  {
+    "node_id",
+    1,
+    PROTOBUF_C_LABEL_REQUIRED,
+    PROTOBUF_C_TYPE_INT32,
+    0,   /* quantifier_offset */
+    offsetof(Perception__QueueLength, node_id),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "link_id",
+    2,
+    PROTOBUF_C_LABEL_REQUIRED,
+    PROTOBUF_C_TYPE_INT32,
+    0,   /* quantifier_offset */
+    offsetof(Perception__QueueLength, link_id),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "vehicle_num",
+    3,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_INT32,
+    offsetof(Perception__QueueLength, n_vehicle_num),
+    offsetof(Perception__QueueLength, vehicle_num),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "maneuvers",
+    4,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_INT32,
+    offsetof(Perception__QueueLength, n_maneuvers),
+    offsetof(Perception__QueueLength, maneuvers),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned perception__queue_length__field_indices_by_name[] = {
+  1,   /* field[1] = link_id */
+  3,   /* field[3] = maneuvers */
+  0,   /* field[0] = node_id */
+  2,   /* field[2] = vehicle_num */
+};
+static const ProtobufCIntRange perception__queue_length__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 4 }
+};
+const ProtobufCMessageDescriptor perception__queue_length__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "perception.QueueLength",
+  "QueueLength",
+  "Perception__QueueLength",
+  "perception",
+  sizeof(Perception__QueueLength),
+  4,
+  perception__queue_length__field_descriptors,
+  perception__queue_length__field_indices_by_name,
+  1,  perception__queue_length__number_ranges,
+  (ProtobufCMessageInit) perception__queue_length__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
 static const ProtobufCFieldDescriptor perception__target__field_descriptors[21] =
 {
   {
@@ -2034,7 +2201,45 @@ const ProtobufCMessageDescriptor perception__traffic_flow_msg__descriptor =
   (ProtobufCMessageInit) perception__traffic_flow_msg__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor perception__perception_msg__field_descriptors[9] =
+static const ProtobufCFieldDescriptor perception__queue_msg__field_descriptors[1] =
+{
+  {
+    "queue",
+    1,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Perception__QueueMsg, n_queue),
+    offsetof(Perception__QueueMsg, queue),
+    &perception__queue_length__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned perception__queue_msg__field_indices_by_name[] = {
+  0,   /* field[0] = queue */
+};
+static const ProtobufCIntRange perception__queue_msg__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor perception__queue_msg__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "perception.QueueMsg",
+  "QueueMsg",
+  "Perception__QueueMsg",
+  "perception",
+  sizeof(Perception__QueueMsg),
+  1,
+  perception__queue_msg__field_descriptors,
+  perception__queue_msg__field_indices_by_name,
+  1,  perception__queue_msg__number_ranges,
+  (ProtobufCMessageInit) perception__queue_msg__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor perception__perception_msg__field_descriptors[10] =
 {
   {
     "event",
@@ -2133,8 +2338,20 @@ static const ProtobufCFieldDescriptor perception__perception_msg__field_descript
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "time",
+    "queue_msg",
     9,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Perception__PerceptionMsg, msg_type_case),
+    offsetof(Perception__PerceptionMsg, queue_msg),
+    &perception__queue_msg__descriptor,
+    NULL,
+    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "time",
+    20,
     PROTOBUF_C_LABEL_OPTIONAL,
     PROTOBUF_C_TYPE_MESSAGE,
     0,   /* quantifier_offset */
@@ -2150,16 +2367,18 @@ static const unsigned perception__perception_msg__field_indices_by_name[] = {
   0,   /* field[0] = event */
   4,   /* field[4] = jam_msg */
   3,   /* field[3] = lane_area_msg */
+  8,   /* field[8] = queue_msg */
   6,   /* field[6] = target_msg */
-  8,   /* field[8] = time */
+  9,   /* field[9] = time */
   7,   /* field[7] = traffic_flow_msg */
   2,   /* field[2] = visibility_msg */
   1,   /* field[1] = warn_msg */
 };
-static const ProtobufCIntRange perception__perception_msg__number_ranges[1 + 1] =
+static const ProtobufCIntRange perception__perception_msg__number_ranges[2 + 1] =
 {
   { 1, 0 },
-  { 0, 9 }
+  { 20, 9 },
+  { 0, 10 }
 };
 const ProtobufCMessageDescriptor perception__perception_msg__descriptor =
 {
@@ -2169,19 +2388,19 @@ const ProtobufCMessageDescriptor perception__perception_msg__descriptor =
   "Perception__PerceptionMsg",
   "perception",
   sizeof(Perception__PerceptionMsg),
-  9,
+  10,
   perception__perception_msg__field_descriptors,
   perception__perception_msg__field_indices_by_name,
-  1,  perception__perception_msg__number_ranges,
+  2,  perception__perception_msg__number_ranges,
   (ProtobufCMessageInit) perception__perception_msg__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
 static const ProtobufCEnumValue perception__version__enum_values_by_number[1] =
 {
-  { "VERSION", "PERCEPTION__VERSION__VERSION", 20200929 },
+  { "VERSION", "PERCEPTION__VERSION__VERSION", 20201109 },
 };
 static const ProtobufCIntRange perception__version__value_ranges[] = {
-{20200929, 0},{0, 1}
+{20201109, 0},{0, 1}
 };
 static const ProtobufCEnumValueIndex perception__version__enum_values_by_name[1] =
 {
@@ -2202,7 +2421,7 @@ const ProtobufCEnumDescriptor perception__version__descriptor =
   perception__version__value_ranges,
   NULL,NULL,NULL,NULL   /* reserved[1234] */
 };
-static const ProtobufCEnumValue perception__event_id__enum_values_by_number[22] =
+static const ProtobufCEnumValue perception__event_id__enum_values_by_number[23] =
 {
   { "EVENT_NONE", "PERCEPTION__EVENT_ID__EVENT_NONE", 0 },
   { "PEDESTRIAN", "PERCEPTION__EVENT_ID__PEDESTRIAN", 1 },
@@ -2226,11 +2445,12 @@ static const ProtobufCEnumValue perception__event_id__enum_values_by_number[22] 
   { "SNAP", "PERCEPTION__EVENT_ID__SNAP", 19 },
   { "FUSION_TO_RSU", "PERCEPTION__EVENT_ID__FUSION_TO_RSU", 20 },
   { "DYNAMIC_TIMING", "PERCEPTION__EVENT_ID__DYNAMIC_TIMING", 21 },
+  { "QUEUE_LENGTH", "PERCEPTION__EVENT_ID__QUEUE_LENGTH", 22 },
 };
 static const ProtobufCIntRange perception__event_id__value_ranges[] = {
-{0, 0},{0, 22}
+{0, 0},{0, 23}
 };
-static const ProtobufCEnumValueIndex perception__event_id__enum_values_by_name[22] =
+static const ProtobufCEnumValueIndex perception__event_id__enum_values_by_name[23] =
 {
   { "ABNORMAL_CAR", 5 },
   { "ACCIDENT", 15 },
@@ -2245,6 +2465,7 @@ static const ProtobufCEnumValueIndex perception__event_id__enum_values_by_name[2
   { "ILLEGAL_V2", 6 },
   { "LANE_WARE", 17 },
   { "PEDESTRIAN", 1 },
+  { "QUEUE_LENGTH", 22 },
   { "ROAD_DANGER", 9 },
   { "SNAP", 19 },
   { "SPECIALCAR", 14 },
@@ -2262,9 +2483,9 @@ const ProtobufCEnumDescriptor perception__event_id__descriptor =
   "EventId",
   "Perception__EventId",
   "perception",
-  22,
+  23,
   perception__event_id__enum_values_by_number,
-  22,
+  23,
   perception__event_id__enum_values_by_name,
   1,
   perception__event_id__value_ranges,
