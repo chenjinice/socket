@@ -5,6 +5,10 @@
 #include <stdio.h>
 #include <assert.h>
 #include <errno.h>
+#include <netinet/in.h>
+#include <net/if.h>
+#include <sys/socket.h>
+#include <arpa/inet.h>
 #include <zmq.h>
 #include "vclient.h"
 #include "analysis.h"
@@ -28,6 +32,8 @@ static void *m_context      = NULL;
 static int   m_ready        = 0;
 static int   m_loop         = 0;
 static int   m_has_filter   = 0;
+
+static int   m_udp_fd       = -1;
 
 //
 void vclient_start(char *remote_ip , uint16_t remote_port, uint16_t host_port)
@@ -162,5 +168,44 @@ void vclient_send_signal(TrafficSignal signal, uint32_t camera)
 }
 
 
+// ------------------------- udp -------------------------
+static void *udpReadThread(void *arg)
+{
+    struct sockaddr_in from;
+    int len = sizeof(struct sockaddr_in);
+    uint8_t buffer[1024] = {0};
 
+    m_loop = 1;
+    while(m_loop)
+    {
+        memset(buffer,0,sizeof(buffer));
+        int ret = recvfrom(m_udp_fd, buffer, 1024, 0, (struct sockaddr*)&from,(socklen_t*)&len);
+        analysis(buffer,ret);
+    }
+    return NULL;
+}
 
+void vclient_start_udp(uint16_t this_port)
+{
+    if(m_udp_fd != -1)return;
+
+    // 绑定本地的端口，用于监听，接收数据
+    struct sockaddr_in addrto;
+    bzero(&addrto, sizeof(struct sockaddr_in));
+    addrto.sin_family = AF_INET;
+    addrto.sin_addr.s_addr = htonl(INADDR_ANY);
+    addrto.sin_port = htons(this_port);
+
+    m_udp_fd = socket(AF_INET, SOCK_DGRAM, 0);
+    if(m_udp_fd < 0){
+        perror("vclient : creat udp error");
+        return;
+    }
+    if(bind(m_udp_fd,(struct sockaddr *)&(addrto), sizeof(struct sockaddr_in)) == -1){
+        perror("vclient : udp bind error...");
+        return;
+    }
+
+    pthread_t thread;
+    pthread_create(&thread,NULL,udpReadThread,NULL);
+}

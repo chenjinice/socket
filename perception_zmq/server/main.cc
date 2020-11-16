@@ -456,6 +456,7 @@ void send_queue_length(Vserver &s)
     }
     msg.set_allocated_queue_msg(q_msg);
     s.send(msg,nullptr);
+    s.udpSend(msg,nullptr);
 }
 
 
@@ -482,6 +483,9 @@ int main(int argc ,char **argv)
 
     // 打印协议版本号
     printf("perception version = %d\n",VERSION);
+
+    // 添加要udp发送的ip和端口
+    s.addUdpIp((char *)"127.0.0.1",12349);
 
     while(1){
         send_to_fusion(s);          // 发给融合程序的 ----------

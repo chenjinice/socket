@@ -2,7 +2,10 @@
 #include <string.h>	
 #include <stdio.h>	
 #include <stdlib.h>	
-#include <errno.h>	
+#include <errno.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
 #include <zmq.h>
 #include <pthread.h>
 #include "vserver.h"
@@ -24,10 +27,22 @@ void Vserver::init()
     m_ipc           = nullptr;
     m_filter        = nullptr;
     m_callback      = nullptr;
+    m_udp_fd        = -1;
 
     m_ready         = false;
     m_has_filter    = false;
     pthread_mutex_init(&m_mutex,nullptr);
+}
+
+void Vserver::udpInit()
+{
+    if(m_udp_fd != -1)return;
+    m_udp_fd = socket(AF_INET, SOCK_DGRAM, 0);
+    if (m_udp_fd <= 0){
+        printf("vserver : udp create error, %s\n",strerror(errno));
+        exit(-1);
+    }
+    printf("vserver : udp init\n");
 }
 
 Vserver::Vserver()
@@ -109,6 +124,8 @@ void Vserver::start()
         pthread_create(&thread,nullptr,readThread,this);
     }
     m_ready = true;
+
+    this->udpInit();
 }	
 
 void Vserver::stop()
@@ -203,6 +220,42 @@ void Vserver::send(PerceptionMsg &msg,timeval *tv,int ms)
     zmq_send(m_publisher,buffer,len,0);
     zmq_send(m_ipc_publisher,buffer,len,0);
     pthread_mutex_unlock(&m_mutex);
+}
+
+// 添加要udp的发送的ip和端口
+void Vserver::addUdpIp(char *ip, uint16_t port)
+{
+    sockaddr_in addr;
+    memset(&addr,0,sizeof(sockaddr_in));
+    addr.sin_family = AF_INET;
+    addr.sin_addr.s_addr = inet_addr(ip);
+    addr.sin_port = htons(port);
+    m_udp_list.push_back(addr);
+    printf("vserver : add udp %s:%d\n",ip,port);
+}
+
+// udp 发送
+void Vserver::udpSend(PerceptionMsg &msg, timeval *tv, int ms)
+{
+    if(m_udp_fd == -1){
+        printf("vserver : udp fd = -1 \n");
+        return;
+    }
+    // 限制一下发送频率
+    if(tv != nullptr){
+        if(checkInterval(tv,ms))return;
+    }
+    int len = msg.ByteSize();
+    if(len > BUFFER_SIZE){
+        printf("vserver : send error , len = %d > %d \n",len,BUFFER_SIZE);
+        return;
+    }
+    uint8_t buffer[BUFFER_SIZE] = {0};
+    msg.SerializeToArray(buffer,len);
+    // udp 发送数据
+    for(uint i=0;i<m_udp_list.size();i++){
+        sendto(m_udp_fd, buffer, len, 0, (struct sockaddr *)&m_udp_list[i], sizeof(sockaddr_in));
+    }
 }
 
 

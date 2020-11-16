@@ -21,12 +21,15 @@ int main(int argc ,char **argv)
     char * ip        = "127.0.0.1";
     int    port      = 12347;
     int    this_port = 12348;
+    int    udp_port  = 12349;
 
     if(argc >= 2)ip         = argv[1];
     if(argc >= 3)port       = atoi(argv[2]);
     if(argc >= 4)this_port  = atoi(argv[3]);
 
     vclient_start(ip,port,this_port);
+    vclient_start_udp(udp_port);
+
 	while(flag){
 		s_count++;
         if(s_count %5 ==0)vclient_send_signal(SIG_Y2G,1);

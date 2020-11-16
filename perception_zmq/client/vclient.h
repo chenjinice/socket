@@ -4,7 +4,10 @@
 
 #include <stdint.h>
 
+// 开启zmq的tcp接收
 void vclient_start(char *remote_ip ,uint16_t remote_port,uint16_t host_port);
+// 开启监听端口的udp
+void vclient_start_udp(uint16_t this_port);
 void vclient_stop(void);
 
 
