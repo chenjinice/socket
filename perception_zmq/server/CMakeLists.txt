@@ -14,6 +14,7 @@ include_directories(
 # 生成可执行文件
 add_executable(${TARGET}
     ${SRC_FILE}
+    ../proto/perception.pb.cc
 )
 
 

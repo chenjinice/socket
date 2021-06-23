@@ -11,6 +11,7 @@ set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
 # 头文件目录
 include_directories(
     /usr/local/include
+    ./proto
 )
 
 # 库目录
@@ -20,7 +21,7 @@ link_directories(
 
 
 # 执行子目录的cmake
-add_subdirectory(server)
+#add_subdirectory(server)
 add_subdirectory(client)
-
+add_subdirectory(server_demo)
 
