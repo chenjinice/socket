@@ -41,15 +41,13 @@ public:
     void                 setParam(uint16_t this_port, vector<RemoteServer> remotes, string filter = kVserverFilter, string ipc_addr = kVserverIpcAddr);
     void                 setCallBack(VCallBack fun);
     void                 start();
-    void                 stop();
     void                 addUdpIp(char *ip,uint16_t port);
     void                 send(PerceptionMsg &msg,timeval *tv=nullptr,int ms=1000);
     void                 udpSend(PerceptionMsg &msg,timeval *tv=nullptr,int ms=1000);
 
 private:
-    static void *        readThread(void *param);
     void                 udpInit();
-    void                 run();
+    void                 zmqMsgReceived(uint8_t *buffer, int len, void *arg);
     int                  checkInterval(timeval *tv,int ms);
 
 

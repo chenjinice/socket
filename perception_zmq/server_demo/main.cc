@@ -8,6 +8,7 @@ extern void process_signal(Flow_TrafficSig sig,int camera_id);
 // 收到消息回调函数
 void callback(uint8_t *buffer,int len,int index)
 {
+    printf("index =============== %d\n",index);
     PerceptionMsg msg;
     if(!msg.ParseFromArray(buffer,len)){
         printf("vserver : PerceptionMsg parse failed\n");
@@ -465,29 +466,23 @@ void send_queue_length(Vserver &s)
 
 int main(int argc ,char **argv)
 {
-    int          this_port = 12347;
-    char *       remote_ip = (char *)"127.0.0.1";
-    int          remote_port = 12348;
-    if(argc >= 2)this_port = atoi(argv[1]);
-    if(argc >= 3)remote_ip = argv[2];
-    if(argc >= 4)remote_port = atoi(argv[3]);
-
+    vector<RemoteServer> v;
+    v.push_back({"tcp://127.0.0.1:12347","vision"});
+    v.push_back({"tcp://127.0.0.1:12348","vision"});
+    v.push_back({"ipc:///tmp/crss.ipc",""});
 
     Vserver s;
-    // 设置本机端口，远程ip和端口
-    s.setParam(this_port,remote_ip,remote_port);
-    s.start();
-
-    // 李旺的动态配时场景要接收数据 ， 需要设置回调函数
+    s.setParam(12347,v);
+    // 接收数据，需要设置回调函数
     s.setCallBack(callback);
-
+    s.start();
     // 打印协议版本号
     printf("perception version = %d\n",VERSION);
 
     // 添加要udp发送的ip和端口
     s.addUdpIp((char *)"127.0.0.1",12349);
 
-    while(1){
+    while(true){
         send_to_fusion(s);          // 发给融合程序的 ----------
 
         send_backward_car(s);       // 逆向行驶告警
@@ -511,7 +506,6 @@ int main(int argc ,char **argv)
 
         usleep(1000000);
     }
-
     return 0;
 }
 

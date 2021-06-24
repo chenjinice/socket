@@ -18,16 +18,14 @@ static const int kSubBufSize = 8192;
 
 
 MyZmq::MyZmq()
-{
+{   
 }
 
 MyZmq::~MyZmq()
 {
     m_ready             = false;
-    if(m_context){
-        zmq_ctx_destroy(m_context);
-        m_context       = nullptr;
-    }
+    if(m_fd)free(m_fd);
+    if(m_context)free(m_context);
 }
 
 // 发布模式 , ipc:///tmp/example.ipc ,  tcp://*:12345
@@ -89,7 +87,7 @@ void MyZmq::send(uint8_t *buffer, int len)
 void MyZmq::run()
 {
     if(!m_callback)return;
-
+    
     int len;
     uint8_t filter[100];
     uint8_t buffer[kSubBufSize];
@@ -106,7 +104,5 @@ void MyZmq::run()
         }
         m_callback(buffer,len,(void *)m_addr.c_str());
     }
-    zmq_close(m_fd);
-    m_fd = nullptr;
 }
 

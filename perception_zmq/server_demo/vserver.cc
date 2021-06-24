@@ -29,7 +29,16 @@ Vserver::Vserver() {
 }
 
 Vserver::~Vserver() {
-    this->stop();
+    delete m_tcp_pub;
+    delete m_ipc_pub;
+    m_tcp_pub = nullptr;
+    m_ipc_pub = nullptr;
+
+    for(size_t i=0;i<m_remote_zmq.size();i++){
+        delete m_remote_zmq[i];
+        m_remote_zmq[i] = nullptr;
+    }
+    m_remote_zmq.clear();
     printf("~~~vserver~~~~~~~end~~~~ \n");
 }
 
@@ -52,51 +61,14 @@ void Vserver::start() {
     m_tcp_pub->startPublisher(m_tcp_addr,m_filter);
 
     this->udpInit();
-}	
 
-void Vserver::stop() {
-    delete m_tcp_pub;
-    delete m_ipc_pub;
-
-    m_tcp_pub = nullptr;
-    m_ipc_pub = nullptr;
-}
-
-void *Vserver::readThread(void *param) {
-    // 线程结束时，自动释放资源
-    pthread_detach(pthread_self());
-
-    Vserver *v = (Vserver *)param;
-    v->run();
-    return  nullptr;
-}
-
-void Vserver::run()
-{
-    uint8_t filter[100];
-    uint8_t buffer[BUFFER_SIZE];
-    int len;
-    while (m_ready){
-        memset(buffer,0,sizeof(buffer));
-        if(m_has_filter){
-            len = zmq_recv(m_subscriber,filter,sizeof(filter),ZMQ_SNDMORE);
-        }
-        len = zmq_recv(m_subscriber,buffer,sizeof(buffer),0);
-        if(len == -1)continue;
-        if(len > BUFFER_SIZE){
-            printf("vserver : zmq_recv size = %d > %d(MAX)\n",len,BUFFER_SIZE);
-            continue;
-        }
-        if(m_callback != nullptr){
-            m_callback(buffer,len,1000);
-        }
+    for(size_t i=0;i<m_remotes.size();i++){
+        MyZmq *zmq      = new MyZmq();
+        ZmqCallBack fun = ZmqBindClassFun(&Vserver::zmqMsgReceived,this);
+        zmq->startSubscriber(m_remotes[i].addr,m_remotes[i].filter,fun);
+        m_remote_zmq.push_back(zmq);
     }
-    zmq_close(m_subscriber);
-    zmq_close(m_publisher);
-    zmq_close(m_ipc_publisher);
-    m_subscriber    = nullptr;
-    m_publisher     = nullptr;
-    m_ipc_publisher = nullptr;
+
 }
 
 // 检查与当前时间差是否超过某个值,tv : 需要与当前时间做比较的时间,ms : 时间差是否超过ms（毫秒）
@@ -176,8 +148,17 @@ void Vserver::udpSend(PerceptionMsg &msg, timeval *tv, int ms)
     }
 }
 
+void Vserver::zmqMsgReceived(uint8_t *buffer, int len,void *arg) {
+    string  addr    = (char *)arg;
+    int     index   = -1;
 
-
-
+    for(size_t i=0;i<m_remotes.size();i++){
+        if(addr == m_remotes[i].addr){
+            index = i;
+            break;
+        }
+    }
+    m_callback(buffer,len,index);
+}
 
 
