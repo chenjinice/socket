@@ -3,5 +3,6 @@
     "files.associations": {
         "random": "cpp",
         "new": "cpp"
-    }
+    },
+    "cmake.configureOnOpen": true
 }
